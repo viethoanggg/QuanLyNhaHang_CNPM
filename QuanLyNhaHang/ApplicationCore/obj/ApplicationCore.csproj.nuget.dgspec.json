@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {}
+    "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+    "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Hoang\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\obj\\",
+        "outputPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

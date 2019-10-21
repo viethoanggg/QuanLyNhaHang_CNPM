@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
+      "projectUniqueName": "C:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
       "projectName": "ApplicationCore",
-      "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
+      "projectPath": "C:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
       "packagesPath": "C:\\Users\\Hoang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\obj\\",
+      "outputPath": "C:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

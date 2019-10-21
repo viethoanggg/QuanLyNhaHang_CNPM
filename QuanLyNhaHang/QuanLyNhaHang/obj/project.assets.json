@@ -11835,11 +11835,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
+      "projectUniqueName": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
       "projectName": "QuanLyNhaHang",
-      "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
+      "projectPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
       "packagesPath": "C:\\Users\\Hoang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\QuanLyNhaHang\\obj\\",
+      "outputPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11857,11 +11857,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
+            "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+              "projectPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
             },
-            "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj"
+            "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
