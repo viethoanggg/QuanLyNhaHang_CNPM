@@ -201,11 +201,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Hoang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\Infrastructure\\obj\\",
+      "outputPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -223,8 +223,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Hoang\\source\\repos\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
+            "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+              "projectPath": "c:\\Users\\Hoang\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
             }
           }
         }
