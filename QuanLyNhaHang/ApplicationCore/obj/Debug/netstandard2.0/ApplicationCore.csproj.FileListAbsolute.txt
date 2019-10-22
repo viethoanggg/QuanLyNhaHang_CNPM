@@ -1,0 +1,16 @@
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.deps.json
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\Triet\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.deps.json
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\Long Nhi\Desktop\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.pdb
