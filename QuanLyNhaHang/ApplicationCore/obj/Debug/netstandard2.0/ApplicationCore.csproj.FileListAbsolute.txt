@@ -22,3 +22,11 @@ C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationC
 C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfo.cs
 C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.dll
 C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.deps.json
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.pdb

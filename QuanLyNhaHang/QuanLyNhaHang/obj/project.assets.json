@@ -2644,7 +2644,10 @@
       },
       "ApplicationCore/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "microsoft.entityframeworkcore": "3.0.0"
+        },
         "compile": {
           "bin/placeholder/ApplicationCore.dll": {}
         },
@@ -2654,7 +2657,7 @@
       },
       "Infrastructure/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
           "ApplicationCore": "1.0.0"
         },
@@ -8347,40 +8350,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Long Nhi\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\del\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
+      "projectUniqueName": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
       "projectName": "QuanLyNhaHang",
-      "projectPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
-      "packagesPath": "C:\\Users\\Long Nhi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\obj\\",
+      "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
+      "packagesPath": "C:\\Users\\del\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Long Nhi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\del\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
+            "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
             },
-            "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

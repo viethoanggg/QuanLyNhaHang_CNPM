@@ -24,3 +24,16 @@ C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructu
 C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.csproj.CopyComplete
 C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.dll
 C:\Users\Long Nhi\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\Infrastructure.deps.json
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\Infrastructure.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\Infrastructure.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.0\Microsoft.EntityFrameworkCore.xml
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.csprojAssemblyReference.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.AssemblyInfo.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.csproj.CopyComplete
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.0\Infrastructure.pdb

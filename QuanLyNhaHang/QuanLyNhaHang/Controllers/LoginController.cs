@@ -2,13 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Entitites;
+using Infrastructure.Persistence.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using QuanLyNhaHang.Data;
+using QLNH;
 using QuanLyNhaHang.Models;
 
 namespace QuanLyNhaHang.Controllers
@@ -22,6 +26,10 @@ namespace QuanLyNhaHang.Controllers
         }
         public IActionResult Index()
         {
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("CurrentUser"))==false)
+            {
+                return View("../HomeQuanLy/Index");
+            }
             return View();
         }
 
@@ -37,6 +45,7 @@ namespace QuanLyNhaHang.Controllers
             return s.ToString();
 
         }
+
         public bool VerifyMd5Hash(MD5 md5, string input, string sqlString)
         {
             string md5Hash = GetMd5Hash(md5, input);
@@ -53,16 +62,29 @@ namespace QuanLyNhaHang.Controllers
             NguoiDung nd = _context.NguoiDungs.Where(x => x.TenDangNhap == userName).FirstOrDefault();
             if (nd == null)
             {
-                return RedirectToAction("Index");
+                ViewBag.Message = "Không có người dùng này";
+                return View("Index");
             }
             using (MD5 md5 = MD5.Create())
             {
                 if (VerifyMd5Hash(md5, user.Password, nd.MatKhau))
                 {
-                    return View("../Home/Index");
+                    HttpContext.Session.SetString("CurrentUser", nd.TenDangNhap);
+                    return View("../HomeQuanLy/Index");
+                }
+                else
+                {
+                    ViewBag.Message = "Sai mật khẩu";
+                    return View("Index");
                 }
             }
-            return RedirectToAction("Index");
+
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return View("../Login/Index");
         }
     }
 }

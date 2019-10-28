@@ -1,34 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\Long Nhi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\obj\\",
+        "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\del\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Long Nhi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\del\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -39,13 +34,11 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
-            "NETStandard.Library": {
-              "suppressParent": "All",
+            "microsoft.entityframeworkcore": {
               "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[3.0.0, )"
             }
           },
           "imports": [
@@ -58,38 +51,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Long Nhi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\del\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Long Nhi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\del\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {
-              "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
+              "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
               }
             }
           }
@@ -101,15 +94,7 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
-          "dependencies": {
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
+        "netstandard2.1": {
           "imports": [
             "net461",
             "net462",
@@ -120,6 +105,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }

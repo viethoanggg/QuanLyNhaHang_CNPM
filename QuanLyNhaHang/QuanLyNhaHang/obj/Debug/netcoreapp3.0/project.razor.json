@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\Long Nhi\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
+  "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -9043,7 +9043,7 @@
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.Razor",
-        "Documentation": null,
+        "Documentation": "\n            <summary>\n            <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" /> implementation targeting elements containing attributes with URL expected values.\n            </summary>\n            <remarks>Resolves URLs starting with '~/' (relative to the application's 'webroot' setting) that are not\n            targeted by other <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" />s. Runs prior to other <see cref=\"T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper\" />s to ensure\n            application-relative URLs are resolved.</remarks>\n        ",
         "TagOutputHint": null,
         "CaseSensitive": false,
         "TagMatchingRules": [
@@ -9713,7 +9713,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": null,
             "IndexerTypeName": null,
-            "Documentation": null,
+            "Documentation": "\n            <summary>\n            The name of the action method.\n            </summary>\n            <remarks>\n            Must be <c>null</c> if <see cref=\"P:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route\" /> or <see cref=\"P:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page\" /> is non-<c>null</c>.\n            </remarks>\n        ",
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "Action"
@@ -14349,23 +14349,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\ThucDon\\Delete.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\ThucDon\\Delete.cshtml",
+      "FilePath": "Views\\ThucDon\\Create.cshtml",
+      "TargetPath": "Views\\ThucDon\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\ThucDon\\Edit.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\ThucDon\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Areas\\QuanLy\\Views\\ThucDon\\Index.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\ThucDon\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Areas\\QuanLy\\Views\\HomeQuanLy\\Index.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\HomeQuanLy\\Index.cshtml",
+      "FilePath": "Views\\Shared\\_LeftMenu.cshtml",
+      "TargetPath": "Views\\Shared\\_LeftMenu.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14379,8 +14369,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\_ViewStart.cshtml",
+      "FilePath": "Views\\ThucDon\\Edit.cshtml",
+      "TargetPath": "Views\\ThucDon\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14394,43 +14384,33 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\Shared\\_TopMenu.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\Shared\\_TopMenu.cshtml",
+      "FilePath": "Views\\Shared\\_TopMenu.cshtml",
+      "TargetPath": "Views\\Shared\\_TopMenu.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "Views\\HomeQuanLy\\Index.cshtml",
+      "TargetPath": "Views\\HomeQuanLy\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\Shared\\_LeftMenu.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\Shared\\_LeftMenu.cshtml",
+      "FilePath": "Views\\ThucDon\\Details.cshtml",
+      "TargetPath": "Views\\ThucDon\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Areas\\QuanLy\\Views\\Error\\Index.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\Error\\Index.cshtml",
+      "FilePath": "Views\\ThucDon\\Delete.cshtml",
+      "TargetPath": "Views\\ThucDon\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\ThucDon\\Index.cshtml",
+      "TargetPath": "Views\\ThucDon\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
       "FilePath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Areas\\QuanLy\\Views\\BanHang\\Index.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\BanHang\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Areas\\QuanLy\\Views\\ThucDon\\Details.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\ThucDon\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "Areas\\QuanLy\\Views\\ThucDon\\Create.cshtml",
-      "TargetPath": "Areas\\QuanLy\\Views\\ThucDon\\Create.cshtml",
       "FileKind": "mvc"
     }
   ],
