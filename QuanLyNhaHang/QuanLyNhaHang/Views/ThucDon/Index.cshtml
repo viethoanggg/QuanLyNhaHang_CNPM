@@ -1,4 +1,4 @@
-﻿@model QuanLyNhaHang.Models.ThucDonVM
+﻿@model QuanLyNhaHang.Services.PaginatedList<ThucDonMD>
 
 @{
     Layout = "../Shared/_Layout.cshtml";
@@ -41,7 +41,7 @@
                     <th></th>
                 </tr>
 
-                @foreach (var item in Model.ThucDons)
+                @foreach (var item in Model)
                 {
                     <tr id="row_@item.Id">
                         <td>
@@ -66,10 +66,10 @@
         </div>
     </div>
         @{
-            var disNext= !Model.ThucDons.HasNext ? "disabled" : "";   
-            var disPre= !Model.ThucDons.HasPrevious ? "disabled" : "";   
+            var disNext= !Model.HasNext ? "disabled" : "";   
+            var disPre= !Model.HasPrevious ? "disabled" : "";   
         }
-        <a asp-action="Index" asp-route-pageIndex="@( Model.ThucDons.PageIndex - 1 )" class="btn btn-defualt @disPre"> Previous </a>
-        <a asp-action="Index" asp-route-pageIndex="@( Model.ThucDons.PageIndex + 1 )" class="btn btn-defualt @disNext"> Next </a>
+        <a asp-action="Index" asp-route-pageIndex="@( Model.PageIndex - 1 )" class="btn btn-defualt @disPre"> Previous </a>
+        <a asp-action="Index" asp-route-pageIndex="@( Model.PageIndex + 1 )" class="btn btn-defualt @disNext"> Next </a>
 </body>
 </html>

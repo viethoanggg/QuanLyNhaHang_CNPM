@@ -14,6 +14,8 @@ namespace ApplicationCore.Entitites
     using System.ComponentModel.DataAnnotations;
 
     public partial class ChiTietHoaDon {
+       
+        [Key]
         public int IdHoaDon { get; set; }
         public int IdMonAn { get; set; }
         public Nullable<int> SoLuong { get; set; }

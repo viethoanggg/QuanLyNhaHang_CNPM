@@ -14,7 +14,7 @@ namespace QuanLyNhaHang.Controllers {
         // GET: QuanLy/ThucDon
         private readonly QLNHContext context;
         private readonly int pageSize = 3;
-        public ThucDonVM thucDonVM;
+       // public ThucDonVM thucDonVM;
         public ThucDonController (QLNHContext context) {
             this.context = context;
         }
@@ -57,10 +57,10 @@ namespace QuanLyNhaHang.Controllers {
                     list = list.OrderBy (s => s.TenLoaiMonAn);
                     break;
             }
-            thucDonVM = new ThucDonVM ();
-            thucDonVM.ThucDons = PaginatedList<ThucDonMD>.Create (list.ToList (), pageIndex, pageSize);
+          //  thucDonVM = new ThucDonVM ();
+          //  thucDonVM.ThucDons = PaginatedList<ThucDonMD>.Create (list.ToList (), pageIndex, pageSize);
             
-            return View (thucDonVM);
+            return View (PaginatedList<ThucDonMD>.Create(list.ToList(), pageIndex, pageSize));
         }
 
         public ActionResult Create () {
