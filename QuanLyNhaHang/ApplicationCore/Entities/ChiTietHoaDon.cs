@@ -21,5 +21,6 @@ namespace ApplicationCore.Entitites
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> DonGia { get; set; }
 
+
     }
 }
