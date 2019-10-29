@@ -4,10 +4,8 @@
     <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
   </ItemGroup>
 
-<ItemGroup>
-    <Reference Include="Microsoft.EntityFrameworkCore">
-      <HintPath>msefc/Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

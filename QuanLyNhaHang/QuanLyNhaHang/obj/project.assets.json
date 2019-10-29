@@ -2646,7 +2646,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "microsoft.entityframeworkcore": "3.0.0"
+          "Microsoft.EntityFrameworkCore": "3.0.0"
         },
         "compile": {
           "bin/placeholder/ApplicationCore.dll": {}
@@ -2659,7 +2659,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "ApplicationCore": "1.0.0"
+          "ApplicationCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "3.0.0"
         },
         "compile": {
           "bin/placeholder/Infrastructure.dll": {}

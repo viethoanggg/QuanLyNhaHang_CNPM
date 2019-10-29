@@ -1,11 +1,11 @@
-C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.csprojAssemblyReference.cache
-C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.AssemblyInfoInputs.cache
-C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.AssemblyInfo.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\Infrastructure.deps.json
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\Infrastructure.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\Infrastructure.pdb
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\ApplicationCore.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\ApplicationCore.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.csprojAssemblyReference.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.AssemblyInfo.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.csproj.CopyComplete
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.pdb

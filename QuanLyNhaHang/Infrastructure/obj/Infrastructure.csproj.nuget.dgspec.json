@@ -36,7 +36,7 @@
       "frameworks": {
         "netstandard2.1": {
           "dependencies": {
-            "microsoft.entityframeworkcore": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
             }
@@ -95,6 +95,12 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

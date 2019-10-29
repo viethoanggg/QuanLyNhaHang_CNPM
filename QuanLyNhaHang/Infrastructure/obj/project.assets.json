@@ -259,7 +259,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "microsoft.entityframeworkcore": "3.0.0"
+          "Microsoft.EntityFrameworkCore": "3.0.0"
         },
         "compile": {
           "bin/placeholder/ApplicationCore.dll": {}
@@ -766,7 +766,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "ApplicationCore >= 1.0.0"
+      "ApplicationCore >= 1.0.0",
+      "Microsoft.EntityFrameworkCore >= 3.0.0"
     ]
   },
   "packageFolders": {
@@ -807,6 +808,12 @@
     },
     "frameworks": {
       "netstandard2.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
