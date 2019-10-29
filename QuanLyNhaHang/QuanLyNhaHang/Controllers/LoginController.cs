@@ -55,7 +55,7 @@ namespace QuanLyNhaHang.Controllers
         }
 
         [HttpPost]
-        public IActionResult HashStringInput([Bind("Username", "Password")] Account user)
+        public IActionResult Index(Account user)
         {
 
             string userName = user.Username;
@@ -75,7 +75,7 @@ namespace QuanLyNhaHang.Controllers
                 else
                 {
                     ViewBag.Message = "Sai mật khẩu";
-                    return View("Index");
+                    return View();
                 }
             }
 
