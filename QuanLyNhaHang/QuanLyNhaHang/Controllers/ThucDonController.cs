@@ -74,7 +74,7 @@ namespace QuanLyNhaHang.Controllers {
                 context.ThucDons.Add (td);
                 context.SaveChanges ();
                 ViewBag.MessageTC = "Thêm thành công";
-                ViewBag.IdTd = td.Id;
+          
             }
             return RedirectToAction ("Index");
         }
