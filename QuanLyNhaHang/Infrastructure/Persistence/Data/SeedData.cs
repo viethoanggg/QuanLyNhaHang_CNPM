@@ -256,7 +256,7 @@ namespace Infrastructure.Persistence.Data {
                         IdLoaiMonAn = 8,
                             Ten = "Bia các loại ",
                             Gia = 15000
-                    },
+                    }
                 );
             }
             context.SaveChanges ();
@@ -267,8 +267,7 @@ namespace Infrastructure.Persistence.Data {
             byte[] bytes = md5.ComputeHash (Encoding.UTF8.GetBytes (input));
             StringBuilder s = new StringBuilder ();
             for (int i = 0; i < bytes.Length; i++) {
-                s.Append (bytes[i].ToString ("
-                                    X2 "));
+                s.Append (bytes[i].ToString ("X2"));
 
             }
             return s.ToString ();
