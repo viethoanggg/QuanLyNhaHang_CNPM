@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ApplicationCore.Entitites;
 using Infrastructure.Persistence.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyNhaHang.Models;
@@ -18,7 +19,13 @@ namespace QuanLyNhaHang.Controllers {
         public ThucDonController (QLNHContext context) {
             this.context = context;
         }
-        public ActionResult Index (string sort, int pageIndex = 1) {
+        public ActionResult Index (string sort,string searchString,string currentFilter, int pageIndex = 1) {
+
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("CurrentUser")))
+            {
+                return View("../Login/Index");
+            }
+
             var list = from s in context.ThucDons join t in context.LoaiMonAns
             on s.IdLoaiMonAn equals t.Id
             select new ThucDonMD {
@@ -27,6 +34,19 @@ namespace QuanLyNhaHang.Controllers {
             Ten = s.Ten,
             Gia = s.Gia
             };
+
+            if(searchString !=null)
+                pageIndex = 1;
+            else
+                searchString = currentFilter;
+
+            ViewBag.CurrentFilter = searchString;
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                list = list.Where(s => s.Ten.Contains(searchString.ToLower()) || s.TenLoaiMonAn.Contains(searchString.ToLower()));
+            }
+
             if (string.IsNullOrEmpty (sort))
                 sort = "loai_asc";
             ViewBag.CurrentSort = sort;

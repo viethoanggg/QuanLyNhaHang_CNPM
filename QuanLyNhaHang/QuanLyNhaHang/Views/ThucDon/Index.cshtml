@@ -2,6 +2,7 @@
 
 @{
     Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title="Thực đơn";
 }
 
 <!DOCTYPE html>
@@ -15,27 +16,30 @@
     
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Thực đơn</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    
-    <div class="row">
-        <div class="col-lg-12">
             <p>
-                @Html.ActionLink("Create New", "Create","ThucDon")
+                @Html.ActionLink("+ Create New ", "Create","ThucDon")
               
             </p>
+
+            <form asp-action="Index" asp-controller="ThucDon" method="get">
+                 <div class="input-group">
+                    <input type="text" class="form-control" name="searchString">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" type="submit">Tìm</button>
+                    </span>
+                 </div>
+            </form>
+           
             <table class="table">
                 <tr>
                     <th>
-                        @Html.ActionLink("Tên loại thức ăn","Index",new {sort=@ViewBag.LoaiSort})
+                        @Html.ActionLink("Tên loại thức ăn","Index",new {sort=@ViewBag.LoaiSort, currentFilter=@ViewBag.CurrentFilter})
                     </th>
                     <th>
-                        @Html.ActionLink("Tên thức ăn", "Index", new { sort=@ViewBag.TenThucAnSort })
+                        @Html.ActionLink("Tên thức ăn", "Index", new { sort=@ViewBag.TenThucAnSort,currentFilter=@ViewBag.CurrentFilter })
                     </th>
                     <th>
-                       @Html.ActionLink("Giá", "Index", new { sort=@ViewBag.GiaSort })
+                       @Html.ActionLink("Giá", "Index", new { sort=@ViewBag.GiaSort,currentFilter=@ViewBag.CurrentFilter })
                     </th>
                     <th></th>
                 </tr>
@@ -68,7 +72,30 @@
             var disNext= !Model.HasNext ? "disabled" : "";   
             var disPre= !Model.HasPrevious ? "disabled" : "";   
         }
-        <a asp-action="Index" asp-route-pageIndex="@( Model.PageIndex - 1 )" class="btn btn-defualt @disPre"> Previous </a>
-        <a asp-action="Index" asp-route-pageIndex="@( Model.PageIndex + 1 )" class="btn btn-defualt @disNext"> Next </a>
+
+        <a asp-action="Index"  class="btn btn-defualt @disPre"
+        asp-route-pageIndex="@( Model.PageIndex - 1 )"
+        asp-route-sort="@ViewBag.CurrentSort"
+        asp-route-currentFilter="@ViewBag.CurrentFilter"> Previous </a>
+        <ul class="">
+        @{
+           
+            for(int i=1; i <= Model.TotalPages; i++)
+            {
+                <li class="">
+                    <a asp-action="Index"
+                    asp-route-pageIndex="@i"
+                    asp-route-sort="@ViewBag.CurrentSort"
+                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                </li>
+            }
+           
+        }
+         </ul>
+        <a asp-action="Index"  class="btn btn-defualt @disNext"
+        asp-route-pageIndex="@( Model.PageIndex + 1 )"
+        asp-route-sort="@ViewBag.CurrentSort"
+        asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
+
 </body>
 </html>
