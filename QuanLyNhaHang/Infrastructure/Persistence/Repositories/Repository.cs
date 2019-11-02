@@ -7,22 +7,23 @@ using ApplicationCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositoties {
-    class Repository<T> : IRepository<T> where T : class {
-        protected DbContext Context;
+    public class Repository<T> : IRepository<T> where T : class, IAggregateRoot {
+        protected DbContext Context{ get; private set; }
         public Repository (DbContext context) {
             this.Context = context;
         }
 
         public void Add (T entity) {
-            Context.Add (entity);
+            Context.Set<T>().Add(entity);
         }
 
         public void AddRange (IEnumerable<T> entities) {
-            Context.AddRange (entities);
+            Context.Set<T>().AddRange (entities);
         }
 
         public IEnumerable<T> Find (Expression<Func<T, bool>> predicate) {
-            throw new NotImplementedException ();
+
+            return Context.Set<T>().Where(predicate);
         }
 
         public IEnumerable<T> GetAll () {

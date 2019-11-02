@@ -15,7 +15,7 @@ namespace QuanLyNhaHang.Services {
         public int TotalPages { get; private set; }
         public bool HasNext {
             get {
-                return PageIndex < TotalPages?true : false;
+                return PageIndex < TotalPages ? true : false;
             }
         }
         public bool HasPrevious {

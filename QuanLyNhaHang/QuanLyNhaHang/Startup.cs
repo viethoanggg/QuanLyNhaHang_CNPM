@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApplicationCore.Interfaces;
 using Infrastructure.Persistence.Data;
+using Infrastructure.Persistence.Repositoties;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -10,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QuanLyNhaHang.Services;
 
 namespace QuanLyNhaHang {
     public class Startup {
@@ -33,6 +36,10 @@ namespace QuanLyNhaHang {
             services.AddSession (options =>
                 options.IdleTimeout = TimeSpan.FromMinutes (60)
             );
+            services.AddScoped<IThucDonRepository,ThucDonRepository>();
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IThucDonServices,ThucDonServices>();
+
             services.AddControllersWithViews ();
             services.AddDbContext<QLNHContext> (option => option.UseSqlite (Configuration.GetConnectionString ("QLNHContext")));
         }
@@ -55,7 +62,7 @@ namespace QuanLyNhaHang {
             app.UseEndpoints (endpoints => {
                 endpoints.MapControllerRoute (
                     name: "default",
-                    pattern: "{controller=Login}/{action=Index}/{id?}");
+                    pattern: "{controller=ThucDon}/{action=Index}/{id?}");
 
             });
 

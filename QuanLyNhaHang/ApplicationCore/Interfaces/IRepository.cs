@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ApplicationCore.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : IAggregateRoot
     {
 
         T GetById(int id);

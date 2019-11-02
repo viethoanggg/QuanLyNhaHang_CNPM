@@ -12,7 +12,9 @@ namespace ApplicationCore.Entitites
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System;
-    public partial class LoaiMonAn {
+    using ApplicationCore.Interfaces;
+
+    public  class LoaiMonAn : IAggregateRoot {
      
         public int Id { get; set; }
 

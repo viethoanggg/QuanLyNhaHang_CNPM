@@ -1,5 +1,4 @@
-﻿@model QuanLyNhaHang.Services.PaginatedList<ThucDonMD>
-
+﻿@model QuanLyNhaHang.ViewModels.ThucDonVM
 @{
     Layout = "../Shared/_Layout.cshtml";
     ViewBag.Title="Thực đơn";
@@ -25,7 +24,7 @@
                  <div class="input-group">
                     <input type="text" class="form-control" name="searchString">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" type="submit">Tìm</button>
+                        <button class="btn btn-primary" type="submit">Tìm</button>
                     </span>
                  </div>
             </form>
@@ -44,7 +43,7 @@
                     <th></th>
                 </tr>
 
-                @foreach (var item in Model)
+                @foreach (var item in Model.ThucDonsMD)
                 {
                     <tr id="row_@item.Id">
                         <td>
@@ -69,33 +68,84 @@
         </div>
     </div>
         @{
-            var disNext= !Model.HasNext ? "disabled" : "";   
-            var disPre= !Model.HasPrevious ? "disabled" : "";   
+            var disNext= !Model.ThucDonsMD.HasNext ? " visibility: hidden" : "";   
+            var disPre= !Model.ThucDonsMD.HasPrevious ? " visibility: hidden" : "";   
         }
 
-        <a asp-action="Index"  class="btn btn-defualt @disPre"
-        asp-route-pageIndex="@( Model.PageIndex - 1 )"
-        asp-route-sort="@ViewBag.CurrentSort"
-        asp-route-currentFilter="@ViewBag.CurrentFilter"> Previous </a>
-        <ul class="">
+        
+        <ul class="pagination">
+            <li class="page-item">
+                <a asp-action="Index"  class="page-link" style="@disPre"
+                asp-route-pageIndex="@( Model.ThucDonsMD.PageIndex - 1 )"
+                asp-route-sort="@ViewBag.CurrentSort"
+                asp-route-currentFilter="@ViewBag.CurrentFilter"> Previous </a>
+            </li>
+            
         @{
            
-            for(int i=1; i <= Model.TotalPages; i++)
+            for(int i=1; i <= Model.ThucDonsMD.TotalPages; i++)
             {
-                <li class="">
-                    <a asp-action="Index"
-                    asp-route-pageIndex="@i"
-                    asp-route-sort="@ViewBag.CurrentSort"
-                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
-                </li>
+                //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                if(Model.ThucDonsMD.TotalPages>=8 && @i>=Model.ThucDonsMD.PageIndex-2 && @i<=Model.ThucDonsMD.PageIndex+2)
+                {
+                    if(@i==Model.ThucDonsMD.PageIndex-2 && @i>1)
+                    {
+                        <li class="page-item"><a class="page-link">...</a></li>
+                    }
+                    if(@i==Model.ThucDonsMD.PageIndex)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" style="background-color:lightblue"> @i </a>
+                        </li>   
+                    }
+                    else 
+                    {
+                        <li class="page-item">
+                            <a class="page-link"
+                            asp-action="Index"
+                            asp-route-pageIndex="@i"
+                            asp-route-sort="@ViewBag.CurrentSort"
+                            asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                        </li>
+                    }
+                    if(@i==Model.ThucDonsMD.PageIndex+2 && @i<Model.ThucDonsMD.TotalPages)
+                    {
+                        <li class="page-item"><a class="page-link">...</a></li>
+                    }
+                }
+                else if( Model.ThucDonsMD.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                {
+                     if(@i==Model.ThucDonsMD.PageIndex)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" style="background-color:lightblue"> @i </a>
+                        </li>   
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link"
+                            asp-action="Index"
+                            asp-route-pageIndex="@i"
+                            asp-route-sort="@ViewBag.CurrentSort"
+                            asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                        </li>
+                    }
+                }
+               
+               
             }
            
         }
+
+            <li class="page-item">
+                  <a asp-action="Index"  class="page-link" style="@disNext"
+                asp-route-pageIndex="@( Model.ThucDonsMD.PageIndex + 1 )"
+                asp-route-sort="@ViewBag.CurrentSort"
+                asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
+            </li>
          </ul>
-        <a asp-action="Index"  class="btn btn-defualt @disNext"
-        asp-route-pageIndex="@( Model.PageIndex + 1 )"
-        asp-route-sort="@ViewBag.CurrentSort"
-        asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
+      
 
 </body>
 </html>
