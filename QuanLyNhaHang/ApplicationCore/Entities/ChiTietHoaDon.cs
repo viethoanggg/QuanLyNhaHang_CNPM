@@ -13,14 +13,23 @@ namespace ApplicationCore.Entitites
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class ChiTietHoaDon {
-       
-        [Key]
-        public int IdHoaDon { get; set; }
-        public int IdMonAn { get; set; }
-        public Nullable<int> SoLuong { get; set; }
-        public Nullable<int> DonGia { get; set; }
+    public class ChiTietHoaDon {
 
+        [Key]
+        [Display(Name = "Mã hóa đơn")]
+        public int IdHoaDon { get; set; }
+
+
+        [Display(Name = "Món ăn")]
+        public int IdMonAn { get; set; }
+
+        [Range(1,10)]
+        [Display(Name = "Số lượng")]
+        public Nullable<int> SoLuong { get; set; }
+
+        [Range(1, 10)]
+        [Display(Name = "Đơn giá")]
+        public Nullable<int> DonGia { get; set; }
 
     }
 }

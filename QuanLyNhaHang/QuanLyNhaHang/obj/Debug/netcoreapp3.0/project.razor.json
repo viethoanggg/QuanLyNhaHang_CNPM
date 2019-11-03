@@ -14344,6 +14344,16 @@
   "RootNamespace": "QuanLyNhaHang",
   "Documents": [
     {
+      "FilePath": "Views\\BanAn\\Serve.cshtml",
+      "TargetPath": "Views\\BanAn\\Serve.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\BanAn\\Create.cshtml",
+      "TargetPath": "Views\\BanAn\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\ThucDon\\Create.cshtml",
       "TargetPath": "Views\\ThucDon\\Create.cshtml",
       "FileKind": "mvc"
@@ -14359,6 +14369,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\BanAn\\Index.cshtml",
+      "TargetPath": "Views\\BanAn\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Login\\Index.cshtml",
       "TargetPath": "Views\\Login\\Index.cshtml",
       "FileKind": "mvc"
@@ -14366,6 +14381,16 @@
     {
       "FilePath": "Views\\ThucDon\\Edit.cshtml",
       "TargetPath": "Views\\ThucDon\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\BanAn\\Delete.cshtml",
+      "TargetPath": "Views\\BanAn\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\BanAn\\Edit.cshtml",
+      "TargetPath": "Views\\BanAn\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {

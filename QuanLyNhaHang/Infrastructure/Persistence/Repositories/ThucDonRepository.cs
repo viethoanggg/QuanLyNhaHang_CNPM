@@ -4,7 +4,7 @@ using ApplicationCore.Interfaces;
 using Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-namespace Infrastructure.Persistence.Repositoties {
+namespace Infrastructure.Persistence.Repositories {
     public class ThucDonRepository : Repository<ThucDon>, IThucDonRepository
     {
         public ThucDonRepository (QLNHContext context) : base (context) {

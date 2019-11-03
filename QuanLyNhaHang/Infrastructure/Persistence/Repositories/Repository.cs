@@ -6,7 +6,7 @@ using System.Text;
 using ApplicationCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.Repositoties {
+namespace Infrastructure.Persistence.Repositories {
     public class Repository<T> : IRepository<T> where T : class, IAggregateRoot {
         protected DbContext Context{ get; private set; }
         public Repository (DbContext context) {

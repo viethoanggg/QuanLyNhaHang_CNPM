@@ -72,7 +72,7 @@
             var disPre= !Model.ThucDonsMD.HasPrevious ? " visibility: hidden" : "";   
         }
 
-        
+    <span style="float:right"> 
         <ul class="pagination">
             <li class="page-item">
                 <a asp-action="Index"  class="page-link" style="@disPre"
@@ -145,7 +145,7 @@
                 asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
             </li>
          </ul>
-      
+    </span>
 
 </body>
 </html>

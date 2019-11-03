@@ -1,0 +1,61 @@
+@model QuanLyNhaHang.ViewModels.ServeVM
+@{
+    ViewData["Title"] = "Serve";
+}
+
+<div class="row">
+    <div class="col-md-12" style = "margin:10px 10px ; border:1px solid black;box-shadow:2px 2px 2px grey">
+        @ViewBag.idhd 
+        <form asp-action="CreateBill" asp-controller="BanAn" method="post">
+
+           <input asp-for="HoaDon.Id"/>
+           <input asp-for="HoaDon.ThoiGianThanhToan"/>
+           <input asp-for="HoaDon.ThanhTien" />
+
+           @Html.DisplayNameFor(model=>model.HoaDon.IdBanAn)
+           <input asp-for="IdBanAn" readonly/>
+
+            @Html.DisplayNameFor(model=>model.HoaDon.IdUser)
+            <input asp-for="HoaDon.IdUser" readonly/>
+
+            @Html.DisplayNameFor(model=>model.HoaDon.ThoiGianLap)
+            <input asp-for="HoaDon.ThoiGianLap" value="@Model.DateTime" type="text" readonly />
+            <input type="submit" value="Phục vụ"/>
+        </form> 
+        <br/>
+        Ma hoa don<br/>
+        btnLapHoaDon<br/>
+        or btnThanhToan<br/>
+    </div>
+    <hr/>
+</div>
+
+<div class="row">
+    <div class="col-md-12" style = "margin:10px 10px ; border:1px solid black;box-shadow:2px 2px 2px grey">
+        danh sach mon an<br/>
+        ten so luong giaGoc tongTien<br/>
+
+    </div>
+    <hr/>
+</div>
+
+<div class="row">
+    <div class="col-md-12" style = "margin:10px 10px ; border:1px solid black;box-shadow:2px 2px 2px grey">
+        <h3>Chi tiết bàn ăn</h3>
+        <table class="table">
+            <tr>
+                <th>Tên món ăn</th>
+                <th>Loại món ăn</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+</div>

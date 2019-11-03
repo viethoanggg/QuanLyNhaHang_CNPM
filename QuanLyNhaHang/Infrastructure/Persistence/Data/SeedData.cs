@@ -20,7 +20,81 @@ namespace Infrastructure.Persistence.Data {
                             MatKhau = mk
                     });
             }
-
+            if (!context.BanAns.Any())
+            {
+                context.BanAns.AddRange(
+                    new BanAn
+                    {
+                        Id=1,
+                        LoaiBanAn="2 người",
+                        TrangThai="Trống",
+                        GhiChu=""
+                    },
+                    new BanAn
+                    {
+                        Id = 2,
+                        LoaiBanAn = "2 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 3,
+                        LoaiBanAn = "4 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 4,
+                        LoaiBanAn = "4 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 5,
+                        LoaiBanAn = "8 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 6,
+                        LoaiBanAn = "8 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 7,
+                        LoaiBanAn = "10 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 8,
+                        LoaiBanAn = "10 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                    new BanAn
+                    {
+                        Id = 9,
+                        LoaiBanAn = "Vài người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
+                    },
+                     new BanAn
+                     {
+                         Id = 10,
+                         LoaiBanAn = "Vài người",
+                         TrangThai = "Trống",
+                         GhiChu = ""
+                     }
+                );
+            }
             if (!context.LoaiMonAns.Any ()) {
                 context.LoaiMonAns.AddRange (
                     new LoaiMonAn {

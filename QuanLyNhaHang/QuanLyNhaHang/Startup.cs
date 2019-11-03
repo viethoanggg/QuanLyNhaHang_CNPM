@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Interfaces;
 using Infrastructure.Persistence.Data;
-using Infrastructure.Persistence.Repositoties;
+using Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -39,6 +39,8 @@ namespace QuanLyNhaHang {
             services.AddScoped<IThucDonRepository,ThucDonRepository>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped<IThucDonServices,ThucDonServices>();
+            services.AddScoped<IBanAnServices, BanAnServices>();
+            //services.AddScoped<IHoaDonServices, HoaDonServices>();
 
             services.AddControllersWithViews ();
             services.AddDbContext<QLNHContext> (option => option.UseSqlite (Configuration.GetConnectionString ("QLNHContext")));

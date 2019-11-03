@@ -12,13 +12,25 @@ namespace ApplicationCore.Entitites
     using System.Collections.Generic;
     using System;
 
-    public partial class KhachHang {
+    public class KhachHang {
      
         public int Id { get; set; }
         public string Ten { get; set; }
         public Nullable<int> SDT { get; set; }
-        public string DiaChi { get; set; }
+        public DiaChiNha DiaChi;
 
+        public class DiaChiNha
+        {
+            public string SoNha,TenDuong,Phuong,Quan,ThanhPho;
 
+            public DiaChiNha(string SoNha,string TenDuong,string Phuong,string Quan,string ThanhPho)
+            {
+                this.SoNha = SoNha;
+                this.TenDuong = TenDuong;
+                this.Phuong = Phuong;
+                this.Quan = Quan;
+                this.ThanhPho = ThanhPho;
+            }
+        }
     }
 }
