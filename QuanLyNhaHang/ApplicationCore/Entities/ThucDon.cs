@@ -15,7 +15,7 @@ namespace ApplicationCore.Entitites
     using System;
     using ApplicationCore.Interfaces;
 
-    public partial class ThucDon : IAggregateRoot {
+    public  class ThucDon : IAggregateRoot {
 
         [Key]
         [DatabaseGenerated (DatabaseGeneratedOption.Identity)]

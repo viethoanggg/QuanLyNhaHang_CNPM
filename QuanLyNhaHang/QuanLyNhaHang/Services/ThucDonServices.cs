@@ -7,13 +7,14 @@ using QuanLyNhaHang.Models;
 using QuanLyNhaHang.ViewModels;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using QuanLyNhaHang.Services.Interfaces;
 
 namespace QuanLyNhaHang.Services
 {
     public class ThucDonServices : IThucDonServices
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly int pageSize = 3;
+        private readonly int pageSize = 5;
         public ThucDonServices(IUnitOfWork unitofwork)
         {
             _unitOfWork = unitofwork;

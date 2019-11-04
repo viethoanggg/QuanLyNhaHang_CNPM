@@ -12,7 +12,7 @@ namespace ApplicationCore.Entitites
     using System.Collections.Generic;
     using System;
 
-    public partial class NguoiDung {
+    public class NguoiDung {
    
         public int Id { get; set; }
         public string Ten { get; set; }

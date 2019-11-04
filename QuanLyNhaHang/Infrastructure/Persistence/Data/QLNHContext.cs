@@ -14,7 +14,7 @@ namespace Infrastructure.Persistence.Data
         public DbSet<ThucDon> ThucDons { get; set; }
         public DbSet<LoaiMonAn> LoaiMonAns { get; set; }
         public DbSet<BanAn> BanAns { get; set; }
-        public DbSet<HoaDon> HoaDon { get; set; }
+        public DbSet<HoaDon> HoaDons { get; set; }
         public DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public DbSet<KhachHang> KhachHangs { get; set; }
         public DbSet<PhieuDatBan> PhieuDatBans { get; set; }

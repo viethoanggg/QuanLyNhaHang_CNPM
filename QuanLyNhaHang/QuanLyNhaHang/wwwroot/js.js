@@ -5,7 +5,7 @@
     },
     registerEvents : function()
     {
-        $('#IdLoaiMonAn').off('click').on('change', function (e) {
+        $('#ChonLoaiMonAn').off('click').on('change', function (e) {
             e.preventDefault;
             var trang = $(this);
             var idLoaii = trang.val();

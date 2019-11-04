@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuanLyNhaHang.Services;
+using QuanLyNhaHang.Services.Interfaces;
 
 namespace QuanLyNhaHang {
     public class Startup {
@@ -40,7 +41,8 @@ namespace QuanLyNhaHang {
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped<IThucDonServices,ThucDonServices>();
             services.AddScoped<IBanAnServices, BanAnServices>();
-            //services.AddScoped<IHoaDonServices, HoaDonServices>();
+            services.AddScoped<IHoaDonServices, HoaDonServices>();
+           
 
             services.AddControllersWithViews ();
             services.AddDbContext<QLNHContext> (option => option.UseSqlite (Configuration.GetConnectionString ("QLNHContext")));

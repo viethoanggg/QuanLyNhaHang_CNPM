@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using QuanLyNhaHang.Models;
 using QuanLyNhaHang.ViewModels;
 
-namespace QuanLyNhaHang.Services
+namespace QuanLyNhaHang.Services.Interfaces
 {
     public interface IThucDonServices
     {

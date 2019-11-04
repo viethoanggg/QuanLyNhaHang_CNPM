@@ -12,7 +12,7 @@ namespace ApplicationCore.Entitites
     using System.Collections.Generic;
     using System;
 
-    public partial class PhieuDatBan {
+    public  class PhieuDatBan {
         public int Id { get; set; }
         public int IdBanAn { get; set; }
         public int IdKhachHang { get; set; }

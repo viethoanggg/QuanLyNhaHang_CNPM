@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyNhaHang.Models;
-using QuanLyNhaHang.Services;
+
+using QuanLyNhaHang.Services.Interfaces;
 using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers {

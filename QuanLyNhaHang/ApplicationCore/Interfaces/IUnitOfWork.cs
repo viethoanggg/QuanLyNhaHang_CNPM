@@ -6,6 +6,7 @@ namespace ApplicationCore.Interfaces {
         IThucDonRepository ThucDons { get; }
         IBanAnRepository BanAns{ get; }
         IHoaDonRepository HoaDons { get; }
+        ILoaiMonAnRepository LoaiMonAns { get; }
         int Complete ();
     }
 }

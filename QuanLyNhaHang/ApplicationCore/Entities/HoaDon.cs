@@ -18,6 +18,7 @@ namespace ApplicationCore.Entitites {
        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Mã hóa đơn")]
         public int Id { get; set; }
 
         [Display(Name="Bàn số")]
@@ -34,6 +35,9 @@ namespace ApplicationCore.Entitites {
 
         [Display(Name = "Thành tiền")]        
         public Nullable<int> ThanhTien { get; set; }
+
+        [Display(Name = "Trạng thái")]
+        public string TrangThai { get; set; }
 
     }
 }
