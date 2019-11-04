@@ -263,7 +263,7 @@ namespace Infrastructure.Persistence.Data {
                     },
                     new ThucDon {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu vịt ",
+                            Ten = "Lẩu cá lăng ",
                             Gia = 400000
                     },
                     new ThucDon {
@@ -273,7 +273,7 @@ namespace Infrastructure.Persistence.Data {
                     },
                     new ThucDon {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu bò nhúng dấm ",
+                            Ten = "Lẩu bò nhúng giấm ",
                             Gia = 350000
                     },
                     new ThucDon {
