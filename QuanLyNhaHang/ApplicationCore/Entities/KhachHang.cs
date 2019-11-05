@@ -11,8 +11,9 @@ namespace ApplicationCore.Entitites
 {
     using System.Collections.Generic;
     using System;
+    using ApplicationCore.Interfaces;
 
-    public class KhachHang {
+    public class KhachHang :IAggregateRoot{
      
         public int Id { get; set; }
         public string Ten { get; set; }

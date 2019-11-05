@@ -47,7 +47,7 @@ namespace QuanLyNhaHang
             services.AddScoped<IBanAnServices, BanAnServices>();
             services.AddScoped<IHoaDonServices, HoaDonServices>();
             services.AddScoped<ILoaiMonAnServices, LoaiMonAnServices>();
-
+            services.AddScoped<IKhachHangServices, KhachHangServices>();
             services.AddControllersWithViews();
             services.AddDbContext<QLNHContext>(option => option.UseSqlite(Configuration.GetConnectionString("QLNHContext")));
         }

@@ -1,10 +1,10 @@
-@model QuanLyNhaHang.ViewModels.LoaiMonAnVM
+@model QuanLyNhaHang.ViewModels.KhachHangVM
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -15,21 +15,32 @@
             <th>
                 Ten
             </th>
+            <th>
+               SDT
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.LoaiMonAns) {
+        
+@foreach (var item in Model.KhachHangs) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Ten)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="" asp-route="@item"></a>
             </td>
         </tr>
-}
+
+        
+        
+        }
     </tbody>
 </table>

@@ -12,6 +12,7 @@ namespace Infrastructure.Persistence.Data
         public IBanAnRepository BanAns { get; private set; }
         public IHoaDonRepository HoaDons { get; private set; }
         public ILoaiMonAnRepository LoaiMonAns{ get; private set; }
+        public IKhachHangRepository KhachHangs{ get; private set; }
         public UnitOfWork(QLNHContext context)
         {
             this.context = context;
@@ -19,6 +20,7 @@ namespace Infrastructure.Persistence.Data
             BanAns = new BanAnRepository(context);
             HoaDons = new HoaDonRepository(context);
             LoaiMonAns = new LoaiMonAnRepository(context);
+            KhachHangs = new KhachHangRepository(context);
         }
         public int Complete()
         {

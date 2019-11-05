@@ -574,3 +574,7 @@ D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Q
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\QuanLyNhaHang.RazorTargetAssemblyInfo.cs
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\QuanLyNhaHang.Views.pdb
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\QuanLyNhaHang.csproj.CopyComplete
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\KhachHang\Index.cshtml.g.cs
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\KhachHang\Delete.cshtml.g.cs
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\KhachHang\Edit.cshtml.g.cs
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\KhachHang\Create.cshtml.g.cs
