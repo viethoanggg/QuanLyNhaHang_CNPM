@@ -15,17 +15,21 @@ using Microsoft.Extensions.Hosting;
 using QuanLyNhaHang.Services;
 using QuanLyNhaHang.Services.Interfaces;
 
-namespace QuanLyNhaHang {
-    public class Startup {
+namespace QuanLyNhaHang
+{
+    public class Startup
+    {
 
-        public Startup (IConfiguration configuration) {
+        public Startup(IConfiguration configuration)
+        {
             this.Configuration = configuration;
 
         }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices (IServiceCollection services) {
+        public void ConfigureServices(IServiceCollection services)
+        {
 
             // services.Configure<RazorViewEngineOptions> (options => {
             //     options.AreaViewLocationFormats.Clear ();
@@ -33,38 +37,43 @@ namespace QuanLyNhaHang {
 
             // });
             //Server=(localdb)\\mssqllocaldb;Database=QLNH;Trusted_Connection=True;MultipleActiveResultSets=true
-            services.AddDistributedMemoryCache ();
-            services.AddSession (options =>
-                options.IdleTimeout = TimeSpan.FromMinutes (60)
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+               options.IdleTimeout = TimeSpan.FromMinutes(60)
             );
-            services.AddScoped<IThucDonRepository,ThucDonRepository>();
-            services.AddScoped<IUnitOfWork,UnitOfWork>();
-            services.AddScoped<IThucDonServices,ThucDonServices>();
+            services.AddScoped<IThucDonRepository, ThucDonRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IThucDonServices, ThucDonServices>();
             services.AddScoped<IBanAnServices, BanAnServices>();
             services.AddScoped<IHoaDonServices, HoaDonServices>();
-           
+            services.AddScoped<ILoaiMonAnServices, LoaiMonAnServices>();
 
-            services.AddControllersWithViews ();
-            services.AddDbContext<QLNHContext> (option => option.UseSqlite (Configuration.GetConnectionString ("QLNHContext")));
+            services.AddControllersWithViews();
+            services.AddDbContext<QLNHContext>(option => option.UseSqlite(Configuration.GetConnectionString("QLNHContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure (IApplicationBuilder app, IWebHostEnvironment env) {
-            if (env.IsDevelopment ()) {
-                app.UseDeveloperExceptionPage ();
-            } else {
-                app.UseExceptionHandler ("/Home/Error");
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles ();
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
 
-            app.UseSession ();
+            app.UseSession();
 
-            app.UseRouting ();
+            app.UseRouting();
 
-            app.UseAuthorization ();
+            app.UseAuthorization();
 
-            app.UseEndpoints (endpoints => {
-                endpoints.MapControllerRoute (
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=ThucDon}/{action=Index}/{id?}");
 

@@ -24,5 +24,33 @@ namespace QuanLyNhaHang.Services
                 LoaiMonAns = PaginatedList<LoaiMonAn>.Create(loaiMonAns, pageIndex, pageSize)
             };
         }
+
+        public LoaiMonAn GetLoaiMonAn(int id)
+        {
+            LoaiMonAn loaiMonAn = _unitOfWork.LoaiMonAns.GetById(id);
+            if(loaiMonAn==null)
+            {
+                return null;
+            }
+            return loaiMonAn;
+        }
+        public void Edit(LoaiMonAn loaiMonAn)
+        {
+            _unitOfWork.LoaiMonAns.Update(loaiMonAn);
+            _unitOfWork.Complete();
+        }
+        public void Delete(int id)
+        {
+            LoaiMonAn loaiMonAn = GetLoaiMonAn(id);
+            _unitOfWork.LoaiMonAns.Remove(loaiMonAn);
+            _unitOfWork.Complete();
+        }
+        public void Create(LoaiMonAn loaiMonAn)
+        {
+            if(loaiMonAn==null)
+                return;
+            _unitOfWork.LoaiMonAns.Add(loaiMonAn);
+            _unitOfWork.Complete();
+        }
     }
 }
