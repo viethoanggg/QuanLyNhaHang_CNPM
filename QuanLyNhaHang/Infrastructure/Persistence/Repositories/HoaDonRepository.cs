@@ -60,7 +60,7 @@ namespace Infrastructure.Persistence.Repositories
         public BanAn FindBanAn(int IdHoaDon)
         {
             HoaDon hd = QLNHContext.HoaDons.Where(s => s.Id == IdHoaDon).FirstOrDefault();
-            BanAn ba = QLNHContext.BanAns.Where(s => s.Id == hd.Id).FirstOrDefault();
+            BanAn ba = QLNHContext.BanAns.Where(s => s.Id == hd.IdBanAn).FirstOrDefault();
             return ba;
         }
 

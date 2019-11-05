@@ -11,8 +11,9 @@ namespace ApplicationCore.Entitites
  {
     using System.Collections.Generic;
     using System;
+    using ApplicationCore.Interfaces;
 
-    public  class PhieuDatBan {
+    public  class PhieuDatBan:IAggregateRoot {
         public int Id { get; set; }
         public int IdBanAn { get; set; }
         public int IdKhachHang { get; set; }
