@@ -1,18 +1,24 @@
-﻿// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Web;
-// using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Globalization;
+using ApplicationCore.Entitites;
+using Microsoft.AspNetCore.Mvc;
+using QuanLyNhaHang.Services;
+using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
-// namespace QLNH.Areas.QuanLy.Controllers
-// {
-//     public class LoaiMonAnController : Controller
-//     {
-//         // GET: QuanLy/LoaiMonAn
-//         public ActionResult Index()
-//         {
-
-//             return View(context.LoaiMonAns.ToList());
-//         }
-//     }
-// }
+namespace QuanLyNhaHang.Controllers
+{
+    public class LoaiMonAnController : Controller
+    {
+        private readonly ILoaiMonAnServices _services;
+        public LoaiMonAnController(ILoaiMonAnServices services)
+        {
+            this._services = services;
+        }
+        public IActionResult Index(int pageIndex=1)
+        {
+            LoaiMonAnVM loaiMonAnVM = _services.GetLoaiMonAnVM(pageIndex);
+            return View(loaiMonAnVM);
+        }
+    }
+}
