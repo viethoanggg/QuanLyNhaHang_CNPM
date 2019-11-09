@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using ApplicationCore.Interfaces;
+using ApplicationCore.Interfaces.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories {

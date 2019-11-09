@@ -7,13 +7,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using ApplicationCore.Entitites;
+using ApplicationCore.ModelsContainData.Models;
 using Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using QLNH;
-using QuanLyNhaHang.Models;
+
 
 namespace QuanLyNhaHang.Controllers
 {

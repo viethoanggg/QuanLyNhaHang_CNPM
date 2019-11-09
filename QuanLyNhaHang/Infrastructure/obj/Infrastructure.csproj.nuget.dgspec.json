@@ -41,6 +41,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "automapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

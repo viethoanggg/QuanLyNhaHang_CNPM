@@ -41,6 +41,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "automapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -165,6 +169,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"

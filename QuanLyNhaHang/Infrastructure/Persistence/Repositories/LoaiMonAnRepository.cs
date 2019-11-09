@@ -1,5 +1,6 @@
 using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
+using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.Persistence.Repositories 

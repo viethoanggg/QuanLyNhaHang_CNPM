@@ -16,27 +16,18 @@ namespace ApplicationCore.Entitites {
 
     public class HoaDon :IAggregateRoot{
        
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Mã hóa đơn")]
         public int Id { get; set; }
 
-        [Display(Name="Bàn số")]
         public int IdBanAn { get; set; }
         
-        [Display(Name = "Nhân viên")]
         public int IdUser { get; set; }
 
-        [Display(Name = "Thời gian lập")]
         public System.DateTime ThoiGianLap { get; set; }
 
-        [Display(Name = "Thời gian thanh toán")]
         public Nullable<System.DateTime> ThoiGianThanhToan { get; set; }
 
-        [Display(Name = "Thành tiền")]        
         public Nullable<int> ThanhTien { get; set; }
 
-        [Display(Name = "Trạng thái")]
         public string TrangThai { get; set; }
 
     }

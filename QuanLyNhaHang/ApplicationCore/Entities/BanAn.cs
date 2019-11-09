@@ -16,20 +16,12 @@ namespace ApplicationCore.Entitites {
 
     public class BanAn :IAggregateRoot {
         
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Bàn số ")]
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name="Loại bàn ăn")]
         public string LoaiBanAn { get; set; }
 
-        [Required]
-        [Display(Name = "Trạng thái")]
         public string TrangThai { get; set; }
 
-        [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 
     }

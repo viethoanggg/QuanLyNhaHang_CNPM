@@ -1,4 +1,5 @@
 using System;
+using ApplicationCore.Interfaces.IRepositories;
 
 namespace ApplicationCore.Interfaces {
     public interface IUnitOfWork : IDisposable {

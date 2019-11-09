@@ -2,15 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ApplicationCore.DTOs;
+using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entitites;
+using ApplicationCore.Interfaces.IServices;
+using ApplicationCore.ModelsContainData.Models;
+using ApplicationCore.ModelsContainData.ViewModels;
+using AutoMapper;
 using Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using QuanLyNhaHang.Models;
 
-using QuanLyNhaHang.Services.Interfaces;
-using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers {
     public class ThucDonController : Controller {
@@ -18,13 +21,16 @@ namespace QuanLyNhaHang.Controllers {
         //private readonly QLNHContext context;
        // private readonly int pageSize = 3;
         private readonly IThucDonServices _services;
+        private readonly IMapper _mapper;
+
         // public ThucDonVM thucDonVM;
         // public ThucDonController (QLNHContext context) {
         //     this.context = context;
         // }
-        public ThucDonController(IThucDonServices services)
+        public ThucDonController(IThucDonServices services,IMapper mapper)
         {
             _services = services;
+            _mapper = mapper;
         }
         public ActionResult Index (string sort,string searchString,string currentFilter,string tenLoaiMonAn, int pageIndex = 1) {
 
@@ -97,10 +103,10 @@ namespace QuanLyNhaHang.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create (ThucDon td) {
+        public ActionResult Create (SaveThucDonDTO saveThucDonDTO) {
            if(ModelState.IsValid)
            {
-                _services.Create(td);
+                _services.Create(saveThucDonDTO);
             }
             return RedirectToAction("Index");
 
@@ -117,22 +123,23 @@ namespace QuanLyNhaHang.Controllers {
             // return View (td);
             if(id==null)
                 return RedirectToAction("Index");
-            ThucDon td = _services.GetMonAn(id.Value);
-            if(td==null)
+            ThucDonDTO tdDTO = _services.GetMonAn(id.Value);
+            if(tdDTO==null)
                 return RedirectToAction("Index");
             ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
-            return View(td);
+            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO,SaveThucDonDTO>(tdDTO);
+            return View(saveThucDonDTO);
         }
 
         [HttpPost]
-        public ActionResult Edit (ThucDon td) {
+        public ActionResult Edit (SaveThucDonDTO saveThucDonDTO) {
             // if (ModelState.IsValid) {
             //     context.Entry (td).State = EntityState.Modified;
             //     context.SaveChanges ();
             // }
             if(ModelState.IsValid)
             {
-                _services.Edit(td);
+                _services.Edit(saveThucDonDTO);
             }
             return RedirectToAction ("Index");
         }
@@ -146,10 +153,11 @@ namespace QuanLyNhaHang.Controllers {
             // return View (td);
             if (id == null)
                 return RedirectToAction ("Index");
-            ThucDon td = _services.GetMonAn(id.Value);
-            if (td == null)
+            ThucDonDTO tdDTO = _services.GetMonAn(id.Value);
+            if (tdDTO == null)
                  return RedirectToAction ("Index");
-            return View (td);
+            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
+            return View (saveThucDonDTO);
         }
 
         [HttpPost]
@@ -164,10 +172,8 @@ namespace QuanLyNhaHang.Controllers {
             // context.SaveChanges ();
             if (id == null)
                 return RedirectToAction("Index");
-            ThucDon td = _services.GetMonAn(id.Value);
-            if (td == null)
-                return RedirectToAction("Index");
-            _services.Remove(td);
+           // SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
+            _services.Remove(id.Value);
             return RedirectToAction ("Index");
         }
         public ActionResult Details (int? id) {

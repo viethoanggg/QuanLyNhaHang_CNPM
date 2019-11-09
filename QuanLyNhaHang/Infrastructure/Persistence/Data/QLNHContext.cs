@@ -18,5 +18,10 @@ namespace Infrastructure.Persistence.Data
         public DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public DbSet<KhachHang> KhachHangs { get; set; }
         public DbSet<PhieuDatBan> PhieuDatBans { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(QLNHContext).Assembly);
+        }
     }
 }

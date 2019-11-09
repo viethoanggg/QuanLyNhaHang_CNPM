@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using ApplicationCore.Entitites;
+using ApplicationCore.Interfaces.IServices;
+using ApplicationCore.ModelsContainData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using QuanLyNhaHang.Services;
-using QuanLyNhaHang.Services.Interfaces;
-using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers
 {

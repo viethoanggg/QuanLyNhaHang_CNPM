@@ -4,6 +4,8 @@ using ApplicationCore.Interfaces;
 using Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using ApplicationCore.Interfaces.IRepositories;
+
 namespace Infrastructure.Persistence.Repositories {
     public class ThucDonRepository : Repository<ThucDon>, IThucDonRepository
     {

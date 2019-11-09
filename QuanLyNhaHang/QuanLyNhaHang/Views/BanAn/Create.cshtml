@@ -1,4 +1,4 @@
-@model ApplicationCore.Entitites.BanAn
+@model ApplicationCore.DTOs.SaveDTOs.SaveBanAnDTO
 
 @{
     ViewData["Title"] = "Create";
@@ -10,12 +10,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="LoaiBanAn" class="control-label"></label>
-                <input asp-for="LoaiBanAn" class="form-control" />
+                <select asp-for="LoaiBanAn" class="form-control">
+                    <option value="2 người">2 người</option>
+                    <option value="2 người">4 người</option>
+                    <option value="2 người">8 người</option>
+                    <option value="2 người">10 người</option>
+                </select>
                 <span asp-validation-for="LoaiBanAn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TrangThai" class="control-label"></label>
-                <input asp-for="TrangThai" class="form-control" />
+                <input asp-for="TrangThai" class="form-control" value="Trống" readonly/>
                 <span asp-validation-for="TrangThai" class="text-danger"></span>
             </div>
             <div class="form-group">

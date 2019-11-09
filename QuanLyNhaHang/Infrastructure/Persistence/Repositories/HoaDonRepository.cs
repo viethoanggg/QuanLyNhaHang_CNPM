@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
+using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Data;
 
 namespace Infrastructure.Persistence.Repositories
@@ -41,15 +42,18 @@ namespace Infrastructure.Persistence.Repositories
             QLNHContext.Entry(HoaDon).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
 
-        public int? TongTien(int IdHoaDon)
+        public HoaDon CapNhatTongTien(int IdHoaDon)
         {
-            int? sum = 0;
+            int sum = 0;
             IEnumerable<ChiTietHoaDon> a= QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon == IdHoaDon);
             foreach ( ChiTietHoaDon i in a)
             {
                 sum = sum + i.DonGia;
             }
-            return sum;
+            HoaDon hoaDon = QLNHContext.HoaDons.Where(s => s.Id == IdHoaDon).FirstOrDefault();
+            hoaDon.ThanhTien = sum;
+            Update(hoaDon);
+            return hoaDon;
         }
         public IEnumerable<ChiTietHoaDon> GetListCTHD(int IdHoaDon)
         {

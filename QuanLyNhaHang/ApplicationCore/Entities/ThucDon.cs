@@ -17,20 +17,12 @@ namespace ApplicationCore.Entitites
 
     public  class ThucDon : IAggregateRoot {
 
-        [Key]
-        [DatabaseGenerated (DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display (Name = "Tên loại món ăn")]
         public int IdLoaiMonAn { get; set; }
 
-        [Required (ErrorMessage = "Không được để trống")]
-        [Display (Name = "Tên món ăn")]
         public string Ten { get; set; }
 
-        [Display (Name = "Giá")]
-        [Required (ErrorMessage = "Không được để trống")]
-        [Range (0, 5000000, ErrorMessage = "Hãy nhập giá hợp lệ")]
         public int Gia { get; set; }
 
     }

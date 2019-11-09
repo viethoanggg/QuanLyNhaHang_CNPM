@@ -1,4 +1,4 @@
-@model QuanLyNhaHang.ViewModels.ServeVM
+@model ApplicationCore.ModelsContainData.ViewModels.ServeVM
 @{
     ViewData["Title"] = "Serve";
 }
@@ -126,7 +126,7 @@
             <hr/>
 
             <select id="ChonLoaiMonAn" onchange="ChonLoaiMonAn()"> 
-                <option>All</option>
+                <option value="">All</option>
                 @foreach( var item in Model.LoaiMonAns )
                 {
                     <option value="@item.Id">@item.Ten</option>
@@ -317,7 +317,7 @@
                     setTimeout( function(){
                          var s =document.getElementById("laythanhtoan").value;
                          document.getElementById("thanhtien").value=s;
-                    }, 300);
+                    }, 200);
                    
                 
                 }   

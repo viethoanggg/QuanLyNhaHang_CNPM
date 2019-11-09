@@ -1,4 +1,5 @@
 using ApplicationCore.Interfaces;
+using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Repositories;
 
 

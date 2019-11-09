@@ -17,8 +17,6 @@ namespace ApplicationCore.Entitites
     public  class LoaiMonAn : IAggregateRoot {
      
         public int Id { get; set; }
-
-        [Display (Name = "Tên loại món ăn")]
         public string Ten { get; set; }
 
     }

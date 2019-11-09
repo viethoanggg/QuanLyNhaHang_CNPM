@@ -1,4 +1,4 @@
-@model ApplicationCore.Entitites.BanAn
+@model ApplicationCore.DTOs.SaveDTOs.SaveBanAnDTO
 
 @{
     ViewData["Title"] = "Delete";
@@ -32,6 +32,9 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.GhiChu)
         </dd>
+        <dt class = "col-sm-12">
+           <i style="color:red">@ViewBag.MessageDelBanAn</i>
+        </dt>
     </dl>
     
     <form asp-action="Delete">

@@ -1,5 +1,5 @@
-@model ApplicationCore.Entitites.ThucDon
-@using ApplicationCore.Entitites;
+@model ApplicationCore.DTOs.SaveDTOs.SaveThucDonDTO
+@using ApplicationCore.DTOs;
 @{
     ViewBag.Title = "Chỉnh sửa món ăn";
 }
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label asp-for="IdLoaiMonAn" class="control-label"></label>
                 	<select name="IdLoaiMonAn" id="IdLoaiMonAn" class="form-control">
-                        @foreach (LoaiMonAn s in ViewData["ListLoaiMonAn"] as  IEnumerable<LoaiMonAn>)
+                        @foreach (LoaiMonAnDTO s in ViewData["ListLoaiMonAn"] as  IEnumerable<LoaiMonAnDTO>)
                         {
                              if (Model.IdLoaiMonAn == s.Id) 
                                 {

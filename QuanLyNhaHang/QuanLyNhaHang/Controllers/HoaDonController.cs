@@ -1,17 +1,22 @@
 using System.Reflection.Metadata;
+using ApplicationCore.DTOs;
+using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entitites;
+using ApplicationCore.Interfaces.IServices;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using QuanLyNhaHang.Services;
-using QuanLyNhaHang.Services.Interfaces;
+
 
 namespace QuanLyNhaHang.Controllers
 {
     public class HoaDonController : Controller
     {
         private readonly IHoaDonServices _services;
-        public HoaDonController(IHoaDonServices services)
+        private readonly IMapper _mapper;
+        public HoaDonController(IHoaDonServices services,IMapper mapper)
         {
             this._services = services;
+            this._mapper = mapper;
         }
         public IActionResult Index(int pageIndex=1)
         {
@@ -21,10 +26,11 @@ namespace QuanLyNhaHang.Controllers
         {
             if(id==null)
                 return RedirectToAction("Index");
-            HoaDon hoaDon=_services.FindHD(id.Value);
-            if(hoaDon==null)
+            HoaDonDTO hoaDonDTO=_services.FindHD(id.Value);
+            if(hoaDonDTO==null)
                 return RedirectToAction("Index");
-            return View(hoaDon);
+            SaveHoaDonDTO saveHoaDonDTO = _mapper.Map<HoaDonDTO, SaveHoaDonDTO>(hoaDonDTO);
+            return View(saveHoaDonDTO);
         }
 
         [HttpPost]
@@ -34,29 +40,30 @@ namespace QuanLyNhaHang.Controllers
             if (id == null)
                 return RedirectToAction("Index");
 
-            HoaDon hoaDon = _services.FindHD(id.Value);    
-            if (hoaDon == null)
+            HoaDonDTO hoaDonDTO = _services.FindHD(id.Value);    
+            if (hoaDonDTO == null)
                 return RedirectToAction("Index");
 
-            BanAn ba = _services.FindBanAn(id.Value);
+            BanAnDTO baDTO = _services.FindBanAn(id.Value);
+            SaveHoaDonDTO saveHoaDonDTO = _mapper.Map<HoaDonDTO, SaveHoaDonDTO>(hoaDonDTO);
 
-            if(ba.TrangThai.Equals("Đang phục vụ"))
+            if(baDTO.TrangThai.Equals("Đang phục vụ"))
             {
                 ViewBag.Error = "Bàn ăn đang được phục vụ ,không thể xóa ";
-                return View(hoaDon);
+                return View(saveHoaDonDTO);
             }
-            _services.Delete(hoaDon);
+            _services.Delete(saveHoaDonDTO);
             return RedirectToAction("Index");
         }
 
-        public IActionResult Detalis(int? id )
+        public IActionResult Details(int? id )
         {
             if (id == null)
                 return RedirectToAction("Index");
-            HoaDon hoaDon = _services.FindHD(id.Value);
-            if (hoaDon == null)
+            HoaDonDTO hoaDonDTO = _services.FindHD(id.Value);
+            if (hoaDonDTO == null)
                 return RedirectToAction("Index");
-            return View(hoaDon);
+            return View(hoaDonDTO);
         }
     }
 }

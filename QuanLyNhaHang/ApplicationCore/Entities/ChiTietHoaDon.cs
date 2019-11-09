@@ -15,19 +15,14 @@ namespace ApplicationCore.Entitites
     public class ChiTietHoaDon {
 
         public int Id { get; set; }
-        [Display(Name = "Mã hóa đơn")]
+
         public int IdHoaDon { get; set; }
 
-        [Display(Name = "Món ăn")]
         public int IdMonAn { get; set; }
 
-        [Range(1,10)]
-        [Display(Name = "Số lượng")]
-        public Nullable<int> SoLuong { get; set; }
+        public int SoLuong { get; set; }
 
-        [Range(1, 10)]
-        [Display(Name = "Đơn giá")]
-        public Nullable<int> DonGia { get; set; }
+        public int DonGia { get; set; }
 
     }
 }

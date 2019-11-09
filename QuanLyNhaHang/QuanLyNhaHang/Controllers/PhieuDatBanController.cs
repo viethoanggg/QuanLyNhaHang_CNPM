@@ -4,17 +4,23 @@ using System.Globalization;
 using System.Net;
 using ApplicationCore.Entitites;
 using Microsoft.AspNetCore.Mvc;
-using QuanLyNhaHang.Services.Interfaces;
-using QuanLyNhaHang.ViewModels;
+
+using ApplicationCore.Interfaces.IServices;
+using ApplicationCore.ModelsContainData.ViewModels;
+using AutoMapper;
+using ApplicationCore.DTOs;
+using ApplicationCore.DTOs.SaveDTOs;
 
 namespace QuanLyNhaHang.Controllers
 {
     public class PhieuDatBanController:Controller
     {
         private readonly IPhieuDatBanServices  _services;
-        public PhieuDatBanController(IPhieuDatBanServices services)
+        private readonly IMapper _mapper;
+        public PhieuDatBanController(IPhieuDatBanServices services,IMapper mapper)
         {
             this._services = services;
+            this._mapper = mapper;
         }
 
         public IActionResult Index(int pageIndex=1)
@@ -27,16 +33,22 @@ namespace QuanLyNhaHang.Controllers
         {
             if (id == null)
                 return RedirectToAction("Index");
-            PhieuDatBan p = _services.GetById(id.Value);
-            if (p == null)
+            PhieuDatBanDTO pDTO = _services.GetById(id.Value);
+            if (pDTO == null)
                 return RedirectToAction("Index");
-            return View(p);
+            SavePhieuDatBanDTO savePhieuDatBanDTO = _mapper.Map<PhieuDatBanDTO,SavePhieuDatBanDTO>(pDTO);
+            PhieuDatBanVM vm = new PhieuDatBanVM
+            {
+                PhieuDatBan =savePhieuDatBanDTO,
+                BanAns = _services.GetListBanAn()
+            };
+            return View(vm);
         } 
 
         [HttpPost]
-        public IActionResult Edit(PhieuDatBan p)
+        public IActionResult Edit(PhieuDatBanVM vm)
         {
-            _services.Update(p);
+            _services.Update(vm.PhieuDatBan);
             return RedirectToAction("Index");
         }
 
@@ -51,7 +63,7 @@ namespace QuanLyNhaHang.Controllers
 
                 vm = new PhieuDatBanVM
                 {
-                    PhieuDatBan = new PhieuDatBan
+                    PhieuDatBan = new SavePhieuDatBanDTO
                     {
                         ThoiGianDat = Convert.ToDateTime(day),
                     },
@@ -63,7 +75,7 @@ namespace QuanLyNhaHang.Controllers
             {
                 vm = new PhieuDatBanVM
                 {
-                    PhieuDatBan = new PhieuDatBan {
+                    PhieuDatBan = new SavePhieuDatBanDTO {
                         IdKhachHang=IdKhachHang.Value,
                         ThoiGianDat = Convert.ToDateTime(day),
                         },
@@ -78,7 +90,7 @@ namespace QuanLyNhaHang.Controllers
         [HttpPost]
         public IActionResult Create(PhieuDatBanVM vm)
         {
-            PhieuDatBan p=new PhieuDatBan{
+            SavePhieuDatBanDTO p=new SavePhieuDatBanDTO{
                 IdBanAn=vm.PhieuDatBan.IdBanAn,
                 IdKhachHang=vm.PhieuDatBan.IdKhachHang,
                 ThoiGianDat=vm.PhieuDatBan.ThoiGianDat,
@@ -92,7 +104,7 @@ namespace QuanLyNhaHang.Controllers
                 System.DateTime day = DateTime.Now;
                 vm = new PhieuDatBanVM
                 {
-                    PhieuDatBan = new PhieuDatBan
+                    PhieuDatBan = new SavePhieuDatBanDTO
                     {
                         IdBanAn = vm.PhieuDatBan.IdBanAn,
                         IdKhachHang = p.IdKhachHang,
@@ -109,7 +121,7 @@ namespace QuanLyNhaHang.Controllers
                 System.DateTime day = DateTime.Now;
                 vm = new PhieuDatBanVM
                 {
-                    PhieuDatBan = new PhieuDatBan
+                    PhieuDatBan = new SavePhieuDatBanDTO
                     {
                         IdBanAn = vm.PhieuDatBan.IdBanAn,
                         IdKhachHang = p.IdKhachHang,
@@ -126,7 +138,7 @@ namespace QuanLyNhaHang.Controllers
                 System.DateTime day = DateTime.Now;
                 vm = new PhieuDatBanVM
                 {
-                    PhieuDatBan = new PhieuDatBan
+                    PhieuDatBan = new SavePhieuDatBanDTO
                     {
                         IdBanAn = vm.PhieuDatBan.IdBanAn,
                         IdKhachHang = p.IdKhachHang,
@@ -144,10 +156,11 @@ namespace QuanLyNhaHang.Controllers
         {
             if(id==null)
                 return RedirectToAction("Index");
-            PhieuDatBan p=_services.GetById(id.Value);
-            if(p==null)
+            PhieuDatBanDTO pDTO=_services.GetById(id.Value);
+            if(pDTO==null)
                 return RedirectToAction("Index");
-            return View(p);
+            SavePhieuDatBanDTO savePhieuDatBanDTO = _mapper.Map<PhieuDatBanDTO, SavePhieuDatBanDTO>(pDTO);
+            return View(savePhieuDatBanDTO);
         }
         
         [HttpPost]
@@ -156,10 +169,8 @@ namespace QuanLyNhaHang.Controllers
         {
             if (id == null)
                 return RedirectToAction("Index");
-            PhieuDatBan p = _services.GetById(id.Value);
-            if (p == null)
-                return RedirectToAction("Index");
-            _services.Delete(p);
+           
+            _services.Delete(id.Value);
             return RedirectToAction("Index");
         }
 
@@ -167,10 +178,10 @@ namespace QuanLyNhaHang.Controllers
         {
             if (id == null)
                 return RedirectToAction("Index");
-            PhieuDatBan p = _services.GetById(id.Value);
-            if (p == null)
+            PhieuDatBanDTO pDTO = _services.GetById(id.Value);
+            if (pDTO == null)
                 return RedirectToAction("Index");
-            return View(p);
+            return View(pDTO);
         }
     }
 }

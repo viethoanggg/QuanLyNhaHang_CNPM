@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Interfaces;
+using ApplicationCore.Interfaces.IRepositories;
+using ApplicationCore.Interfaces.IServices;
+using ApplicationCore.Mapping;
+using ApplicationCore.Services;
+using AutoMapper;
 using Infrastructure.Persistence.Data;
 using Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -12,8 +17,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using QuanLyNhaHang.Services;
-using QuanLyNhaHang.Services.Interfaces;
 
 namespace QuanLyNhaHang
 {
@@ -56,7 +59,9 @@ namespace QuanLyNhaHang
             services.AddScoped<ILoaiMonAnServices, LoaiMonAnServices>();
             services.AddScoped<IKhachHangServices, KhachHangServices>();
             services.AddScoped<IPhieuDatBanServices, PhieuDatBanServices>();
-            
+
+            services.AddAutoMapper(typeof(MappingProfile));
+
             services.AddControllersWithViews();
             services.AddDbContext<QLNHContext>(option => option.UseSqlite(Configuration.GetConnectionString("QLNHContext")));
         }
