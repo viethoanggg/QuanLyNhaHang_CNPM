@@ -42,12 +42,21 @@ namespace QuanLyNhaHang
                options.IdleTimeout = TimeSpan.FromMinutes(60)
             );
             services.AddScoped<IThucDonRepository, ThucDonRepository>();
+            services.AddScoped<IBanAnRepository, BanAnRepository>();
+            services.AddScoped<IHoaDonRepository, HoaDonRepository>();
+            services.AddScoped<ILoaiMonAnRepository, LoaiMonAnRepository>();
+            services.AddScoped<IKhachHangRepository, KhachHangRepository>();
+            services.AddScoped<IPhieuDatBanRepository, PhieuDatBanRepository>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<IThucDonServices, ThucDonServices>();
             services.AddScoped<IBanAnServices, BanAnServices>();
             services.AddScoped<IHoaDonServices, HoaDonServices>();
             services.AddScoped<ILoaiMonAnServices, LoaiMonAnServices>();
             services.AddScoped<IKhachHangServices, KhachHangServices>();
+            services.AddScoped<IPhieuDatBanServices, PhieuDatBanServices>();
+            
             services.AddControllersWithViews();
             services.AddDbContext<QLNHContext>(option => option.UseSqlite(Configuration.GetConnectionString("QLNHContext")));
         }

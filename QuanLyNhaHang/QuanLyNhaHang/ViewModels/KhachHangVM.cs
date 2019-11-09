@@ -1,4 +1,5 @@
 using ApplicationCore.Entitites;
+using QuanLyNhaHang.Models;
 using QuanLyNhaHang.Services;
 
 namespace QuanLyNhaHang.ViewModels

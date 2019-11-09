@@ -8,6 +8,7 @@ namespace ApplicationCore.Interfaces {
         IHoaDonRepository HoaDons { get; }
         ILoaiMonAnRepository LoaiMonAns { get; }
         IKhachHangRepository KhachHangs{ get; }
+        IPhieuDatBanRepository PhieuDatBans{ get; }
         int Complete ();
     }
 }

@@ -77,28 +77,30 @@ namespace QuanLyNhaHang.Controllers
         }
 
 
-        public IActionResult Serve(int IdBanAn, int? IdLoaiMonAn, int pageIndex = 1)
+        public IActionResult Serve(int IdBanAn, int? IdLoaiMonAn,int? IdPhieuDatBan, int pageIndex = 1)
         {
             ServeVM sv = null;
             BanAn ba = _services.GetBanAn(IdBanAn);
             if (ba == null)
                 RedirectToAction("Index");
-            if ((ba.TrangThai.Equals("Trống") || ba.TrangThai.Equals("Đã được đặt")))
+            if(IdPhieuDatBan==null)
+                IdPhieuDatBan = 0;
+            if ((ba.TrangThai.Equals("Trống") || ba.TrangThai.Equals("Được đặt trước")))
             {
-                System.DateTime day = DateTime.Today;
-                string s = day.ToString("MM/dd/yyyy hh:mm:ss");
+                System.DateTime day = DateTime.Now;
+               
                 sv = new ServeVM
                 {
                     BanAn = ba,
+                    IdPhieuDatBan=IdPhieuDatBan.Value,
                     HoaDon = new HoaDon
                     {
                         IdBanAn = IdBanAn,
                         IdUser = 1,
-                        ThoiGianLap = DateTime.ParseExact(s, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture),
+                        ThoiGianLap= Convert.ToDateTime(day),
                         ThoiGianThanhToan = null,
                         ThanhTien = null,
                         TrangThai = "Trống",
-
                     }
                 };
             }
@@ -123,25 +125,21 @@ namespace QuanLyNhaHang.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateBill([Bind("Id", "IdBanAn", "IdUser", "ThoiGianLap", "ThoiGianThanhToan", "ThanhTien", "TrangThai")]HoaDon HoaDon)
+        public IActionResult CreateBill(int? IdPhieuDatBan,[Bind("Id", "IdBanAn", "IdUser", "ThoiGianLap", "ThoiGianThanhToan", "ThanhTien", "TrangThai")]HoaDon HoaDon)
         {
-
+            if(IdPhieuDatBan!=null) 
+            {
+                _services.SetTrangThaiPhieuDatBan(IdPhieuDatBan.Value);
+            } 
             HoaDon = _services.CreateBill(HoaDon);
-            _services.SetTrangThaiBanAn(HoaDon.IdBanAn, "Đang phục vụ");
-
             return RedirectToAction("Serve", "BanAn", HoaDon);
         }
 
         [HttpPost]
         public IActionResult ThanhToan(HoaDon HoaDon)
         {
-
-            // _services.SetTrangThaiBanAn(HoaDon.IdBanAn, "Trống");
-            // _services.ThanhToan(HoaDon);
-            // return RedirectToAction("Index");
-            System.DateTime day = DateTime.Today;
-            string s = day.ToString("MM/dd/yyyy HH:mm:ss");
-            HoaDon.ThoiGianThanhToan = DateTime.ParseExact(s, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            System.DateTime day = DateTime.Now;
+            HoaDon.ThoiGianThanhToan = Convert.ToDateTime(day);
             return View(HoaDon);
         }
 
@@ -153,10 +151,10 @@ namespace QuanLyNhaHang.Controllers
                 return RedirectToAction("Index");
             if (HoaDon.TrangThai!="Chưa thanh toán")
                 return RedirectToAction("Index");
-            System.DateTime day = DateTime.Today;
-            string s = day.ToString("MM/dd/yyyy HH:mm:ss");
-            HoaDon.ThoiGianThanhToan = DateTime.ParseExact(s, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-            _services.SetTrangThaiBanAn(HoaDon.IdBanAn, "Trống");
+            System.DateTime day = DateTime.Now;
+            // string s = day.ToString("MM/dd/yyyy HH:mm:ss");
+            // HoaDon.ThoiGianThanhToan = DateTime.ParseExact(s, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            HoaDon.ThoiGianThanhToan = Convert.ToDateTime(day);
             _services.ThanhToan(HoaDon);
             return RedirectToAction("Index");
            
@@ -180,7 +178,7 @@ namespace QuanLyNhaHang.Controllers
 
             };
 
-            return PartialView("_TDPartial",sv);
+            return PartialView("_BanAnPartialView/_TDPartial",sv);
         }
 
         public IActionResult ThemCTHD(int IdHoaDon, int IdLoaiMonAn, int IdBanAn,int IdMonAn,int SoLuong,int pageIndex=1)
@@ -201,7 +199,7 @@ namespace QuanLyNhaHang.Controllers
                 ThucDons = _services.GetListMonAn(IdLoaiMonAn, pageIndex),
                 ChiTietHoaDons = list
             };
-            return PartialView("_CTHDPartial", sv);
+            return PartialView("_BanAnPartialView/_CTHDPartial", sv);
         }
     }
 }

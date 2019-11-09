@@ -20,79 +20,68 @@ namespace Infrastructure.Persistence.Data {
                             MatKhau = mk
                     });
             }
-            if (!context.BanAns.Any())
-            {
-                context.BanAns.AddRange(
-                    new BanAn
-                    {
-                        Id=1,
-                        LoaiBanAn="2 người",
-                        TrangThai="Trống",
-                        GhiChu=""
+            if (!context.BanAns.Any ()) {
+                context.BanAns.AddRange (
+                    new BanAn {
+                        Id = 1,
+                            LoaiBanAn = "2 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 2,
-                        LoaiBanAn = "2 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "2 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 3,
-                        LoaiBanAn = "4 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "4 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 4,
-                        LoaiBanAn = "4 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "4 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 5,
-                        LoaiBanAn = "8 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "8 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 6,
-                        LoaiBanAn = "8 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "8 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 7,
-                        LoaiBanAn = "10 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "10 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 8,
-                        LoaiBanAn = "10 người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "10 người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                    new BanAn
-                    {
+                    new BanAn {
                         Id = 9,
-                        LoaiBanAn = "Vài người",
-                        TrangThai = "Trống",
-                        GhiChu = ""
+                            LoaiBanAn = "Vài người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
                     },
-                     new BanAn
-                     {
-                         Id = 10,
-                         LoaiBanAn = "Vài người",
-                         TrangThai = "Trống",
-                         GhiChu = ""
-                     }
+                    new BanAn {
+                        Id = 10,
+                            LoaiBanAn = "Vài người",
+                            TrangThai = "Trống",
+                            GhiChu = ""
+                    }
                 );
             }
             if (!context.LoaiMonAns.Any ()) {
@@ -332,6 +321,39 @@ namespace Infrastructure.Persistence.Data {
                             Gia = 15000
                     }
                 );
+
+                if (!context.KhachHangs.Any ()) {
+                    context.AddRange (
+                        new KhachHang {
+                            Ten = "Hoàng GG",
+                                SDT = "0123456789",
+                                DiaChi = "12/2,Quang Trung, Phường 7 ,Quận Gò Vấp,TPHCM"
+                            // DiaChi=new KhachHang.DiaChiNha{
+                            //     SoNha="12/34",
+                            //     TenDuong="Tân Sơn",
+                            //     Phuong="Phường 15",
+                            //     Quan="Quận Tân Bình",
+                            //     ThanhPho="TPHCM"
+                            // }
+                            // DiaChi= new KhachHang.DiaChiNha("12.34","Tân Sơn","Phường 15","Quận Tân Bình","TPHCM")
+                        },
+                        new KhachHang {
+                            Ten = "Minh",
+                                SDT = "0123459829",
+                                DiaChi = "12/2,Tân Sơn, Phường 15 ,Quận Tân Bình,TPHCM"
+                            // DiaChi = new KhachHang.DiaChiNha
+                            // {
+                            //     SoNha = "91/2",
+                            //     TenDuong = "Quang Trung",
+                            //     Phuong = "Phường 1",
+                            //     Quan = "Quận Gò Vấp",
+                            //     ThanhPho = "TPHCM"
+                            // },
+                            //DiaChi = new KhachHang.DiaChiNha("12.34", "Tân Sơn", "Phường 15", "Quận Tân Bình", "TPHCM")
+                        }
+                    );
+
+                }
             }
             context.SaveChanges ();
 

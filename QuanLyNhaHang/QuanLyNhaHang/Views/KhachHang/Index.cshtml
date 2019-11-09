@@ -13,10 +13,13 @@
     <thead>
         <tr>
             <th>
-                Ten
+                Tên
             </th>
             <th>
                SDT
+            </th>
+            <th>
+                Dịa Chỉ
             </th>
             <th></th>
         </tr>
@@ -31,15 +34,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SDT)
             </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-action="" asp-route="@item"></a>
+                <a asp-action="Create" asp-controller="PhieuDatBan" asp-route-IdKhachHang="@item.Id">Lập phiếu đặt bàn</a> 
             </td>
         </tr>
-
-        
         
         }
     </tbody>

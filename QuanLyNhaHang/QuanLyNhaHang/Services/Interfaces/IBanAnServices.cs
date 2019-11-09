@@ -24,5 +24,6 @@ namespace QuanLyNhaHang.Services.Interfaces
         IEnumerable<CTHDMD> GetListCTHDMD(int IdHoaDon);
         HoaDon CapNhatThanhTien(HoaDon HoaDon);
         HoaDon GetHDById(int IdHoaDon);
+        void SetTrangThaiPhieuDatBan(int Id);
     }
 }

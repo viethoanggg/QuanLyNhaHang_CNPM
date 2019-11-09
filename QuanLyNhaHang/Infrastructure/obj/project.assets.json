@@ -771,23 +771,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Triet\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\del\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CNPM\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\CNPM\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Triet\\.nuget\\packages\\",
-      "outputPath": "D:\\CNPM\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\del\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Triet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\del\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -800,8 +796,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "D:\\CNPM\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
-              "projectPath": "D:\\CNPM\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
+            "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj"
             }
           }
         }

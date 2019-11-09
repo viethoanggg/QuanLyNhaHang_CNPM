@@ -8,10 +8,11 @@ namespace QuanLyNhaHang.ViewModels
 {
     public class ServeVM
     {
-        public HoaDon HoaDon{ get; set; }
-        public BanAn BanAn{ get; set; }
-        public PaginatedList<ThucDon> ThucDons{ get; set; }
-        public IEnumerable<LoaiMonAn> LoaiMonAns{ get; set; }
+        public HoaDon HoaDon { get; set; }
+        public BanAn BanAn { get; set; }
+        public int IdPhieuDatBan { get; set; }
+        public PaginatedList<ThucDon> ThucDons { get; set; }
+        public IEnumerable<LoaiMonAn> LoaiMonAns { get; set; }
         public IEnumerable<CTHDMD> ChiTietHoaDons { get; set; }
     }
 }

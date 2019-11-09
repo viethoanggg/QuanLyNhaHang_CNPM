@@ -1,3 +1,4 @@
+using System.Linq;
 using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
 using Infrastructure.Persistence.Data;
@@ -20,5 +21,6 @@ namespace Infrastructure.Persistence.Repositories
         {
             QLNHContext.Entry(khachHang).State = EntityState.Modified;
         }
+        
     }
 }

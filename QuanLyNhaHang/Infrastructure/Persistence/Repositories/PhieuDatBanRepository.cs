@@ -10,9 +10,14 @@ namespace Infrastructure.Persistence.Repositories
        {
            
        }
-
+        
         protected QLNHContext QLNHContext{
             get { return Context as QLNHContext; }
+        }
+
+        public void Update(PhieuDatBan p)
+        {
+            QLNHContext.Entry(p).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
     }
 }
