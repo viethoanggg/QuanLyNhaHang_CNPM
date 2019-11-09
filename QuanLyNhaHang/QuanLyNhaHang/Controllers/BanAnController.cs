@@ -5,7 +5,6 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Net.Http;
 using System;
 using System.Globalization;
-using ApplicationCore.Entitites;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using ApplicationCore.Interfaces.IServices;
@@ -43,6 +42,9 @@ namespace QuanLyNhaHang.Controllers
             {
                 _services.Create(SaveBanAnDTO);
             }
+            else{
+                return View();
+            }
             return RedirectToAction("Index");
         }
         public IActionResult Edit(int? id)
@@ -60,6 +62,9 @@ namespace QuanLyNhaHang.Controllers
             if (ModelState.IsValid)
             {
                 _services.Edit(SaveBanAnDTO);
+            }
+            else{
+                return View(SaveBanAnDTO);
             }
             return RedirectToAction("Index");
         }

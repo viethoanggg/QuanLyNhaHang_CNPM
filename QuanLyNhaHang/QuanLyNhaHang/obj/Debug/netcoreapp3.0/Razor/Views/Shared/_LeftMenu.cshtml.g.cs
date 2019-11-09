@@ -14,13 +14,13 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 2 "C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\Views\_ViewImports.cshtml"
-using ApplicationCore.Entitites;
+using ApplicationCore.Entities;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e5445276eeca8fb444537ad1926067c34e81bd41", @"/Views/Shared/_LeftMenu.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e162fa2d12f7268917634a0a4f525942fa6c1109", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19407a6133d8e7e9a734ab30dc1ee5aa4e76712e", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__LeftMenu : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "HomeQuanLy", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +86,7 @@ using ApplicationCore.Entitites;
                 <ul class=""nav side-menu"">
                             <li>
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd416445", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd416444", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Home");
             }
             );
@@ -104,7 +104,7 @@ using ApplicationCore.Entitites;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd417949", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd417948", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Quản lý thực đơn ");
             }
             );
@@ -122,7 +122,7 @@ using ApplicationCore.Entitites;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                             <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd419467", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd419466", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Quản lý bàn ăn ");
             }
             );
@@ -140,7 +140,7 @@ using ApplicationCore.Entitites;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4110982", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4110981", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Quản lý loại thức ăn ");
             }
             );
@@ -158,7 +158,7 @@ using ApplicationCore.Entitites;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4112504", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4112503", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Quản lý hóa đơn ");
             }
             );
@@ -176,7 +176,7 @@ using ApplicationCore.Entitites;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                           \r\n                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4114052", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4114051", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Quản lý phiếu đặt bàn ");
             }
             );
@@ -194,7 +194,7 @@ using ApplicationCore.Entitites;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4115575", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5445276eeca8fb444537ad1926067c34e81bd4115574", async() => {
                 WriteLiteral("<i class=\"fa fa-dashboard fa-fw\"></i> Quản lý Khách hàng");
             }
             );

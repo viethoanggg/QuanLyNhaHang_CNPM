@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
-using ApplicationCore.Entitites;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.ViewModels;

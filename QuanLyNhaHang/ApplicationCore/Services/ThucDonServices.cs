@@ -1,7 +1,6 @@
 using System.Linq;
 using System;
 using System.Linq.Expressions;
-using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
 
 using System.Collections.Generic;
@@ -11,6 +10,7 @@ using ApplicationCore.ModelsContainData.Models;
 using AutoMapper;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Services
 {

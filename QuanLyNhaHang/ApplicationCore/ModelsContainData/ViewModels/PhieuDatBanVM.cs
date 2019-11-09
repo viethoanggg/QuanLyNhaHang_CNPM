@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
-using ApplicationCore.Entitites;
 using ApplicationCore.Services;
 
 namespace ApplicationCore.ModelsContainData.ViewModels

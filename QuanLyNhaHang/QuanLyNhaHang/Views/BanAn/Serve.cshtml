@@ -1,11 +1,11 @@
 @model ApplicationCore.ModelsContainData.ViewModels.ServeVM
 @{
-    ViewData["Title"] = "Serve";
+    ViewData["Title"] = "Phục vụ cho bàn ăn";
 }
 
 <div class="row">
     <!-- thông tin bàn ăn -->
-    <div class="col-md-5" style = "margin:10px 10px ;box-shadow:2px 2px 5px grey">
+    <div class="col-md-5" style = "margin:10px 20px 10px 30px;box-shadow:2px 2px 5px grey">
         <h3>Thông tin bàn ăn</h3>
         <hr />
                
@@ -106,7 +106,6 @@
                     <input asp-for="HoaDon.TrangThai" class="form-control" readonly/>
                     <span asp-validation-for="HoaDon.TrangThai" class="text-danger"></span>
                 </div>
-                <input asp-for="IdPhieuDatBan" class="form-control"  id="thanhtien" readonly />    
                 <div class="form-group">
                     <input type="submit" value="Phục vụ" class="btn btn-primary" style="float:right"/>
                 </div>
@@ -117,10 +116,11 @@
      <!--End thông tin hóa đơn của bàn ăn -->
 </div>
 <!-- End thông tin hóa đơn và bàn ăn-->
+
 @if(Model.HoaDon.TrangThai=="Chưa thanh toán")
 {
     <div class="row">
-        <div class="col-md-12" style = "margin:10px 10px ;box-shadow:2px 2px 5px grey">
+        <div class="col-md-12" style = "margin:10px 0px ;box-shadow:2px 2px 5px grey">
             <hr/>
             <h4>Danh sách món ăn</h4>
             <hr/>
@@ -252,7 +252,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12" style = "margin:0px 10px ;box-shadow:2px 2px 5px grey">
+        <div class="col-md-12" style = "margin:5px 0px ;box-shadow:2px 2px 5px grey">
             <h3>Chi tiết bàn ăn</h3>
             <div id="show_cthd">
                 <table class="table table-stripe">

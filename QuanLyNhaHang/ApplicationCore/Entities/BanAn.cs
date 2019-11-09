@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationCore.Entitites {
+namespace ApplicationCore.Entities {
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;

@@ -1,4 +1,4 @@
-using ApplicationCore.Entitites;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Data;

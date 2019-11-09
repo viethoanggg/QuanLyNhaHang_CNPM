@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using System;
 using System.Linq.Expressions;
-using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
 
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using ApplicationCore.ModelsContainData.Models;
 using AutoMapper;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Services
 {
@@ -247,8 +247,7 @@ namespace ApplicationCore.Services
                                            SoLuong = s.SoLuong,
                                            DonGia = s.DonGia
                                        };
-
-            return list;
+            return list.ToList();
         }
 
         public HoaDonDTO CapNhatThanhTien(int id)

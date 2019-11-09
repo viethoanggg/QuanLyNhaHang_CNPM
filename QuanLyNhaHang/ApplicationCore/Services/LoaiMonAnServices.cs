@@ -1,7 +1,6 @@
 using System.Net.Mime;
 using System;
 using System.Linq.Expressions;
-using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.ViewModels;
@@ -10,6 +9,7 @@ using AutoMapper;
 using ApplicationCore.DTOs;
 using System.Collections.Generic;
 using ApplicationCore.DTOs.SaveDTOs;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Services
 {

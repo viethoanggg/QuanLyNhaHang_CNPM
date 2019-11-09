@@ -12,13 +12,27 @@ namespace ApplicationCore.DTOs
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
+    using System.ComponentModel.DataAnnotations;
 
     public  class PhieuDatBanDTO {
         public int Id { get; set; }
+        [Display(Name = "Bàn ăn")]
+        [Required]
         public int IdBanAn { get; set; }
+
+        [Display(Name = "Tên khách hàng")]
+        [Required]
         public int IdKhachHang { get; set; }
+
+        [Display(Name = "Thời gian đặt")]
+        [Required]
         public DateTime ThoiGianDat { get; set; }
-        public string TrangThai{ get; set; }
+
+        [Display(Name = "Trạng thái")]
+        [Required]
+        public string TrangThai { get; set; }
+
+        [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 
     }

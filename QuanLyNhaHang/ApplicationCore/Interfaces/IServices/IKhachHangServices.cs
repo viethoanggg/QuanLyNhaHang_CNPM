@@ -1,6 +1,5 @@
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
-using ApplicationCore.Entitites;
 using ApplicationCore.ModelsContainData.ViewModels;
 
 namespace ApplicationCore.Interfaces.IServices

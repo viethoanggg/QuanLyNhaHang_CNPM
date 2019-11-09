@@ -22,15 +22,16 @@ namespace ApplicationCore.DTOs
         public int Id { get; set; }
 
         [Display (Name = "Tên loại món ăn")]
+        [Required]
         public int IdLoaiMonAn { get; set; }
-
-        [Required (ErrorMessage = "Không được để trống")]
+     
         [Display (Name = "Tên món ăn")]
+        [RegularExpression(@"^[a-zA-Z]+[a-zA-Z0-9 -_]*$")]
+        [Required]
         public string Ten { get; set; }
 
         [Display (Name = "Giá")]
-        [Required (ErrorMessage = "Không được để trống")]
-        [Range (0, 5000000, ErrorMessage = "Hãy nhập giá hợp lệ")]
+        [Required]
         public int Gia { get; set; }
 
     }

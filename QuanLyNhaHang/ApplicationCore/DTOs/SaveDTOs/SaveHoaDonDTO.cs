@@ -22,12 +22,15 @@ namespace ApplicationCore.DTOs.SaveDTOs {
         public int Id { get; set; }
 
         [Display(Name="Bàn số")]
+        [Required]
         public int IdBanAn { get; set; }
         
         [Display(Name = "Nhân viên")]
+        [Required]
         public int IdUser { get; set; }
 
         [Display(Name = "Thời gian lập")]
+        [Required]
         public System.DateTime ThoiGianLap { get; set; }
 
         [Display(Name = "Thời gian thanh toán")]
@@ -37,6 +40,7 @@ namespace ApplicationCore.DTOs.SaveDTOs {
         public Nullable<int> ThanhTien { get; set; }
 
         [Display(Name = "Trạng thái")]
+        [Required]
         public string TrangThai { get; set; }
 
     }

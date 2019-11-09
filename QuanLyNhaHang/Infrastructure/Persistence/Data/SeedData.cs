@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using ApplicationCore.Entitites;
+using ApplicationCore.Entities;
 
 namespace Infrastructure.Persistence.Data {
     public class SeedData {

@@ -1,6 +1,5 @@
 using System.Linq;
-using ApplicationCore.Entitites;
-using ApplicationCore.Interfaces;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;

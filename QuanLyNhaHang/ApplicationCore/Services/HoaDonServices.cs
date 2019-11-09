@@ -2,12 +2,12 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using AutoMapper;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Services
 {

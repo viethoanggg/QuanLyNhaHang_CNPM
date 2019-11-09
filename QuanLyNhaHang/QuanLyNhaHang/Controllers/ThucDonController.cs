@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
-using ApplicationCore.Entitites;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.ModelsContainData.ViewModels;
@@ -104,8 +103,13 @@ namespace QuanLyNhaHang.Controllers {
 
         [HttpPost]
         public ActionResult Create (SaveThucDonDTO saveThucDonDTO) {
-           if(ModelState.IsValid)
+           if(!ModelState.IsValid)
            {
+                ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
+                return View(saveThucDonDTO);
+            }
+           else
+            {
                 _services.Create(saveThucDonDTO);
             }
             return RedirectToAction("Index");

@@ -1,4 +1,5 @@
-using ApplicationCore.Entitites;
+using ApplicationCore.Entities;
+
 
 namespace ApplicationCore.Interfaces.IRepositories
 {

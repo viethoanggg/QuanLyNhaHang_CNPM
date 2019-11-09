@@ -6,7 +6,7 @@ using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using ApplicationCore.Entitites;
+using ApplicationCore.Entities;
 using ApplicationCore.ModelsContainData.Models;
 using Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Http;

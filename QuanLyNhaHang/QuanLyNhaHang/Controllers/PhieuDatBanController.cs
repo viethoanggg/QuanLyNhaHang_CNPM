@@ -2,7 +2,6 @@ using System.Data;
 using System;
 using System.Globalization;
 using System.Net;
-using ApplicationCore.Entitites;
 using Microsoft.AspNetCore.Mvc;
 
 using ApplicationCore.Interfaces.IServices;
@@ -152,11 +151,11 @@ namespace QuanLyNhaHang.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int? Id)
         {
-            if(id==null)
+            if(Id==null)
                 return RedirectToAction("Index");
-            PhieuDatBanDTO pDTO=_services.GetById(id.Value);
+            PhieuDatBanDTO pDTO=_services.GetById(Id.Value);
             if(pDTO==null)
                 return RedirectToAction("Index");
             SavePhieuDatBanDTO savePhieuDatBanDTO = _mapper.Map<PhieuDatBanDTO, SavePhieuDatBanDTO>(pDTO);
@@ -165,12 +164,12 @@ namespace QuanLyNhaHang.Controllers
         
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult Deleted(int? id)
+        public IActionResult Deleted(int? Id)
         {
-            if (id == null)
+            if (Id == null)
                 return RedirectToAction("Index");
            
-            _services.Delete(id.Value);
+            _services.Delete(Id.Value);
             return RedirectToAction("Index");
         }
 

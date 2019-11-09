@@ -14,6 +14,7 @@ namespace ApplicationCore.DTOs
     using System.ComponentModel.DataAnnotations;
     public class ChiTietHoaDonDTO {
 
+
         public int Id { get; set; }
         [Display(Name = "Mã hóa đơn")]
         public int IdHoaDon { get; set; }

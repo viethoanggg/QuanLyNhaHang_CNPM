@@ -19,6 +19,7 @@ namespace ApplicationCore.DTOs.SaveDTOs
         public int Id { get; set; }
 
         [Display (Name = "Tên loại món ăn")]
+        [Required]
         public string Ten { get; set; }
 
     }
