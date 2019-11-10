@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationCore.Entities 
-{
+namespace ApplicationCore.Entities {
     using System.Collections.Generic;
     using System;
+    using ApplicationCore.Interfaces;
 
-    public class NguoiDung {
-   
+    public class NguoiDung : IAggregateRoot {
+
         public int Id { get; set; }
         public string Ten { get; set; }
         public string TenDangNhap { get; set; }

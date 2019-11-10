@@ -10,14 +10,35 @@ namespace Infrastructure.Persistence.Data {
             context.Database.EnsureCreated ();
             if (!context.NguoiDungs.Any ()) {
                 string mk = "admin";
+                string mkh = "123";
+                string mkt = "123";
+                string mktiep = "123";
                 using (MD5 md5 = MD5.Create ()) {
                     mk = GetMd5Hash (md5, mk);
+                    mkh = GetMd5Hash (md5, mkh);
+                    mkt = GetMd5Hash (md5, mkt);
+                    mktiep = GetMd5Hash (md5, mktiep);
                 }
                 context.NguoiDungs.AddRange (
                     new NguoiDung {
                         Ten = "Admin",
                             TenDangNhap = "admin",
                             MatKhau = mk
+                    },
+                    new NguoiDung {
+                        Ten = "Hoàng",
+                            TenDangNhap = "hoang",
+                            MatKhau = mkh
+                    },
+                    new NguoiDung {
+                        Ten = "Triết",
+                            TenDangNhap = "triet",
+                            MatKhau = mkt
+                    },
+                    new NguoiDung {
+                        Ten = "Tiếp",
+                            TenDangNhap = "tiep",
+                            MatKhau = mktiep
                     });
             }
             if (!context.BanAns.Any ()) {
@@ -72,13 +93,13 @@ namespace Infrastructure.Persistence.Data {
                     },
                     new BanAn {
                         Id = 9,
-                            LoaiBanAn = "Vài người",
+                            LoaiBanAn = "4 người",
                             TrangThai = "Trống",
                             GhiChu = ""
                     },
                     new BanAn {
                         Id = 10,
-                            LoaiBanAn = "Vài người",
+                            LoaiBanAn = "4 người",
                             TrangThai = "Trống",
                             GhiChu = ""
                     }

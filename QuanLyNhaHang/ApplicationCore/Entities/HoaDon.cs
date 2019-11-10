@@ -10,23 +10,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationCore.Entities {
     using System.Collections.Generic;
-    using System;
     using System.ComponentModel.DataAnnotations;
+    using System;
     using ApplicationCore.Interfaces;
 
-    public class HoaDon :IAggregateRoot{
-       
+    public class HoaDon : IAggregateRoot {
+
         public int Id { get; set; }
 
         public int IdBanAn { get; set; }
-        
+
         public int IdUser { get; set; }
 
         public System.DateTime ThoiGianLap { get; set; }
 
         public Nullable<System.DateTime> ThoiGianThanhToan { get; set; }
 
-        public Nullable<int> ThanhTien { get; set; }
+        public int ThanhTien { get; set; }
 
         public string TrangThai { get; set; }
 

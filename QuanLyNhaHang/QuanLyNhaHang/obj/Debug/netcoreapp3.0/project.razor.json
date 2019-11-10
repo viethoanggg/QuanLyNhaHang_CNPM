@@ -14484,6 +14484,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\HoaDon\\Details.cshtml",
+      "TargetPath": "Views\\HoaDon\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\KhachHang\\Delete.cshtml",
       "TargetPath": "Views\\KhachHang\\Delete.cshtml",
       "FileKind": "mvc"

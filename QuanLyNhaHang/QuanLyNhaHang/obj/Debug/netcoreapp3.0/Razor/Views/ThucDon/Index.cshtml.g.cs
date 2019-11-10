@@ -13,6 +13,13 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
+#line 1 "C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\Views\_ViewImports.cshtml"
 using ApplicationCore.Entities;
 
@@ -20,7 +27,7 @@ using ApplicationCore.Entities;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b39fc61f3706162fb82b6a768ee5e394228dc750", @"/Views/ThucDon/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19407a6133d8e7e9a734ab30dc1ee5aa4e76712e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"81bdbf4ec029a514e8fa82b9cbdc4776e3a6a6d8", @"/Views/_ViewImports.cshtml")]
     public class Views_ThucDon_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ApplicationCore.ModelsContainData.ViewModels.ThucDonVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -65,7 +72,7 @@ using ApplicationCore.Entities;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc7505102", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc7505319", async() => {
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Index</title>\r\n");
             }
             );
@@ -79,7 +86,7 @@ using ApplicationCore.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc7506161", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc7506378", async() => {
                 WriteLiteral("\r\n    \r\n    <div class=\"row\">\r\n        <div class=\"col-lg-12\">\r\n            <p>\r\n                ");
 #nullable restore
 #line 19 "C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\Views\ThucDon\Index.cshtml"
@@ -89,7 +96,7 @@ using ApplicationCore.Entities;
 #line hidden
 #nullable disable
                 WriteLiteral("\r\n              \r\n            </p>\r\n\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc7506877", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc7507094", async() => {
                     WriteLiteral(@"
                  <div class=""input-group"">
                     <input type=""text"" class=""form-control"" name=""searchString"">
@@ -229,7 +236,7 @@ WriteAttributeValue("", 1677, item.Id, 1677, 8, false);
 #line hidden
 #nullable disable
                 WriteLiteral("\r\n    <span style=\"float:right\"> \r\n        <ul class=\"pagination\">\r\n            <li class=\"page-item\">\r\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75014562", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75014779", async() => {
                     WriteLiteral(" Previous ");
                 }
                 );
@@ -336,7 +343,7 @@ AddHtmlAttributeValue("", 2906, disPre, 2906, 7, false);
 #line hidden
 #nullable disable
                 WriteLiteral("                        <li class=\"page-item\">\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75020938", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75021155", async() => {
                     WriteLiteral(" ");
 #nullable restore
 #line 108 "C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\Views\ThucDon\Index.cshtml"
@@ -439,7 +446,7 @@ AddHtmlAttributeValue("", 2906, disPre, 2906, 7, false);
 #line hidden
 #nullable disable
                 WriteLiteral("                        <li class=\"page-item\">\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75026981", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75027198", async() => {
                     WriteLiteral(" ");
 #nullable restore
 #line 131 "C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\Views\ThucDon\Index.cshtml"
@@ -515,7 +522,7 @@ AddHtmlAttributeValue("", 2906, disPre, 2906, 7, false);
 #line hidden
 #nullable disable
                 WriteLiteral("\r\n            <li class=\"page-item\">\r\n                  ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75031630", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b39fc61f3706162fb82b6a768ee5e394228dc75031847", async() => {
                     WriteLiteral(" Next ");
                 }
                 );

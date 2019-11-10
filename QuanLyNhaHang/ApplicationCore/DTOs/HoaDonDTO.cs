@@ -37,7 +37,7 @@ namespace ApplicationCore.DTOs {
         public Nullable<System.DateTime> ThoiGianThanhToan { get; set; }
 
         [Display(Name = "Thành tiền")]        
-        public Nullable<int> ThanhTien { get; set; }
+        public int ThanhTien { get; set; }
 
         [Display(Name = "Trạng thái")]
         [Required]

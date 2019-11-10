@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Web;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
@@ -13,26 +14,28 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace QuanLyNhaHang.Controllers {
     public class ThucDonController : Controller {
         // GET: QuanLy/ThucDon
-        //private readonly QLNHContext context;
-       // private readonly int pageSize = 3;
         private readonly IThucDonServices _services;
         private readonly IMapper _mapper;
 
-        // public ThucDonVM thucDonVM;
-        // public ThucDonController (QLNHContext context) {
-        //     this.context = context;
-        // }
-        public ThucDonController(IThucDonServices services,IMapper mapper)
-        {
+        public bool KiemTraDangNhap () {
+            if (String.IsNullOrEmpty (HttpContext.Session.GetString ("TenDangNhapCurrentUser"))) {
+                return false;
+            } else {
+                ViewBag.IdCurrentUser = HttpContext.Session.GetString ("IdCurrentUser").ToString ();
+                ViewBag.TenCurrentUser = HttpContext.Session.GetString ("TenCurrentUser").ToString ();
+                return true;
+            }
+        }
+        public ThucDonController (IThucDonServices services, IMapper mapper) {
             _services = services;
             _mapper = mapper;
         }
-        public ActionResult Index (string sort,string searchString,string currentFilter,string tenLoaiMonAn, int pageIndex = 1) {
-
+        public ActionResult Index (string sort, string searchString, string currentFilter, string tenLoaiMonAn, int pageIndex = 1) {
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
             //     if (String.IsNullOrEmpty(HttpContext.Session.GetString("CurrentUser")))
             //     {
             //         return View("../Login/Index");
@@ -93,31 +96,34 @@ namespace QuanLyNhaHang.Controllers {
             //   //  thucDonVM.ThucDons = PaginatedList<ThucDonMD>.Create (list.ToList (), pageIndex, pageSize);
 
             //     return View (PaginatedList<ThucDonMD>.Create(list.ToList(), pageIndex, pageSize));
-            ThucDonVM vm = _services.GetThucDonVM(sort, searchString, currentFilter, tenLoaiMonAn, pageIndex);
-            return View(vm);
+            ThucDonVM vm = _services.GetThucDonVM (sort, searchString, currentFilter, tenLoaiMonAn, pageIndex);
+            return View (vm);
         }
         public ActionResult Create () {
-            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
+            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns ();
             return View ();
         }
 
         [HttpPost]
         public ActionResult Create (SaveThucDonDTO saveThucDonDTO) {
-           if(!ModelState.IsValid)
-           {
-                ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
-                return View(saveThucDonDTO);
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
+            if (!ModelState.IsValid) {
+                ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns ();
+                return View (saveThucDonDTO);
+            } else {
+                _services.Create (saveThucDonDTO);
             }
-           else
-            {
-                _services.Create(saveThucDonDTO);
-            }
-            return RedirectToAction("Index");
+            return RedirectToAction ("Index");
 
         }
 
         public ActionResult Edit (int? id) {
 
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
             // if (id == null)
             //     return RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -125,30 +131,33 @@ namespace QuanLyNhaHang.Controllers {
             //     return RedirectToAction ("Index");
             // ViewData["ListLoaiMonAn"] = context.LoaiMonAns;
             // return View (td);
-            if(id==null)
-                return RedirectToAction("Index");
-            ThucDonDTO tdDTO = _services.GetMonAn(id.Value);
-            if(tdDTO==null)
-                return RedirectToAction("Index");
-            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
-            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO,SaveThucDonDTO>(tdDTO);
-            return View(saveThucDonDTO);
+            if (id == null)
+                return RedirectToAction ("Index");
+            ThucDonDTO tdDTO = _services.GetMonAn (id.Value);
+            if (tdDTO == null)
+                return RedirectToAction ("Index");
+            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns ();
+            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO> (tdDTO);
+            return View (saveThucDonDTO);
         }
 
         [HttpPost]
         public ActionResult Edit (SaveThucDonDTO saveThucDonDTO) {
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
             // if (ModelState.IsValid) {
             //     context.Entry (td).State = EntityState.Modified;
             //     context.SaveChanges ();
             // }
-            if(ModelState.IsValid)
-            {
-                _services.Edit(saveThucDonDTO);
+            if (ModelState.IsValid) {
+                _services.Edit (saveThucDonDTO);
             }
             return RedirectToAction ("Index");
         }
 
         public ActionResult Delete (int? id) {
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
             // if (id == null)
             //     return RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -157,16 +166,18 @@ namespace QuanLyNhaHang.Controllers {
             // return View (td);
             if (id == null)
                 return RedirectToAction ("Index");
-            ThucDonDTO tdDTO = _services.GetMonAn(id.Value);
+            ThucDonDTO tdDTO = _services.GetMonAn (id.Value);
             if (tdDTO == null)
-                 return RedirectToAction ("Index");
-            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
+                return RedirectToAction ("Index");
+            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO> (tdDTO);
             return View (saveThucDonDTO);
         }
 
         [HttpPost]
         [ActionName ("Delete")]
         public ActionResult Deleted (int? id) {
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
             // if (id == null)
             //     RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -175,12 +186,14 @@ namespace QuanLyNhaHang.Controllers {
             // context.Entry (td).State = EntityState.Deleted;
             // context.SaveChanges ();
             if (id == null)
-                return RedirectToAction("Index");
-           // SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
-            _services.Remove(id.Value);
+                return RedirectToAction ("Index");
+            // SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
+            _services.Remove (id.Value);
             return RedirectToAction ("Index");
         }
         public ActionResult Details (int? id) {
+            if (KiemTraDangNhap () == false)
+                return View ("../Login/Index");
             // if (id == null)
             //     return RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -197,12 +210,12 @@ namespace QuanLyNhaHang.Controllers {
             // var monAn = list.Where (s => s.Id == td.Id).FirstOrDefault ();
             // return View (monAn);
             if (id == null)
-                return RedirectToAction("Index");
-            ThucDonMD tdMD = _services.GetMonAnMD(id.Value);
+                return RedirectToAction ("Index");
+            ThucDonMD tdMD = _services.GetMonAnMD (id.Value);
             if (tdMD == null)
-                return RedirectToAction("Index");
-            
-            return View(tdMD);
+                return RedirectToAction ("Index");
+
+            return View (tdMD);
         }
     }
 }

@@ -12,7 +12,7 @@
             <input type="hidden" asp-for="PhieuDatBan.Id" />
             <div class="form-group">
                 <label asp-for="PhieuDatBan.IdBanAn" class="control-label"></label>
-               <select asp-for="PhieuDatBan.IdBanAn"  class="form-control">
+                <select asp-for="PhieuDatBan.IdBanAn"  class="form-control">
                     @foreach( var item in Model.BanAns )
                     {
                         <option value = "@item.Id"> @item.Id </option>

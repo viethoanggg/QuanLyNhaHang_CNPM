@@ -592,3 +592,4 @@ C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_TDPartial.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\HoaDon\Details.cshtml.g.cs

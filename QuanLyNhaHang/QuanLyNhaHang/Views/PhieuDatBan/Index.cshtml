@@ -47,11 +47,17 @@
                 @Html.DisplayFor(modelItem => item.GhiChu)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-action="Serve" asp-controller="BanAn" asp-route-IdBanAn="@item.IdBanAn" asp-route-IdPhieuDatBan="@item.Id">Serve</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @if(@item.TrangThai == "Chưa xử lý")
+                {
+                    <span> |
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Serve" asp-controller="BanAn" asp-route-IdBanAn="@item.IdBanAn" asp-route-IdPhieuDatBan="@item.Id">Serve</a>
+                    </span>
+                }
             </td>
+           
         </tr>
 }
     </tbody>
