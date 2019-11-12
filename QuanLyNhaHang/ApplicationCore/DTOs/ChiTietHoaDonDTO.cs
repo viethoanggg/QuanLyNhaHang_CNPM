@@ -12,14 +12,20 @@ namespace ApplicationCore.DTOs
     using System.Collections.Generic;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class ChiTietHoaDonDTO {
 
 
-        public int Id { get; set; }
+       
         [Display(Name = "Mã hóa đơn")]
+        [Key,Column(Order=0)]
+        [ForeignKey("HoaDon")]
         public int IdHoaDon { get; set; }
 
         [Display(Name = "Món ăn")]
+        [ForeignKey("ThucDon")]
+        [Key, Column(Order = 1)]
         public int IdMonAn { get; set; }
 
         [Range(1,10)]

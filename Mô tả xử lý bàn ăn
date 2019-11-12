@@ -25,3 +25,5 @@ IV.
 	  thì phiếu đặt bàn sẽ tự động chuyển trạng thái "Bị hủy",
 	  và bàn ăn sẽ chuyển trạng thái là "Trống".
 	  
+	- Thời gian phục cụ tối đa cho mỗi khách hàng là 3 tiếng,
+	  

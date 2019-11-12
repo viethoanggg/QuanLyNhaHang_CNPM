@@ -15,9 +15,16 @@ namespace ApplicationCore.Entities
     using ApplicationCore.Interfaces;
 
     public  class LoaiMonAn : IAggregateRoot {
-     
+
+        public LoaiMonAn()
+        {
+            this.ThucDons = new HashSet<ThucDon>();
+        }
         public int Id { get; set; }
         public string Ten { get; set; }
+
+        //////////////////////////////////////////
+        public virtual ICollection<ThucDon> ThucDons { get; set; }
 
     }
 }

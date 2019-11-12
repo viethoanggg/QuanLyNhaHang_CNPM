@@ -23,6 +23,13 @@ namespace Infrastructure.Persistence.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(QLNHContext).Assembly);
+            
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ChiTietHoaDon>()
+                .HasKey(c => new{c.IdHoaDon,c.IdMonAn});
+            
+
         }
     }
 }

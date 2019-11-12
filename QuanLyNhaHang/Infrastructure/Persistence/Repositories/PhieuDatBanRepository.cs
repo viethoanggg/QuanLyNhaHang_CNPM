@@ -1,3 +1,4 @@
+using System.Linq;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IRepositories;
@@ -19,6 +20,11 @@ namespace Infrastructure.Persistence.Repositories
         public void Update(PhieuDatBan p)
         {
             QLNHContext.Entry(p).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        }
+
+        public int GetIdBanAn(int IdPhieuDatBan)
+        {
+            return QLNHContext.PhieuDatBans.Where(s => s.Id == IdPhieuDatBan).Select(s=>s.IdBanAn).FirstOrDefault();
         }
     }
 }

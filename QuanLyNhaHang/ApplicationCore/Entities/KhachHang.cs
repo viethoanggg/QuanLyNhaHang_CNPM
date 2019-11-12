@@ -14,10 +14,18 @@ namespace ApplicationCore.Entities {
 
     public class KhachHang : IAggregateRoot {
 
+        public KhachHang()
+        {
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
+        }
         public int Id { get; set; }
         public string Ten { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }
+
+        ///////////////////////////////////////
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
+
         // public DiaChiNha DiaChi { get; set; }
 
         // public class DiaChiNha

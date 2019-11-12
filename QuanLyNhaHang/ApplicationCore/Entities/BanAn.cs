@@ -14,8 +14,13 @@ namespace ApplicationCore.Entities {
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
 
-    public class BanAn :IAggregateRoot {
-        
+    public partial class BanAn :IAggregateRoot {
+
+        public BanAn()
+        {
+            this.HoaDons = new HashSet<HoaDon>();
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
+        }
         public int Id { get; set; }
 
         public string LoaiBanAn { get; set; }
@@ -24,5 +29,8 @@ namespace ApplicationCore.Entities {
 
         public string GhiChu { get; set; }
 
+        ///////////////////////////////////////////////////
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
     }
 }

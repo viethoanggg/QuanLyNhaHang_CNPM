@@ -16,6 +16,11 @@ namespace ApplicationCore.Entities {
 
     public class HoaDon : IAggregateRoot {
 
+        public HoaDon()
+        {
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
+
         public int Id { get; set; }
 
         public int IdBanAn { get; set; }
@@ -30,5 +35,9 @@ namespace ApplicationCore.Entities {
 
         public string TrangThai { get; set; }
 
+        ///////////////////////////////////////////
+        public virtual BanAn BanAn { get; set; }
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
     }
 }

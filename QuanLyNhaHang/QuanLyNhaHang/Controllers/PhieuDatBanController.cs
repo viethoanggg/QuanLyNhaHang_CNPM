@@ -39,16 +39,19 @@ namespace QuanLyNhaHang.Controllers {
         public IActionResult Edit (int? id) {
             if (KiemTraDangNhap () == false)
                 return View ("../Login/Index");
+
             if (id == null)
                 return RedirectToAction ("Index");
             PhieuDatBanDTO pDTO = _services.GetById (id.Value);
             if (pDTO == null)
                 return RedirectToAction ("Index");
+
             SavePhieuDatBanDTO savePhieuDatBanDTO = _mapper.Map<PhieuDatBanDTO, SavePhieuDatBanDTO> (pDTO);
             PhieuDatBanVM vm = new PhieuDatBanVM {
                 PhieuDatBan = savePhieuDatBanDTO,
                 BanAns = _services.GetListBanAn ()
             };
+        
             return View (vm);
         }
 
@@ -56,7 +59,16 @@ namespace QuanLyNhaHang.Controllers {
         public IActionResult Edit (PhieuDatBanVM vm) {
             if (KiemTraDangNhap () == false)
                 return View ("../Login/Index");
-            _services.Update (vm.PhieuDatBan);
+            if(_services.Update (vm.PhieuDatBan)==false)
+            {
+                ViewBag.MessagePhieuDatBan = "Thời gian đặt bị trùng";
+                vm = new PhieuDatBanVM
+                {
+                    PhieuDatBan = vm.PhieuDatBan,
+                    BanAns = _services.GetListBanAn()
+                };
+                return View(vm);
+            }
             return RedirectToAction ("Index");
         }
 

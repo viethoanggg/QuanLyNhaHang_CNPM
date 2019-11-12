@@ -14,11 +14,18 @@ namespace ApplicationCore.Entities {
 
     public class NguoiDung : IAggregateRoot {
 
+        public NguoiDung()
+        {
+            this.HoaDons = new HashSet<HoaDon>();
+        }
         public int Id { get; set; }
         public string Ten { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
         public string Role { get; set; }
+
+        ///////////////////////////////////////////
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
 
     }
 }

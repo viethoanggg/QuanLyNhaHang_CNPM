@@ -9,7 +9,7 @@ namespace ApplicationCore.Interfaces.IServices
     {
         PhieuDatBanVM GetPhieuDatBanVM(int pageIndex);
         PhieuDatBanDTO GetById(int Id);
-        void Update(SavePhieuDatBanDTO p);
+        bool Update(SavePhieuDatBanDTO p);
         int Add(SavePhieuDatBanDTO p);
         void Delete(int id);
         IEnumerable<BanAnDTO> GetListBanAn();

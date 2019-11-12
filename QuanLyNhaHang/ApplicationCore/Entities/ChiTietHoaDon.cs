@@ -1,11 +1,17 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ApplicationCore.Entities
 {
-    public class ChiTietHoaDon
+    public partial class ChiTietHoaDon
     {
-        public int Id { get; set; }
         public int IdHoaDon { get; set; }
         public int IdMonAn { get; set; }
         public int SoLuong { get; set; }
         public int DonGia { get; set; }
+
+        ////////////////////////////////////////
+        public virtual HoaDon HoaDon { get; set; }
+        public virtual ThucDon ThucDon { get; set; }
     }
 }

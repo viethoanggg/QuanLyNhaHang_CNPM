@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationCore.Entities 
+namespace ApplicationCore.Entities
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -15,8 +15,13 @@ namespace ApplicationCore.Entities
     using System;
     using ApplicationCore.Interfaces;
 
-    public  class ThucDon : IAggregateRoot {
+    public class ThucDon : IAggregateRoot
+    {
 
+        public ThucDon()
+        {
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
         public int Id { get; set; }
 
         public int IdLoaiMonAn { get; set; }
@@ -25,5 +30,8 @@ namespace ApplicationCore.Entities
 
         public int Gia { get; set; }
 
+        /////////////////////////////////////////////////////////////
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual LoaiMonAn LoaiMonAn { get; set; }
     }
 }
