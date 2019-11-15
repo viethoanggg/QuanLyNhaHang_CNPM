@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Infrastructure.Persistence.Repositories
         {
 
         }
-        public void ThemCTDH(int IdHoaDon, int IdMonAn, int SoLuong)
+        public void ThemCTHD(int IdHoaDon, int IdMonAn, int SoLuong)
         {
             ThucDon td = QLNHContext.ThucDons.Where(s => s.Id == IdMonAn).FirstOrDefault();
             ChiTietHoaDon chiTiet = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon == IdHoaDon && s.IdMonAn == IdMonAn).FirstOrDefault();
@@ -67,6 +68,25 @@ namespace Infrastructure.Persistence.Repositories
             return ba;
         }
 
+        public void DeleteCTHD(int IdHoaDon, int IdMonAn)
+        {
+            ChiTietHoaDon chiTiet = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon == IdHoaDon && s.IdMonAn == IdMonAn).FirstOrDefault();
+            QLNHContext.Entry(chiTiet).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+
+        }
+        public int DeleteAllCTHD(int IdHoaDon)
+        {
+            HoaDon hoaDon = GetById(IdHoaDon);
+            BanAn ba = QLNHContext.BanAns.Where(s => s.Id == hoaDon.IdBanAn).FirstOrDefault();
+            if(hoaDon == null)
+                return -1;
+            if (hoaDon.TrangThai.Equals("Chưa thanh toán") && ba.TrangThai.Equals("Đang phục vụ"))
+                return 0;
+            IEnumerable<ChiTietHoaDon> list = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon == hoaDon.Id);
+            QLNHContext.ChiTietHoaDons.RemoveRange(list);
+            Remove(hoaDon);
+            return 1;
+        }
         protected QLNHContext QLNHContext
         {
             get { return Context as QLNHContext; }

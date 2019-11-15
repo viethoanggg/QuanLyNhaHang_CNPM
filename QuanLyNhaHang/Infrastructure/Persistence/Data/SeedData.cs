@@ -23,22 +23,27 @@ namespace Infrastructure.Persistence.Data {
                     new NguoiDung {
                         Ten = "Admin",
                             TenDangNhap = "admin",
-                            MatKhau = mk
+                            MatKhau = mk,
+                            Role="Quản lý"
+
                     },
                     new NguoiDung {
                         Ten = "Hoàng",
                             TenDangNhap = "hoang",
-                            MatKhau = mkh
+                            MatKhau = mkh,
+                            Role = "Quản lý"
                     },
                     new NguoiDung {
                         Ten = "Triết",
                             TenDangNhap = "triet",
-                            MatKhau = mkt
+                            MatKhau = mkt,
+                            Role = "Quản lý"
                     },
                     new NguoiDung {
                         Ten = "Tiếp",
                             TenDangNhap = "tiep",
-                            MatKhau = mktiep
+                            MatKhau = mktiep,
+                            Role = "Quản lý"
                     });
             }
             if (!context.BanAns.Any ()) {

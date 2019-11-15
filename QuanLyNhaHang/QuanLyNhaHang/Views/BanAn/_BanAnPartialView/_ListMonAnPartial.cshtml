@@ -1,4 +1,4 @@
-@model  ApplicationCore.ModelsContainData.ViewModels.ServeVM
+@model ApplicationCore.ModelsContainData.ViewModels.ServeVM
 @{
     Layout=null;
 }
@@ -26,17 +26,20 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Gia)
                         </td>
-                         <td>
-                           <input name="SoLuong" value="1" type="number" id="TD_@item.Id"/>
+                         <td> 
+                            <input type="button" value="-" onclick="TruSLTrongListMonAn('TD_@item.Id')" class="btn btn-primary">
+                            <input name="SoLuong" value="1" type="number" id="TD_@item.Id" min="1" style="padding:8px;width:80px" readonly/>
+                            <input type="button" value="+" onclick="CongSLTrongListMonAn('TD_@item.Id')" class="btn btn-primary">
                         </td>
                         <td>
-                           <input type="button" value="Thêm" onclick="ThemCTHD('@Model.HoaDon.Id','@item.Id','TD_@item.Id')">
+                           <input type="button" value="Thêm" onclick="ThemCTHD('@item.Id','TD_@item.Id')"  class="btn btn-primary">
                         </td>
                     </tr>
                 }
                
             </table>
-             @{
+            
+                @{
                     var disNext= !Model.ThucDons.HasNext ? " visibility: hidden" : "";   
                     var disPre= !Model.ThucDons.HasPrevious ? " visibility: hidden" : "";   
                 }
@@ -114,4 +117,3 @@
                     </li>
                 </ul>
             </span>
-

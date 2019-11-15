@@ -12,7 +12,6 @@ namespace Infrastructure.Persistence.Configurations
         {
             builder.Property(m => m.LoaiBanAn)
                     .IsRequired();
-            
             builder.Property(m => m.TrangThai);
 
             builder.Property(m => m.GhiChu);

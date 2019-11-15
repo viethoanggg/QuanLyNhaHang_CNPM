@@ -38,7 +38,7 @@ namespace ApplicationCore.Services
             DateTime dayNow = DateTime.Now;
             day = day.Add(aInterval);
 
-            var banDatTruocs = _unitOfWork.BanAns.Find(s => s.TrangThai == "Đã đặt trước");
+            var banDatTruocs = _unitOfWork.BanAns.Find(s => s.TrangThai == "Được đặt trước");
             foreach (BanAn ban in banDatTruocs)
             {
 
@@ -63,10 +63,7 @@ namespace ApplicationCore.Services
             // thì trong khoảng thời gian phục vụ tồi đa là 3 tiếng
             // thì sẽ cập nhật bàn ăn là dc đặt trước
 
-            aInterval = new System.TimeSpan(0, 3, 0, 0);
-            // cộng một khoảng thời gian là 3 tiếng.
             day = DateTime.Now;
-            day = day.Add(aInterval);
 
             var banTrongs = _unitOfWork.BanAns.Find(s => s.TrangThai == "Trống");
             foreach (BanAn ban in banTrongs)
@@ -75,10 +72,10 @@ namespace ApplicationCore.Services
                 {
                     if (p.TrangThai == "Chưa xử lý")
                     {
-                        int compare = DateTime.Compare(day, p.ThoiGianDat);
-                        if (compare > 0 && ban.Id == p.IdBanAn)
+                        DateTime.Compare(day, p.ThoiGianDat);
+                        if (ban.Id == p.IdBanAn && (DateTime.Compare(day, p.ThoiGianDat + new TimeSpan(0, -3, 0, 0)) >= 0 && DateTime.Compare(day, p.ThoiGianDat + new TimeSpan(0, 1, 30, 0)) <= 0))
                         {
-                            ban.TrangThai = "Đã đặt trước";
+                            ban.TrangThai = "Được đặt trước";
                             _unitOfWork.BanAns.Update(ban);
                             _unitOfWork.Complete();
                         }
@@ -183,16 +180,12 @@ namespace ApplicationCore.Services
             PhieuDatBan p = new PhieuDatBan();
             if (Id == 0)
             {
-                TimeSpan aInterval = new System.TimeSpan(0, -3, 0, 0);
-                // trừ một khoảng thời gian.
-                DateTime day = DateTime.Now;
-                day = day.Add(aInterval);
 
                 IEnumerable<PhieuDatBan> phieuDatBans = _unitOfWork.PhieuDatBans.Find(s => s.TrangThai == "Chưa xử lý");
                 foreach (PhieuDatBan phieu in phieuDatBans)
                 {
 
-                    if (DateTime.Now - phieu.ThoiGianDat <= new TimeSpan(0, 3, 0, 0))
+                    if (DateTime.Compare(DateTime.Now, phieu.ThoiGianDat) >= 0 && DateTime.Compare(DateTime.Now, phieu.ThoiGianDat + new TimeSpan(0, 1, 30, 0)) <= 0)
                     {
                         p = phieu;
                         break;
@@ -229,9 +222,9 @@ namespace ApplicationCore.Services
             IEnumerable<ThucDonDTO> thucDonDTOs = _mapper.Map<IEnumerable<ThucDon>, IEnumerable<ThucDonDTO>>(thucDons);
             return PaginatedList<ThucDonDTO>.Create(thucDonDTOs, pageIndex, 5);
         }
-        public void ThemCTDH(int IdHoaDon, int IdMonAn, int SoLuong)
+        public void ThemCTHD(int IdHoaDon, int IdMonAn, int SoLuong)
         {
-            _unitOfWork.HoaDons.ThemCTDH(IdHoaDon, IdMonAn, SoLuong);
+            _unitOfWork.HoaDons.ThemCTHD(IdHoaDon, IdMonAn, SoLuong);
             _unitOfWork.Complete();
         }
 
@@ -268,6 +261,16 @@ namespace ApplicationCore.Services
 
         }
 
+        public ThucDon GetMonAn(int IdMonAn)
+        {
+            return _unitOfWork.ThucDons.GetById(IdMonAn);
+        }
+
+        public void DeleteCTHD(int IdHoaDon, int IdMonAn)
+        {
+            _unitOfWork.HoaDons.DeleteCTHD(IdHoaDon, IdMonAn);
+            _unitOfWork.Complete();
+        }
     }
 
 }

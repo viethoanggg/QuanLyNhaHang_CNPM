@@ -7,6 +7,7 @@ using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
+using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.ModelsContainData.ViewModels;
 using AutoMapper;
 
@@ -25,38 +26,15 @@ namespace ApplicationCore.Services
         }
         public PhieuDatBanVM GetPhieuDatBanVM(int pageIndex)
         {
+            _unitOfWork.PhieuDatBans.CapNhatAllPhieuDatBan();
             Expression<Func<PhieuDatBan, bool>> predicate = s => true;
-            DateTime day = DateTime.Now;
-
-            // trừ 1 giờ 30 phút
-            TimeSpan aInterval = new System.TimeSpan(0, -1, -30, 0);
-            // trừ một khoảng thời gian.
-            day = day.Add(aInterval);
-
             IEnumerable<PhieuDatBan> phieuDatBans = _unitOfWork.PhieuDatBans.Find(predicate);
-            foreach (PhieuDatBan p in phieuDatBans)
-            {
-                if (p.TrangThai == "Chưa xử lý")
-                {
-                    int compare = DateTime.Compare(day, p.ThoiGianDat);
-                    //nếu quá 1h30 so với thời gian đặt thì sẽ bị hủy
-                    if (compare > 0)
-                    {
-                        p.TrangThai = "Bị hủy";
-                        BanAn b = _unitOfWork.BanAns.GetById(p.IdBanAn);
-                        b.TrangThai = "Trống";
-                        _unitOfWork.BanAns.Update(b);
-                        _unitOfWork.PhieuDatBans.Update(p);
-                        _unitOfWork.Complete();
-                    }
-                }
 
-            }
+            IEnumerable<PhieuDatBanMD> phieuDatBanMDs = _unitOfWork.PhieuDatBans.GetListPhieuDatBanMD(phieuDatBans);
 
-            IEnumerable<PhieuDatBanDTO> phieuDatBanDTOs = _mapper.Map<IEnumerable<PhieuDatBan>, IEnumerable<PhieuDatBanDTO>>(phieuDatBans);
             return new PhieuDatBanVM
             {
-                PhieuDatBans = PaginatedList<PhieuDatBanDTO>.Create(phieuDatBanDTOs, pageIndex, pageSize)
+                PhieuDatBans = PaginatedList<PhieuDatBanMD>.Create(phieuDatBanMDs, pageIndex, pageSize)
             };
         }
 
@@ -70,29 +48,32 @@ namespace ApplicationCore.Services
         public bool Update(SavePhieuDatBanDTO SavePhieuDatBanDTO)
         {
             PhieuDatBan p = _mapper.Map<SavePhieuDatBanDTO, PhieuDatBan>(SavePhieuDatBanDTO);
-            IEnumerable<PhieuDatBan> listp = _unitOfWork.PhieuDatBans.Find(s => s.Id != p.Id && s.TrangThai == "Chưa xủ lý");
+            IEnumerable<PhieuDatBan> listp = _unitOfWork.PhieuDatBans.Find(s => s.Id != p.Id && s.TrangThai == "Chưa xử lý");
+            DateTime pCong3h = p.ThoiGianDat + new TimeSpan(0, 3, 0, 0);
             foreach (PhieuDatBan phieu in listp)
             {
                 TimeSpan aInterval = new System.TimeSpan(0, 3, 0, 0);
-                // trừ một khoảng thời gian.
+                // cộng một khoảng thời gian.
                 DateTime ThoiGianPCongThem = phieu.ThoiGianDat.Add(aInterval);
 
-                if (DateTime.Compare(p.ThoiGianDat, ThoiGianPCongThem) < 0 && DateTime.Compare(p.ThoiGianDat, phieu.ThoiGianDat) > 0)
+                if (phieu.IdBanAn == p.IdBanAn && ((DateTime.Compare(pCong3h, phieu.ThoiGianDat) >= 0 && DateTime.Compare(pCong3h, ThoiGianPCongThem) <= 0) || (DateTime.Compare(p.ThoiGianDat, ThoiGianPCongThem) <= 0 && DateTime.Compare(p.ThoiGianDat, phieu.ThoiGianDat) >= 0)))
                 {
                     return false;
                 }
 
             }
 
+            // cập nhật trạng thái bàn ăn sau khi sửa bàn ăn khác trong phiếu đặt bàn
+            // update bàn ăn cũ
             int IdBanAnPhieuCu = _unitOfWork.PhieuDatBans.GetIdBanAn(p.Id);
             BanAn banAnCu = _unitOfWork.BanAns.GetById(IdBanAnPhieuCu);
 
             banAnCu.TrangThai = "Trống";
             _unitOfWork.BanAns.Update(banAnCu);
 
+            // update bàn ăn mới
+            _unitOfWork.PhieuDatBans.UpdateBanAnCuaPhieuDatBanInTimeNow(p);
 
-            BanAn ban = _unitOfWork.BanAns.GetById(p.IdBanAn);
-            ban.TrangThai = "Được đặt trước";
             _unitOfWork.PhieuDatBans.Update(p);
             _unitOfWork.Complete();
 
@@ -101,25 +82,20 @@ namespace ApplicationCore.Services
         public int Add(SavePhieuDatBanDTO SavePhieuDatBanDTO)
         {
             PhieuDatBan p = _mapper.Map<SavePhieuDatBanDTO, PhieuDatBan>(SavePhieuDatBanDTO);
-            BanAn ba = _unitOfWork.BanAns.GetById(p.IdBanAn);
-            KhachHang kh = _unitOfWork.KhachHangs.GetById(p.IdKhachHang);
-            if (kh == null)
-                return -2;
-            if (ba.TrangThai == "Trống")
+            int i = _unitOfWork.PhieuDatBans.ThemPhieuDatBan(p);
+            if (i == 1)
             {
-                ba.TrangThai = "Được đặt trước";
-                _unitOfWork.BanAns.Update(ba);
-                p.TrangThai = "Chưa xử lý";
-                _unitOfWork.PhieuDatBans.Add(p);
                 _unitOfWork.Complete();
                 return 1;
             }
-            else if (ba.TrangThai == "Được đặt trước")
-            {
+            else if (i == -2)
+                return -2;
+            else if (i == 0)
                 return 0;
-            }
             else
                 return -1; //trạng thái của bàn là Đang phục vụ
+
+
         }
 
         public void Delete(int id)
@@ -146,6 +122,16 @@ namespace ApplicationCore.Services
             IEnumerable<BanAn> list = _unitOfWork.BanAns.Find(predicate);
             IEnumerable<BanAnDTO> listDTO = _mapper.Map<IEnumerable<BanAn>, IEnumerable<BanAnDTO>>(list);
             return listDTO;
+        }
+
+        public IEnumerable<KhachHang> GetListKH()
+        {
+            return _unitOfWork.KhachHangs.GetAll();
+        }
+
+        public KhachHang GetKhachHang(int IdKhachHang)
+        {
+            return _unitOfWork.KhachHangs.GetById(IdKhachHang);
         }
     }
 }

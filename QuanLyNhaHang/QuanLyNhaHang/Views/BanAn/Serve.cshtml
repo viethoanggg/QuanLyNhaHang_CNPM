@@ -42,77 +42,11 @@
         <hr/>
         @if(Model.HoaDon.TrangThai=="Chưa thanh toán")
         {
-            <form asp-action="ThanhToan" asp-controller="BanAn" method="post">
-            <input asp-for="HoaDon.ThoiGianThanhToan" type="hidden"/>
-                <div class="form-group">
-                    <label asp-for="HoaDon.Id" class="control-label"></label>
-                    <input asp-for="HoaDon.Id" class="form-control" id="idhd" readonly />
-                    <span asp-validation-for="HoaDon.Id" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.IdBanAn" class="control-label"></label>
-                    <input asp-for="HoaDon.IdBanAn" class="form-control" id="idba" readonly/>
-                    <span asp-validation-for="HoaDon.IdBanAn" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.IdUser" class="control-label"></label>
-                    <input asp-for="HoaDon.IdUser" class="form-control" type="hidden"/>
-                    <input value="@ViewBag.TenCurrentUser" class="form-control" type="text" readonly/>
-                    <span asp-validation-for="HoaDon.IdUser" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.ThoiGianLap" class="control-label"></label>
-                    <input asp-for="HoaDon.ThoiGianLap" class="form-control" readonly/>
-                    <span asp-validation-for="HoaDon.ThoiGianLap" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.TrangThai" class="control-label"></label>
-                    <input asp-for="HoaDon.TrangThai" class="form-control" readonly/>
-                    <span asp-validation-for="HoaDon.TrangThai" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.ThanhTien" class="control-label"></label>
-                    <input asp-for="HoaDon.ThanhTien" class="form-control"  id="thanhtien" readonly />
-                    <span asp-validation-for="HoaDon.ThanhTien" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Thanh toán" class="btn btn-warning" style="float:right"/>
-                </div>
-            </form>
+            @Html.Partial("_BanAnPartialView/_HoaDonCreatedPartial.cshtml")
         }
         else
         {
-            <form asp-action="CreateBill" asp-controller="BanAn" method="post">
-
-            <input asp-for="HoaDon.ThoiGianThanhToan" type="hidden"/>
-            <input asp-for="HoaDon.ThanhTien" type="hidden"/>
-            
-                <div class="form-group">
-                    <label asp-for="HoaDon.IdBanAn" class="control-label"></label>
-                    <input asp-for="HoaDon.IdBanAn" class="form-control"/>
-                    <span asp-validation-for="HoaDon.IdBanAn" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.IdUser" class="control-label"></label>
-                    <input asp-for="HoaDon.IdUser" class="form-control" type="hidden"/>
-                    <input value="@ViewBag.TenCurrentUser" class="form-control" type="text" readonly/>
-                    <span asp-validation-for="HoaDon.IdUser" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.ThoiGianLap" class="control-label"></label>
-                    <input asp-for="HoaDon.ThoiGianLap" class="form-control" readonly/>
-                    <span asp-validation-for="HoaDon.ThoiGianLap" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="HoaDon.TrangThai" class="control-label"></label>
-                    <input asp-for="HoaDon.TrangThai" class="form-control" readonly/>
-                    <span asp-validation-for="HoaDon.TrangThai" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input asp-for="IdPhieuDatBan" class="form-control" type="hidden"/>
-                    <input type="submit" value="Phục vụ" class="btn btn-primary" style="float:right"/>
-                </div>
-            </form> 
+             @Html.Partial("_BanAnPartialView/_CreateHoaDonPartial.cshtml")
         }
         
     </div>
@@ -136,118 +70,7 @@
                 }
             </select>
             <div id="c">
-            <table class="table table-stripe">
-                <tr>
-                    <th>
-                        Tên thức ăn
-                    </th>
-                    <th>
-                       Giá
-                    </th>
-                    <th>
-                        Số lượng
-                    </th>
-                    <th></th>
-                </tr>
-                
-                @foreach (var item in Model.ThucDons)
-                {
-                    <tr id="row_@item.Id">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ten)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Gia)
-                        </td>
-                         <td>
-                           <input name="SoLuong" value="1" type="number" id="TD_@item.Id"/>
-                        </td>
-                        <td>
-                           <input type="button" value="Thêm" onclick="ThemCTHD('@item.Id','TD_@item.Id')">
-                        </td>
-                    </tr>
-                }
-               
-            </table>
-            
-                @{
-                    var disNext= !Model.ThucDons.HasNext ? " visibility: hidden" : "";   
-                    var disPre= !Model.ThucDons.HasPrevious ? " visibility: hidden" : "";   
-                }
-             <span style="float:right"> 
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a asp-action="Serve"  class="page-link" style="@disPre"
-                        asp-route-pageIndex="@( Model.ThucDons.PageIndex - 1 )"
-                        asp-route-IdLoaiMonAn=""
-                        asp-route-IdBanAn="@Model.BanAn.Id"> Previous </a>
-                    </li>
-                    
-                @{
-                
-                    for(int i=1; i <= Model.ThucDons.TotalPages; i++)
-                    {
-                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
-                        if(Model.ThucDons.TotalPages>=8 && @i>=Model.ThucDons.PageIndex-2 && @i<=Model.ThucDons.PageIndex+2)
-                        {
-                            if(@i==Model.ThucDons.PageIndex-2 && @i>1)
-                            {
-                                <li class="page-item"><a class="page-link">...</a></li>
-                            }
-                            if(@i==Model.ThucDons.PageIndex)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" style="background-color:lightblue"> @i </a>
-                                </li>   
-                            }
-                            else 
-                            {
-                                <li class="page-item">
-                                    <a class="page-link"
-                                    asp-action="Serve"
-                                    asp-route-pageIndex="@i"
-                                    asp-route-IdLoaiMonAn=""
-                                    asp-route-IdBanAn="@Model.BanAn.Id"> @i </a>
-                                </li>
-                            }
-                            if(@i==Model.ThucDons.PageIndex+2 && @i<Model.ThucDons.TotalPages)
-                            {
-                                <li class="page-item"><a class="page-link">...</a></li>
-                            }
-                        }
-                        else if( Model.ThucDons.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
-                        {
-                            if(@i==Model.ThucDons.PageIndex)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" style="background-color:lightblue"> @i </a>
-                                </li>   
-                            }
-                            else
-                            {
-                                <li class="page-item">
-                                    <a class="page-link"
-                                    asp-action="Serve"
-                                    asp-route-pageIndex="@i"
-                                    asp-route-IdLoaiMonAn=""
-                                    asp-route-IdBanAn="@Model.BanAn.Id"> @i </a>
-                                </li>
-                            }
-                        }
-                    
-                    
-                    }
-                
-                }
-
-                    <li class="page-item">
-                        <a asp-action="Serve"  class="page-link" style="@disNext"
-                        asp-route-pageIndex="@( Model.ThucDons.PageIndex + 1 )"
-                        asp-route-IdLoaiMonAn=""
-                        asp-route-IdBanAn="@Model.BanAn.Id"> Next </a>
-                    </li>
-                </ul>
-            </span>
+                @Html.Partial("_BanAnPartialView/_ListMonAnPartial.cshtml")
             </div>
              <!-- end ajax -->
         </div>
@@ -258,33 +81,7 @@
         <div class="col-md-12" style = "margin:5px 0px ;box-shadow:2px 2px 5px grey">
             <h3>Chi tiết bàn ăn</h3>
             <div id="show_cthd">
-                <table class="table table-stripe">
-                    <tr>
-                        <th>Tên món ăn</th>
-                        <th>Số lượng</th>
-                        <th>Đơn giá</th>
-                        <th>Sửa</th>
-                    </tr>
-                    
-                    @foreach (var item in Model.ChiTietHoaDons)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TenMonAn)
-                            </td>
-                            <td>
-                            <input asp-for="@item.SoLuong" type="number" />
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DonGia)
-                            </td>
-                            <td>
-                            chỉnh sửa ....
-                            </td>
-                        </tr>
-                    }
-                
-                </table>
+                 @Html.Partial("_BanAnPartialView/_CTHDPartial.cshtml")
             </div>
 
         </div>
@@ -326,6 +123,83 @@
                 }   
             };
             xhttp.open("GET", "/BanAn/ThemCTHD?IdHoaDon=" + IdHoaDon +"&IdBanAn=" + IdBanAn + "&IdLoaiMonAn=" + IdLoaiMonAn +"&IdMonAn=" + IdMonAn + "&SoLuong=" + SoLuong, true);
+            xhttp.send();
+
+        }
+
+        function TruSLTrongListMonAn(id)
+        {
+            var s=document.getElementById(id).value;
+            var sl=Number(s);
+            sl=sl-1;
+            if(sl<1)
+                sl=1;
+            document.getElementById(id).value=sl;
+        }
+        function CongSLTrongListMonAn(id)
+        {
+            var s=document.getElementById(id).value;
+            var sl=Number(s);
+            sl=sl+1;
+            if(sl>10)
+                sl=10;
+            document.getElementById(id).value=sl;
+        }
+
+        function TruSLTrongCTHD(id,IdHoaDon,IdMonAn)
+        {
+            var s=document.getElementById(id).value;        
+            var sl=Number(s);
+            sl=sl-1;
+            if(sl<1)
+                sl=1;
+             var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById(id).value=sl;  
+                    document.getElementById("laythanhtoan").value=this.responseText;
+                    document.getElementById("thanhtien").value=this.responseText;    
+                }   
+            };
+            xhttp.open("GET", "/BanAn/CapNhatSoLuongCTHD?IdHoaDon=" + IdHoaDon  +"&IdMonAn=" + IdMonAn + "&SoLuong=" + sl, true);
+            xhttp.send();
+                    
+        }
+
+        function CongSLTrongCTHD(id,IdHoaDon,IdMonAn)
+        {
+            var s=document.getElementById(id).value;
+            var sl=Number(s);
+            sl=sl+1;
+            if(sl>10)
+                sl=10;
+             var xhttp = new XMLHttpRequest();
+             xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById(id).value=sl;  
+                    document.getElementById("laythanhtoan").value=this.responseText;
+                    document.getElementById("thanhtien").value=this.responseText;    
+                }   
+            };
+            xhttp.open("GET", "/BanAn/CapNhatSoLuongCTHD?IdHoaDon=" + IdHoaDon  +"&IdMonAn=" + IdMonAn + "&SoLuong=" + sl, true);
+            xhttp.send();
+        }
+
+        function XoaCTHD(IdHoaDon,IdMonAn)
+        {
+            var xhttp = new XMLHttpRequest();
+            var IdHoaDon = document.getElementById("idhd").value;
+            var IdBanAn = document.getElementById("idba").value;
+            var IdLoaiMonAn = document.getElementById("ChonLoaiMonAn").value;
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("show_cthd").innerHTML = this.response;
+                    var s =document.getElementById("laythanhtoan").value;
+                    document.getElementById("thanhtien").value=s;
+                   
+                }   
+            };
+            xhttp.open("GET", "/BanAn/XoaCTHD?IdHoaDon=" + IdHoaDon +"&IdBanAn=" + IdBanAn + "&IdLoaiMonAn=" + IdLoaiMonAn +"&IdMonAn=" + IdMonAn, true);
             xhttp.send();
 
         }

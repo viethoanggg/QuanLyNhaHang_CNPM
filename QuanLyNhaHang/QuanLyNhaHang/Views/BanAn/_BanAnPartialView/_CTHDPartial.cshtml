@@ -18,13 +18,20 @@
                             @Html.DisplayFor(modelItem => item.TenMonAn)
                         </td>
                          <td>
-                           <input asp-for="@item.SoLuong" type="number" />
+                            <div class="form-group">
+                                <input type="button" value="-" onclick="TruSLTrongCTHD('CTHD_@item.IdHoaDon@item.IdMonAn','@item.IdHoaDon','@item.IdMonAn')" class="btn btn-primary">
+                                <input asp-for="@item.SoLuong" type="number" id="CTHD_@item.IdHoaDon@item.IdMonAn" style="padding:8px;width:80px" readonly/>
+                                <input type="button" value="+" onclick="CongSLTrongCTHD('CTHD_@item.IdHoaDon@item.IdMonAn','@item.IdHoaDon','@item.IdMonAn')" class="btn btn-primary">
+                            </div>
+                           
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DonGia)
                         </td>
                         <td>
-                           chỉnh sửa ....
+                            <div class="form-group">
+                                <input type="button" value="Xóa" onclick="XoaCTHD('@item.IdHoaDon','@item.IdMonAn')"  class="btn btn-danger" >
+                            </div>
                         </td>
                     </tr>
                 }

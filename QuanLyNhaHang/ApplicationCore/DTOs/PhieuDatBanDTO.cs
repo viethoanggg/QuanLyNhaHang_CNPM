@@ -13,6 +13,7 @@ namespace ApplicationCore.DTOs
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
+    using ApplicationCore.Entities;
 
     public  class PhieuDatBanDTO {
         public int Id { get; set; }
@@ -34,6 +35,8 @@ namespace ApplicationCore.DTOs
 
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
+
+        public virtual KhachHang KhachHang { get; set; }
 
     }
 }

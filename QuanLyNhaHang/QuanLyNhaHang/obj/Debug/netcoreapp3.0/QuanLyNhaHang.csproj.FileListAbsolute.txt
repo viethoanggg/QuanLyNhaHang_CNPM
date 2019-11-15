@@ -587,7 +587,6 @@ C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Edit.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Delete.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_CTHDPartial.cshtml.g.cs
-C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_TDPartial.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\HoaDon\Details.cshtml.g.cs
@@ -599,3 +598,6 @@ D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\R
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Delete.cshtml.g.cs
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Edit.cshtml.g.cs
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Index.cshtml.g.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_CreateHoaDonPartial.cshtml.g.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_HoaDonCreatedPartial.cshtml.g.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_ListMonAnPartial.cshtml.g.cs

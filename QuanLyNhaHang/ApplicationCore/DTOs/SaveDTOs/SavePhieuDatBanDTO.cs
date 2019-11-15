@@ -13,6 +13,7 @@ namespace ApplicationCore.DTOs.SaveDTOs
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
+    using ApplicationCore.Entities;
 
     public  class SavePhieuDatBanDTO {
         public int Id { get; set; }
@@ -35,6 +36,8 @@ namespace ApplicationCore.DTOs.SaveDTOs
 
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
+
+        public virtual KhachHang KhachHang { get; set; }
 
     }
 }
