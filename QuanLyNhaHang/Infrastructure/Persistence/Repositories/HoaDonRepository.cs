@@ -5,6 +5,8 @@ using System.Linq;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Data;
+using System.Threading.Tasks;
+using ApplicationCore.ModelsContainData.Models;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -14,7 +16,7 @@ namespace Infrastructure.Persistence.Repositories
         {
 
         }
-        public void ThemCTHD(int IdHoaDon, int IdMonAn, int SoLuong)
+        public async Task ThemCTHD(int IdHoaDon, int IdMonAn, int SoLuong)
         {
             ThucDon td = QLNHContext.ThucDons.Where(s => s.Id == IdMonAn).FirstOrDefault();
             ChiTietHoaDon chiTiet = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon == IdHoaDon && s.IdMonAn == IdMonAn).FirstOrDefault();
@@ -27,7 +29,7 @@ namespace Infrastructure.Persistence.Repositories
                     SoLuong = SoLuong,
                     DonGia = td.Gia * SoLuong
                 };
-                QLNHContext.ChiTietHoaDons.Add(ct);
+                await QLNHContext.ChiTietHoaDons.AddAsync(ct);
             }
             else
             {
@@ -86,6 +88,22 @@ namespace Infrastructure.Persistence.Repositories
             QLNHContext.ChiTietHoaDons.RemoveRange(list);
             Remove(hoaDon);
             return 1;
+        }
+        public IEnumerable<CTHDMD> GetListCTHDMD(int IdHoaDon)
+        {
+            var cts = GetListCTHD(IdHoaDon);
+            IEnumerable<CTHDMD> list = from s in cts
+                                       join t in QLNHContext.ThucDons
+                                       on s.IdMonAn equals t.Id
+                                       select new CTHDMD
+                                       {
+                                           IdHoaDon = s.IdHoaDon,
+                                           IdMonAn = s.IdMonAn,
+                                           TenMonAn = t.Ten,
+                                           SoLuong = s.SoLuong,
+                                           DonGia = s.DonGia
+                                       };
+            return list.ToList();
         }
         protected QLNHContext QLNHContext
         {

@@ -24,7 +24,7 @@
                             @Html.DisplayFor(modelItem => item.Ten)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Gia)
+                            <p id="GiaMonAn_@item.Id">@Html.DisplayFor(modelItem => item.Gia)</p>
                         </td>
                          <td> 
                             <input type="button" value="-" onclick="TruSLTrongListMonAn('TD_@item.Id')" class="btn btn-primary">

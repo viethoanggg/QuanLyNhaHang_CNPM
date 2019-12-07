@@ -1,42 +1,8 @@
 @model ApplicationCore.ModelsContainData.ViewModels.BanAnVM
-
 @{
-    ViewData["Title"] = "Quản lý bàn ăn";
+    Layout=null;   
 }
-<div class="row">
-    <div class="col-lg-2">
-        <p>
-            <a asp-action="Create"><i> + Create New </i></a>
-        </p>            
-    </div>
-   <div class="col-lg-7" ></div>
-    <div class="col-lg-3" style="padding:5px">
-        Trạng thái :
-        <select name="trangThai" onchange="LocTrangThai(this.value)" style="padding:5px">
-            <option value="">Tất cả</option>
-            <option value="Trống">Trống</option>
-            <option value="Đang phục vụ">Đang phục vụ</option>
-            <option value="Được đặt trước">Được đặt trước</option>
-        </select>
-
-    </div>
-</div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Danh sách bàn ăn <small>  </small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-
-                <div name="indexAjax" id="IndexAjax"> 
-                    <div class="x_content">
-
-                    <div class="row">
+                     <div class="row">
                       
                         @foreach( var item in Model.BanAns)
                         {
@@ -184,12 +150,3 @@
                           </div>
 
                       </div>
-                  </div>
-                </div>
-                 
-                </div>
-                <!-- /end div x-panel -->
-              </div>
-              <!-- /end div col -->
-            </div>
-            <!-- end div row -->

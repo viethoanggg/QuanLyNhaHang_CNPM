@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Net.Http;
-using System.Net.Mime;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices.ComTypes;
+using System.Threading.Tasks;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
@@ -40,11 +35,16 @@ namespace QuanLyNhaHang.Controllers
                 return true;
             }
         }
-        public IActionResult Index(int pageIndex = 1)
+        public IActionResult Index(string trangThai, int pageIndex = 1)
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
-            BanAnVM banAnVM = _services.GetBanAnVM(pageIndex);
+            BanAnVM banAnVM = _services.GetBanAnVM(trangThai, pageIndex);
+            return View(banAnVM);
+        }
+        public IActionResult IndexAjax(string trangThai, int pageIndex = 1)
+        {
+            BanAnVM banAnVM = _services.GetBanAnVM(trangThai, pageIndex);
             return View(banAnVM);
         }
         public IActionResult Create()
@@ -180,7 +180,7 @@ namespace QuanLyNhaHang.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateBill(int? IdPhieuDatBan, ServeVM vm) //[Bind("Id", "IdBanAn", "IdUser", "ThoiGianLap", "ThoiGianThanhToan", "ThanhTien", "TrangThai")]SaveHoaDonDTO SaveHoaDonDTO)
+        public IActionResult CreateBill(int? IdPhieuDatBan, ServeVM vm)
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
@@ -219,10 +219,7 @@ namespace QuanLyNhaHang.Controllers
                 return View("../Login/Index");
             if (id == null)
                 return RedirectToAction("Index");
-            //  System.DateTime day = DateTime.Now;
-            // string s = day.ToString("MM/dd/yyyy HH:mm:ss");
-            // HoaDon.ThoiGianThanhToan = DateTime.ParseExact(s, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-            //  HoaDonDTO.ThoiGianThanhToan = Convert.ToDateTime(day);
+
             int iduser = Convert.ToInt32(HttpContext.Session.GetString("IdCurrentUser"));
             _services.ThanhToan(id.Value, iduser);
             return RedirectToAction("Index");
@@ -252,12 +249,12 @@ namespace QuanLyNhaHang.Controllers
             return PartialView("_BanAnPartialView/_ListMonAnPartial", sv);
         }
 
-        public IActionResult ThemCTHD(int IdHoaDon, int IdLoaiMonAn, int IdBanAn, int IdMonAn, int SoLuong, int pageIndex = 1)
+        public async Task<IActionResult> ThemCTHD(int IdHoaDon, int IdLoaiMonAn, int IdBanAn, int IdMonAn, int SoLuong, int pageIndex = 1)
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
             ServeVM sv = null;
-            _services.ThemCTHD(IdHoaDon, IdMonAn, SoLuong);
+            await _services.ThemCTHD(IdHoaDon, IdMonAn, SoLuong);
             BanAnDTO baDTO = _services.GetBanAn(IdBanAn);
             HoaDonDTO HoaDon = _services.CapNhatThanhTien(IdHoaDon);
             SaveHoaDonDTO saveHoaDonDTO = _mapper.Map<HoaDonDTO, SaveHoaDonDTO>(HoaDon);
@@ -275,11 +272,11 @@ namespace QuanLyNhaHang.Controllers
             return PartialView("_BanAnPartialView/_CTHDPartial", sv);
         }
 
-        public int? CapNhatSoLuongCTHD(int IdHoaDon, int IdMonAn, int SoLuong)
+        public async Task<int?> CapNhatSoLuongCTHD(int IdHoaDon, int IdMonAn, int SoLuong)
         {
             if (KiemTraDangNhap() == true)
             {
-                _services.ThemCTHD(IdHoaDon, IdMonAn, SoLuong);
+                await _services.ThemCTHD(IdHoaDon, IdMonAn, SoLuong);
                 HoaDonDTO HoaDon = _services.CapNhatThanhTien(IdHoaDon);
                 return HoaDon.ThanhTien;
             }
@@ -292,7 +289,7 @@ namespace QuanLyNhaHang.Controllers
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
-                
+
             ServeVM sv = null;
             _services.DeleteCTHD(IdHoaDon, IdMonAn);
             BanAnDTO baDTO = _services.GetBanAn(IdBanAn);

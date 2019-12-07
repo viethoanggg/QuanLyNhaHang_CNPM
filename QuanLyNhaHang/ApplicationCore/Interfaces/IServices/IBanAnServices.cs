@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
@@ -10,7 +11,7 @@ namespace ApplicationCore.Interfaces.IServices
 {
     public interface IBanAnServices
     {
-        BanAnVM GetBanAnVM(int pageIndex);
+        BanAnVM GetBanAnVM(string trangThai, int pageIndex);
         BanAnDTO GetBanAn(int id);
         void Edit(SaveBanAnDTO banAn);
         int Delete(int id);
@@ -21,12 +22,12 @@ namespace ApplicationCore.Interfaces.IServices
         void ThanhToan(int IdHoaDon, int IdUser);
         IEnumerable<LoaiMonAnDTO> GetListLoaiMonAn();
         PaginatedList<ThucDonDTO> GetListMonAn(int? IdLoaiMonAn, int pageIndex);
-        void ThemCTHD(int IdHoaDon, int IdMonAn, int SoLuong);
+        Task ThemCTHD(int IdHoaDon, int IdMonAn, int SoLuong);
         IEnumerable<CTHDMD> GetListCTHDMD(int IdHoaDon);
         HoaDonDTO CapNhatThanhTien(int id);
         HoaDon GetHDById(int IdHoaDon);
         void SetTrangThaiPhieuDatBan(int Id);
         ThucDon GetMonAn(int IdMonAn);
-        void DeleteCTHD(int IdHoaDon,int IdMonAn);
+        void DeleteCTHD(int IdHoaDon, int IdMonAn);
     }
 }

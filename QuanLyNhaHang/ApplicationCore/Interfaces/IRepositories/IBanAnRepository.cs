@@ -6,7 +6,8 @@ namespace ApplicationCore.Interfaces.IRepositories
 {
     public interface IBanAnRepository:IRepository<BanAn>
     {
-        void Update(BanAn banAn);       
+        void Update(BanAn banAn);
+        void BanAn_Load();
     }
   
 }
