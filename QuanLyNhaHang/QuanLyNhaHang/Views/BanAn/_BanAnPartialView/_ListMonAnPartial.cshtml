@@ -1,0 +1,119 @@
+@model ApplicationCore.ModelsContainData.ViewModels.ServeVM
+@{
+    Layout=null;
+}
+
+            <table class="table table-stripe">
+                <tr>
+                    <th>
+                        Tên thức ăn
+                    </th>
+                    <th>
+                       Giá
+                    </th>
+                    <th>
+                        Số lượng
+                    </th>
+                    <th></th>
+                </tr>
+                
+                @foreach (var item in Model.ThucDons)
+                {
+                    <tr id="row_@item.Id">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ten)
+                        </td>
+                        <td>
+                            <p id="GiaMonAn_@item.Id">@Html.DisplayFor(modelItem => item.Gia)</p>
+                        </td>
+                         <td> 
+                            <input type="button" value="-" onclick="TruSLTrongListMonAn('TD_@item.Id')" class="btn btn-primary">
+                            <input name="SoLuong" value="1" type="number" id="TD_@item.Id" min="1" style="padding:8px;width:80px" readonly/>
+                            <input type="button" value="+" onclick="CongSLTrongListMonAn('TD_@item.Id')" class="btn btn-primary">
+                        </td>
+                        <td>
+                           <input type="button" value="Thêm" onclick="ThemCTHD('@item.Id','TD_@item.Id')"  class="btn btn-primary">
+                        </td>
+                    </tr>
+                }
+               
+            </table>
+            
+                @{
+                    var disNext= !Model.ThucDons.HasNext ? " visibility: hidden" : "";   
+                    var disPre= !Model.ThucDons.HasPrevious ? " visibility: hidden" : "";   
+                }
+             <span style="float:right"> 
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a asp-action="Serve"  class="page-link" style="@disPre"
+                        asp-route-pageIndex="@( Model.ThucDons.PageIndex - 1 )"
+                        asp-route-IdLoaiMonAn=""
+                        asp-route-IdBanAn="@Model.BanAn.Id"> Previous </a>
+                    </li>
+                    
+                @{
+                
+                    for(int i=1; i <= Model.ThucDons.TotalPages; i++)
+                    {
+                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                        if(Model.ThucDons.TotalPages>=8 && @i>=Model.ThucDons.PageIndex-2 && @i<=Model.ThucDons.PageIndex+2)
+                        {
+                            if(@i==Model.ThucDons.PageIndex-2 && @i>1)
+                            {
+                                <li class="page-item"><a class="page-link">...</a></li>
+                            }
+                            if(@i==Model.ThucDons.PageIndex)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                </li>   
+                            }
+                            else 
+                            {
+                                <li class="page-item">
+                                    <a class="page-link"
+                                    asp-action="Serve"
+                                    asp-route-pageIndex="@i"
+                                    asp-route-IdLoaiMonAn=""
+                                    asp-route-IdBanAn="@Model.BanAn.Id"> @i </a>
+                                </li>
+                            }
+                            if(@i==Model.ThucDons.PageIndex+2 && @i<Model.ThucDons.TotalPages)
+                            {
+                                <li class="page-item"><a class="page-link">...</a></li>
+                            }
+                        }
+                        else if( Model.ThucDons.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                        {
+                            if(@i==Model.ThucDons.PageIndex)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                </li>   
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link"
+                                    asp-action="Serve"
+                                    asp-route-pageIndex="@i"
+                                    asp-route-IdLoaiMonAn=""
+                                    asp-route-IdBanAn="@Model.BanAn.Id"> @i </a>
+                                </li>
+                            }
+                        }
+                    
+                    
+                    }
+                
+                }
+
+                    <li class="page-item">
+                        <a asp-action="Serve"  class="page-link" style="@disNext"
+                        asp-route-pageIndex="@( Model.ThucDons.PageIndex + 1 )"
+                        asp-route-IdLoaiMonAn=""
+                        asp-route-IdBanAn="@Model.BanAn.Id"> Next </a>
+                    </li>
+                </ul>
+            </span>

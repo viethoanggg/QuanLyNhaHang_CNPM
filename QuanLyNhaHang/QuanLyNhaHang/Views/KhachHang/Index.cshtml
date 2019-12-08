@@ -1,0 +1,48 @@
+@model ApplicationCore.ModelsContainData.ViewModels.KhachHangVM
+
+@{
+    ViewData["Title"] = "Quản lý khách hàng";
+}
+
+<p>
+    <a asp-action="Create">+ Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên
+            </th>
+            <th>
+               SDT
+            </th>
+            <th>
+                Dịa Chỉ
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+@foreach (var item in Model.KhachHangs) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="Create" asp-controller="PhieuDatBan" asp-route-IdKhachHang="@item.Id">Lập phiếu đặt bàn</a> 
+            </td>
+        </tr>
+        
+        }
+    </tbody>
+</table>

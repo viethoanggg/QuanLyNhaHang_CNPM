@@ -1,0 +1,152 @@
+@model ApplicationCore.ModelsContainData.ViewModels.BanAnVM
+@{
+    Layout=null;   
+}
+                     <div class="row">
+                      
+                        @foreach( var item in Model.BanAns)
+                        {
+                            var loai="";
+                            if(@item.LoaiBanAn=="4 người")
+                            {
+                                loai="table.jpg";
+                            }
+                            else if(@item.LoaiBanAn=="2 người")
+                            {
+                                loai = "SingleTable.jpg";
+                            }
+                            else if(@item.LoaiBanAn=="8 người")
+                            {
+                                loai="8_Table.jpg";
+                            }
+                            else
+                            {
+                                loai="table.jpg";
+                            }
+                            <div class="col-md-55">
+                                <div class="thumbnail" style="box-shadow:2px 2px 10px #888888;">
+                                <div class="image view view-first">
+                                    <img style="width: 100%; display: block; margin-top:10px" src="~/Images/@loai" alt="image" />
+                                    <div class="mask">
+                                    <p>@item.GhiChu</p>
+                                    <div class="tools tools-bottom">
+                                        <a asp-action="Serve" asp-controller="BanAn" title="Phục vụ" asp-route-IdBanAn="@item.Id"><i class="fa fa-link"></i></a>
+                                        <a asp-action="Edit" asp-controller="BanAn" title="Sửa thông tin bàn ăn" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                                        <a asp-action="Delete" asp-controller="BanAn" title="Xóa bàn ăn" asp-route-id="@item.Id"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <p>
+                                        <strong style="color:black">Bàn số : <i style="color:blue">@item.Id</i></strong>
+                                        <br/>
+                                        <strong style="color:black">Loại</strong> :<i style="color:blue"><strong>@item.LoaiBanAn</strong></i> 
+                                        <br/>
+                                        <strong style="color:black">Trạng thái</strong> : 
+                                        @if(@item.TrangThai=="Trống")
+                                        {
+                                            <i style="color:green"><strong>@item.TrangThai</strong></i>
+                                        }
+                                        else  if(@item.TrangThai=="Đang phục vụ")
+                                        {
+                                            <i style="color:red"><strong>@item.TrangThai</strong></i>
+                                        }
+                                        else
+                                        {
+                                            <i style="color:rgb(54,56,59)"><strong>@item.TrangThai</strong></i>
+                                        }
+                                    </P>
+    
+                                </div>
+                                </div>
+                            </div>
+                        }
+                      
+                    </div>
+                    <!-- /end div row -->
+                  </div>
+                  <!-- /end div x-content-->
+                  <div class="x_content">
+                      <div class=row>
+                          <div class="col-md-12">
+                            <span style="float:right"> 
+                                @{
+                                    var disNext= !Model.BanAns.HasNext ? " visibility: hidden" : "";   
+                                    var disPre= !Model.BanAns.HasPrevious ? " visibility: hidden" : "";   
+                                }
+
+                                
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disPre"
+                                        asp-route-pageIndex="@( Model.BanAns.PageIndex - 1 )"> Previous </a>
+                                    </li>
+                                    
+                                @{
+                                
+                                    for(int i=1; i <= Model.BanAns.TotalPages; i++)
+                                    {
+                                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                                        if(Model.BanAns.TotalPages>=8 && @i>=Model.BanAns.PageIndex-2 && @i<=Model.BanAns.PageIndex+2)
+                                        {
+                                            if(@i==Model.BanAns.PageIndex-2 && @i>1)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                            if(@i==Model.BanAns.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else 
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-sort="@ViewBag.CurrentSort"
+                                                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                                                </li>
+                                            }
+                                            if(@i==Model.BanAns.PageIndex+2 && @i<Model.BanAns.TotalPages)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                        }
+                                        else if( Model.BanAns.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                                        {
+                                            if(@i==Model.BanAns.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-sort="@ViewBag.CurrentSort"
+                                                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                                                </li>
+                                            }
+                                        }
+                                    
+                                    
+                                    }
+                                
+                                }
+
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disNext"
+                                        asp-route-pageIndex="@( Model.BanAns.PageIndex + 1 )"
+                                        asp-route-sort="@ViewBag.CurrentSort"
+                                        asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
+                                    </li>
+                                </ul>
+                            </span>
+                          </div>
+
+                      </div>

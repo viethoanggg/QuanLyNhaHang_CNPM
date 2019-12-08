@@ -1,0 +1,56 @@
+@model ApplicationCore.DTOs.SaveDTOs.SaveHoaDonDTO
+@using ApplicationCore.DTOs;
+@{
+    ViewData["Title"] = "Sửa hóa đơn";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="IdBanAn" class="control-label"></label>
+                <select asp-for="IdBanAn" class="form-control">
+                    @foreach( var item in ViewData["ListBanAn"] as IEnumerable<BanAnDTO> )
+                    {
+                        <option value="@item.Id">@item.Id</option>
+                    }
+                </select>
+                <span asp-validation-for="IdBanAn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdUser" class="control-label"></label>
+                <input asp-for="IdUser" class="form-control" type="hidden"/>
+                <input value="@ViewBag.UserName" class="form-control" readonly/>
+                <span asp-validation-for="IdUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianLap" class="control-label"></label>
+                <input asp-for="ThoiGianLap" class="form-control" readonly/>
+                <span asp-validation-for="ThoiGianLap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianThanhToan" class="control-label" type="hidden"></label>
+                <input asp-for="ThoiGianThanhToan" class="form-control" type="hidden" readonly/>
+                <span asp-validation-for="ThoiGianThanhToan" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThanhTien" class="control-label"></label>
+                <input asp-for="ThanhTien" class="form-control" readonly/>
+                <span asp-validation-for="ThanhTien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrangThai" class="control-label"></label>
+                <input asp-for="TrangThai" class="form-control" readonly/>
+                <span asp-validation-for="TrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

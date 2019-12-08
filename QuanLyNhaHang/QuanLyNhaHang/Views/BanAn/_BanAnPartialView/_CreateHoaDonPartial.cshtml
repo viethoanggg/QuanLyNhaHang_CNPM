@@ -1,0 +1,36 @@
+@model ApplicationCore.ModelsContainData.ViewModels.ServeVM
+@{
+    Layout=null;
+}
+
+        <form asp-action="CreateBill" asp-controller="BanAn" method="post">
+
+            <input asp-for="HoaDon.ThoiGianThanhToan" type="hidden"/>
+            <input asp-for="HoaDon.ThanhTien" type="hidden"/>
+            
+                <div class="form-group">
+                    <label asp-for="HoaDon.IdBanAn" class="control-label"></label>
+                    <input asp-for="HoaDon.IdBanAn" class="form-control"/>
+                    <span asp-validation-for="HoaDon.IdBanAn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoaDon.IdUser" class="control-label"></label>
+                    <input asp-for="HoaDon.IdUser" class="form-control" type="hidden"/>
+                    <input value="@ViewBag.TenCurrentUser" class="form-control" type="text" readonly/>
+                    <span asp-validation-for="HoaDon.IdUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoaDon.ThoiGianLap" class="control-label"></label>
+                    <input asp-for="HoaDon.ThoiGianLap" class="form-control" readonly/>
+                    <span asp-validation-for="HoaDon.ThoiGianLap" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoaDon.TrangThai" class="control-label"></label>
+                    <input asp-for="HoaDon.TrangThai" class="form-control" readonly/>
+                    <span asp-validation-for="HoaDon.TrangThai" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="IdPhieuDatBan" class="form-control" type="hidden"/>
+                    <input type="submit" value="Phục vụ" class="btn btn-primary" style="float:right"/>
+                </div>
+            </form> 

@@ -1,0 +1,50 @@
+@model ApplicationCore.DTOs.SaveDTOs.SaveThucDonDTO
+@using ApplicationCore.DTOs;
+@{
+    ViewBag.Title = "Thêm món ăn";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="ThucDon" method="post">
+            
+            <div class="form-group">
+                <label asp-for="IdLoaiMonAn" class="control-label"></label>
+                <select asp-for="IdLoaiMonAn" id="IdLoaiMonAn" class="form-control">
+                        @foreach (LoaiMonAnDTO s in ViewData["ListLoaiMonAn"] as IEnumerable<LoaiMonAnDTO>)
+                        {
+                            <option value="@s.Id"> @s.Ten </option>
+                        }
+                </select>
+                <span asp-validation-for="IdLoaiMonAn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ten" class="control-label"></label>
+                <input  asp-for="Ten" class="form-control" />
+                <span asp-validation-for="Ten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gia" class="control-label"></label>
+                <input asp-for="Gia" class="form-control" />
+                <span asp-validation-for="Gia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

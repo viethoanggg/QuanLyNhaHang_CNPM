@@ -1,0 +1,16 @@
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.deps.json
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.pdb
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfo.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.dll
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.pdb
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.deps.json
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.dll
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.pdb
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.csprojAssemblyReference.cache
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfoInputs.cache
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfo.cs
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.dll
+D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.pdb
