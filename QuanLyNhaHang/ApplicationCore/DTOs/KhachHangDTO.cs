@@ -7,16 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationCore.DTOs {
+namespace ApplicationCore.DTOs
+{
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
 
-    public class KhachHangDTO  {
+    public class KhachHangDTO
+    {
 
         public int Id { get; set; }
-        
+
         [Display(Name = "Tên khách hàng")]
         [Required]
         public string Ten { get; set; }
@@ -26,7 +28,6 @@ namespace ApplicationCore.DTOs {
         public string SDT { get; set; }
 
         [Display(Name = "Địa chỉ")]
-        [Required]
         public string DiaChi { get; set; }
 
         // public DiaChiNha DiaChi { get; set; }

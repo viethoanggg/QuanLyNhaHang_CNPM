@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ApplicationCore.Entities;
+using ApplicationCore.ModelsContainData.Models;
 
 namespace ApplicationCore.Interfaces.IRepositories
 {
@@ -7,7 +8,7 @@ namespace ApplicationCore.Interfaces.IRepositories
     {
 
         IEnumerable<LoaiMonAn> GetLoaiThucAns();
-        IEnumerable<ThucDon> GetClassifiedFoods(IEnumerable<ThucDon> source, string tenL);
+        IEnumerable<ThucDonMD> GetListThucDonMD(IEnumerable<ThucDon> source);
 
         void Update(ThucDon td);
 

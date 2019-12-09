@@ -10,6 +10,7 @@ using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.ModelsContainData.ViewModels;
+using ApplicationCore.Specification;
 using AutoMapper;
 namespace ApplicationCore.Services
 {
@@ -22,31 +23,15 @@ namespace ApplicationCore.Services
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
         }
-        public readonly int pageSize = 7;
-        public HoaDonVM GetHoaDonVM(int pageIndex)
+        public IEnumerable<HoaDonMD> GetListHoaDonMD(int IdBanAn, string trangThai, int pageIndex, int pageSize, out int count)
         {
-            Expression<Func<HoaDon, bool>> predicate = s => true;
-            IEnumerable<HoaDon> hoaDons = _unitOfWork.HoaDons.GetAll();
-            IEnumerable<NguoiDung> nguoiDungs = _unitOfWork.NguoiDungs.GetAll();
-            IEnumerable<HoaDonMD> hoaDonMDs = from h in hoaDons
-                                              join nd in nguoiDungs
-                                              on h.IdUser equals nd.Id
-                                              select new HoaDonMD
-                                              {
-                                                  Id = h.Id,
-                                                  IdBanAn = h.IdBanAn,
-                                                  IdUser = h.IdUser,
-                                                  TenNhanVien = nd.Ten,
-                                                  ThoiGianLap = h.ThoiGianLap,
-                                                  ThoiGianThanhToan = h.ThoiGianThanhToan,
-                                                  ThanhTien = h.ThanhTien,
-                                                  TrangThai = h.TrangThai
-                                              };
+            HoaDonSpecification hoaDonSpecFilter = new HoaDonSpecification(IdBanAn, trangThai, pageIndex, pageSize);
+            HoaDonSpecification hoaDonSpec = new HoaDonSpecification(IdBanAn, trangThai);
+            IEnumerable<HoaDon> hoaDons = _unitOfWork.HoaDons.FindSpec(hoaDonSpecFilter);
+            count = _unitOfWork.HoaDons.Count(hoaDonSpec);
+            IEnumerable<HoaDonMD> hoaDonMDs = _unitOfWork.HoaDons.GetListHoaDonMD(hoaDons);
+            return new PaginatedList<HoaDonMD>(hoaDonMDs, pageIndex, pageSize, count);
 
-            return new HoaDonVM
-            {
-                ListHoaDonMD = PaginatedList<HoaDonMD>.Create(hoaDonMDs, pageIndex, pageSize)
-            };
         }
         public int Delete(int IdHoaDon)
         {

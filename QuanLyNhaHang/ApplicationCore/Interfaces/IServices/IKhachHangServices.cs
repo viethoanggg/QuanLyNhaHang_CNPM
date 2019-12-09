@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.ModelsContainData.ViewModels;
@@ -6,11 +7,12 @@ namespace ApplicationCore.Interfaces.IServices
 {
     public interface IKhachHangServices
     {
-        KhachHangVM GetKhachHangVM(int pageIndex);
+        IEnumerable<KhachHangDTO> GetlistKhachHang(string Ten, string SDT, string DiaChi, int pageIndex, int pageSize, out int count);
         KhachHangDTO GetKhachHang(int id);
+        SaveKhachHangDTO GetSaveKhachHangDTO(int id);
         void Edit(SaveKhachHangDTO khachHang);
         void Create(SaveKhachHangDTO khachHang);
-        void Delete(int id);
+        int Delete(int id);
 
 
     }

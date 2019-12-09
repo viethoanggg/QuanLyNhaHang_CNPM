@@ -7,7 +7,7 @@ namespace ApplicationCore.Interfaces.IServices
 {
     public interface ILoaiMonAnServices
     {
-        LoaiMonAnVM GetLoaiMonAnVM(int pageIndex);
+        IEnumerable<LoaiMonAnDTO> GetListLoaiMonAn(string searchString, int pageIndex, int pageSize, out int count);
         LoaiMonAnDTO GetLoaiMonAn(int id);
         void Edit(SaveLoaiMonAnDTO loaiMonAn);
         void Delete(int id);

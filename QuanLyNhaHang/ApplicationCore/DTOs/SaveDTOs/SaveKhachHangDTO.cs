@@ -26,7 +26,7 @@ namespace ApplicationCore.DTOs.SaveDTOs {
         public string SDT { get; set; }
 
         [Display(Name = "Địa chỉ")]
-        [Required]
+        // [Required]
         public string DiaChi { get; set; }
         // public DiaChiNha DiaChi { get; set; }
 

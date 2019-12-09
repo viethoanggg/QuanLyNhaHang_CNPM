@@ -9,6 +9,7 @@ using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.ModelsContainData.ViewModels;
+using ApplicationCore.Specification;
 using AutoMapper;
 
 namespace ApplicationCore.Services
@@ -17,25 +18,21 @@ namespace ApplicationCore.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly int pageSize = 5;
+
 
         public PhieuDatBanServices(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
         }
-        public PhieuDatBanVM GetPhieuDatBanVM(int pageIndex)
+        public IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(int IdBanAn, string trangThai, int pageIndex, int pageSize, out int count)
         {
-            _unitOfWork.PhieuDatBans.CapNhatAllPhieuDatBan();
-            Expression<Func<PhieuDatBan, bool>> predicate = s => true;
-            IEnumerable<PhieuDatBan> phieuDatBans = _unitOfWork.PhieuDatBans.Find(predicate);
-
+            PhieuDatBanSpecification phieuDatBanSpecFilter = new PhieuDatBanSpecification(IdBanAn, trangThai, pageIndex, pageSize);
+            PhieuDatBanSpecification phieuDatBanSpec = new PhieuDatBanSpecification(IdBanAn, trangThai);
+            count = _unitOfWork.PhieuDatBans.Count(phieuDatBanSpec);
+            IEnumerable<PhieuDatBan> phieuDatBans = _unitOfWork.PhieuDatBans.FindSpec(phieuDatBanSpecFilter);
             IEnumerable<PhieuDatBanMD> phieuDatBanMDs = _unitOfWork.PhieuDatBans.GetListPhieuDatBanMD(phieuDatBans);
-
-            return new PhieuDatBanVM
-            {
-                PhieuDatBans = PaginatedList<PhieuDatBanMD>.Create(phieuDatBanMDs, pageIndex, pageSize)
-            };
+            return phieuDatBanMDs;
         }
 
         public PhieuDatBanDTO GetById(int Id)

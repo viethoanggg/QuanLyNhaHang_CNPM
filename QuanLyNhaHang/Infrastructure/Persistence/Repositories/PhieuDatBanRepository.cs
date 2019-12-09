@@ -8,6 +8,7 @@ using ApplicationCore.Interfaces.IRepositories;
 using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.ModelsContainData.ViewModels;
 using Infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -52,20 +53,19 @@ namespace Infrastructure.Persistence.Repositories
         }
         public IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(IEnumerable<PhieuDatBan> phieuDatBans)
         {
-            IEnumerable<PhieuDatBanMD> phieuDatBanMDs = from s in phieuDatBans
-                                                        join t in QLNHContext.KhachHangs
-                                                        on s.IdKhachHang equals t.Id
-                                                        select new PhieuDatBanMD
-                                                        {
-                                                            Id = s.Id,
-                                                            IdBanAn = s.IdBanAn,
-                                                            IdKhachHang = s.IdKhachHang,
-                                                            TenKhachHang = t.Ten,
-                                                            ThoiGianDat = s.ThoiGianDat,
-                                                            TrangThai = s.TrangThai,
-                                                            GhiChu = s.GhiChu
 
-                                                        };
+            IEnumerable<PhieuDatBanMD> phieuDatBanMDs = phieuDatBans.Join(QLNHContext.KhachHangs, s => s.IdKhachHang, t => t.Id,
+                                                                    (s, t) => new PhieuDatBanMD
+                                                                    {
+                                                                        Id = s.Id,
+                                                                        IdBanAn = s.IdBanAn,
+                                                                        IdKhachHang = s.IdKhachHang,
+                                                                        TenKhachHang = t.Ten,
+                                                                        ThoiGianDat = s.ThoiGianDat,
+                                                                        TrangThai = s.TrangThai,
+                                                                        GhiChu = s.GhiChu
+
+                                                                    });
             return phieuDatBanMDs;
 
         }

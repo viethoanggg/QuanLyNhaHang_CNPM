@@ -29,8 +29,8 @@ namespace ApplicationCore.Services
         }
         public BanAnVM GetBanAnVM(string trangThai, int pageIndex = 1)
         {
-            BanAnSpecification banAnSpecFilter = new BanAnSpecification(trangThai);
-            BanAnSpecification banAnSpec = new BanAnSpecification(trangThai, pageIndex, pageSize);
+            BanAnSpecification banAnSpecFilter = new BanAnSpecification(trangThai, pageIndex, pageSize);
+            BanAnSpecification banAnSpec = new BanAnSpecification(trangThai);
             int count = _unitOfWork.BanAns.Count(banAnSpec);
             var banAns = _unitOfWork.BanAns.FindSpec(banAnSpecFilter);
             _unitOfWork.BanAns.BanAn_Load();
@@ -106,7 +106,7 @@ namespace ApplicationCore.Services
         public void ThanhToan(int IdHoaDon, int IdUser)
         {
             HoaDon HoaDon = _unitOfWork.HoaDons.GetById(IdHoaDon);
-            HoaDon.TrangThai = "Đã thanh toán";
+            HoaDon.TrangThai = "Thanh toán xong";
             System.DateTime day = DateTime.Now;
             HoaDon.ThoiGianThanhToan = Convert.ToDateTime(day);
             HoaDon.IdUser = IdUser;
@@ -128,6 +128,7 @@ namespace ApplicationCore.Services
         }
         public void SetTrangThaiPhieuDatBan(int Id)
         {
+            // update phiếu đặt bàn thành xử lý xong nếu có phiếu đặt bàn đặt cho bàn được chọn khi bấm phục vụ
             PhieuDatBan p = new PhieuDatBan();
             if (Id == 0)
             {
@@ -150,7 +151,7 @@ namespace ApplicationCore.Services
 
             if (p.Id != 0)
             {
-                p.TrangThai = "Đã xử lý";
+                p.TrangThai = "Xử lý xong";
                 _unitOfWork.PhieuDatBans.Update(p);
             }
 

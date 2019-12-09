@@ -10,16 +10,19 @@ using ApplicationCore.ModelsContainData.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QuanLyNhaHang.Services.Interfaces;
 
 namespace QuanLyNhaHang.Controllers
 {
     public class PhieuDatBanController : Controller
     {
         private readonly IPhieuDatBanServices _services;
+        private readonly IPhieuDatBanIndexVMServices _servicesIndexVM;
         private readonly IMapper _mapper;
-        public PhieuDatBanController(IPhieuDatBanServices services, IMapper mapper)
+        public PhieuDatBanController(IPhieuDatBanServices services, IPhieuDatBanIndexVMServices servicesIndexVM, IMapper mapper)
         {
             this._services = services;
+            this._servicesIndexVM = servicesIndexVM;
             this._mapper = mapper;
         }
 
@@ -37,11 +40,42 @@ namespace QuanLyNhaHang.Controllers
             }
         }
 
-        public IActionResult Index(int pageIndex = 1)
+        public IActionResult Index(int idBanAn, string trangThai, string currentSort, string currentFilterIdBanAn, string currentFilterTrangThai, int pageIndex = 1)
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
-            PhieuDatBanVM vm = _services.GetPhieuDatBanVM(pageIndex);
+
+            if (String.IsNullOrEmpty(idBanAn.ToString()))
+                idBanAn = 0;
+            if (!idBanAn.Equals(0))
+            {
+                pageIndex = 1;
+            }
+            else if (!String.IsNullOrEmpty(currentFilterIdBanAn))
+            {
+                idBanAn = Convert.ToInt32(currentFilterIdBanAn.ToString());
+            }
+
+            if (!String.IsNullOrEmpty(trangThai))
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                trangThai = currentFilterTrangThai;
+            }
+            ViewBag.CurrentFilterTrangThai = trangThai;
+            ViewBag.CurrentFilterIdBanAn = idBanAn;
+
+            if (String.IsNullOrEmpty(currentSort))
+                currentSort = "BanAn_DESC";
+            ViewBag.CurrentSortIdBanAn = currentSort.Equals("BanAn_DESC") ? "BanAn_ASC" : "BanAn_DESC";
+            ViewBag.CurrentSortTrangThai = currentSort.Equals("TrangThai_DESC") ? "TrangThai_ASC" : "TrangThai_DESC";
+            ViewBag.CurrentSortThoiGianDat = currentSort.Equals("ThoiGianDat_DESC") ? "ThoiGianDat_ASC" : "ThoiGianDat_DESC";
+            ViewBag.CurrentSortTenKhachHang = currentSort.Equals("TenKhachHang_DESC") ? "TenKhachHang_ASC" : "TenKhachHang_DESC";
+            
+            ViewBag.CurrentSort = currentSort;
+            PhieuDatBanVM vm = _servicesIndexVM.GetPhieuDatBanVM(currentSort, idBanAn, trangThai, pageIndex);
             return View(vm);
         }
 
@@ -235,7 +269,7 @@ namespace QuanLyNhaHang.Controllers
             if (id == null)
                 return RedirectToAction("Index");
             PhieuDatBanDTO pDTO = _services.GetById(id.Value);
-            
+
             if (pDTO == null)
                 return RedirectToAction("Index");
             KhachHang kh = _services.GetKhachHang(pDTO.IdKhachHang);

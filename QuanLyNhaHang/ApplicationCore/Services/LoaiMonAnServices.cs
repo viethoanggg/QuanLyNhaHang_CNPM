@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net.Mime;
 using System;
 using System.Linq.Expressions;
@@ -10,6 +11,7 @@ using ApplicationCore.DTOs;
 using System.Collections.Generic;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
+using ApplicationCore.Specification;
 
 namespace ApplicationCore.Services
 {
@@ -17,28 +19,26 @@ namespace ApplicationCore.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly int pageSize=10;
-        public LoaiMonAnServices(IUnitOfWork unitOfWork,IMapper mapper)
+        // private readonly int pageSize = 10;
+        public LoaiMonAnServices(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
         }
-        public LoaiMonAnVM GetLoaiMonAnVM(int pageIndex=1)
+        public IEnumerable<LoaiMonAnDTO> GetListLoaiMonAn(string searchString, int pageIndex, int pageSize, out int count)
         {
-            Expression<Func<LoaiMonAn, bool>> predicate = m => true;
-            var loaiMonAns = _unitOfWork.LoaiMonAns.Find(predicate);
+            LoaiMonAnSpecification LoaiMonAnSpecFilter = new LoaiMonAnSpecification(searchString, pageIndex, pageSize);
+            var loaiMonAns = _unitOfWork.LoaiMonAns.FindSpec(LoaiMonAnSpecFilter);
+            count = _unitOfWork.LoaiMonAns.Count(new LoaiMonAnSpecification(searchString));
 
-            IEnumerable<LoaiMonAnDTO> loaiMonAnDTOs=_mapper.Map<IEnumerable<LoaiMonAn>,IEnumerable<LoaiMonAnDTO>> (loaiMonAns);
-            return new LoaiMonAnVM
-            {
-                LoaiMonAns = PaginatedList<LoaiMonAnDTO>.Create(loaiMonAnDTOs, pageIndex, pageSize)
-            };
+            IEnumerable<LoaiMonAnDTO> loaiMonAnDTOs = _mapper.Map<IEnumerable<LoaiMonAn>, IEnumerable<LoaiMonAnDTO>>(loaiMonAns);
+            return loaiMonAnDTOs;
         }
 
         public LoaiMonAnDTO GetLoaiMonAn(int id)
         {
             LoaiMonAn loaiMonAn = _unitOfWork.LoaiMonAns.GetById(id);
-            if(loaiMonAn==null)
+            if (loaiMonAn == null)
             {
                 return null;
             }
@@ -60,9 +60,9 @@ namespace ApplicationCore.Services
         }
         public void Create(SaveLoaiMonAnDTO SaveLoaiMonAnDTO)
         {
-            if(SaveLoaiMonAnDTO==null)
+            if (SaveLoaiMonAnDTO == null)
                 return;
-            LoaiMonAn loaiMonAn = _mapper.Map<SaveLoaiMonAnDTO,LoaiMonAn>(SaveLoaiMonAnDTO);
+            LoaiMonAn loaiMonAn = _mapper.Map<SaveLoaiMonAnDTO, LoaiMonAn>(SaveLoaiMonAnDTO);
             _unitOfWork.LoaiMonAns.Add(loaiMonAn);
             _unitOfWork.Complete();
         }

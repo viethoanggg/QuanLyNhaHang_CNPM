@@ -13,117 +13,92 @@ using Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QuanLyNhaHang.Services.Interfaces;
 
-namespace QuanLyNhaHang.Controllers {
-    public class ThucDonController : Controller {
+namespace QuanLyNhaHang.Controllers
+{
+    public class ThucDonController : Controller
+    {
         // GET: QuanLy/ThucDon
         private readonly IThucDonServices _services;
+        private readonly IThucDonIndexVMServices _servicesIndexVM;
         private readonly IMapper _mapper;
 
-        public bool KiemTraDangNhap () {
-            if (String.IsNullOrEmpty (HttpContext.Session.GetString ("TenDangNhapCurrentUser"))) {
+        public bool KiemTraDangNhap()
+        {
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("TenDangNhapCurrentUser")))
+            {
                 return false;
-            } else {
-                ViewBag.IdCurrentUser = HttpContext.Session.GetString ("IdCurrentUser").ToString ();
-                ViewBag.TenCurrentUser = HttpContext.Session.GetString ("TenCurrentUser").ToString ();
+            }
+            else
+            {
+                ViewBag.IdCurrentUser = HttpContext.Session.GetString("IdCurrentUser").ToString();
+                ViewBag.TenCurrentUser = HttpContext.Session.GetString("TenCurrentUser").ToString();
                 return true;
             }
         }
-        public ThucDonController (IThucDonServices services, IMapper mapper) {
+        public ThucDonController(IThucDonServices services, IThucDonIndexVMServices servicesIndexVM, IMapper mapper)
+        {
             _services = services;
+            _servicesIndexVM = servicesIndexVM;
             _mapper = mapper;
         }
-        public ActionResult Index (string sort, string searchString, string currentFilter, string tenLoaiMonAn, int pageIndex = 1) {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
-            //     if (String.IsNullOrEmpty(HttpContext.Session.GetString("CurrentUser")))
-            //     {
-            //         return View("../Login/Index");
-            //     }
+        public ActionResult Index(string searchString, string searchStringGiaTu, string searchStringGiaDen, string currentSort, string currentFilter, int pageIndex = 1)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
 
-            //     var list = from s in context.ThucDons join t in context.LoaiMonAns
-            //     on s.IdLoaiMonAn equals t.Id
-            //     select new ThucDonMD {
-            //     Id = s.Id,
-            //     TenLoaiMonAn = t.Ten,
-            //     Ten = s.Ten,
-            //     Gia = s.Gia
-            //     };
+            if (String.IsNullOrEmpty(currentSort))
+                currentSort = "TenMonAn_DESC";
 
-            //     if(searchString !=null)
-            //         pageIndex = 1;
-            //     else
-            //         searchString = currentFilter;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                pageIndex = 1;
+            }
+            else
+                searchString = currentFilter;
 
-            //     ViewBag.CurrentFilter = searchString;
-
-            //     if(!String.IsNullOrEmpty(searchString))
-            //     {
-            //         list = list.Where(s => s.Ten.Contains(searchString.ToLower()) || s.TenLoaiMonAn.Contains(searchString.ToLower()));
-            //     }
-
-            //     if (string.IsNullOrEmpty (sort))
-            //         sort = "loai_asc";
-            //     ViewBag.CurrentSort = sort;
-
-            //     ViewBag.LoaiSort = sort == "loai_desc" ? "loai_asc" : "loai_desc";
-            //     ViewBag.TenThucAnSort = sort == "tenthucan_desc" ? "tenthucan_asc" : "tenthucan_desc";
-            //     ViewBag.GiaSort = sort == "gia_desc" ? "gia_asc" : "gia_desc";
-            //     switch (sort) {
-            //         case "loai_desc":
-            //             list = list.OrderByDescending (s => s.TenLoaiMonAn);
-            //             break;
-            //         case "loai_asc":
-            //             list = list.OrderBy (s => s.TenLoaiMonAn);
-            //             break;
-            //         case "tenthucan_desc":
-            //             list = list.OrderByDescending (s => s.Ten);
-            //             break;
-            //         case "tenthucan_asc":
-            //             list = list.OrderBy (s => s.Ten);
-            //             break;
-            //         case "gia_desc":
-            //             list = list.OrderByDescending (s => s.Gia);
-            //             break;
-            //         case "gia_asc":
-            //             list = list.OrderBy (s => s.Gia);
-            //             break;
-            //         default:
-            //             list = list.OrderBy (s => s.TenLoaiMonAn);
-            //             break;
-            //     }
-            //   //  thucDonVM = new ThucDonVM ();
-            //   //  thucDonVM.ThucDons = PaginatedList<ThucDonMD>.Create (list.ToList (), pageIndex, pageSize);
-
-            //     return View (PaginatedList<ThucDonMD>.Create(list.ToList(), pageIndex, pageSize));
-            ThucDonVM vm = _services.GetThucDonVM (sort, searchString, currentFilter, tenLoaiMonAn, pageIndex);
-            return View (vm);
+            ViewBag.CurrentSortTenMonAn = currentSort.Equals("TenMonAn_DESC") ? "TenMonAn_ASC" : "TenMonAn_DESC";
+            ViewBag.CurrentSortTenLoaiMonAn = currentSort.Equals("TenLoaiMonAn_DESC") ? "TenLoaiMonAn_ASC" : "TenLoaiMonAn_DESC";
+            ViewBag.CurrentSortGia = currentSort.Equals("Gia_DESC") ? "Gia_ASC" : "Gia_DESC";
+            ViewBag.CurrentSort = currentSort;
+            ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentFilterGiaTu = searchStringGiaTu;
+            ViewBag.CurrentFilterGiaDen = searchStringGiaDen;
+            ThucDonVM vm = _servicesIndexVM.GetThucDonVM(searchString, searchStringGiaTu, searchStringGiaDen, currentSort, pageIndex);
+            return View(vm);
         }
-        public ActionResult Create () {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
-            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns ();
-            return View ();
+        public ActionResult Create()
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
+            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Create (SaveThucDonDTO saveThucDonDTO) {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
-            if (!ModelState.IsValid) {
-                ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns ();
-                return View (saveThucDonDTO);
-            } else {
-                _services.Create (saveThucDonDTO);
+        public ActionResult Create(SaveThucDonDTO saveThucDonDTO)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
+            if (!ModelState.IsValid)
+            {
+                ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
+                return View(saveThucDonDTO);
             }
-            return RedirectToAction ("Index");
+            else
+            {
+                _services.Create(saveThucDonDTO);
+            }
+            return RedirectToAction("Index");
 
         }
 
-        public ActionResult Edit (int? id) {
+        public ActionResult Edit(int? id)
+        {
 
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
             // if (id == null)
             //     return RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -132,32 +107,35 @@ namespace QuanLyNhaHang.Controllers {
             // ViewData["ListLoaiMonAn"] = context.LoaiMonAns;
             // return View (td);
             if (id == null)
-                return RedirectToAction ("Index");
-            ThucDonDTO tdDTO = _services.GetMonAn (id.Value);
+                return RedirectToAction("Index");
+            ThucDonDTO tdDTO = _services.GetMonAn(id.Value);
             if (tdDTO == null)
-                return RedirectToAction ("Index");
-            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns ();
-            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO> (tdDTO);
-            return View (saveThucDonDTO);
+                return RedirectToAction("Index");
+            ViewData["ListLoaiMonAn"] = _services.GetLoaiMonAns();
+            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
+            return View(saveThucDonDTO);
         }
 
         [HttpPost]
-        public ActionResult Edit (SaveThucDonDTO saveThucDonDTO) {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
+        public ActionResult Edit(SaveThucDonDTO saveThucDonDTO)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
             // if (ModelState.IsValid) {
             //     context.Entry (td).State = EntityState.Modified;
             //     context.SaveChanges ();
             // }
-            if (ModelState.IsValid) {
-                _services.Edit (saveThucDonDTO);
+            if (ModelState.IsValid)
+            {
+                _services.Edit(saveThucDonDTO);
             }
-            return RedirectToAction ("Index");
+            return RedirectToAction("Index");
         }
 
-        public ActionResult Delete (int? id) {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
+        public ActionResult Delete(int? id)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
             // if (id == null)
             //     return RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -165,19 +143,20 @@ namespace QuanLyNhaHang.Controllers {
             //     return RedirectToAction ("Index");
             // return View (td);
             if (id == null)
-                return RedirectToAction ("Index");
-            ThucDonDTO tdDTO = _services.GetMonAn (id.Value);
+                return RedirectToAction("Index");
+            ThucDonDTO tdDTO = _services.GetMonAn(id.Value);
             if (tdDTO == null)
-                return RedirectToAction ("Index");
-            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO> (tdDTO);
-            return View (saveThucDonDTO);
+                return RedirectToAction("Index");
+            SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
+            return View(saveThucDonDTO);
         }
 
         [HttpPost]
-        [ActionName ("Delete")]
-        public ActionResult Deleted (int? id) {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
+        [ActionName("Delete")]
+        public ActionResult Deleted(int? id)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
             // if (id == null)
             //     RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -186,14 +165,15 @@ namespace QuanLyNhaHang.Controllers {
             // context.Entry (td).State = EntityState.Deleted;
             // context.SaveChanges ();
             if (id == null)
-                return RedirectToAction ("Index");
+                return RedirectToAction("Index");
             // SaveThucDonDTO saveThucDonDTO = _mapper.Map<ThucDonDTO, SaveThucDonDTO>(tdDTO);
-            _services.Remove (id.Value);
-            return RedirectToAction ("Index");
+            _services.Remove(id.Value);
+            return RedirectToAction("Index");
         }
-        public ActionResult Details (int? id) {
-            if (KiemTraDangNhap () == false)
-                return View ("../Login/Index");
+        public ActionResult Details(int? id)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
             // if (id == null)
             //     return RedirectToAction ("Index");
             // ThucDon td = context.ThucDons.Find (id);
@@ -210,12 +190,12 @@ namespace QuanLyNhaHang.Controllers {
             // var monAn = list.Where (s => s.Id == td.Id).FirstOrDefault ();
             // return View (monAn);
             if (id == null)
-                return RedirectToAction ("Index");
-            ThucDonMD tdMD = _services.GetMonAnMD (id.Value);
+                return RedirectToAction("Index");
+            ThucDonMD tdMD = _services.GetMonAnMD(id.Value);
             if (tdMD == null)
-                return RedirectToAction ("Index");
+                return RedirectToAction("Index");
 
-            return View (tdMD);
+            return View(tdMD);
         }
     }
 }
