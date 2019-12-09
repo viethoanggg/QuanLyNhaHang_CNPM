@@ -57,5 +57,11 @@ namespace ApplicationCore.Services
             t = _unitOfWork.HoaDons.GetTongSoBanAnDuocPhucVu();
             return t;
         }
+        public int GetThongKePhieuDatBanChuaXuLy()
+        {
+            int t = 0;
+            t = _unitOfWork.PhieuDatBans.GetThongKePhieuDatBanChuaXuLy();
+            return t;
+        }
     }
 }

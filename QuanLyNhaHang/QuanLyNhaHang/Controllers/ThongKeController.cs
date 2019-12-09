@@ -1,4 +1,6 @@
+using System;
 using ApplicationCore.Interfaces.IServices;
+using ApplicationCore.ModelsContainData.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhaHang.Services.Interfaces;
 
@@ -13,8 +15,10 @@ namespace QuanLyNhaHang.Controllers
             this._services = services;
             this._servicesIndexVM = servicesIndexVM;
         }
-        public IActionResult Index(int pageIndex = 1)
+        public IActionResult Index(ThongKeVM vm,int pageIndex = 1)
         {
+            DateTime thoiGianTu = vm.ThoiGianTu;
+            DateTime thoiGianDen = vm.ThoiGianDen;
             return View(_servicesIndexVM.GetThongKeVM(pageIndex));
         }
     }

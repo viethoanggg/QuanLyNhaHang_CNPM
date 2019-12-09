@@ -123,30 +123,33 @@ namespace Infrastructure.Persistence.Repositories
             return list;
         }
 
-        public IEnumerable<ThongKeSLMonAnMD> GetThongKeSLMonAnBanDuoc(IEnumerable<ThongKeSLMonAnMD> listThongKe, IEnumerable<HoaDon> listHD)
+        public IEnumerable<ThongKeSLMonAnMD> GetThongKeSLMonAnBanDuoc(IEnumerable<ThongKeSLMonAnMD> listThongKeMonAn, IEnumerable<HoaDon> listHoaDon)
         {
+            List<ThongKeSLMonAnMD> listThongKe = listThongKeMonAn.ToList();
+            List<HoaDon> listHD = listHoaDon.ToList();
             for (int i = 0; i < listThongKe.Count(); i++)
             {
                 for (int j = 0; j < listHD.Count(); j++)
                 {
                     int sl = 0;
-                    IEnumerable<ChiTietHoaDon> listCT = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon.Equals(listHD.ToList()[j].Id) && s.IdMonAn.Equals(listThongKe.ToList()[i].Id));
+                    List<ChiTietHoaDon> listCT = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon.Equals(listHD[j].Id) && s.IdMonAn.Equals(listThongKe[i].Id)).ToList();
                     for (int k = 0; k < listCT.Count(); k++)
                     {
-                        sl = sl + listCT.ToList()[k].SoLuong;
+                        sl = sl + listCT[k].SoLuong;
                     }
-                    listThongKe.ToList()[i].SoLuongBanDuoc = listThongKe.ToList()[i].SoLuongBanDuoc + sl;
+                    listThongKe[i].SoLuongBanDuoc = listThongKe[i].SoLuongBanDuoc + sl;
                 }
             }
             return listThongKe;
         }
         public int GetThongKeTongDoanhThu()
         {
-            IEnumerable<HoaDon> listHD = QLNHContext.HoaDons.ToList();
+            IEnumerable<HoaDon> list = QLNHContext.HoaDons.ToList();
+            List<HoaDon> listHD = list.ToList();
             int tongDoanhThu = 0;
             for (int i = 0; i < listHD.Count(); i++)
             {
-                tongDoanhThu = tongDoanhThu + listHD.ToList()[i].ThanhTien;
+                tongDoanhThu = tongDoanhThu + listHD[i].ThanhTien;
 
             }
             return tongDoanhThu;

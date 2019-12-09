@@ -1,3 +1,4 @@
+using System;
 using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.Services;
 
@@ -11,6 +12,9 @@ namespace ApplicationCore.ModelsContainData.ViewModels
         public int TongSoPhieuDatBan { get; set; }
         public int TongPhieuDatBanBiHuy { get; set; }
         public int TongPhieuDatBanXuLyXong { get; set; }
+        public int TongPhieuDatBanChuaXuLy { get; set; }
+        public DateTime ThoiGianTu { get; set; }
+        public DateTime ThoiGianDen { get; set; }
 
     }
 }

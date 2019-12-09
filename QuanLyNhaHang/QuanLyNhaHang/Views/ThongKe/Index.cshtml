@@ -3,15 +3,123 @@
 @{
     ViewData["Title"] = "Thống kê";
 }
+   
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Thời gian</h2>
+                <div class="clearfix"></div>
+            </div>
+             <div class="x_content">
+                <div class="row">
+                    <form asp-action="Index" asp-controller="ThongKe" method="get">
+                        <div class="animated flipInY col-lg-5 col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group row">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-2" style="margin-top:7px">Từ</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input asp-for="ThoiGianTu" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="animated flipInY col-lg-5 col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group row">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-2" style="margin-top:7px">Đến</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input asp-for="ThoiGianDen" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                             <input type="submit" value="Tìm" class="form-control btn btn-primary"/>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
 <div class="x_content">
     <div class="row">
+        <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-usd"></i></div>
+                <div class="count">Doanh thu</div>
+                <h3>Tổng doanh thu</h3>
+                <p style="font-size:1.2em">@Model.TongDoanhThu đ</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-cutlery"></i></div>
+                <div class="count">Bàn ăn</div>
+                <h3>Tổng bàn được phục vụ</h3>
+                <p style="font-size:1.2em" >@Model.TongSoBanAnDuocPhucVu bàn</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-tags"></i></div>
+                <div class="count">Phiếu đặt bàn</div>
+                <h3>Tổng phiếu đặt bàn</h3>
+                <p style="font-size:1.2em" >@Model.TongSoPhieuDatBan phiếu</p>
+            </div>
+        </div>
+
+        <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-tag"></i></div>
+                <div class="count">Phiếu đặt bàn</div>
+                <h3>Thống kê trạng thái</h3>
+                <p style="font-size:1.2em">Bị hủy: @Model.TongPhieuDatBanBiHuy  --  Xử lý xong : @Model.TongPhieuDatBanXuLyXong  --  Chưa xử lý : @Model.TongPhieuDatBanChuaXuLy</p>
+            </div>
+        </div>
 
     </div>
 </div>
+
 <div class="row">
-    <div class="col-md-12">
-
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Thống kê số lượng món ăn bán được</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                    <div class="table-responsive">
+                      <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                          <tr class="headings">
+                            <th class="column-title">Tên loại món ăn</th>
+                            <th class="column-title">Tên món ăn </th>
+                            <th class="column-title">Giá</th>
+                            <th class="column-title">Số lượng bán được </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListMonAnBanDuoc)
+                            {
+                                <tr>
+                                    <td class=" ">@Html.DisplayFor(modelItem => item.TenLoaiMonAn)</td>
+                                    <td class=" ">@Html.DisplayFor(modelItem => item.Ten)</td>
+                                    <td class=" ">@Html.DisplayFor(modelItem => item.Gia)</td>
+                                    <td class=" ">@Html.DisplayFor(modelItem => item.SoLuongBanDuoc)</td>           
+                                </tr>
+                           }
+                        </tbody>
+                      </table>
+                    </div>  
+                
+            </div>
+        </div>
     </div>
 </div>
+
 
 

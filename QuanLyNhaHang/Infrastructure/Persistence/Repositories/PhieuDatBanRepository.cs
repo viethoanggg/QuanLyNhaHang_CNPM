@@ -156,5 +156,12 @@ namespace Infrastructure.Persistence.Repositories
             tongPhieuDatBan = listPhieuDatBan.Count();
             return tongPhieuDatBan;
         }
+        public int GetThongKePhieuDatBanChuaXuLy()
+        {
+            int tongPhieuDatBan = 0;
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(s => s.TrangThai.Equals("Chưa xử lý")).ToList();
+            tongPhieuDatBan = listPhieuDatBan.Count();
+            return tongPhieuDatBan;
+        }
     }
 }
