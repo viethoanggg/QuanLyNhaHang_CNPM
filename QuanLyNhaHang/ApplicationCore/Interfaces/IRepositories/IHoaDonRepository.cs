@@ -16,5 +16,8 @@ namespace ApplicationCore.Interfaces.IRepositories
         int DeleteAllCTHD(int IdHoaDon);
         IEnumerable<CTHDMD> GetListCTHDMD(int IdHoaDon);
         IEnumerable<HoaDonMD> GetListHoaDonMD(IEnumerable<HoaDon> listHD);
+        IEnumerable<ThongKeSLMonAnMD> GetThongKeSLMonAnBanDuoc(IEnumerable<ThongKeSLMonAnMD> listThongKe, IEnumerable<HoaDon> listHD);
+        int GetThongKeTongDoanhThu();
+        int GetTongSoBanAnDuocPhucVu();
     }
 }

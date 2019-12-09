@@ -63,7 +63,7 @@ namespace QuanLyNhaHang.Controllers
             NguoiDungVM nguoiDungVM = _servicesIndexVM.GetNguoiDungVM(currentSort, Ten, TenDangNhap, VaiTro, TrangThai, pageIndex);
             return View(nguoiDungVM);
         }
-[HttpGet]
+        [HttpGet]
         public IActionResult Create()
         {
             if (KiemTraDangNhap() == false)
@@ -73,20 +73,28 @@ namespace QuanLyNhaHang.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SaveNguoiDungDTO SaveNguoiDungDTO)
+        public IActionResult Create(string NhapLaiMatKhau, SaveNguoiDungDTO SaveNguoiDungDTO)
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
             if (!ModelState.IsValid)
             {
+                return View(NhapLaiMatKhau, SaveNguoiDungDTO);
+            }
+            int i = _services.Create(NhapLaiMatKhau, SaveNguoiDungDTO);
+            if (i == -1)
+            {
+                ViewBag.MessageErrorNhapLaiMatKhau = "Mật khẩu nhập lại không khớp";
                 return View(SaveNguoiDungDTO);
             }
-            _services.Create(SaveNguoiDungDTO);
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int? id)
         {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
+
             if (id == null)
                 return RedirectToAction("Index");
             SaveNguoiDungDTO saveNguoiDungDTO = _services.GetSaveNguoiDungDTO(id.Value);
@@ -97,9 +105,28 @@ namespace QuanLyNhaHang.Controllers
         [HttpPost]
         public IActionResult Edit(SaveNguoiDungDTO saveNguoiDungDTO)
         {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
+
             if (!ModelState.IsValid)
                 return View(saveNguoiDungDTO);
             _services.Edit(saveNguoiDungDTO);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult LockUser(int? id)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
+
+            if (id == null)
+                return RedirectToAction("Index");
+            int idCurrentUser = Convert.ToInt32(HttpContext.Session.GetString("IdCurrentUser"));
+            int i = _services.LockUser(id.Value, idCurrentUser);
+            if (i == -1)
+            {
+                ViewData["MessageLockUser"] = "Không thể khóa vì bạn là người dùng này và đang sử dụng tài khoản này";
+            }
             return RedirectToAction("Index");
         }
     }

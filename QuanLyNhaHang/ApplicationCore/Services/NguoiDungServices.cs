@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
@@ -58,11 +60,52 @@ namespace ApplicationCore.Services
             _unitOfWork.Complete();
         }
 
-        public void Create(SaveNguoiDungDTO SaveNguoiDungDTO)
+        public int Create(string NhapLaiMatKhau, SaveNguoiDungDTO SaveNguoiDungDTO)
         {
+            if (!SaveNguoiDungDTO.MatKhau.Equals(NhapLaiMatKhau))
+            {
+                return -1;
+            }
+            using (MD5 mD5 = MD5.Create())
+            {
+                SaveNguoiDungDTO.MatKhau = GetMd5Hash(mD5, SaveNguoiDungDTO.MatKhau);
+            }
             NguoiDung NguoiDung = _mapper.Map<SaveNguoiDungDTO, NguoiDung>(SaveNguoiDungDTO);
             _unitOfWork.NguoiDungs.Add(NguoiDung);
             _unitOfWork.Complete();
+            return 1;
+        }
+        public string GetMd5Hash(MD5 md5, string input)
+        {
+            byte[] bytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                s.Append(bytes[i].ToString("X2"));
+
+            }
+            return s.ToString();
+        }
+
+        public bool VerifyMd5Hash(MD5 md5, string input, string sqlString)
+        {
+            string md5Hash = GetMd5Hash(md5, input);
+            if (md5Hash.Equals(sqlString))
+                return true;
+            return false;
+        }
+        public int LockUser(int IdUser, int IdCurrentUser)
+        {
+            if (IdUser.Equals(IdCurrentUser))
+                return -1;
+            NguoiDung nguoiDung = _unitOfWork.NguoiDungs.GetById(IdUser);
+            if (nguoiDung.TrangThai.Equals(-1))
+                nguoiDung.TrangThai = 1;
+            else
+                nguoiDung.TrangThai = -1;
+            _unitOfWork.NguoiDungs.Update(nguoiDung);
+            _unitOfWork.Complete();
+            return 1;
         }
 
     }

@@ -7,6 +7,7 @@
 <div class="row"> 
             <div class="col-md-12">
                 <p><a asp-action="Create">+ Create New</a></p>
+                @ViewData["MessageLockUser"]
                 <hr/>
             </div>
             <hr/>
@@ -22,14 +23,14 @@
                 </div>
                 <div class="input-group col-sm-6">
                     <p style="margin:7px 15px 5px 20px">Vai trò</p>
-                    <select name="VaiTro" style="padding:5px">
+                    <select name="VaiTro" style="padding:4px">
                         <option value="">Tất cả</option>
                         <option value="Quản lý" >Quản lý</option>
                         <option value="Nhân viên">Nhân viên</option>
                     </select>
 
                     <p style="margin:7px 15px 5px 35px">Trạng thái</p>
-                     <select name="TrangThai" style="padding:5px">
+                     <select name="TrangThai" style="padding:4px">
                         <option value="0">Tất cả</option>
                         <option value="-1" >Bị khóa</option>
                         <option value="1">Chưa khóa</option>
@@ -103,7 +104,7 @@
                                     @Html.DisplayFor(modelItem => item.Role)
                                 </td>
                                 <td>
-                                    @if(@item.TrangThai.Equals("-1"))
+                                    @if(@item.TrangThai.Equals(-1))
                                     {
                                         <p>Bị khóa</p>
                                     }
@@ -112,12 +113,12 @@
                                     }
                                 </td>
                                 <td>
-                                     @if(@item.TrangThai.Equals("-1"))
+                                    @if(@item.TrangThai.Equals(-1))
                                     {
-                                        <a asp-action="UnLock" asp-route-id="@item.Id">UnLock</a>
+                                        <a asp-action="LockUser" asp-route-id="@item.Id">UnLock</a>
                                     }
                                     else{
-                                       <a asp-action="Lock" asp-route-id="@item.Id">Lock</a>
+                                       <a asp-action="LockUser" asp-route-id="@item.Id">Lock</a>
                                     }
                                     
                                 </td>
