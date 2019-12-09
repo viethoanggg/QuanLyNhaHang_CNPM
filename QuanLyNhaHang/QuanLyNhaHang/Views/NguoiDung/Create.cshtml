@@ -1,13 +1,9 @@
-@model ApplicationCore.Entities.NguoiDung
+@model ApplicationCore.DTOs.SaveDTOs.SaveNguoiDungDTO
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>NguoiDung</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -24,18 +20,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="MatKhau" class="control-label"></label>
-                <input asp-for="MatKhau" class="form-control" />
+                <input asp-for="MatKhau" class="form-control" type="password"/>
                 <span asp-validation-for="MatKhau" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <input asp-for="Role" class="form-control" />
-                <span asp-validation-for="Role" class="text-danger"></span>
+                <label class="control-label">Nhập lại mật khẩu</label>
+                <input name="NhapLaiMatKhau" class="form-control" type="password"/>
+                <i style="color:red">@ViewBag.MessageErrorNhapLaiMatKhau</i>
             </div>
             <div class="form-group">
-                <label asp-for="TrangThai" class="control-label"></label>
-                <input asp-for="TrangThai" class="form-control" />
-                <span asp-validation-for="TrangThai" class="text-danger"></span>
+                <label asp-for="Role" class="control-label"></label>
+                <select asp-for="Role" style="padding:5px;margin-left:20px">
+                    <option value="Nhân viên">Nhân viên</option>
+                    <option value="Quản lý" >Quản lý</option>                       
+                </select>
+            </div>
+            <div class="form-group">
+                <input asp-for="TrangThai" class="form-control" value="1" type="hidden"/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

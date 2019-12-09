@@ -135,6 +135,26 @@ namespace Infrastructure.Persistence.Repositories
                 QLNHContext.Entry(ba).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
         }
-
+        public int GetThongKeTongPhieuDatBan()
+        {
+            int tongPhieuDatBan = 0;
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.ToList();
+            tongPhieuDatBan = listPhieuDatBan.Count();
+            return tongPhieuDatBan;
+        }
+        public int GetThongKePhieuDatBanBiHuy()
+        {
+            int tongPhieuDatBan = 0;
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(s => s.TrangThai.Equals("Bị hủy")).ToList();
+            tongPhieuDatBan = listPhieuDatBan.Count();
+            return tongPhieuDatBan;
+        }
+        public int GetThongKePhieuDatBanXuLyXong()
+        {
+            int tongPhieuDatBan = 0;
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(s => s.TrangThai.Equals("Xử lý xong")).ToList();
+            tongPhieuDatBan = listPhieuDatBan.Count();
+            return tongPhieuDatBan;
+        }
     }
 }

@@ -58,6 +58,7 @@ namespace QuanLyNhaHang
             services.AddScoped<IKhachHangServices, KhachHangServices>();
             services.AddScoped<IPhieuDatBanServices, PhieuDatBanServices>();
             services.AddScoped<INguoiDungServices, NguoiDungServices>();
+            services.AddScoped<IThongKeServices, ThongKeServices>();
 
             services.AddScoped<IThucDonIndexVMServices, ThucDonIndexVMServices>();
             services.AddScoped<ILoaiMonAnIndexVMServices, LoaiMonAnIndexVMServices>();
@@ -65,6 +66,7 @@ namespace QuanLyNhaHang
             services.AddScoped<IPhieuDatBanIndexVMServices, PhieuDatBanIndexVMServices>();
             services.AddScoped<IKhachHangIndexVMServices, KhachHangIndexVMServices>();
             services.AddScoped<INguoiDungIndexVMServices, NguoiDungIndexVMServices>();
+            services.AddScoped<IThongKeIndexVMServices, ThongKeIndexVMServices>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 

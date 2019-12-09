@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Principal;
 using System.Collections;
 using System.Collections.Generic;
@@ -120,6 +121,43 @@ namespace Infrastructure.Persistence.Repositories
                                              TrangThai = h.TrangThai
                                          });
             return list;
+        }
+
+        public IEnumerable<ThongKeSLMonAnMD> GetThongKeSLMonAnBanDuoc(IEnumerable<ThongKeSLMonAnMD> listThongKe, IEnumerable<HoaDon> listHD)
+        {
+            for (int i = 0; i < listThongKe.Count(); i++)
+            {
+                for (int j = 0; j < listHD.Count(); j++)
+                {
+                    int sl = 0;
+                    IEnumerable<ChiTietHoaDon> listCT = QLNHContext.ChiTietHoaDons.Where(s => s.IdHoaDon.Equals(listHD.ToList()[j].Id) && s.IdMonAn.Equals(listThongKe.ToList()[i].Id));
+                    for (int k = 0; k < listCT.Count(); k++)
+                    {
+                        sl = sl + listCT.ToList()[k].SoLuong;
+                    }
+                    listThongKe.ToList()[i].SoLuongBanDuoc = listThongKe.ToList()[i].SoLuongBanDuoc + sl;
+                }
+            }
+            return listThongKe;
+        }
+        public int GetThongKeTongDoanhThu()
+        {
+            IEnumerable<HoaDon> listHD = QLNHContext.HoaDons.ToList();
+            int tongDoanhThu = 0;
+            for (int i = 0; i < listHD.Count(); i++)
+            {
+                tongDoanhThu = tongDoanhThu + listHD.ToList()[i].ThanhTien;
+
+            }
+            return tongDoanhThu;
+        }
+
+        public int GetTongSoBanAnDuocPhucVu()
+        {
+            IEnumerable<HoaDon> listHD = QLNHContext.HoaDons.ToList();
+            int sl = 0;
+            sl = listHD.Count();
+            return sl;
         }
         protected QLNHContext QLNHContext
         {

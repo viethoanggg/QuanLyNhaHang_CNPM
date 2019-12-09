@@ -4,7 +4,7 @@ using ApplicationCore.ModelsContainData.Models;
 
 namespace ApplicationCore.Interfaces.IRepositories
 {
-    public interface IPhieuDatBanRepository:IRepository<PhieuDatBan>
+    public interface IPhieuDatBanRepository : IRepository<PhieuDatBan>
     {
         void Update(PhieuDatBan p);
         int GetIdBanAn(int IdPhieuDatBan);
@@ -13,5 +13,9 @@ namespace ApplicationCore.Interfaces.IRepositories
         void UpdateBanAnCuaPhieuDatBanInTimeNow(PhieuDatBan phieuDatBan);
         void CapNhatAllPhieuDatBan();
         IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(IEnumerable<PhieuDatBan> phieuDatBans);
+        int GetThongKeTongPhieuDatBan();
+        int GetThongKePhieuDatBanBiHuy();
+        int GetThongKePhieuDatBanXuLyXong();
+
     }
 }

@@ -36,7 +36,13 @@
       <div class="main_container">
 
         <!-- Left Menu -->
-        @Html.Partial("_LeftMenu.cshtml")
+        @if(Context.Session.GetString("VaiTroCurrentUser")=="Quản lý")
+        {
+          @Html.Partial("_LeftMenu.cshtml");
+        }
+        else{
+          @Html.Partial("_LeftMenuNhanVien.cshtml");
+        }
 
         <!-- top navigation -->
         @Html.Partial("_TopMenu.cshtml")

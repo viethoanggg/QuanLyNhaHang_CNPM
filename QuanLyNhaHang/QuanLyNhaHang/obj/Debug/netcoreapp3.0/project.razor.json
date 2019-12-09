@@ -14529,6 +14529,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\Shared\\_LeftMenuNhanVien.cshtml",
+      "TargetPath": "Views\\Shared\\_LeftMenuNhanVien.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\BanAn\\_BanAnPartialView\\_HoaDonCreatedPartial.cshtml",
       "TargetPath": "Views\\BanAn\\_BanAnPartialView\\_HoaDonCreatedPartial.cshtml",
       "FileKind": "mvc"
@@ -14561,6 +14566,11 @@
     {
       "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\NguoiDung\\Index.cshtml",
       "TargetPath": "Views\\NguoiDung\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\ThongKe\\Index.cshtml",
+      "TargetPath": "Views\\ThongKe\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

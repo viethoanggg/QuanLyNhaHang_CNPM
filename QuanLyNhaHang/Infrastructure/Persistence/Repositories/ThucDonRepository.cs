@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using ApplicationCore.Interfaces.IRepositories;
 using ApplicationCore.ModelsContainData.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -39,6 +40,22 @@ namespace Infrastructure.Persistence.Repositories
             );
 
             return list;
+        }
+
+        public IEnumerable<ThongKeSLMonAnMD> GetListThongKeMonAnMD()
+        {
+            IEnumerable<ThucDonMD> listMonAnMD = GetListThucDonMD(QLNHContext.ThucDons.ToList());
+            IEnumerable<ThongKeSLMonAnMD> listThongKeMonAnMD = listMonAnMD.Where(s => true)
+                                                                .Select(s => new ThongKeSLMonAnMD
+                                                                {
+                                                                    Id = s.Id,
+                                                                    TenLoaiMonAn = s.Ten,
+                                                                    Ten = s.Ten,
+                                                                    Gia = s.Gia,
+                                                                    SoLuongBanDuoc = 0
+
+                                                                });
+            return listThongKeMonAnMD;
         }
         public void Update(ThucDon td)
         {

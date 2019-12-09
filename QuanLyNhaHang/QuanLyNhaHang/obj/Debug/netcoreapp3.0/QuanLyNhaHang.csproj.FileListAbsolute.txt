@@ -600,3 +600,5 @@ C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_HoaDonCreatedPartial.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_ListMonAnPartial.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\IndexAjax.cshtml.g.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Create.cshtml.g.cs
+C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_LeftMenuNhanVien.cshtml.g.cs

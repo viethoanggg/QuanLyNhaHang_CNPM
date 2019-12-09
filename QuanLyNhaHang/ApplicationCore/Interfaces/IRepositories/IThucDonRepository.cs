@@ -9,7 +9,7 @@ namespace ApplicationCore.Interfaces.IRepositories
 
         IEnumerable<LoaiMonAn> GetLoaiThucAns();
         IEnumerable<ThucDonMD> GetListThucDonMD(IEnumerable<ThucDon> source);
-
+        IEnumerable<ThongKeSLMonAnMD> GetListThongKeMonAnMD();
         void Update(ThucDon td);
 
     }
