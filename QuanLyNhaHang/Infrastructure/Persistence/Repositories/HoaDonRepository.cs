@@ -80,7 +80,7 @@ namespace Infrastructure.Persistence.Repositories
         {
             HoaDon hoaDon = GetById(IdHoaDon);
             BanAn ba = QLNHContext.BanAns.Where(s => s.Id == hoaDon.IdBanAn).FirstOrDefault();
-            if(hoaDon == null)
+            if (hoaDon == null)
                 return -1;
             if (hoaDon.TrangThai.Equals("Chưa thanh toán") && ba.TrangThai.Equals("Đang phục vụ"))
                 return 0;
@@ -104,6 +104,22 @@ namespace Infrastructure.Persistence.Repositories
                                            DonGia = s.DonGia
                                        };
             return list.ToList();
+        }
+        public IEnumerable<HoaDonMD> GetListHoaDonMD(IEnumerable<HoaDon> listHD)
+        {
+            IEnumerable<HoaDonMD> list = listHD.Join(QLNHContext.NguoiDungs, h => h.IdUser, nd => nd.Id,
+                                         (h, nd) => new HoaDonMD
+                                         {
+                                             Id = h.Id,
+                                             IdBanAn = h.IdBanAn,
+                                             IdUser = h.IdUser,
+                                             TenNhanVien = nd.Ten,
+                                             ThoiGianLap = h.ThoiGianLap,
+                                             ThoiGianThanhToan = h.ThoiGianThanhToan,
+                                             ThanhTien = h.ThanhTien,
+                                             TrangThai = h.TrangThai
+                                         });
+            return list;
         }
         protected QLNHContext QLNHContext
         {

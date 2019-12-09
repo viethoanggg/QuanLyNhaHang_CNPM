@@ -5,6 +5,7 @@ using Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using ApplicationCore.Interfaces.IRepositories;
+using ApplicationCore.ModelsContainData.Models;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -19,20 +20,25 @@ namespace Infrastructure.Persistence.Repositories
         {
 
             IEnumerable<LoaiMonAn> list = from t in QLNHContext.LoaiMonAns
-                       orderby t.Ten
-                       select t;
+                                          orderby t.Ten
+                                          select t;
 
             return list.Distinct().ToList();
         }
-        public IEnumerable<ThucDon> GetClassifiedFoods(IEnumerable<ThucDon> source, string tenL)
+        public IEnumerable<ThucDonMD> GetListThucDonMD(IEnumerable<ThucDon> source)
         {
-            var listL = GetLoaiThucAns();
-            var loai = listL.Where(s => s.Ten == tenL).FirstOrDefault();
-            var list = from m in source
-                       where m.IdLoaiMonAn == loai.Id
-                       select m;
 
-            return list.ToList();
+            IEnumerable<ThucDonMD> list = source.Join(QLNHContext.LoaiMonAns, s => s.IdLoaiMonAn, t => t.Id,
+                        (s, t) => new ThucDonMD
+                        {
+                            Id = s.Id,
+                            TenLoaiMonAn = t.Ten,
+                            Ten = s.Ten,
+                            Gia = s.Gia
+                        }
+            );
+
+            return list;
         }
         public void Update(ThucDon td)
         {

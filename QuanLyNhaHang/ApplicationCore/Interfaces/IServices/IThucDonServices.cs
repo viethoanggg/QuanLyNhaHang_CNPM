@@ -8,7 +8,7 @@ namespace ApplicationCore.Interfaces.IServices
 {
     public interface IThucDonServices
     {
-        ThucDonVM GetThucDonVM(string sort, string searchString, string currentFilter, string tenLoaiMonAn, int pageIndex);
+        IEnumerable<ThucDonMD> GetListThucDonMD(string searchString, int giaTu, int GiaDen, int pageIndex, int pageSize, out int count);
         IEnumerable<LoaiMonAnDTO> GetLoaiMonAns();
         ThucDonDTO GetMonAn(int id);
         ThucDonMD GetMonAnMD(int id);

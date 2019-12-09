@@ -7,42 +7,180 @@
 <p>
     <a asp-action="Create">+ Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Tên
-            </th>
-            <th>
-               SDT
-            </th>
-            <th>
-                Dịa Chỉ
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        
-@foreach (var item in Model.KhachHangs) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SDT)
-            </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.DiaChi)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-action="Create" asp-controller="PhieuDatBan" asp-route-IdKhachHang="@item.Id">Lập phiếu đặt bàn</a> 
-            </td>
-        </tr>
-        
-        }
-    </tbody>
-</table>
+<div class="row">
+            <form asp-action="Index" asp-controller="KhachHang" method="get">
+                <div class="input-group col-sm-4">
+                    <p style="margin:7px 15px 5px 0px">Tên khách hàng</p>
+                    <input type="text" class="form-control" name="Ten" value="@ViewBag.CurrentFilterTen">
+                 </div>
+
+                <div class="input-group col-sm-1" ></div>
+
+                <div class="input-group col-sm-3">
+                    <p style="margin:7px 15px 5px 0px">SDT</p>
+                    <input type="text" class="form-control" name="SDT" value="@ViewBag.CurrentFilterSDT">
+                </div>
+                <div class="input-group col-sm-3">
+                    <p style="margin:7px 15px 5px 0px">Địa chỉ</p>
+                    <input type="text" class="form-control" name="DiaChi" value="@ViewBag.CurrentFilterDiaChi">
+                 </div>
+                 
+                <div class="input-group col-sm-1" ></div>
+
+                <div class="input-group col-sm-1" >
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">Tìm</button>
+                    </span>
+                </div>
+            
+            </form>
+
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                 <a  asp-action="Index" asp-controller="KhachHang" 
+                                    asp-route-currentSort="@ViewBag.CurrentSortTen" 
+                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                    asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                                    asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"
+                                    asp-route-pageIndex="@Model.KhachHangs.PageIndex">Tên</a>
+                                
+                            </th>
+                            <th>
+                                <a  asp-action="Index" asp-controller="KhachHang" 
+                                    asp-route-currentSort="@ViewBag.CurrentSortSDT" 
+                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                    asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                                    asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"
+                                    asp-route-pageIndex="@Model.KhachHangs.PageIndex">SDT</a>
+                            </th>
+                            <th>
+                                <a  asp-action="Index" asp-controller="KhachHang" 
+                                    asp-route-currentSort="@ViewBag.CurrentSortDiaChi" 
+                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                    asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                                    asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"
+                                    asp-route-pageIndex="@Model.KhachHangs.PageIndex">Địa chỉ</a>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                @foreach (var item in Model.KhachHangs) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ten)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SDT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiaChi)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                                <a asp-action="Create" asp-controller="PhieuDatBan" asp-route-IdKhachHang="@item.Id">Lập phiếu đặt bàn</a> 
+                            </td>
+                        </tr>
+                        
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-12">
+                @{
+                    var disNext= !Model.KhachHangs.HasNext ? " visibility: hidden" : "";   
+                    var disPre= !Model.KhachHangs.HasPrevious ? " visibility: hidden" : "";   
+                }
+
+                <span style="float:right"> 
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a asp-action="Index"  class="page-link" style="@disPre"
+                            asp-route-pageIndex="@( Model.KhachHangs.PageIndex - 1 )"
+                            asp-route-currentSort="@ViewBag.CurrentSort" 
+                            asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                            asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                            asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"> Previous </a>
+                        </li>
+                        
+                    @{
+                    
+                        for(int i=1; i <= Model.KhachHangs.TotalPages; i++)
+                        {
+                            //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                            if(Model.KhachHangs.TotalPages>=8 && @i>=Model.KhachHangs.PageIndex-2 && @i<=Model.KhachHangs.PageIndex+2)
+                            {
+                                if(@i==Model.KhachHangs.PageIndex-2 && @i>1)
+                                {
+                                    <li class="page-item"><a class="page-link">...</a></li>
+                                }
+                                if(@i==Model.KhachHangs.PageIndex)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" style="background-color:lightblue"> @i </a>
+                                    </li>   
+                                }
+                                else 
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                        asp-action="Index"
+                                        asp-route-pageIndex="@i"
+                                        asp-route-currentSort="@ViewBag.CurrentSort" 
+                                        asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                        asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                                        asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"> @i </a>
+                                    </li>
+                                }
+                                if(@i==Model.KhachHangs.PageIndex+2 && @i<Model.KhachHangs.TotalPages)
+                                {
+                                    <li class="page-item"><a class="page-link">...</a></li>
+                                }
+                            }
+                            else if( Model.KhachHangs.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                            {
+                                if(@i==Model.KhachHangs.PageIndex)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" style="background-color:lightblue"> @i </a>
+                                    </li>   
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                        asp-action="Index"
+                                        asp-route-pageIndex="@i"
+                                        asp-route-currentSort="@ViewBag.CurrentSort"
+                                        asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                        asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                                        asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"> @i </a>
+                                    </li>
+                                }
+                            }
+                        
+                        
+                        }
+                    
+                    }
+
+                        <li class="page-item">
+                            <a asp-action="Index"  class="page-link" style="@disNext"
+                                asp-route-pageIndex="@( Model.KhachHangs.PageIndex + 1 )"
+                                asp-route-currentSort="@ViewBag.CurrentSort"
+                                asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                asp-route-currentFilterSDT="@ViewBag.CurrentFilterSDT"
+                                asp-route-currentFilterDiaChi="@ViewBag.CurrentFilterDiaChi"> Next </a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+</div>
+

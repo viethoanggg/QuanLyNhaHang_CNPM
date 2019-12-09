@@ -7,14 +7,23 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form name="LoaiMonAn" asp-action="">
+<div class=row>
+    
+    <div class="col-md-6" style="padding:5px">
+        <form name="LoaiMonAn" asp-action="Index" asp-controller="LoaiMonAn" mehtod="get">
+            <span style="margin-right:10px">Tên loại món ăn</span>
+            <input name="searchString" style="padding:7px;" value="@ViewBag.CurrentFilter"/>
+            <input type="submit" class="btn btn-primary" style="margin-top:2px" value="Tìm">
+        </form>
+    </div>
+</div>
+ 
 
-</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Tên loại món ăn
+                <a asp-action="Index" asp-route-pageIndex="@Model.LoaiMonAns.PageIndex" asp-controller="LoaiMonAn" asp-route-currentSort="@ViewBag.CurrentSortName" asp-route-currentFilter="@ViewBag.CurrentFilter">Tên loại món ăn</a>
             </th>
             <th></th>
         </tr>
@@ -23,7 +32,7 @@
 @foreach (var item in Model.LoaiMonAns) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Ten)
+              @Html.DisplayFor(model=>item.Ten)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -34,3 +43,89 @@
 }
     </tbody>
 </table>
+
+                        <div class=row>
+                          <div class="col-md-12">
+                            <span style="float:right"> 
+                                @{
+                                    var disNext= !Model.LoaiMonAns.HasNext ? " visibility: hidden" : "";   
+                                    var disPre= !Model.LoaiMonAns.HasPrevious ? " visibility: hidden" : "";   
+                                }
+
+                                
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disPre"
+                                        asp-route-currentSort="@ViewBag.CurrentSort"
+                                        asp-route-currentFilter="@ViewBag.CurrentFilter"
+                                        asp-route-pageIndex="@( Model.LoaiMonAns.PageIndex - 1 )"> Previous </a>
+                                    </li>
+                                    
+                                @{
+                                
+                                    for(int i=1; i <= Model.LoaiMonAns.TotalPages; i++)
+                                    {
+                                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                                        if(Model.LoaiMonAns.TotalPages>=8 && @i>=Model.LoaiMonAns.PageIndex-2 && @i<=Model.LoaiMonAns.PageIndex+2)
+                                        {
+                                            if(@i==Model.LoaiMonAns.PageIndex-2 && @i>1)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                            if(@i==Model.LoaiMonAns.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else 
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort"
+                                                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                                                </li>
+                                            }
+                                            if(@i==Model.LoaiMonAns.PageIndex+2 && @i<Model.LoaiMonAns.TotalPages)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                        }
+                                        else if( Model.LoaiMonAns.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                                        {
+                                            if(@i==Model.LoaiMonAns.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort"
+                                                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                                                </li>
+                                            }
+                                        }
+                                    
+                                    
+                                    }
+                                
+                                }
+
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disNext"
+                                        asp-route-pageIndex="@( Model.LoaiMonAns.PageIndex + 1 )"
+                                        asp-route-currentSort="@ViewBag.CurrentSort"
+                                        asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
+                                    </li>
+                                </ul>
+                            </span>
+                          </div>
+
+                      </div>

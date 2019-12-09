@@ -6,16 +6,19 @@ using ApplicationCore.Interfaces.IServices;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QuanLyNhaHang.Services.Interfaces;
 
 namespace QuanLyNhaHang.Controllers
 {
     public class HoaDonController : Controller
     {
         private readonly IHoaDonServices _services;
+        private readonly IHoaDonIndexVMServices _servicesIndexVM;
         private readonly IMapper _mapper;
-        public HoaDonController(IHoaDonServices services, IMapper mapper)
+        public HoaDonController(IHoaDonServices services, IHoaDonIndexVMServices servicesIndexVM, IMapper mapper)
         {
             this._services = services;
+            this._servicesIndexVM = servicesIndexVM;
             this._mapper = mapper;
         }
         public bool KiemTraDangNhap()
@@ -31,11 +34,45 @@ namespace QuanLyNhaHang.Controllers
                 return true;
             }
         }
-        public IActionResult Index(int pageIndex = 1)
+        public IActionResult Index(int idBanAn, string trangThai, string currentSort, string currentFilterIdBanAn, string currentFilterTrangThai, int pageIndex = 1)
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
-            return View(_services.GetHoaDonVM(pageIndex));
+            if (String.IsNullOrEmpty(idBanAn.ToString()))
+                idBanAn = 0;
+            if (!idBanAn.Equals(0))
+            {
+                pageIndex = 1;
+            }
+            else if (!String.IsNullOrEmpty(currentFilterIdBanAn))
+            {
+                idBanAn = Convert.ToInt32(currentFilterIdBanAn.ToString());
+            }
+            
+            if (!String.IsNullOrEmpty(trangThai))
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                trangThai = currentFilterTrangThai;
+            }
+            ViewBag.CurrentFilterTrangThai = trangThai;
+            ViewBag.CurrentFilterIdBanAn = idBanAn;
+           
+            if (String.IsNullOrEmpty(currentSort))
+                currentSort = "BanAn_DESC";
+
+            ViewBag.CurrentSortIdBanAn = currentSort.Equals("BanAn_DESC") ? "BanAn_ASC" : "BanAn_DESC";
+            ViewBag.CurrentSortTrangThai = currentSort.Equals("TrangThai_DESC") ? "TrangThai_ASC" : "TrangThai_DESC";
+            ViewBag.CurrentSortThoiGianLap = currentSort.Equals("ThoiGianLap_DESC") ? "ThoiGianLap_ASC" : "ThoiGianLap_DESC";
+            ViewBag.CurrentSortThoiGianThanhToan = currentSort.Equals("ThoiGianThanhToan_DESC") ? "ThoiGianThanhToan_ASC" : "ThoiGianThanhToan_DESC";
+            ViewBag.CurrentSortTenNhanVien = currentSort.Equals("TenNhanVien_DESC") ? "TenNhanVien_ASC" : "TenNhanVien_DESC";
+            ViewBag.CurrentSortThanhTien = currentSort.Equals("ThanhTien_DESC") ? "ThanhTien_ASC" : "ThanhTien_DESC";
+            ViewBag.CurrentSortIdHoaDon = currentSort.Equals("IdHoaDon_DESC") ? "IdHoaDon_ASC" : "IdHoaDon_DESC";
+
+            ViewBag.CurrentSort = currentSort;
+            return View(_servicesIndexVM.GetHoaDonVM(currentSort, idBanAn, trangThai, pageIndex));
         }
         public IActionResult Delete(int? id)
         {
@@ -59,12 +96,12 @@ namespace QuanLyNhaHang.Controllers
                 return View("../Login/Index");
             if (id == null)
                 return RedirectToAction("Index");
-                
-            int i= _services.Delete(id.Value);
-            if(i==0)
+
+            int i = _services.Delete(id.Value);
+            if (i == 0)
             {
                 ViewBag.Error = "Hóa đơn này đang tính cho bàn ăn đang được phục vụ ,không thể xóa ";
-                HoaDonDTO hoaDonDTO= _services.FindHD(id.Value);
+                HoaDonDTO hoaDonDTO = _services.FindHD(id.Value);
                 SaveHoaDonDTO saveHoaDonDTO = _mapper.Map<HoaDonDTO, SaveHoaDonDTO>(hoaDonDTO);
                 ViewBag.UserName = _services.GetNameUser(hoaDonDTO.IdUser);
                 return View(saveHoaDonDTO);

@@ -11,6 +11,7 @@ using AutoMapper;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
+using ApplicationCore.Specification;
 
 namespace ApplicationCore.Services
 {
@@ -18,60 +19,39 @@ namespace ApplicationCore.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly int pageSize = 5;
-        public ThucDonServices(IUnitOfWork unitofwork,IMapper mapper)
+        // private readonly int pageSize = 5;
+        public ThucDonServices(IUnitOfWork unitofwork, IMapper mapper)
         {
             _unitOfWork = unitofwork;
             _mapper = mapper;
         }
-        public ThucDonVM GetThucDonVM(string sort, string searchString, string currentFilter, string tenLoaiMonAn, int pageIndex = 1)
+        public IEnumerable<ThucDonMD> GetListThucDonMD(string searchString, int giaTu, int giaDen, int pageIndex, int pageSize, out int count)
         {
-            Expression<Func<ThucDon, bool>> predicate = m => true;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                predicate = m => m.Ten.ToLower().Contains(searchString.ToLower());
-            }
+            ThucDonSpecification thucDonSpecFilter = new ThucDonSpecification(searchString, giaTu, giaDen, pageIndex, pageSize);
+            ThucDonSpecification thucDonSpec = new ThucDonSpecification(searchString, giaTu, giaDen);
+            count = _unitOfWork.ThucDons.Count(thucDonSpec);
 
-            var thucDons = _unitOfWork.ThucDons.Find(predicate);
+            var thucDons = _unitOfWork.ThucDons.FindSpec(thucDonSpecFilter);
+            IEnumerable<ThucDonMD> listThucDonMD = _unitOfWork.ThucDons.GetListThucDonMD(thucDons);
+            return listThucDonMD;
 
-            if (!String.IsNullOrEmpty(tenLoaiMonAn))
-            {
-                thucDons = _unitOfWork.ThucDons.GetClassifiedFoods(thucDons, tenLoaiMonAn);
-            }
-           
-            var Loai = _unitOfWork.ThucDons.GetLoaiThucAns();
-            var listThucDonMD = from s in thucDons
-                                join t in Loai
-                                 on s.IdLoaiMonAn equals t.Id
-                                select new ThucDonMD
-                                {
-                                    Id = s.Id,
-                                    TenLoaiMonAn = t.Ten,
-                                    Ten = s.Ten,
-                                    Gia = s.Gia
-                                };
-           
-            return new ThucDonVM
-            {
-                ThucDonsMD = PaginatedList<ThucDonMD>.Create(listThucDonMD, pageIndex, pageSize)
-            };
         }
 
         public IEnumerable<LoaiMonAnDTO> GetLoaiMonAns()
         {
             IEnumerable<LoaiMonAn> loaiL = _unitOfWork.ThucDons.GetLoaiThucAns();
-            IEnumerable<LoaiMonAnDTO> loaiLDTO = _mapper.Map<IEnumerable<LoaiMonAn>,IEnumerable<LoaiMonAnDTO>>(loaiL);
+            IEnumerable<LoaiMonAnDTO> loaiLDTO = _mapper.Map<IEnumerable<LoaiMonAn>, IEnumerable<LoaiMonAnDTO>>(loaiL);
             return loaiLDTO;
         }
         public void Create(SaveThucDonDTO saveThucDonDTO)
         {
-            ThucDon td = _mapper.Map<SaveThucDonDTO,ThucDon>(saveThucDonDTO);
+            ThucDon td = _mapper.Map<SaveThucDonDTO, ThucDon>(saveThucDonDTO);
             _unitOfWork.ThucDons.Add(td);
-            _unitOfWork.Complete();          
+            _unitOfWork.Complete();
         }
         public ThucDonDTO GetMonAn(int id)
         {
-            ThucDon td=_unitOfWork.ThucDons.GetById(id);
+            ThucDon td = _unitOfWork.ThucDons.GetById(id);
             ThucDonDTO thucDonDTO = _mapper.Map<ThucDon, ThucDonDTO>(td);
             return thucDonDTO;
         }
@@ -97,7 +77,7 @@ namespace ApplicationCore.Services
             ThucDon td = _mapper.Map<SaveThucDonDTO, ThucDon>(saveThucDonDTO);
             _unitOfWork.ThucDons.Update(td);
             _unitOfWork.Complete();
-            
+
         }
         public void ThemMonAn(SaveThucDonDTO saveThucDonDTO)
         {
@@ -109,12 +89,12 @@ namespace ApplicationCore.Services
         {
             //ThucDon td = _mapper.Map<SaveThucDonDTO, ThucDon>(saveThucDonDTO);
             var td = _unitOfWork.ThucDons.GetById(id);
-            if(td!=null)
+            if (td != null)
             {
                 _unitOfWork.ThucDons.Remove(td);
                 _unitOfWork.Complete();
             }
-           
+
         }
     }
 }

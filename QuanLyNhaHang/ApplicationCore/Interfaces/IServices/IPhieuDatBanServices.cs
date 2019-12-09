@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
+using ApplicationCore.ModelsContainData.Models;
 using ApplicationCore.ModelsContainData.ViewModels;
 
 namespace ApplicationCore.Interfaces.IServices
 {
     public interface IPhieuDatBanServices
     {
-        PhieuDatBanVM GetPhieuDatBanVM(int pageIndex);
+        IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(int IdBanAn, string trangThai, int pageIndex, int pageSize, out int count);
         PhieuDatBanDTO GetById(int Id);
         bool Update(SavePhieuDatBanDTO p);
         int Add(SavePhieuDatBanDTO p);

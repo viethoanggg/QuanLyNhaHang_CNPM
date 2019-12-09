@@ -3,357 +3,430 @@ using System.Security.Cryptography;
 using System.Text;
 using ApplicationCore.Entities;
 
-namespace Infrastructure.Persistence.Data {
-    public class SeedData {
-        public static void Initialize (QLNHContext context) {
+namespace Infrastructure.Persistence.Data
+{
+    public class SeedData
+    {
+        public static void Initialize(QLNHContext context)
+        {
 
-            context.Database.EnsureCreated ();
-            if (!context.NguoiDungs.Any ()) {
+            context.Database.EnsureCreated();
+            if (!context.NguoiDungs.Any())
+            {
                 string mk = "admin";
                 string mkh = "123";
                 string mkt = "123";
                 string mktiep = "123";
-                using (MD5 md5 = MD5.Create ()) {
-                    mk = GetMd5Hash (md5, mk);
-                    mkh = GetMd5Hash (md5, mkh);
-                    mkt = GetMd5Hash (md5, mkt);
-                    mktiep = GetMd5Hash (md5, mktiep);
+                using (MD5 md5 = MD5.Create())
+                {
+                    mk = GetMd5Hash(md5, mk);
+                    mkh = GetMd5Hash(md5, mkh);
+                    mkt = GetMd5Hash(md5, mkt);
+                    mktiep = GetMd5Hash(md5, mktiep);
                 }
-                context.NguoiDungs.AddRange (
-                    new NguoiDung {
+                context.NguoiDungs.AddRange(
+                    new NguoiDung
+                    {
                         Ten = "Admin",
-                            TenDangNhap = "admin",
-                            MatKhau = mk,
-                            Role="Quản lý"
+                        TenDangNhap = "admin",
+                        MatKhau = mk,
+                        Role = "Quản lý"
 
                     },
-                    new NguoiDung {
+                    new NguoiDung
+                    {
                         Ten = "Hoàng",
-                            TenDangNhap = "hoang",
-                            MatKhau = mkh,
-                            Role = "Quản lý"
+                        TenDangNhap = "hoang",
+                        MatKhau = mkh,
+                        Role = "Quản lý"
                     },
-                    new NguoiDung {
+                    new NguoiDung
+                    {
                         Ten = "Triết",
-                            TenDangNhap = "triet",
-                            MatKhau = mkt,
-                            Role = "Quản lý"
+                        TenDangNhap = "triet",
+                        MatKhau = mkt,
+                        Role = "Quản lý"
                     },
-                    new NguoiDung {
+                    new NguoiDung
+                    {
                         Ten = "Tiếp",
-                            TenDangNhap = "tiep",
-                            MatKhau = mktiep,
-                            Role = "Quản lý"
+                        TenDangNhap = "tiep",
+                        MatKhau = mktiep,
+                        Role = "Quản lý"
                     });
             }
-            if (!context.BanAns.Any ()) {
-                context.BanAns.AddRange (
-                    new BanAn {
+            if (!context.BanAns.Any())
+            {
+                context.BanAns.AddRange(
+                    new BanAn
+                    {
                         Id = 1,
-                            LoaiBanAn = "2 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "2 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 2,
-                            LoaiBanAn = "2 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "2 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 3,
-                            LoaiBanAn = "4 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "4 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 4,
-                            LoaiBanAn = "4 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "4 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 5,
-                            LoaiBanAn = "8 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "8 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 6,
-                            LoaiBanAn = "8 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "8 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 7,
-                            LoaiBanAn = "10 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "10 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 8,
-                            LoaiBanAn = "10 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "10 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 9,
-                            LoaiBanAn = "4 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "4 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     },
-                    new BanAn {
+                    new BanAn
+                    {
                         Id = 10,
-                            LoaiBanAn = "4 người",
-                            TrangThai = "Trống",
-                            GhiChu = ""
+                        LoaiBanAn = "4 người",
+                        TrangThai = "Trống",
+                        GhiChu = ""
                     }
                 );
             }
-            if (!context.LoaiMonAns.Any ()) {
-                context.LoaiMonAns.AddRange (
-                    new LoaiMonAn {
+            if (!context.LoaiMonAns.Any())
+            {
+                context.LoaiMonAns.AddRange(
+                    new LoaiMonAn
+                    {
                         Ten = "Hải sản"
                     },
-                    new LoaiMonAn {
-                        Ten = "Mưc"
+                    new LoaiMonAn
+                    {
+                        Ten = "Mực"
                     },
-                    new LoaiMonAn {
+                    new LoaiMonAn
+                    {
                         Ten = "Cá hồi"
                     },
-                    new LoaiMonAn {
+                    new LoaiMonAn
+                    {
                         Ten = "Súp"
                     },
-                    new LoaiMonAn {
+                    new LoaiMonAn
+                    {
                         Ten = "Gỏi"
                     },
-                    new LoaiMonAn {
+                    new LoaiMonAn
+                    {
                         Ten = "Lẩu các loại"
                     },
-                    new LoaiMonAn {
+                    new LoaiMonAn
+                    {
                         Ten = "Món chiên"
                     },
-                    new LoaiMonAn {
+                    new LoaiMonAn
+                    {
                         Ten = "Thức uống"
                     }
                 );
             }
 
-            if (!context.ThucDons.Any ()) {
-                context.ThucDons.AddRange (
-                    new ThucDon {
+            if (!context.ThucDons.Any())
+            {
+                context.ThucDons.AddRange(
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 1,
-                            Ten = "Gỏi sứa",
-                            Gia = 60000
+                        Ten = "Gỏi sứa",
+                        Gia = 60000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 1,
-                            Ten = "Cua rang me",
-                            Gia = 80000
+                        Ten = "Cua rang me",
+                        Gia = 80000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 1,
-                            Ten = "Cua hấp sả",
-                            Gia = 200000
+                        Ten = "Cua hấp sả",
+                        Gia = 200000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 1,
-                            Ten = "Cua rang muối",
-                            Gia = 250000
+                        Ten = "Cua rang muối",
+                        Gia = 250000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 1,
-                            Ten = "Sò huyết nướng",
-                            Gia = 250000
+                        Ten = "Sò huyết nướng",
+                        Gia = 250000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 2,
-                            Ten = "Mực xào thập cẩm",
-                            Gia = 280000
+                        Ten = "Mực xào thập cẩm",
+                        Gia = 280000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 2,
-                            Ten = "Mực chiên bơ",
-                            Gia = 280000
+                        Ten = "Mực chiên bơ",
+                        Gia = 280000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 2,
-                            Ten = "Mực trứng hấp",
-                            Gia = 180000
+                        Ten = "Mực trứng hấp",
+                        Gia = 180000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 2,
-                            Ten = "Mực trứng nướng muối ớt",
-                            Gia = 180000
+                        Ten = "Mực trứng nướng muối ớt",
+                        Gia = 180000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 2,
-                            Ten = "Mực trứng chiên",
-                            Gia = 180000
+                        Ten = "Mực trứng chiên",
+                        Gia = 180000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 3,
-                            Ten = "Súp cá hồi",
-                            Gia = 20000
+                        Ten = "Súp cá hồi",
+                        Gia = 20000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 3,
-                            Ten = "Gỏi cá hồi",
-                            Gia = 250000
+                        Ten = "Gỏi cá hồi",
+                        Gia = 250000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 3,
-                            Ten = "Cháo cá hồi",
-                            Gia = 20000
+                        Ten = "Cháo cá hồi",
+                        Gia = 20000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 3,
-                            Ten = "Cá hồi nướng",
-                            Gia = 320000
+                        Ten = "Cá hồi nướng",
+                        Gia = 320000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 3,
-                            Ten = "Cá hồi hấp xì dầu",
-                            Gia = 350000
+                        Ten = "Cá hồi hấp xì dầu",
+                        Gia = 350000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 3,
-                            Ten = "Cá hồi rang muối ",
-                            Gia = 320000
+                        Ten = "Cá hồi rang muối ",
+                        Gia = 320000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 4,
-                            Ten = "Súp cua ",
-                            Gia = 28000
+                        Ten = "Súp cua ",
+                        Gia = 28000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 4,
-                            Ten = "Súp bắp cua ",
-                            Gia = 31000
+                        Ten = "Súp bắp cua ",
+                        Gia = 31000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 4,
-                            Ten = "Súp tôm ",
-                            Gia = 33000
+                        Ten = "Súp tôm ",
+                        Gia = 33000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 4,
-                            Ten = "Súp nghêu ",
-                            Gia = 28000
+                        Ten = "Súp nghêu ",
+                        Gia = 28000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 4,
-                            Ten = "Súp hải sản ",
-                            Gia = 29000
+                        Ten = "Súp hải sản ",
+                        Gia = 29000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 5,
-                            Ten = "Gỏi bưởi ",
-                            Gia = 121000
+                        Ten = "Gỏi bưởi ",
+                        Gia = 121000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 5,
-                            Ten = "Gỏi bò bóp thấu ",
-                            Gia = 110000
+                        Ten = "Gỏi bò bóp thấu ",
+                        Gia = 110000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 5,
-                            Ten = "Gỏi ngó sen tôm thịt ",
-                            Gia = 121000
+                        Ten = "Gỏi ngó sen tôm thịt ",
+                        Gia = 121000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 5,
-                            Ten = "Gỏi khoai môn ",
-                            Gia = 110000
+                        Ten = "Gỏi khoai môn ",
+                        Gia = 110000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 5,
-                            Ten = "Gỏi xoài tôm thịt ",
-                            Gia = 110000
+                        Ten = "Gỏi xoài tôm thịt ",
+                        Gia = 110000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu vịt ",
-                            Gia = 400000
+                        Ten = "Lẩu vịt ",
+                        Gia = 400000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu cá lăng ",
-                            Gia = 400000
+                        Ten = "Lẩu cá lăng ",
+                        Gia = 400000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu riêu cua hấp bò",
-                            Gia = 500000
+                        Ten = "Lẩu riêu cua hấp bò",
+                        Gia = 500000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu bò nhúng giấm ",
-                            Gia = 350000
+                        Ten = "Lẩu bò nhúng giấm ",
+                        Gia = 350000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu thập cẩm ",
-                            Gia = 600000
+                        Ten = "Lẩu thập cẩm ",
+                        Gia = 600000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu ếch măng cay ",
-                            Gia = 400000
+                        Ten = "Lẩu ếch măng cay ",
+                        Gia = 400000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 6,
-                            Ten = "Lẩu gà rượu vang ",
-                            Gia = 600000
+                        Ten = "Lẩu gà rượu vang ",
+                        Gia = 600000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 7,
-                            Ten = "Chả giò thăng hoa ",
-                            Gia = 50000
+                        Ten = "Chả giò thăng hoa ",
+                        Gia = 50000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 7,
-                            Ten = "Khoai lang chiên",
-                            Gia = 30000
+                        Ten = "Khoai lang chiên",
+                        Gia = 30000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 7,
-                            Ten = "Cà tím chiên dòn ",
-                            Gia = 40000
+                        Ten = "Cà tím chiên dòn ",
+                        Gia = 40000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 7,
-                            Ten = "Hoành thánh chiên tứ vị ",
-                            Gia = 50000
+                        Ten = "Hoành thánh chiên tứ vị ",
+                        Gia = 50000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 7,
-                            Ten = "Nấm bào ngư chiên xù ",
-                            Gia = 40000
+                        Ten = "Nấm bào ngư chiên xù ",
+                        Gia = 40000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 8,
-                            Ten = "Nước ngọt các loại ",
-                            Gia = 12000
+                        Ten = "Nước ngọt các loại ",
+                        Gia = 12000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 8,
-                            Ten = "Nước suối ",
-                            Gia = 7000
+                        Ten = "Nước suối ",
+                        Gia = 7000
                     },
-                    new ThucDon {
+                    new ThucDon
+                    {
                         IdLoaiMonAn = 8,
-                            Ten = "Bia các loại ",
-                            Gia = 15000
+                        Ten = "Bia các loại ",
+                        Gia = 15000
                     }
                 );
 
-                if (!context.KhachHangs.Any ()) {
-                    context.AddRange (
-                        new KhachHang {
+                if (!context.KhachHangs.Any())
+                {
+                    context.AddRange(
+                        new KhachHang
+                        {
                             Ten = "Hoàng GG",
-                                SDT = "0123456789",
-                                DiaChi = "12/2,Quang Trung, Phường 7 ,Quận Gò Vấp,TPHCM"
+                            SDT = "0123456789",
+                            DiaChi = "12/2,Quang Trung, Phường 7 ,Quận Gò Vấp,TPHCM"
                             // DiaChi=new KhachHang.DiaChiNha{
                             //     SoNha="12/34",
                             //     TenDuong="Tân Sơn",
@@ -363,10 +436,11 @@ namespace Infrastructure.Persistence.Data {
                             // }
                             // DiaChi= new KhachHang.DiaChiNha("12.34","Tân Sơn","Phường 15","Quận Tân Bình","TPHCM")
                         },
-                        new KhachHang {
+                        new KhachHang
+                        {
                             Ten = "Minh",
-                                SDT = "0123459829",
-                                DiaChi = "12/2,Tân Sơn, Phường 15 ,Quận Tân Bình,TPHCM"
+                            SDT = "0123459829",
+                            DiaChi = "12/2,Tân Sơn, Phường 15 ,Quận Tân Bình,TPHCM"
                             // DiaChi = new KhachHang.DiaChiNha
                             // {
                             //     SoNha = "91/2",
@@ -381,18 +455,20 @@ namespace Infrastructure.Persistence.Data {
 
                 }
             }
-            context.SaveChanges ();
+            context.SaveChanges();
 
         }
 
-        private static string GetMd5Hash (MD5 md5, string input) {
-            byte[] bytes = md5.ComputeHash (Encoding.UTF8.GetBytes (input));
-            StringBuilder s = new StringBuilder ();
-            for (int i = 0; i < bytes.Length; i++) {
-                s.Append (bytes[i].ToString ("X2"));
+        private static string GetMd5Hash(MD5 md5, string input)
+        {
+            byte[] bytes = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                s.Append(bytes[i].ToString("X2"));
 
             }
-            return s.ToString ();
+            return s.ToString();
 
         }
     }
