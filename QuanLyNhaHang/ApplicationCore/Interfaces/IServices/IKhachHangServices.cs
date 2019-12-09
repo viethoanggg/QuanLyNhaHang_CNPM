@@ -12,7 +12,7 @@ namespace ApplicationCore.Interfaces.IServices
         SaveKhachHangDTO GetSaveKhachHangDTO(int id);
         void Edit(SaveKhachHangDTO khachHang);
         void Create(SaveKhachHangDTO khachHang);
-        void Delete(int id);
+        int Delete(int id);
 
 
     }

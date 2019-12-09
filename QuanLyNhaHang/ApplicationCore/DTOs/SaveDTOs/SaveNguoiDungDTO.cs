@@ -13,8 +13,9 @@ namespace ApplicationCore.DTOs.SaveDTOs
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class SaveNguoiDungDTO {
-   
+    public class SaveNguoiDungDTO
+    {
+
         public int Id { get; set; }
         [Display(Name = "Tên")]
         [Required]
@@ -32,5 +33,8 @@ namespace ApplicationCore.DTOs.SaveDTOs
         [Required]
         public string Role { get; set; }
 
+        [Display(Name = "Trạng thái")]
+        [Required]
+        public int TrangThai { get; set; }
     }
 }

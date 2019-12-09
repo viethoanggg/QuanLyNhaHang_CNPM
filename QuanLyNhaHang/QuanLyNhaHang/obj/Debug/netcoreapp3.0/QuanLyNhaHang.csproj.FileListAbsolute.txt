@@ -584,8 +584,6 @@ C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\LoaiMonAn\Index.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\PhieuDatBan\Details.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Index.cshtml.g.cs
-C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Edit.cshtml.g.cs
-C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\NguoiDung\Delete.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\obj\Debug\netcoreapp3.0\Razor\Views\BanAn\_BanAnPartialView\_CTHDPartial.cshtml.g.cs
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\Users\del\Documents\GitHub\QuanLyNhaHang_CNPM\QuanLyNhaHang\QuanLyNhaHang\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

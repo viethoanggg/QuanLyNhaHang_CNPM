@@ -64,6 +64,7 @@ namespace QuanLyNhaHang
             services.AddScoped<IHoaDonIndexVMServices, HoaDonIndexVMServices>();
             services.AddScoped<IPhieuDatBanIndexVMServices, PhieuDatBanIndexVMServices>();
             services.AddScoped<IKhachHangIndexVMServices, KhachHangIndexVMServices>();
+            services.AddScoped<INguoiDungIndexVMServices, NguoiDungIndexVMServices>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 

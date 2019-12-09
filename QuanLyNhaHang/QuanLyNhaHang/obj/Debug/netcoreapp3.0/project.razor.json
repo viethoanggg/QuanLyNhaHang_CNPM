@@ -14354,6 +14354,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\NguoiDung\\Create.cshtml",
+      "TargetPath": "Views\\NguoiDung\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\BanAn\\_BanAnPartialView\\_ListMonAnPartial.cshtml",
       "TargetPath": "Views\\BanAn\\_BanAnPartialView\\_ListMonAnPartial.cshtml",
       "FileKind": "mvc"
@@ -14371,11 +14376,6 @@
     {
       "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\KhachHang\\Create.cshtml",
       "TargetPath": "Views\\KhachHang\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\NguoiDung\\Edit.cshtml",
-      "TargetPath": "Views\\NguoiDung\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14561,11 +14561,6 @@
     {
       "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\NguoiDung\\Index.cshtml",
       "TargetPath": "Views\\NguoiDung\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\Views\\NguoiDung\\Delete.cshtml",
-      "TargetPath": "Views\\NguoiDung\\Delete.cshtml",
       "FileKind": "mvc"
     }
   ],

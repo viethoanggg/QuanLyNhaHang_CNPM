@@ -1,14 +1,15 @@
 @model ApplicationCore.ModelsContainData.ViewModels.LoaiMonAnVM
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý loại món ăn";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <div class=row>
-    
+    <div class="col-md-12">
+        <p><a asp-action="Create">+ Create New</a></p>
+        <hr/>
+    </div>
     <div class="col-md-6" style="padding:5px">
         <form name="LoaiMonAn" asp-action="Index" asp-controller="LoaiMonAn" mehtod="get">
             <span style="margin-right:10px">Tên loại món ăn</span>

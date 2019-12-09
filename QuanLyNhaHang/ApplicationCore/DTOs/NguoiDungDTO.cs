@@ -13,11 +13,12 @@ namespace ApplicationCore.DTOs
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class NguoiDungDTO {
-   
+    public class NguoiDungDTO
+    {
+
         public int Id { get; set; }
 
-        [Display(Name="Tên")]
+        [Display(Name = "Tên")]
         [Required]
         public string Ten { get; set; }
 
@@ -32,6 +33,10 @@ namespace ApplicationCore.DTOs
         [Display(Name = "Vai trò")]
         [Required]
         public string Role { get; set; }
+
+        [Display(Name = "Trạng thái")]
+        [Required]
+        public int TrangThai { get; set; }
 
     }
 }

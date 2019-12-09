@@ -98,9 +98,38 @@ namespace QuanLyNhaHang.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Detail(int id)
+        public IActionResult Detail(int? id)
         {
-            return View();
+            if (id == null)
+                return RedirectToAction("Index");
+            return View(_services.GetKhachHang(id.Value));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index");
+            return View(_services.GetSaveKhachHangDTO(id.Value));
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult Deleted(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index");
+            int i = _services.Delete(id.Value);
+            if (i.Equals(-1))
+            {
+                ViewBag.MessageDeleteError = "Danh sách phiếu đặt bàn của khách hàng bị null";
+                return View(_services.GetSaveKhachHangDTO(id.Value));
+            }
+            else if (i.Equals(0))
+            {
+                ViewBag.MessageDeleteError = "Khách hàng này đã có phiếu đặt bàn, không thể xóa";
+                return View(_services.GetSaveKhachHangDTO(id.Value));
+            }
+            return RedirectToAction("Index");
         }
     }
 }

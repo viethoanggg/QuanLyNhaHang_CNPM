@@ -17,12 +17,14 @@ namespace Infrastructure.Persistence.Data
                 string mkh = "123";
                 string mkt = "123";
                 string mktiep = "123";
+                string mkNV = "123";
                 using (MD5 md5 = MD5.Create())
                 {
                     mk = GetMd5Hash(md5, mk);
                     mkh = GetMd5Hash(md5, mkh);
                     mkt = GetMd5Hash(md5, mkt);
                     mktiep = GetMd5Hash(md5, mktiep);
+                    mkNV = GetMd5Hash(md5, mkNV);
                 }
                 context.NguoiDungs.AddRange(
                     new NguoiDung
@@ -30,29 +32,40 @@ namespace Infrastructure.Persistence.Data
                         Ten = "Admin",
                         TenDangNhap = "admin",
                         MatKhau = mk,
-                        Role = "Quản lý"
-
+                        Role = "Quản lý",
+                        TrangThai = 1
                     },
                     new NguoiDung
                     {
                         Ten = "Hoàng",
                         TenDangNhap = "hoang",
                         MatKhau = mkh,
-                        Role = "Quản lý"
+                        Role = "Quản lý",
+                        TrangThai = 1
                     },
                     new NguoiDung
                     {
                         Ten = "Triết",
                         TenDangNhap = "triet",
                         MatKhau = mkt,
-                        Role = "Quản lý"
+                        Role = "Quản lý",
+                        TrangThai = 1
                     },
                     new NguoiDung
                     {
                         Ten = "Tiếp",
                         TenDangNhap = "tiep",
                         MatKhau = mktiep,
-                        Role = "Quản lý"
+                        Role = "Quản lý",
+                        TrangThai = 1
+                    },
+                    new NguoiDung
+                    {
+                        Ten = "Nhân viên thu ngân",
+                        TenDangNhap = "nhanvien",
+                        MatKhau = mkNV,
+                        Role = "Nhân viên",
+                        TrangThai = 1
                     });
             }
             if (!context.BanAns.Any())

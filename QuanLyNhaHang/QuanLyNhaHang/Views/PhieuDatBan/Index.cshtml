@@ -4,10 +4,11 @@
     ViewData["Title"] = "Quản lý phiếu đặt bàn";
 }
 
-<p>
-    <a asp-action="Create"> + Create New</a>
-</p>
 <div class="row">
+            <div class="col-md-12">
+                <p><a asp-action="Create">+ Create New</a></p>
+                <hr/>
+            </div>
             <form asp-action="Index" asp-controller="PhieuDatBan" method="get">
                 <div class="input-group col-sm-3">
                     <p style="margin:7px 15px 5px 0px">Bàn ăn</p>

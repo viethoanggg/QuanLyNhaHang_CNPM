@@ -4,12 +4,13 @@
     ViewData["Title"] = "Quản lý khách hàng";
 }
 
-<p>
-    <a asp-action="Create">+ Create New</a>
-</p>
 <div class="row">
+             <div class="col-md-12">
+                <p><a asp-action="Create">+ Create New</a></p>
+                <hr/>
+            </div>
             <form asp-action="Index" asp-controller="KhachHang" method="get">
-                <div class="input-group col-sm-4">
+                <div class="input-group col-sm-3">
                     <p style="margin:7px 15px 5px 0px">Tên khách hàng</p>
                     <input type="text" class="form-control" name="Ten" value="@ViewBag.CurrentFilterTen">
                  </div>

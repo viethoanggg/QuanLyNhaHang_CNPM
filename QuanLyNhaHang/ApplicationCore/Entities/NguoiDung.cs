@@ -7,12 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationCore.Entities {
+namespace ApplicationCore.Entities
+{
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
 
-    public class NguoiDung : IAggregateRoot {
+    public class NguoiDung : IAggregateRoot
+    {
 
         public NguoiDung()
         {
@@ -23,7 +25,7 @@ namespace ApplicationCore.Entities {
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
         public string Role { get; set; }
-
+        public int TrangThai { get; set; }
         ///////////////////////////////////////////
         public virtual ICollection<HoaDon> HoaDons { get; set; }
 

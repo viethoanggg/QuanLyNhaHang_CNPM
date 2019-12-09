@@ -48,6 +48,10 @@ namespace ApplicationCore.Services
         public SaveKhachHangDTO GetSaveKhachHangDTO(int id)
         {
             KhachHangDTO khachHangDTO = GetKhachHang(id);
+            if (khachHangDTO == null)
+            {
+                return null;
+            }
             SaveKhachHangDTO saveKhachHangDTO = _mapper.Map<KhachHangDTO, SaveKhachHangDTO>(khachHangDTO);
             return saveKhachHangDTO;
         }
@@ -57,12 +61,18 @@ namespace ApplicationCore.Services
             _unitOfWork.KhachHangs.Update(khachHang);
             _unitOfWork.Complete();
         }
-        public void Delete(int id)
+        public int Delete(int id)
         {
             KhachHangDTO khachHangDTO = GetKhachHang(id);
             KhachHang khachHang = _mapper.Map<KhachHangDTO, KhachHang>(khachHangDTO);
+            int i = _unitOfWork.KhachHangs.KiemTraPhieuDatBanCuaKhachHang(id);
+            if (i.Equals(-1))
+                return -1;
+            else if (i.Equals(0))
+                return 0;
             _unitOfWork.KhachHangs.Remove(khachHang);
             _unitOfWork.Complete();
+            return 1;
         }
         public void Create(SaveKhachHangDTO SaveKhachHangDTO)
         {
