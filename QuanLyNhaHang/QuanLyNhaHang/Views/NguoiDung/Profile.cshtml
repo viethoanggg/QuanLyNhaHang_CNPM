@@ -1,0 +1,112 @@
+@model ApplicationCore.ModelsContainData.ViewModels.UserProfileVM
+
+@{
+    ViewData["Title"] = "Quản lý hồ sơ cá nhân";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Hồ sơ cá nhân</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-3 col-sm-3  profile_left">
+                    <div class="profile_img">
+                        <div id="crop-avatar">
+                          <!-- Current avatar -->
+                          <img class="img-responsive avatar-view" style="width:100%;height:100%"src="~/Images/picture.png" alt="Avatar" title="Avatar">
+                        </div>
+                    </div>
+                    <h3>@ViewBag.TenCurrentUser</h3>
+                </div>
+
+                <div class="col-md-9 col-sm-9 ">
+                    <div class="profile_title">
+                        <div class="col-md-12">
+                          <h2>Thông tin người dùng</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                            <dl class="row">
+                                <dt class = "col-sm-2">
+                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.Ten)
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.NguoiDungDTO.Ten)
+                                </dd>
+                                <dt class = "col-sm-2">
+                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.TenDangNhap)
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.NguoiDungDTO.TenDangNhap)
+                                </dd>
+                                <dt class = "col-sm-2">
+                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.MatKhau)
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.NguoiDungDTO.MatKhau)
+                                </dd>
+                                <dt class = "col-sm-2">
+                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.Role)
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.NguoiDungDTO.Role)
+                                </dd>
+                                <dt class = "col-sm-2">
+                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.TrangThai)
+                                </dt>
+                                <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.NguoiDungDTO.TrangThai)
+                                </dd>
+                            </dl>
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@Model.NguoiDungDTO.Id">Chinh sửa hồ sơ</a> |
+                                <a asp-action="EditMK" asp-route-id="@Model.NguoiDungDTO.Id">Đổi mật khẩu</a> 
+                            </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="col-md-12" style="margin-top:10px">
+                        <div class="profile_title">
+                            <div class="col-md-12">
+                                <h2>Hoạt động gần đây  <small>  Danh sách bàn ăn đã phục vụ</small></h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table table-striped jambo_table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Bàn ăn</th>
+                                        <th>Thời gian lập</th>
+                                        <th>Thời gian thanh toán</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ( var item in Model.ListHD )
+                                    {
+                                        <tr>
+                                            <td> @item.IdBanAn</td> 
+                                            <td> @item.ThoiGianLap</td> 
+                                            <td> @item.ThoiGianThanhToan</td> 
+                                            <td> @item.ThanhTien</td> 
+                                        </tr>
+                                    }
+                                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

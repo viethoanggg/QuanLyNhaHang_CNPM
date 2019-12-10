@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ApplicationCore.ModelsContainData.ViewModels;
 using QuanLyNhaHang.Services.Interfaces;
 using ApplicationCore.DTOs.SaveDTOs;
+using ApplicationCore.DTOs;
 
 namespace QuanLyNhaHang.Controllers
 {
@@ -128,6 +129,19 @@ namespace QuanLyNhaHang.Controllers
                 ViewData["MessageLockUser"] = "Không thể khóa vì bạn là người dùng này và đang sử dụng tài khoản này";
             }
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Profile(int? id)
+        {
+            // if (KiemTraDangNhap() == false)
+            //     return View("../Login/Index");
+
+            if (id == null)
+                return View("../Login/Index");
+            NguoiDungDTO nguoiDungDTO = _services.GetNguoiDung(id.Value);
+            if (nguoiDungDTO == null)
+                return View("../Login/Index");
+            return View(_servicesIndexVM.GetUserProfileVM(id.Value));
         }
     }
 }

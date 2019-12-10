@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
+using ApplicationCore.Entities;
 
 namespace ApplicationCore.Interfaces.IServices
 {
@@ -10,7 +11,8 @@ namespace ApplicationCore.Interfaces.IServices
         NguoiDungDTO GetNguoiDung(int id);
         SaveNguoiDungDTO GetSaveNguoiDungDTO(int id);
         void Edit(SaveNguoiDungDTO NguoiDung);
-        int Create(string NhapLaiMatKhau,SaveNguoiDungDTO NguoiDung);
+        int Create(string NhapLaiMatKhau, SaveNguoiDungDTO NguoiDung);
         int LockUser(int IdUser, int IdCurrentUser);
+        IEnumerable<HoaDon> GetListHDCuaNguoiDung(int idUser);
     }
 }

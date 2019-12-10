@@ -17,44 +17,20 @@
                         <div class="animated flipInY col-lg-5 col-md-3 col-sm-6 col-xs-12">
                             <div class="form-group row">
                                 <label class="control-label col-md-2 col-sm-2 col-xs-2" style="margin-top:7px">Từ</label>
-                               <div class="calendar-exibit">
-                                    <div class="col-md-9 col-sm-9 col-xs-9">
-                                        <fieldset>
-                                            <div class="control-group">
-                                                <div class="controls">
-                                                    <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-                                                        <input type="text" name="thoiGianTu"class="form-control has-feedback-left" id="single_cal1" aria-describedby="inputSuccess2Status">
-                                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="date" name="thoiGianTu"/>
                                 </div>
                             </div>
-                        </div>
+                        </div>   
 
                         <div class="animated flipInY col-lg-5 col-md-3 col-sm-6 col-xs-12">
                             <div class="form-group row">
                                 <label class="control-label col-md-2 col-sm-2 col-xs-2" style="margin-top:7px">Đến</label>
-                                <div class="calendar-exibit">
-                                    <div class="col-md-9 col-sm-9 col-xs-9">
-                                        <fieldset>
-                                            <div class="control-group">
-                                                <div class="controls">
-                                                    <div class="col-md-11 xdisplay_inputx form-group row has-feedback">
-                                                        <input type="text" name="thoiGianDen" class="form-control has-feedback-left" id="single_cal1" aria-describedby="inputSuccess2Status">
-                                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="date" name="thoiGianDen"/>
                                 </div>
                             </div>
-                        </div>
+                        </div>   
 
                          <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
                              <input type="submit" value="Tìm" class="form-control btn btn-primary"/>
@@ -147,7 +123,7 @@
                             </th>
                             <th class="column-title">
                                 <a  asp-action="Index" asp-controller="ThongKe" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortGia" 
+                                    asp-route-currentSort="@ViewBag.CurrentSortSoLuongBanDuoc" 
                                     asp-route-currentFilterThoiGianTu="@ViewBag.CurrentFilterThoiGianTu"
                                     asp-route-currentFilterThoiGianDen="@ViewBag.CurrentFilterThoiGianDen"
                                     asp-route-pageIndex="@Model.ListMonAnBanDuoc.PageIndex"

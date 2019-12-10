@@ -29,8 +29,10 @@ namespace QuanLyNhaHang.Controllers
                 return true;
             }
         }
-        public IActionResult Index(DateTime thoiGianTu, DateTime thoiGianDen, DateTime currentFilterThoiGianTu, DateTime currentFilterThoiGianDen, string currentSort, int pageIndex = 1)
+        public IActionResult Index(string thoiGianTu, string thoiGianDen, string currentFilterThoiGianTu, string currentFilterThoiGianDen, string currentSort, int pageIndex = 1)
         {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
 
             if (thoiGianTu != null || thoiGianDen != null)
                 pageIndex = 1;
@@ -51,7 +53,15 @@ namespace QuanLyNhaHang.Controllers
             ViewBag.CurrentSortSLBanDuoc = currentSort.Equals("SLBanDuoc_DESC") ? "SLBanDuoc_ASC" : "SLBanDuoc_DESC";
 
             ViewBag.CurrentSort = currentSort;
-            return View(_servicesIndexVM.GetThongKeVM(currentSort, thoiGianTu, thoiGianDen, pageIndex));
+            DateTime tgTu = new DateTime();
+            if (!String.IsNullOrEmpty(thoiGianTu))
+                tgTu = Convert.ToDateTime(thoiGianTu);
+
+            DateTime tgDen = DateTime.Now;
+            if (!String.IsNullOrEmpty(thoiGianDen))
+                tgDen = Convert.ToDateTime(thoiGianDen);
+
+            return View(_servicesIndexVM.GetThongKeVM(currentSort, tgTu, tgDen, pageIndex));
         }
     }
 }

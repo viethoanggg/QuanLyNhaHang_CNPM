@@ -108,5 +108,11 @@ namespace ApplicationCore.Services
             return 1;
         }
 
+        public IEnumerable<HoaDon> GetListHDCuaNguoiDung(int idUser)
+        {
+            IEnumerable<HoaDon> listHD = _unitOfWork.HoaDons.Find(s => s.IdUser.Equals(idUser));
+            return listHD;
+
+        }
     }
 }

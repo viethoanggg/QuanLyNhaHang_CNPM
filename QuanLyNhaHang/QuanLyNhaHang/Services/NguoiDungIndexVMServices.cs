@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ApplicationCore.DTOs;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Services;
@@ -51,6 +52,17 @@ namespace QuanLyNhaHang.Services
             return new NguoiDungVM
             {
                 NguoiDungs = new PaginatedList<NguoiDungDTO>(listNguoiDung, pageIndex, pageSize, count)
+            };
+        }
+
+        public UserProfileVM GetUserProfileVM(int idUser)
+        {
+            NguoiDungDTO nguoiDung = _services.GetNguoiDung(idUser);
+            IEnumerable<HoaDon> listHD = _services.GetListHDCuaNguoiDung(idUser);
+            return new UserProfileVM
+            {
+                NguoiDungDTO=nguoiDung,
+                ListHD=listHD
             };
         }
     }
