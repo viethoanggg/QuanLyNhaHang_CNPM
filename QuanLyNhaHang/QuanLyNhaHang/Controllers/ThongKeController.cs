@@ -1,6 +1,7 @@
 using System;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhaHang.Services.Interfaces;
 
@@ -15,11 +16,42 @@ namespace QuanLyNhaHang.Controllers
             this._services = services;
             this._servicesIndexVM = servicesIndexVM;
         }
-        public IActionResult Index(ThongKeVM vm,int pageIndex = 1)
+        public bool KiemTraDangNhap()
         {
-            DateTime thoiGianTu = vm.ThoiGianTu;
-            DateTime thoiGianDen = vm.ThoiGianDen;
-            return View(_servicesIndexVM.GetThongKeVM(pageIndex));
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("TenDangNhapCurrentUser")))
+            {
+                return false;
+            }
+            else
+            {
+                ViewBag.TenCurrentUser = HttpContext.Session.GetString("TenCurrentUser").ToString();
+                ViewBag.IdCurrentUser = HttpContext.Session.GetString("IdCurrentUser").ToString();
+                return true;
+            }
+        }
+        public IActionResult Index(DateTime thoiGianTu, DateTime thoiGianDen, DateTime currentFilterThoiGianTu, DateTime currentFilterThoiGianDen, string currentSort, int pageIndex = 1)
+        {
+
+            if (thoiGianTu != null || thoiGianDen != null)
+                pageIndex = 1;
+            if (thoiGianTu == null)
+                thoiGianTu = currentFilterThoiGianTu;
+            if (thoiGianDen == null)
+                thoiGianDen = currentFilterThoiGianDen;
+
+            ViewBag.CurrentFilterThoiGianTu = thoiGianTu;
+            ViewBag.CurrentFilterThoiGianDen = thoiGianDen;
+
+            if (String.IsNullOrEmpty(currentSort))
+                currentSort = "TenLoaiMonAn_DESC";
+
+            ViewBag.CurrentSortTenLoaiMonAn = currentSort.Equals("TenLoaiMonAn_DESC") ? "TenLoaiMonAn_ASC" : "TenLoaiMonAn_DESC";
+            ViewBag.CurrentSortTenMonAn = currentSort.Equals("TenMonAn_DESC") ? "TenMonAn_ASC" : "TenMonAn_DESC";
+            ViewBag.CurrentSortGia = currentSort.Equals("Gia_DESC") ? "Gia_ASC" : "Gia_DESC";
+            ViewBag.CurrentSortSLBanDuoc = currentSort.Equals("SLBanDuoc_DESC") ? "SLBanDuoc_ASC" : "SLBanDuoc_DESC";
+
+            ViewBag.CurrentSort = currentSort;
+            return View(_servicesIndexVM.GetThongKeVM(currentSort, thoiGianTu, thoiGianDen, pageIndex));
         }
     }
 }

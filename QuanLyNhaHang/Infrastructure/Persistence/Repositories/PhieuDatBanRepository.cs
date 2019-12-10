@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using ApplicationCore.DTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
@@ -135,31 +136,34 @@ namespace Infrastructure.Persistence.Repositories
                 QLNHContext.Entry(ba).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
         }
-        public int GetThongKeTongPhieuDatBan()
+        public int GetThongKeTongPhieuDatBan(Expression<Func<PhieuDatBan, bool>> predicate)
         {
             int tongPhieuDatBan = 0;
-            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.ToList();
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(predicate).ToList();
             tongPhieuDatBan = listPhieuDatBan.Count();
             return tongPhieuDatBan;
         }
-        public int GetThongKePhieuDatBanBiHuy()
+        public int GetThongKePhieuDatBanBiHuy(Expression<Func<PhieuDatBan, bool>> predicate)
         {
             int tongPhieuDatBan = 0;
-            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(s => s.TrangThai.Equals("Bị hủy")).ToList();
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(predicate).ToList();
+            listPhieuDatBan = listPhieuDatBan.Where(s => s.TrangThai.Equals("Bị hủy")).ToList();
             tongPhieuDatBan = listPhieuDatBan.Count();
             return tongPhieuDatBan;
         }
-        public int GetThongKePhieuDatBanXuLyXong()
+        public int GetThongKePhieuDatBanXuLyXong(Expression<Func<PhieuDatBan, bool>> predicate)
         {
             int tongPhieuDatBan = 0;
-            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(s => s.TrangThai.Equals("Xử lý xong")).ToList();
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(predicate).ToList();
+            listPhieuDatBan = listPhieuDatBan.Where(s => s.TrangThai.Equals("Xử lý xong")).ToList();
             tongPhieuDatBan = listPhieuDatBan.Count();
             return tongPhieuDatBan;
         }
-        public int GetThongKePhieuDatBanChuaXuLy()
+        public int GetThongKePhieuDatBanChuaXuLy(Expression<Func<PhieuDatBan, bool>> predicate)
         {
             int tongPhieuDatBan = 0;
-            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(s => s.TrangThai.Equals("Chưa xử lý")).ToList();
+            IEnumerable<PhieuDatBan> listPhieuDatBan = QLNHContext.PhieuDatBans.Where(predicate).ToList();
+            listPhieuDatBan = listPhieuDatBan.Where(s => s.TrangThai.Equals("Chưa xử lý")).ToList();
             tongPhieuDatBan = listPhieuDatBan.Count();
             return tongPhieuDatBan;
         }

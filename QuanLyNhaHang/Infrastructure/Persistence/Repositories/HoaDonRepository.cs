@@ -8,6 +8,8 @@ using ApplicationCore.Interfaces.IRepositories;
 using Infrastructure.Persistence.Data;
 using System.Threading.Tasks;
 using ApplicationCore.ModelsContainData.Models;
+using System;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -142,9 +144,9 @@ namespace Infrastructure.Persistence.Repositories
             }
             return listThongKe;
         }
-        public int GetThongKeTongDoanhThu()
+        public int GetThongKeTongDoanhThu(Expression<Func<HoaDon, bool>> predicate)
         {
-            IEnumerable<HoaDon> list = QLNHContext.HoaDons.ToList();
+            IEnumerable<HoaDon> list = QLNHContext.HoaDons.Where(predicate).ToList();
             List<HoaDon> listHD = list.ToList();
             int tongDoanhThu = 0;
             for (int i = 0; i < listHD.Count(); i++)
@@ -155,9 +157,9 @@ namespace Infrastructure.Persistence.Repositories
             return tongDoanhThu;
         }
 
-        public int GetTongSoBanAnDuocPhucVu()
+        public int GetTongSoBanAnDuocPhucVu(Expression<Func<HoaDon, bool>> predicate)
         {
-            IEnumerable<HoaDon> listHD = QLNHContext.HoaDons.ToList();
+            IEnumerable<HoaDon> listHD = QLNHContext.HoaDons.Where(predicate).ToList();
             int sl = 0;
             sl = listHD.Count();
             return sl;

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using ApplicationCore.Entities;
 using ApplicationCore.ModelsContainData.Models;
@@ -17,7 +19,7 @@ namespace ApplicationCore.Interfaces.IRepositories
         IEnumerable<CTHDMD> GetListCTHDMD(int IdHoaDon);
         IEnumerable<HoaDonMD> GetListHoaDonMD(IEnumerable<HoaDon> listHD);
         IEnumerable<ThongKeSLMonAnMD> GetThongKeSLMonAnBanDuoc(IEnumerable<ThongKeSLMonAnMD> listThongKe, IEnumerable<HoaDon> listHD);
-        int GetThongKeTongDoanhThu();
-        int GetTongSoBanAnDuocPhucVu();
+        int GetThongKeTongDoanhThu(Expression<Func<HoaDon, bool>> predicate);
+        int GetTongSoBanAnDuocPhucVu(Expression<Func<HoaDon, bool>> predicate);
     }
 }

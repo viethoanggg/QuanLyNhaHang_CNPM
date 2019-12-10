@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using ApplicationCore.Entities;
 using ApplicationCore.ModelsContainData.Models;
 
@@ -13,10 +15,10 @@ namespace ApplicationCore.Interfaces.IRepositories
         void UpdateBanAnCuaPhieuDatBanInTimeNow(PhieuDatBan phieuDatBan);
         void CapNhatAllPhieuDatBan();
         IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(IEnumerable<PhieuDatBan> phieuDatBans);
-        int GetThongKeTongPhieuDatBan();
-        int GetThongKePhieuDatBanBiHuy();
-        int GetThongKePhieuDatBanXuLyXong();
-        int GetThongKePhieuDatBanChuaXuLy();
+        int GetThongKeTongPhieuDatBan(Expression<Func<PhieuDatBan, bool>> predicate);
+        int GetThongKePhieuDatBanBiHuy(Expression<Func<PhieuDatBan, bool>> predicate);
+        int GetThongKePhieuDatBanXuLyXong(Expression<Func<PhieuDatBan, bool>> predicate);
+        int GetThongKePhieuDatBanChuaXuLy(Expression<Func<PhieuDatBan, bool>> predicate);
 
     }
 }

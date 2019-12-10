@@ -7,6 +7,7 @@ using System.Linq;
 using ApplicationCore.Interfaces.IRepositories;
 using ApplicationCore.ModelsContainData.Models;
 using Microsoft.EntityFrameworkCore.Internal;
+using System;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -49,7 +50,7 @@ namespace Infrastructure.Persistence.Repositories
                                                                 .Select(s => new ThongKeSLMonAnMD
                                                                 {
                                                                     Id = s.Id,
-                                                                    TenLoaiMonAn = s.Ten,
+                                                                    TenLoaiMonAn = s.TenLoaiMonAn,
                                                                     Ten = s.Ten,
                                                                     Gia = s.Gia,
                                                                     SoLuongBanDuoc = 0

@@ -47,19 +47,19 @@ namespace QuanLyNhaHang.Controllers
                 VaiTro = currentFilterVaiTro;
             if (TrangThai.Equals(0) && !String.IsNullOrEmpty(currentFilterTrangThai))
                 TrangThai = Convert.ToInt32(currentFilterTrangThai);
-            @ViewBag.CurrentFilterTen = Ten;
-            @ViewBag.CurrentFilterTenDangNhap = TenDangNhap;
-            @ViewBag.CurrentFilterVaiTro = VaiTro;
-            @ViewBag.CurrentFilterTrangThai = TrangThai;
+            ViewBag.CurrentFilterTen = Ten;
+            ViewBag.CurrentFilterTenDangNhap = TenDangNhap;
+            ViewBag.CurrentFilterVaiTro = VaiTro;
+            ViewBag.CurrentFilterTrangThai = TrangThai;
             if (String.IsNullOrEmpty(currentSort))
                 currentSort = "Ten_DESC";
 
-            @ViewBag.CurrentSortTen = currentSort.Equals("Ten_DESC") ? "Ten_ASC" : "Ten_DESC";
-            @ViewBag.CurrentSortTenDangNhap = currentSort.Equals("TenDangNhap_DESC") ? "TenDangNhap_ASC" : "TenDangNhap_DESC";
-            @ViewBag.CurrentSortVaiTro = currentSort.Equals("VaiTro_DESC") ? "VaiTro_ASC" : "VaiTro_DESC";
-            @ViewBag.CurrentSortTrangThai = currentSort.Equals("TrangThai_DESC") ? "TrangThai_ASC" : "TrangThai_DESC";
+            ViewBag.CurrentSortTen = currentSort.Equals("Ten_DESC") ? "Ten_ASC" : "Ten_DESC";
+            ViewBag.CurrentSortTenDangNhap = currentSort.Equals("TenDangNhap_DESC") ? "TenDangNhap_ASC" : "TenDangNhap_DESC";
+            ViewBag.CurrentSortVaiTro = currentSort.Equals("VaiTro_DESC") ? "VaiTro_ASC" : "VaiTro_DESC";
+            ViewBag.CurrentSortTrangThai = currentSort.Equals("TrangThai_DESC") ? "TrangThai_ASC" : "TrangThai_DESC";
 
-            @ViewBag.CurrentSort = currentSort;
+            ViewBag.CurrentSort = currentSort;
             NguoiDungVM nguoiDungVM = _servicesIndexVM.GetNguoiDungVM(currentSort, Ten, TenDangNhap, VaiTro, TrangThai, pageIndex);
             return View(nguoiDungVM);
         }
