@@ -19,7 +19,6 @@
                           <img class="img-responsive avatar-view" style="width:100%;height:100%"src="~/Images/picture.png" alt="Avatar" title="Avatar">
                         </div>
                     </div>
-                    <h3>@ViewBag.TenCurrentUser</h3>
                 </div>
 
                 <div class="col-md-9 col-sm-9 ">
@@ -29,7 +28,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-11" style="margin-left:10px">
                             <dl class="row">
                                 <dt class = "col-sm-2">
                                     @Html.DisplayNameFor(model => model.NguoiDungDTO.Ten)
@@ -44,27 +43,18 @@
                                     @Html.DisplayFor(model => model.NguoiDungDTO.TenDangNhap)
                                 </dd>
                                 <dt class = "col-sm-2">
-                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.MatKhau)
-                                </dt>
-                                <dd class = "col-sm-10">
-                                    @Html.DisplayFor(model => model.NguoiDungDTO.MatKhau)
-                                </dd>
-                                <dt class = "col-sm-2">
                                     @Html.DisplayNameFor(model => model.NguoiDungDTO.Role)
                                 </dt>
                                 <dd class = "col-sm-10">
                                     @Html.DisplayFor(model => model.NguoiDungDTO.Role)
                                 </dd>
-                                <dt class = "col-sm-2">
-                                    @Html.DisplayNameFor(model => model.NguoiDungDTO.TrangThai)
-                                </dt>
-                                <dd class = "col-sm-10">
-                                    @Html.DisplayFor(model => model.NguoiDungDTO.TrangThai)
-                                </dd>
                             </dl>
                             <div>
-                                <a asp-action="Edit" asp-route-id="@Model.NguoiDungDTO.Id">Chinh sửa hồ sơ</a> |
-                                <a asp-action="EditMK" asp-route-id="@Model.NguoiDungDTO.Id">Đổi mật khẩu</a> 
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#SuaThongTinCaNhanModal">Sửa thông tin cá nhân</button>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#DoiMatKhauModal">Đổi mật khẩu</button>
+                                <div>
+                                   
+                                </div>
                             </div>
                     </div>
                     
@@ -110,3 +100,124 @@
 </div>
 
 
+
+<!-- The Modal -->
+  <div class="modal fade" id="SuaThongTinCaNhanModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Sửa thông tin cá nhân</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form asp-action="SuaThongTinCaNhan" asp-controller="NguoiDung" method="post" onsubmit="SuaTen()">
+                <div class="form-group">
+                    <input type="hidden" value="@ViewBag.IdCurrentUser" name="IdUser">
+                    <label for="HoTen">Họ tên</label>
+                    <input type="text" class="form-control" placeholder="Nhập họ tên" name="HoTen" id="HoTenUser">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
+            </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="DoiMatKhauModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Đổi mật khẩu</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+           
+                <input type="hidden" value="@ViewBag.IdCurrentUser" name="IdUser" id="idu">
+                <div class="form-group">
+                    <label for="MatKhauCu">Mật khẩu cũ</label>
+                    <input type="password" class="form-control" placeholder="Nhập mật khẩu cũ" name="MatKhauCu" id="MKCu">
+                </div>
+                <div class="form-group">
+                    <label for="MatKhauMoi">Mật khẩu mới</label>
+                    <input type="password" class="form-control" placeholder="Nhập mật khẩu mới" name="MatKhauMoi" id="MKMoi">
+                </div>
+                <div class="form-group">
+                    <label for="NhapLaiMatKhauMoi">Nhập lại mật khẩu</label>
+                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" name="NhapLaiMatKhauMoi" id="NLMKMoi">
+                </div>
+                <div class="form-group">
+                    <i id="Message" style="color:red"></i>
+                </div>
+                
+                <button onclick="DoiMatKhau()" class="btn btn-primary" style="float:right">Submit</button>
+            
+        </div>
+    
+      </div>
+    </div>
+  </div>
+
+<script>
+    function SuaTen()
+    {
+        alert("Đổi tên thành công");
+    }
+
+    function DoiMatKhau()
+    {
+        var MKCu=document.getElementById("MKCu").value;
+        var MKMoi=document.getElementById("MKMoi").value;
+        var NLMKMoi=document.getElementById("NLMKMoi").value;
+        var IdUser=document.getElementById("idu").value;
+        if(MKCu=="")
+        {
+            document.getElementById("Message").innerHTML="Mật khẩu cũ bị trống";
+            return;
+        }
+        else if(MKMoi=="")
+        {
+             document.getElementById("Message").innerHTML="Mật khẩu mới trống";
+            return;
+        }
+        else if(NLMKMoi=="")
+        {
+             document.getElementById("Message").innerHTML="Mật khẩu nhập lại bị trống";
+            return;
+        }
+        
+        else if(MKMoi!=NLMKMoi)
+        {
+            document.getElementById("Message").innerHTML="Mật khẩu nhập lại không đúng";
+            return;
+        }
+         var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText=="0")
+                    document.getElementById("Message").innerHTML = "Mật khẩu cũ không đúng";
+                if(this.responseText=="1")
+                    {
+                        alert("Đổi mật khẩu thành công");
+                        location.reload();
+                    }
+                if(this.responseText=="-1")
+                    document.getElementById("Message").innerHTML ="Không tìm thấy người dùng này";
+            }
+        };
+        xhttp.open("POST", "/NguoiDung/DoiMatKhau?IdUser=" + IdUser + "&MatKhauMoi="+MKMoi+"&MatKhauCu="+MKCu);
+        xhttp.send();
+      
+    }
+   
+</script>

@@ -11,7 +11,7 @@ namespace Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<BanAn> builder)
         {
             builder.Property(m => m.LoaiBanAn)
-                    .IsRequired();
+                    .IsRequired(true);
             builder.Property(m => m.TrangThai);
 
             builder.Property(m => m.GhiChu);

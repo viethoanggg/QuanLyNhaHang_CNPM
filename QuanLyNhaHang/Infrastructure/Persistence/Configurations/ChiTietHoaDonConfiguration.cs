@@ -11,10 +11,10 @@ namespace Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<ChiTietHoaDon> builder)
         {
             builder.Property(m => m.IdHoaDon)
-                    .IsRequired();
+                    .IsRequired(true);
 
             builder.Property(m => m.IdMonAn)
-                    .IsRequired();
+                    .IsRequired(true);
 
             builder.Property(m => m.SoLuong);
 

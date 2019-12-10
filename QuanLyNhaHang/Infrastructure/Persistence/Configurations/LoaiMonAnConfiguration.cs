@@ -8,7 +8,8 @@ namespace Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<LoaiMonAn> builder)
         {
-           
+            builder.Property(m => m.Ten)
+                     .IsRequired(true);
         }
     }
 }

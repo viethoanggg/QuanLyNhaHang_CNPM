@@ -131,17 +131,49 @@ namespace QuanLyNhaHang.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Profile(int? id)
+        public IActionResult Profile()
         {
-            // if (KiemTraDangNhap() == false)
-            //     return View("../Login/Index");
-
-            if (id == null)
+            if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
-            NguoiDungDTO nguoiDungDTO = _services.GetNguoiDung(id.Value);
+
+            int IdUser = Convert.ToInt32(HttpContext.Session.GetString("IdCurrentUser"));
+            if (IdUser == 0)
+                return View("../Login/Index");
+            NguoiDungDTO nguoiDungDTO = _services.GetNguoiDung(IdUser);
             if (nguoiDungDTO == null)
                 return View("../Login/Index");
-            return View(_servicesIndexVM.GetUserProfileVM(id.Value));
+            return View(_servicesIndexVM.GetUserProfileVM(IdUser));
+        }
+
+        [HttpPost]
+        public IActionResult SuaThongTinCaNhan(int IdUser, string HoTen)
+        {
+            if (KiemTraDangNhap() == false)
+                return View("../Login/Index");
+
+            _services.SuaThongTinCaNhan(IdUser, HoTen);
+            HttpContext.Session.SetString("TenCurrentUser", HoTen);
+            return RedirectToAction("Profile");
+        }
+
+        [HttpPost]
+        public string DoiMatKhau(string IdUser, string MatKhauMoi, string MatKhauCu)
+        {
+            int id = 0;
+            if (String.IsNullOrEmpty(IdUser)==false)
+                id = Convert.ToInt32(IdUser);
+            string i = _services.DoiMatKhau(id, MatKhauMoi, MatKhauCu);
+            if (i.Equals("0"))
+            {
+                return "0";
+            }
+            if (i.Equals("1"))
+            {
+                HttpContext.Session.SetString("MatKhauCurrentUser", MatKhauMoi);
+                return "1";
+            }
+            else
+                return "-1";
         }
     }
 }

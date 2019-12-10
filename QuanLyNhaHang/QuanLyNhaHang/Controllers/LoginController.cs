@@ -80,6 +80,7 @@ namespace QuanLyNhaHang.Controllers
                     HttpContext.Session.SetString("TenCurrentUser", nd.Ten);
                     HttpContext.Session.SetString("TrangThaiCurrentUser", nd.TrangThai.ToString());
                     HttpContext.Session.SetString("VaiTroCurrentUser", nd.Role);
+                    HttpContext.Session.SetString("MatKhauCurrentUser", nd.MatKhau);
 
                     ViewBag.IdCurrentUser = HttpContext.Session.GetString("IdCurrentUser").ToString();
                     ViewBag.TenCurrentUser = HttpContext.Session.GetString("TenCurrentUser").ToString();

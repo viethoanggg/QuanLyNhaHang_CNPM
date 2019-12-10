@@ -11,10 +11,10 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(m => m.Ten)
                     .HasMaxLength(50)
                     .HasAnnotation("MinLength",2)
-                    .IsRequired();
+                    .IsRequired(true);
                     
             builder.Property(m => m.Gia)
-                    .IsRequired()
+                    .IsRequired(true)
                     .HasAnnotation("Range", (0, 5000000));
 
         }

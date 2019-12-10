@@ -10,13 +10,13 @@ namespace Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<SaveKhachHangDTO> builder)
         {
             builder.Property(m => m.Ten)
-                    .IsRequired();
+                    .IsRequired(true);
 
             builder.Property(m => m.SDT)
-                    .IsRequired();
+                    .IsRequired(true);
 
             builder.Property(m => m.DiaChi)
-                    .IsRequired();
+                    .IsRequired(true);
 
         }
     }

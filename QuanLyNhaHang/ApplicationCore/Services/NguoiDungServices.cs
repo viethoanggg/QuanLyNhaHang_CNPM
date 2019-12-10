@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -113,6 +114,33 @@ namespace ApplicationCore.Services
             IEnumerable<HoaDon> listHD = _unitOfWork.HoaDons.Find(s => s.IdUser.Equals(idUser));
             return listHD;
 
+        }
+        public void SuaThongTinCaNhan(int IdUser, string HoTen)
+        {
+            NguoiDung user = _unitOfWork.NguoiDungs.Find(s => s.Id.Equals(IdUser)).FirstOrDefault();
+            if (user == null)
+                return;
+            user.Ten = HoTen;
+            _unitOfWork.NguoiDungs.Update(user);
+            _unitOfWork.Complete();
+        }
+
+        public string DoiMatKhau(int IdUser, string MatKhauMoi, string MatKhauCu)
+        {
+            NguoiDung user = _unitOfWork.NguoiDungs.GetById(IdUser);
+            if (user == null)
+                return "-1";
+
+            using (MD5 mD5 = MD5.Create())
+            {
+                if (!VerifyMd5Hash(mD5, MatKhauCu, user.MatKhau))
+                    return "0";
+                string mkMoi = GetMd5Hash(mD5, MatKhauMoi);
+                user.MatKhau = mkMoi;
+            }
+            _unitOfWork.NguoiDungs.Update(user);
+            _unitOfWork.Complete();
+            return "1";
         }
     }
 }

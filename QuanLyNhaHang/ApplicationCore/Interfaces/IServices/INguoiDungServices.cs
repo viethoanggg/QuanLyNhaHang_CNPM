@@ -14,5 +14,9 @@ namespace ApplicationCore.Interfaces.IServices
         int Create(string NhapLaiMatKhau, SaveNguoiDungDTO NguoiDung);
         int LockUser(int IdUser, int IdCurrentUser);
         IEnumerable<HoaDon> GetListHDCuaNguoiDung(int idUser);
+
+        void SuaThongTinCaNhan(int IdUser, string HoTen);
+
+        string DoiMatKhau(int IdUser, string MatKhauMoi,string MatKhauCu);
     }
 }
