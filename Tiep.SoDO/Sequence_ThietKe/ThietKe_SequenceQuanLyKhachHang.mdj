@@ -928,17 +928,18 @@
 														"$ref": "AAAAAAFu6ZFQeIUlIbk="
 													},
 													"font": "Arial;13;0",
-													"left": 1002,
-													"top": 128,
-													"width": 176.33154296875,
-													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"left": 970,
+													"top": 110,
+													"width": 238.83056640625,
+													"height": 26,
+													"alpha": -4.662431083415877,
+													"distance": 20.024984394500787,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6ZFQeYUmeXE="
 													},
 													"edgePosition": 1,
-													"text": "3 : LayDanhSachKhachHang()"
+													"text": "3 : ListKhachHang = GetListKhachHang()",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1039,17 +1040,18 @@
 														"$ref": "AAAAAAFu6ZGTLYU8ijw="
 													},
 													"font": "Arial;13;0",
-													"left": 1018,
-													"top": 181,
-													"width": 148.865234375,
-													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"left": 1000,
+													"top": 182,
+													"width": 195,
+													"height": 26,
+													"alpha": 1.7782930572088256,
+													"distance": 19.4164878389476,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6ZGTLoU9OMQ="
 													},
 													"edgePosition": 1,
-													"text": "4 : Return ListKhachHang"
+													"text": "4 : ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -1151,9 +1153,9 @@
 														"$ref": "AAAAAAFu6ZeS4IVSE5g="
 													},
 													"font": "Arial;13;0",
-													"left": 609,
+													"left": 541,
 													"top": 196,
-													"width": 148.865234375,
+													"width": 285.796875,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1161,7 +1163,7 @@
 														"$ref": "AAAAAAFu6ZeS4IVTHQk="
 													},
 													"edgePosition": 1,
-													"text": "5 : Return ListKhachHang"
+													"text": "5 : ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] "
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2050,17 +2052,18 @@
 														"$ref": "AAAAAAFu6bGxR4bA//Y="
 													},
 													"font": "Arial;13;0",
-													"left": 1028,
-													"top": 408,
-													"width": 179.689453125,
-													"height": 13,
-													"alpha": 0.39479097177081995,
-													"distance": 26,
+													"left": 970,
+													"top": 393,
+													"width": 295.673828125,
+													"height": 26,
+													"alpha": 0.6435009087933378,
+													"distance": 30,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6bGxR4bBsDs="
 													},
 													"edgePosition": 1,
-													"text": "12 : Add(saveKhachHangDTO)"
+													"text": "12 : ThemKhachHang = Add(saveKhachHangDTO)",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2161,17 +2164,18 @@
 														"$ref": "AAAAAAFu6bIAuIbXn4o="
 													},
 													"font": "Arial;13;0",
-													"left": 1021,
-													"top": 447,
-													"width": 135.865234375,
-													"height": 13,
-													"alpha": -1.1071495177944106,
-													"distance": 11.180339887498949,
+													"left": 978,
+													"top": 430,
+													"width": 218.61962890625,
+													"height": 26,
+													"alpha": -1.279339991032689,
+													"distance": 20.8806130178211,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6bIAuYbYgt8="
 													},
 													"edgePosition": 1,
-													"text": "13 : Return KhachHang"
+													"text": "13 : Return KhachHang = KhachHang",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2622,9 +2626,9 @@
 														"$ref": "AAAAAAFu7pFEyWzzKgc="
 													},
 													"font": "Arial;13;0",
-													"left": 1020,
+													"left": 949,
 													"top": 536,
-													"width": 151.0361328125,
+													"width": 293.02685546875,
 													"height": 13,
 													"alpha": 4.559738900544424,
 													"distance": 13.152946437965905,
@@ -2632,7 +2636,8 @@
 														"$ref": "AAAAAAFu7pFEyWz0cs4="
 													},
 													"edgePosition": 1,
-													"text": "15 : return ListKhachHang"
+													"text": "15 : ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2734,9 +2739,9 @@
 														"$ref": "AAAAAAFu6bh2CIdat1w="
 													},
 													"font": "Arial;13;0",
-													"left": 605,
+													"left": 537,
 													"top": 559,
-													"width": 156.09521484375,
+													"width": 293.02685546875,
 													"height": 13,
 													"alpha": -1.4711286644028423,
 													"distance": 10.04987562112089,
@@ -2744,7 +2749,7 @@
 														"$ref": "AAAAAAFu6bh2CIdbeD0="
 													},
 													"edgePosition": 1,
-													"text": "16 : Return ListKhachHang"
+													"text": "16 : ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] "
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3290,17 +3295,17 @@
 														"$ref": "AAAAAAFu6xy1pIMkIT4="
 													},
 													"font": "Arial;13;0",
-													"left": 1025,
-													"top": 684,
-													"width": 135.865234375,
+													"left": 1023,
+													"top": 687,
+													"width": 218.61962890625,
 													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"alpha": 2.796945419509314,
+													"distance": 41.43669871020132,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6xy1pIMlo+0="
 													},
 													"edgePosition": 1,
-													"text": "21 : Return KhachHang"
+													"text": "21 : Return KhachHang = KhachHang"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3402,9 +3407,9 @@
 														"$ref": "AAAAAAFu6xmopYKd5Z0="
 													},
 													"font": "Arial;13;0",
-													"left": 785,
+													"left": 743,
 													"top": 692,
-													"width": 135.865234375,
+													"width": 218.61962890625,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -3412,7 +3417,7 @@
 														"$ref": "AAAAAAFu6xmopYKeX6A="
 													},
 													"edgePosition": 1,
-													"text": "22 : Return KhachHang"
+													"text": "22 : Return KhachHang = KhachHang"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3847,17 +3852,18 @@
 														"$ref": "AAAAAAFu6yCiL4PEksQ="
 													},
 													"font": "Arial;13;0",
-													"left": 1031,
-													"top": 784,
-													"width": 198.478515625,
-													"height": 13,
-													"alpha": 0.26396365555220225,
-													"distance": 38.3275357934736,
+													"left": 960,
+													"top": 767,
+													"width": 319.03955078125,
+													"height": 26,
+													"alpha": 0.6556954403679751,
+													"distance": 32.802438933713454,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6yCiL4PFY5Y="
 													},
 													"edgePosition": 1,
-													"text": "26 : Update(saveKhachHangDTO)"
+													"text": "26 : CapNhatThongTin = Update(saveKhachHangDTO)",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4069,17 +4075,18 @@
 														"$ref": "AAAAAAFu7pQPEG1BMpc="
 													},
 													"font": "Arial;13;0",
-													"left": 1032,
-													"top": 856,
-													"width": 151.0361328125,
-													"height": 13,
-													"alpha": 3.7618418017349367,
-													"distance": 17.204650534085253,
+													"left": 1023,
+													"top": 878,
+													"width": 176,
+													"height": 26,
+													"alpha": 2.3036117048244282,
+													"distance": 26.90724809414742,
 													"hostEdge": {
 														"$ref": "AAAAAAFu7pQPEG1CxkU="
 													},
 													"edgePosition": 1,
-													"text": "28 : return ListKhachHang"
+													"text": "28 : ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4181,17 +4188,18 @@
 														"$ref": "AAAAAAFu6yLIJIPxiuk="
 													},
 													"font": "Arial;13;0",
-													"left": 600,
-													"top": 887,
-													"width": 151.28369140625,
-													"height": 13,
-													"alpha": -0.8379817774948526,
-													"distance": 13.45362404707371,
+													"left": 571,
+													"top": 861,
+													"width": 193,
+													"height": 26,
+													"alpha": -1.0405808106554737,
+													"distance": 33.61547262794322,
 													"hostEdge": {
 														"$ref": "AAAAAAFu6yLIJIPy9sI="
 													},
 													"edgePosition": 1,
-													"text": "29 : return ListKhachHang"
+													"text": "29 : ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
+													"wordWrap": true
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4737,17 +4745,17 @@
 														"$ref": "AAAAAAFu61asToSSGu8="
 													},
 													"font": "Arial;13;0",
-													"left": 1022,
-													"top": 1081,
-													"width": 135.865234375,
+													"left": 1016,
+													"top": 1087,
+													"width": 215.0078125,
 													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"alpha": 2.66589755810197,
+													"distance": 37.12142238654117,
 													"hostEdge": {
 														"$ref": "AAAAAAFu61asToSTmNw="
 													},
 													"edgePosition": 1,
-													"text": "34 : Return KhachHang"
+													"text": "34 : Return KhachHang =KhachHang"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4849,17 +4857,17 @@
 														"$ref": "AAAAAAFu61gPVISoRy8="
 													},
 													"font": "Arial;13;0",
-													"left": 858,
-													"top": 1094,
-													"width": 135.865234375,
+													"left": 792,
+													"top": 1096,
+													"width": 215.0078125,
 													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"alpha": 0.4182244670363162,
+													"distance": 29.546573405388315,
 													"hostEdge": {
 														"$ref": "AAAAAAFu61gPVISpWaQ="
 													},
 													"edgePosition": 1,
-													"text": "35 : Return KhachHang"
+													"text": "35 : Return KhachHang =KhachHang"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4979,7 +4987,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "LayDanhSachKhachHang()",
+									"name": "ListKhachHang = GetListKhachHang()",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -4993,7 +5001,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return ListKhachHang",
+									"name": "ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
 									"source": {
 										"$ref": "AAAAAAFu6Y46aYTUIAA="
 									},
@@ -5008,7 +5016,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return ListKhachHang",
+									"name": "ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -5109,7 +5117,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Add",
+									"name": "ThemKhachHang = Add",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -5124,7 +5132,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return KhachHang",
+									"name": "Return KhachHang = KhachHang",
 									"source": {
 										"$ref": "AAAAAAFu6Y46aYTUIAA="
 									},
@@ -5153,7 +5161,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "return ListKhachHang",
+									"name": "ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
 									"source": {
 										"$ref": "AAAAAAFu6Y46aYTUIAA="
 									},
@@ -5168,7 +5176,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return ListKhachHang",
+									"name": "ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -5243,7 +5251,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return KhachHang",
+									"name": "Return KhachHang = KhachHang",
 									"source": {
 										"$ref": "AAAAAAFu6Y46aYTUIAA="
 									},
@@ -5258,7 +5266,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return KhachHang",
+									"name": "Return KhachHang = KhachHang",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -5316,7 +5324,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Update",
+									"name": "CapNhatThongTin = Update",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -5345,7 +5353,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "return ListKhachHang",
+									"name": "ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
 									"source": {
 										"$ref": "AAAAAAFu6Y46aYTUIAA="
 									},
@@ -5360,7 +5368,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "return ListKhachHang",
+									"name": "ListKhachHang = array [{Id, Ten, Sdt, DiaChi}] ",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
@@ -5435,7 +5443,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return KhachHang",
+									"name": "Return KhachHang =KhachHang",
 									"source": {
 										"$ref": "AAAAAAFu6Y46aYTUIAA="
 									},
@@ -5450,7 +5458,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFu6YivPoQ2fk8="
 									},
-									"name": "Return KhachHang",
+									"name": "Return KhachHang =KhachHang",
 									"source": {
 										"$ref": "AAAAAAFu6Yzp3YSrX8U="
 									},
