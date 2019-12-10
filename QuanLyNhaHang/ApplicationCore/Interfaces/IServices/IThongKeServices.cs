@@ -11,5 +11,6 @@ namespace ApplicationCore.Interfaces.IServices
         int GetThongKePhieuDatBanBiHuy();
         int GetThongKePhieuDatBanXuLyXong();
         int GetTongSoBanDuocPhucVu();
+        int GetThongKePhieuDatBanChuaXuLy();
     }
 }

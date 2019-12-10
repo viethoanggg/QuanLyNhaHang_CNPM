@@ -24,6 +24,7 @@ namespace QuanLyNhaHang.Services
             int tongPhieuDatBan = _services.GetThongKeTongPhieuDatBan();
             int tongPhieuDatBanBiHuy = _services.GetThongKePhieuDatBanBiHuy();
             int tongPhieuDatBanXuLyXong = _services.GetThongKePhieuDatBanXuLyXong();
+            int tongPhieuDatBanChuaXuLy = _services.GetThongKePhieuDatBanChuaXuLy();
             return new ThongKeVM
             {
                 ListMonAnBanDuoc = list,
@@ -31,8 +32,8 @@ namespace QuanLyNhaHang.Services
                 TongSoPhieuDatBan = tongPhieuDatBan,
                 TongPhieuDatBanBiHuy = tongPhieuDatBanBiHuy,
                 TongPhieuDatBanXuLyXong = tongPhieuDatBanXuLyXong,
-                TongSoBanAnDuocPhucVu = tongBanAnDuocPhucVu
-
+                TongSoBanAnDuocPhucVu = tongBanAnDuocPhucVu,
+                TongPhieuDatBanChuaXuLy = tongPhieuDatBanChuaXuLy
             };
         }
 

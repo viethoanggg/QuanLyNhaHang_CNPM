@@ -16,6 +16,7 @@ namespace ApplicationCore.Interfaces.IRepositories
         int GetThongKeTongPhieuDatBan();
         int GetThongKePhieuDatBanBiHuy();
         int GetThongKePhieuDatBanXuLyXong();
+        int GetThongKePhieuDatBanChuaXuLy();
 
     }
 }
