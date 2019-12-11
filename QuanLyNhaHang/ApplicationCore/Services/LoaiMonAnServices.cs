@@ -44,18 +44,33 @@ namespace ApplicationCore.Services
             LoaiMonAnDTO loaiMonAnDTO = _mapper.Map<LoaiMonAn, LoaiMonAnDTO>(loaiMonAn);
             return loaiMonAnDTO;
         }
+        public SaveLoaiMonAnDTO GetSaveLoaiMonAnDTO(int id)
+        {
+            LoaiMonAnDTO loaiMonAn = GetLoaiMonAn(id);
+            if (loaiMonAn == null)
+            {
+                return null;
+            }
+            SaveLoaiMonAnDTO saveLoaiMonAnDTO = _mapper.Map<LoaiMonAnDTO, SaveLoaiMonAnDTO>(loaiMonAn);
+            return saveLoaiMonAnDTO;
+        }
         public void Edit(SaveLoaiMonAnDTO SaveLoaiMonAnDTO)
         {
+            if (SaveLoaiMonAnDTO == null)
+                return;
             LoaiMonAn loaiMonAn = _mapper.Map<SaveLoaiMonAnDTO, LoaiMonAn>(SaveLoaiMonAnDTO);
             _unitOfWork.LoaiMonAns.Update(loaiMonAn);
             _unitOfWork.Complete();
         }
-        public void Delete(int id)
+        public int Delete(int id)
         {
-            LoaiMonAnDTO loaiMonAnDTO = GetLoaiMonAn(id);
-            LoaiMonAn loaiMonAn = _mapper.Map<LoaiMonAnDTO, LoaiMonAn>(loaiMonAnDTO);
+            List<ThucDon> list = _unitOfWork.ThucDons.Find(s => s.IdLoaiMonAn.Equals(id)).ToList();
+            if (list.Count() > 0)
+                return -1;
+            LoaiMonAn loaiMonAn = _unitOfWork.LoaiMonAns.GetById(id);
             _unitOfWork.LoaiMonAns.Remove(loaiMonAn);
             _unitOfWork.Complete();
+            return 1;
         }
         public void Create(SaveLoaiMonAnDTO SaveLoaiMonAnDTO)
         {
@@ -65,5 +80,6 @@ namespace ApplicationCore.Services
             _unitOfWork.LoaiMonAns.Add(loaiMonAn);
             _unitOfWork.Complete();
         }
+
     }
 }

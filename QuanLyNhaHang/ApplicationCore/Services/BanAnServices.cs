@@ -27,12 +27,11 @@ namespace ApplicationCore.Services
         }
         public IEnumerable<BanAnDTO> GetListBanAn(string trangThai, int pageIndex, int pageSize, out int count)
         {
+            _unitOfWork.BanAns.BanAn_Load();
             BanAnSpecification banAnSpecFilter = new BanAnSpecification(trangThai, pageIndex, pageSize);
             BanAnSpecification banAnSpec = new BanAnSpecification(trangThai);
             count = _unitOfWork.BanAns.Count(banAnSpec);
             var banAns = _unitOfWork.BanAns.FindSpec(banAnSpecFilter);
-            _unitOfWork.BanAns.BanAn_Load();
-
             var banAnsDTO = _mapper.Map<IEnumerable<BanAn>, IEnumerable<BanAnDTO>>(banAns);
             return banAnsDTO;
         }

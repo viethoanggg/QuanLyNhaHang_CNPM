@@ -1,5 +1,85 @@
-﻿
+﻿@model ApplicationCore.DTOs.NguoiDungDTO
 @{
     ViewBag.Title = "Trang chủ";
 }
 
+		<div class="row">
+            <div class="col-lg-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Xin chào!</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div style="margin-left:20px">
+                            <p>Người dùng : @Model.Ten</p>
+                            <p>Vai trò : @Model.Role</p>
+                            <p>Thời gian hiện tại: @ViewBag.Time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="bs-glyphicons">
+                            <ul class="bs-glyphicons-list">
+                                <a asp-action="Index" asp-controller="HomeQuanLy">
+                                    <li>   
+                                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Trang chủ</span>
+                                    </li>
+                                 </a>
+                                <a asp-action="Index" asp-controller="ThucDon">
+                                    <li>
+                                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Quản lý thực đơn</span>
+                                    </li>
+                                </a>
+                                <a asp-action="Index" asp-controller="BanAn">
+                                     <li>
+                                        <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Quản lý bàn ăn</span>
+                                    </li>
+                                </a>
+                                <a asp-action="Index" asp-controller="LoaiMonAn">
+                                    <li>
+                                        <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Quản lý loại món ăn</span>
+                                    </li>
+                                </a>
+
+                                <a asp-action="Index" asp-controller="HoaDon">
+                                    <li>
+                                        <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Quản lý hóa đơn</span>
+                                    </li>
+                                </a>
+                                <a asp-action="Index" asp-controller="NguoiDung">
+                                    <li>
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Quản lý người dùng</span>
+                                    </li>
+                                </a>
+                                <a asp-action="Index" asp-controller="KhachHang">
+                                    <li>
+                                        <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Quản lý khách hàng</span>
+                                    </li>
+                                </a>
+                                <a asp-action="Index" asp-controller="ThongKe">
+                                     <li>
+                                        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                        <span class="glyphicon-class">Thống kê</span>
+                                    </li>
+                                </a>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>

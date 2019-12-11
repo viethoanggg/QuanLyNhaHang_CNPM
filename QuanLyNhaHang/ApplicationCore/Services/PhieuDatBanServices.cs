@@ -26,6 +26,7 @@ namespace ApplicationCore.Services
         }
         public IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(int IdBanAn, string trangThai, int pageIndex, int pageSize, out int count)
         {
+            _unitOfWork.PhieuDatBans.CapNhatAllPhieuDatBan();
             PhieuDatBanSpecification phieuDatBanSpecFilter = new PhieuDatBanSpecification(IdBanAn, trangThai, pageIndex, pageSize);
             PhieuDatBanSpecification phieuDatBanSpec = new PhieuDatBanSpecification(IdBanAn, trangThai);
             count = _unitOfWork.PhieuDatBans.Count(phieuDatBanSpec);
@@ -128,6 +129,10 @@ namespace ApplicationCore.Services
         public KhachHang GetKhachHang(int IdKhachHang)
         {
             return _unitOfWork.KhachHangs.GetById(IdKhachHang);
+        }
+        public NguoiDung GetNguoiDung(int IdUser)
+        {
+            return _unitOfWork.NguoiDungs.GetById(IdUser);
         }
     }
 }

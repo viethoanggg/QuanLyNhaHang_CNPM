@@ -12,10 +12,15 @@ namespace ApplicationCore.DTOs
     using System.Collections.Generic;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using ApplicationCore.Entities;
 
     public class NguoiDungDTO
     {
-
+        public NguoiDungDTO()
+        {
+            this.HoaDons = new HashSet<HoaDon>();
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
+        }
         public int Id { get; set; }
 
         [Display(Name = "Tên")]
@@ -38,5 +43,9 @@ namespace ApplicationCore.DTOs
         [Required]
         public int TrangThai { get; set; }
 
+
+        ///////////////////////////////////////////
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
     }
 }

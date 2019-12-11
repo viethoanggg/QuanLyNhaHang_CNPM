@@ -1,33 +1,48 @@
 @model ApplicationCore.DTOs.SaveDTOs.SaveLoaiMonAnDTO
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Quản lý loại món ăn";
 }
 
-<h1>Edit</h1>
+			<div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sửa tên loại món ăn</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form class="form-horizontal form-label-left" asp-action="Edit" asp-controller="LoaiMonAn" method="post">
+                      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                       <input type="hidden" asp-for="Id" />
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="Ten"></label>
+                        <div class="col-md-6 col-sm-6 ">
+                          <input asp-for="Ten" class="form-control" />
+                        </div>
+                        <div>
+                            <span asp-validation-for="Ten" class="text-danger"></span>
+                        </div>
+                      </div>
+           
+                      <div class="ln_solid"></div>
+                      <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+                            <a asp-action="Index">Back to List</a>
+						 
+                          <button type="submit" class="btn btn-success" style="margin-left:20px">Submit</button>
+                        </div>
+                      </div>
 
-<h4>LoaiMonAn</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Ten" class="control-label"></label>
-                <input asp-for="Ten" class="form-control" />
-                <span asp-validation-for="Ten" class="text-danger"></span>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -74,9 +74,7 @@
                                                 asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
                                                 asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Tên đăng nhập</a>
                                         </th>
-                                        <th>
-                                            Mật khẩu
-                                        </th>
+                                       
                                         <th>
                                             <a  asp-action="Index" asp-controller="NguoiDung"  style="color:white"
                                                 asp-route-currentSort="@ViewBag.CurrentSortVaiTro" 
@@ -107,9 +105,7 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.TenDangNhap)
                                             </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.MatKhau)
-                                            </td>
+
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Role)
                                             </td>

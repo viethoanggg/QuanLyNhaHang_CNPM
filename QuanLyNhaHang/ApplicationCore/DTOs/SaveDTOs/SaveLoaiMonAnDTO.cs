@@ -13,14 +13,20 @@ namespace ApplicationCore.DTOs.SaveDTOs
     using System.ComponentModel.DataAnnotations;
     using System;
     using ApplicationCore.Interfaces;
+    using ApplicationCore.Entities;
 
     public  class SaveLoaiMonAnDTO {
-     
+
+        public SaveLoaiMonAnDTO()
+        {
+            this.ThucDons = new HashSet<ThucDon>();
+        }
         public int Id { get; set; }
 
         [Display (Name = "Tên loại món ăn")]
         [Required]
         public string Ten { get; set; }
-
+        //////////////////////////////////////////
+        public virtual ICollection<ThucDon> ThucDons { get; set; }
     }
 }

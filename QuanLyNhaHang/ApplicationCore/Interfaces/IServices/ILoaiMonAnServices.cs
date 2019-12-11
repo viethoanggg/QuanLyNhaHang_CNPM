@@ -9,8 +9,9 @@ namespace ApplicationCore.Interfaces.IServices
     {
         IEnumerable<LoaiMonAnDTO> GetListLoaiMonAn(string searchString, int pageIndex, int pageSize, out int count);
         LoaiMonAnDTO GetLoaiMonAn(int id);
+        SaveLoaiMonAnDTO GetSaveLoaiMonAnDTO(int id);
         void Edit(SaveLoaiMonAnDTO loaiMonAn);
-        void Delete(int id);
+        int Delete(int id);
         void Create(SaveLoaiMonAnDTO loaiMonAn);
     }
 }

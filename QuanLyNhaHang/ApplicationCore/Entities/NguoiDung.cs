@@ -19,6 +19,7 @@ namespace ApplicationCore.Entities
         public NguoiDung()
         {
             this.HoaDons = new HashSet<HoaDon>();
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
         }
         public int Id { get; set; }
         public string Ten { get; set; }
@@ -28,6 +29,7 @@ namespace ApplicationCore.Entities
         public int TrangThai { get; set; }
         ///////////////////////////////////////////
         public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
 
     }
 }

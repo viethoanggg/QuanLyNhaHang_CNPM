@@ -12,10 +12,15 @@ namespace ApplicationCore.DTOs.SaveDTOs
     using System.Collections.Generic;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using ApplicationCore.Entities;
 
     public class SaveNguoiDungDTO
     {
-
+        public SaveNguoiDungDTO()
+        {
+            this.HoaDons = new HashSet<HoaDon>();
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
+        }
         public int Id { get; set; }
         [Display(Name = "Tên")]
         [Required]
@@ -36,5 +41,9 @@ namespace ApplicationCore.DTOs.SaveDTOs
         [Display(Name = "Trạng thái")]
         [Required]
         public int TrangThai { get; set; }
+
+        ///////////////////////////////////////////
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
     }
 }

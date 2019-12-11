@@ -13,6 +13,7 @@ namespace ApplicationCore.DTOs.SaveDTOs
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using ApplicationCore.Entities;
 
     public class SaveChiTietHoaDonDTO {
 
@@ -34,6 +35,9 @@ namespace ApplicationCore.DTOs.SaveDTOs
         [Range(1, 5000000)]
         [Display(Name = "Đơn giá")]
         public int DonGia { get; set; }
+
+        public virtual HoaDon HoaDon { get; set; }
+        public virtual ThucDon ThucDon { get; set; }
 
     }
 }

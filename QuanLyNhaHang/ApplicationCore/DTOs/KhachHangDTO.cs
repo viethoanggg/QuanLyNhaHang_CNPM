@@ -13,10 +13,15 @@ namespace ApplicationCore.DTOs
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
+    using ApplicationCore.Entities;
 
     public class KhachHangDTO
     {
 
+        public KhachHangDTO()
+        {
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
+        }
         public int Id { get; set; }
 
         [Display(Name = "Tên khách hàng")]
@@ -30,29 +35,8 @@ namespace ApplicationCore.DTOs
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
-        // public DiaChiNha DiaChi { get; set; }
-
-        // public class DiaChiNha
-        // {
-        //     public string SoNha{ get; set; }
-        //     public string TenDuong{ get; set; }
-        //     public string Phuong{ get; set; }
-        //     public string Quan{ get; set; }
-        //     public string ThanhPho { get; set; }
-
-        //     public string GetDiaChi()
-        //     {
-        //         string s = this.SoNha + "," + this.TenDuong + "," + this.Phuong + "," + this.Quan + "," + this.ThanhPho;
-        //         return s.ToString();
-        //     }
-        //     public DiaChiNha(string SoNha,string TenDuong,string Phuong,string Quan,string ThanhPho)
-        //     {
-        //         this.SoNha = SoNha;
-        //         this.TenDuong = TenDuong;
-        //         this.Phuong = Phuong;
-        //         this.Quan = Quan;
-        //         this.ThanhPho = ThanhPho;
-        //     }
+        ///////////////////////////////////////
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
     }
 
 }

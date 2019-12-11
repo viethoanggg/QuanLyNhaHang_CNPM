@@ -13,6 +13,7 @@ namespace ApplicationCore.DTOs
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using ApplicationCore.Entities;
 
     public class ChiTietHoaDonDTO {
 
@@ -35,6 +36,9 @@ namespace ApplicationCore.DTOs
         [Range(1, 10)]
         [Display(Name = "Đơn giá")]
         public int DonGia { get; set; }
+
+        public virtual HoaDon HoaDon { get; set; }
+        public virtual ThucDon ThucDon { get; set; }
 
     }
 }

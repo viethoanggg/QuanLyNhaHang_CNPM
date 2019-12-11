@@ -54,6 +54,13 @@ namespace ApplicationCore.Services
             SaveNguoiDungDTO saveNguoiDungDTO = _mapper.Map<NguoiDungDTO, SaveNguoiDungDTO>(NguoiDungDTO);
             return saveNguoiDungDTO;
         }
+
+        public NguoiDungDTO GetNguoiDungDTOByUserName(string userName)
+        {
+            NguoiDung nguoiDung = _unitOfWork.NguoiDungs.Find(x => x.TenDangNhap == userName).FirstOrDefault();
+            NguoiDungDTO NguoiDungDTO = _mapper.Map<NguoiDung, NguoiDungDTO>(nguoiDung);
+            return NguoiDungDTO;
+        }
         public void Edit(SaveNguoiDungDTO SaveNguoiDungDTO)
         {
             NguoiDung NguoiDung = _mapper.Map<SaveNguoiDungDTO, NguoiDung>(SaveNguoiDungDTO);

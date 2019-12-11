@@ -13,9 +13,15 @@ namespace ApplicationCore.DTOs.SaveDTOs {
     using System;
     using System.ComponentModel.DataAnnotations;
     using ApplicationCore.Interfaces;
+    using ApplicationCore.Entities;
 
     public class SaveHoaDonDTO {
-       
+
+        public SaveHoaDonDTO()
+        {
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Mã hóa đơn")]
@@ -43,5 +49,9 @@ namespace ApplicationCore.DTOs.SaveDTOs {
         [Required]
         public string TrangThai { get; set; }
 
+
+        public virtual BanAn BanAn { get; set; }
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
     }
 }

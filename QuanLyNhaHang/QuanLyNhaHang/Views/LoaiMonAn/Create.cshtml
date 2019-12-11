@@ -4,24 +4,37 @@
     ViewData["Title"] = "Quản lý loại thức ăn";
 }
 
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Thêm loại thức ăn</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form class="form-horizontal form-label-left" asp-action="Create" asp-controller="LoaiMonAn" method="post">
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Ten" class="control-label"></label>
-                <input asp-for="Ten" class="form-control" />
-                <span asp-validation-for="Ten" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" asp-for="Ten"></label>
+                        <div class="col-md-6 col-sm-6 ">
+                          <input type="text"class="form-control " asp-for="Ten">
+                        </div>
+                      </div>
+           
+                      <div class="ln_solid"></div>
+                      <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+						  <a asp-action="Index">Back to List</a>
+                          <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+                      </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
 

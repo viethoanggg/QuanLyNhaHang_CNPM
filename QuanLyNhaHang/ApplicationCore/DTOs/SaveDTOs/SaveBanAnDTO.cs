@@ -8,14 +8,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApplicationCore.DTOs {
+namespace ApplicationCore.DTOs.SaveDTOs {
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
+    using ApplicationCore.Entities;
 
-    public class BanAnDTO  {
-        
+    public class SaveBanAnDTO  {
+
+        public SaveBanAnDTO()
+        {
+            this.HoaDons = new HashSet<HoaDon>();
+            this.PhieuDatBans = new HashSet<PhieuDatBan>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Bàn số ")]
@@ -31,6 +38,10 @@ namespace ApplicationCore.DTOs {
 
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
+
+        ///////////////////////////////////////////////////
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<PhieuDatBan> PhieuDatBans { get; set; }
 
     }
 }

@@ -14,9 +14,14 @@ namespace ApplicationCore.DTOs.SaveDTOs
     using System.ComponentModel.DataAnnotations;
     using System;
     using ApplicationCore.Interfaces;
+    using ApplicationCore.Entities;
 
     public class SaveThucDonDTO
     {
+        public SaveThucDonDTO()
+        {
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -33,8 +38,11 @@ namespace ApplicationCore.DTOs.SaveDTOs
         [Display(Name = "Giá")]
         [Required]
         [RegularExpression(@"^[0-9]+$")]
-        
+
         public int Gia { get; set; }
 
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual LoaiMonAn LoaiMonAn { get; set; }
     }
+
 }

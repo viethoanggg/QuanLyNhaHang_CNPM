@@ -8,14 +8,15 @@
 //------------------------------------------------------------------------------
 
 namespace ApplicationCore.DTOs.SaveDTOs
- {
+{
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
     using ApplicationCore.Entities;
 
-    public  class SavePhieuDatBanDTO {
+    public class SavePhieuDatBanDTO
+    {
         public int Id { get; set; }
 
         [Display(Name = "Bàn ăn")]
@@ -26,18 +27,24 @@ namespace ApplicationCore.DTOs.SaveDTOs
         [Required]
         public int IdKhachHang { get; set; }
 
+        [Display(Name = "Nhân viên")]
+        [Required]
+        public int IdUser { get; set; }
+
         [Display(Name = "Thời gian đặt")]
         [Required]
         public DateTime ThoiGianDat { get; set; }
 
         [Display(Name = "Trạng thái")]
         [Required]
-        public string TrangThai{ get; set; }
+        public string TrangThai { get; set; }
 
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 
+        public virtual BanAn BanAn { get; set; }
         public virtual KhachHang KhachHang { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
 
     }
 }

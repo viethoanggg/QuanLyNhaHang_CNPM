@@ -8,21 +8,24 @@
 //------------------------------------------------------------------------------
 
 namespace ApplicationCore.Entities
- {
+{
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
 
-    public  class PhieuDatBan:IAggregateRoot {
+    public class PhieuDatBan : IAggregateRoot
+    {
         public int Id { get; set; }
         public int IdBanAn { get; set; }
         public int IdKhachHang { get; set; }
+        public int IdUser { get; set; }
         public DateTime ThoiGianDat { get; set; }
-        public string TrangThai{ get; set; }
+        public string TrangThai { get; set; }
         public string GhiChu { get; set; }
         ///////////////////////////////////////////////////////
         public virtual BanAn BanAn { get; set; }
         public virtual KhachHang KhachHang { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
 
     }
 }

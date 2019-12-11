@@ -18,5 +18,7 @@ namespace ApplicationCore.Interfaces.IServices
         void SuaThongTinCaNhan(int IdUser, string HoTen);
 
         string DoiMatKhau(int IdUser, string MatKhauMoi,string MatKhauCu);
+
+        NguoiDungDTO GetNguoiDungDTOByUserName(string userName);
     }
 }

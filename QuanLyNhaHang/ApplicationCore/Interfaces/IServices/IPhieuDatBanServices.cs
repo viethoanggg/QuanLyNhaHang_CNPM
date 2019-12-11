@@ -18,5 +18,6 @@ namespace ApplicationCore.Interfaces.IServices
         IEnumerable<KhachHang> GetListKH();
 
         KhachHang GetKhachHang(int IdKhachHang);
+        NguoiDung GetNguoiDung(int IdUser);
     }
 }

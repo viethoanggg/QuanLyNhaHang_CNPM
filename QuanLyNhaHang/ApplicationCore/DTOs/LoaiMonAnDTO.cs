@@ -12,14 +12,20 @@ namespace ApplicationCore.DTOs
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System;
+    using ApplicationCore.Entities;
 
     public  class LoaiMonAnDTO {
-     
+
+        public LoaiMonAnDTO()
+        {
+            this.ThucDons = new HashSet<ThucDon>();
+        }
         public int Id { get; set; }
 
         [Display (Name = "Tên loại món ăn")]
         [Required]
         public string Ten { get; set; }
-
+        //////////////////////////////////////////
+        public virtual ICollection<ThucDon> ThucDons { get; set; }
     }
 }

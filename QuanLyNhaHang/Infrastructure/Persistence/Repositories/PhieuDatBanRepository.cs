@@ -54,18 +54,36 @@ namespace Infrastructure.Persistence.Repositories
         public IEnumerable<PhieuDatBanMD> GetListPhieuDatBanMD(IEnumerable<PhieuDatBan> phieuDatBans)
         {
 
-            IEnumerable<PhieuDatBanMD> phieuDatBanMDs = phieuDatBans.Join(QLNHContext.KhachHangs, s => s.IdKhachHang, t => t.Id,
-                                                                    (s, t) => new PhieuDatBanMD
-                                                                    {
-                                                                        Id = s.Id,
-                                                                        IdBanAn = s.IdBanAn,
-                                                                        IdKhachHang = s.IdKhachHang,
-                                                                        TenKhachHang = t.Ten,
-                                                                        ThoiGianDat = s.ThoiGianDat,
-                                                                        TrangThai = s.TrangThai,
-                                                                        GhiChu = s.GhiChu
+            // IEnumerable<PhieuDatBanMD> phieuDatBanMDs = phieuDatBans.Join(QLNHContext.KhachHangs, s => s.IdKhachHang, t => t.Id,
+            //                                                         (s, t) => new PhieuDatBanMD
+            //                                                         {
+            //                                                             Id = s.Id,
+            //                                                             IdBanAn = s.IdBanAn,
+            //                                                             IdKhachHang = s.IdKhachHang,
+            //                                                             TenKhachHang = t.Ten,
+            //                                                             ThoiGianDat = s.ThoiGianDat,
+            //                                                             TrangThai = s.TrangThai,
+            //                                                             GhiChu = s.GhiChu
 
-                                                                    });
+            //                                                         });
+            IEnumerable<PhieuDatBanMD> phieuDatBanMDs = from p in phieuDatBans
+                                                        join kh in QLNHContext.KhachHangs
+                                                        on p.IdKhachHang equals kh.Id
+                                                        join nd in QLNHContext.NguoiDungs
+                                                        on p.IdUser equals nd.Id
+                                                        select new PhieuDatBanMD
+                                                        {
+                                                            Id = p.Id,
+                                                            IdBanAn = p.IdBanAn,
+                                                            IdKhachHang = p.IdKhachHang,
+                                                            TenKhachHang = kh.Ten,
+                                                            IdUser = nd.Id,
+                                                            TenUser = nd.Ten,
+                                                            ThoiGianDat = p.ThoiGianDat,
+                                                            TrangThai = p.TrangThai,
+                                                            GhiChu = p.GhiChu
+
+                                                        };
             return phieuDatBanMDs;
 
         }

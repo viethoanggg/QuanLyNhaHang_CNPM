@@ -8,14 +8,15 @@
 //------------------------------------------------------------------------------
 
 namespace ApplicationCore.DTOs
- {
+{
     using System.Collections.Generic;
     using System;
     using ApplicationCore.Interfaces;
     using System.ComponentModel.DataAnnotations;
     using ApplicationCore.Entities;
 
-    public  class PhieuDatBanDTO {
+    public class PhieuDatBanDTO
+    {
         public int Id { get; set; }
         [Display(Name = "Bàn ăn")]
         [Required]
@@ -24,6 +25,10 @@ namespace ApplicationCore.DTOs
         [Display(Name = "Tên khách hàng")]
         [Required]
         public int IdKhachHang { get; set; }
+
+        [Display(Name = "Nhân viên")]
+        [Required]
+        public int IdUser { get; set; }
 
         [Display(Name = "Thời gian đặt")]
         [Required]
@@ -36,7 +41,9 @@ namespace ApplicationCore.DTOs
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 
+        public virtual BanAn BanAn { get; set; }
         public virtual KhachHang KhachHang { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
 
     }
 }

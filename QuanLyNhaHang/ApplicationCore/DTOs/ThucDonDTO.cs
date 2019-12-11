@@ -14,9 +14,14 @@ namespace ApplicationCore.DTOs
     using System.ComponentModel.DataAnnotations;
     using System;
     using ApplicationCore.Interfaces;
+    using ApplicationCore.Entities;
 
     public  class ThucDonDTO {
 
+        public ThucDonDTO()
+        {
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
         [Key]
         [DatabaseGenerated (DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -33,5 +38,7 @@ namespace ApplicationCore.DTOs
         [Required]
         public int Gia { get; set; }
 
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual LoaiMonAn LoaiMonAn { get; set; }
     }
 }

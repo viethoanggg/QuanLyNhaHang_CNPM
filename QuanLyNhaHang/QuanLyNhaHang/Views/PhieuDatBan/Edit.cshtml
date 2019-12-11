@@ -20,12 +20,21 @@
                 </select>
                 <span asp-validation-for="PhieuDatBan.IdBanAn" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <label asp-for="PhieuDatBan.IdKhachHang" class="control-label"></label>
                 <input asp-for="PhieuDatBan.IdKhachHang" class="form-control" type="hidden"/>
                 <input value="@ViewBag.TenKhachHang" class="form-control" readonly/>      
                 <span asp-validation-for="PhieuDatBan.IdKhachHang" class="text-danger"></span>
             </div>
+
+             <div class="form-group">
+                <label asp-for="PhieuDatBan.IdUser" class="control-label"></label>
+                <input asp-for="PhieuDatBan.IdUser" class="form-control" value="@ViewBag.IdCurrentUser"  type="hidden"/>
+                <input  class="form-control" value="@ViewBag.TenUser" readonly/>
+                <span asp-validation-for="PhieuDatBan.IdUser" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="PhieuDatBan.ThoiGianDat" class="control-label"></label>
                 <input asp-for="PhieuDatBan.ThoiGianDat" class="form-control" />

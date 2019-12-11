@@ -73,7 +73,7 @@ namespace QuanLyNhaHang.Controllers
             ViewBag.CurrentSortTrangThai = currentSort.Equals("TrangThai_DESC") ? "TrangThai_ASC" : "TrangThai_DESC";
             ViewBag.CurrentSortThoiGianDat = currentSort.Equals("ThoiGianDat_DESC") ? "ThoiGianDat_ASC" : "ThoiGianDat_DESC";
             ViewBag.CurrentSortTenKhachHang = currentSort.Equals("TenKhachHang_DESC") ? "TenKhachHang_ASC" : "TenKhachHang_DESC";
-            
+
             ViewBag.CurrentSort = currentSort;
             PhieuDatBanVM vm = _servicesIndexVM.GetPhieuDatBanVM(currentSort, idBanAn, trangThai, pageIndex);
             return View(vm);
@@ -93,6 +93,10 @@ namespace QuanLyNhaHang.Controllers
             SavePhieuDatBanDTO savePhieuDatBanDTO = _mapper.Map<PhieuDatBanDTO, SavePhieuDatBanDTO>(pDTO);
             KhachHang kh = _services.GetKhachHang(savePhieuDatBanDTO.IdKhachHang);
             ViewBag.TenKhachHang = kh.Ten;
+
+            NguoiDung nguoiDung = _services.GetNguoiDung(savePhieuDatBanDTO.IdUser);
+            ViewBag.TenUser = nguoiDung.Ten;
+            
             PhieuDatBanVM vm = new PhieuDatBanVM
             {
                 PhieuDatBan = savePhieuDatBanDTO,
@@ -112,6 +116,8 @@ namespace QuanLyNhaHang.Controllers
                 ViewBag.MessagePhieuDatBan = "Thời gian đặt bị trùng";
                 KhachHang kh = _services.GetKhachHang(vm.PhieuDatBan.IdKhachHang);
                 ViewBag.TenKhachHang = kh.Ten;
+                NguoiDung nguoiDung = _services.GetNguoiDung(vm.PhieuDatBan.IdUser);
+                ViewBag.TenUser = nguoiDung.Ten;
                 vm = new PhieuDatBanVM
                 {
                     PhieuDatBan = vm.PhieuDatBan,
@@ -172,6 +178,7 @@ namespace QuanLyNhaHang.Controllers
             {
                 IdBanAn = vm.PhieuDatBan.IdBanAn,
                 IdKhachHang = vm.PhieuDatBan.IdKhachHang,
+                IdUser = vm.PhieuDatBan.IdUser,
                 ThoiGianDat = vm.PhieuDatBan.ThoiGianDat,
                 GhiChu = vm.PhieuDatBan.GhiChu
             };
@@ -187,6 +194,7 @@ namespace QuanLyNhaHang.Controllers
                     {
                         IdBanAn = vm.PhieuDatBan.IdBanAn,
                         IdKhachHang = p.IdKhachHang,
+                        IdUser = vm.PhieuDatBan.IdUser,
                         ThoiGianDat = Convert.ToDateTime(day),
                         GhiChu = vm.PhieuDatBan.GhiChu,
                     },
@@ -205,6 +213,7 @@ namespace QuanLyNhaHang.Controllers
                     {
                         IdBanAn = vm.PhieuDatBan.IdBanAn,
                         IdKhachHang = p.IdKhachHang,
+                        IdUser = vm.PhieuDatBan.IdUser,
                         ThoiGianDat = Convert.ToDateTime(day),
                         GhiChu = vm.PhieuDatBan.GhiChu,
                     },
@@ -223,6 +232,7 @@ namespace QuanLyNhaHang.Controllers
                     {
                         IdBanAn = vm.PhieuDatBan.IdBanAn,
                         IdKhachHang = p.IdKhachHang,
+                        IdUser = vm.PhieuDatBan.IdUser,
                         ThoiGianDat = Convert.ToDateTime(day),
                         GhiChu = vm.PhieuDatBan.GhiChu,
                     },
@@ -245,6 +255,8 @@ namespace QuanLyNhaHang.Controllers
                 return RedirectToAction("Index");
             SavePhieuDatBanDTO savePhieuDatBanDTO = _mapper.Map<PhieuDatBanDTO, SavePhieuDatBanDTO>(pDTO);
             KhachHang kh = _services.GetKhachHang(savePhieuDatBanDTO.IdKhachHang);
+            NguoiDung nguoiDung = _services.GetNguoiDung(savePhieuDatBanDTO.IdUser);
+            ViewBag.TenUser = nguoiDung.Ten;
             ViewBag.TenKhachHang = kh.Ten;
             return View(savePhieuDatBanDTO);
         }
@@ -274,6 +286,8 @@ namespace QuanLyNhaHang.Controllers
                 return RedirectToAction("Index");
             KhachHang kh = _services.GetKhachHang(pDTO.IdKhachHang);
             ViewBag.TenKhachHang = kh.Ten;
+            NguoiDung nguoiDung = _services.GetNguoiDung(pDTO.IdUser);
+            ViewBag.TenUser = nguoiDung.Ten;
             return View(pDTO);
         }
     }

@@ -63,6 +63,9 @@
                                         
                                         </th>
                                         <th>
+                                            Nhân viên
+                                        </th>
+                                        <th>
                                             <a  asp-action="Index" asp-controller="PhieuDatBan"  style="color:white"
                                                 asp-route-currentSort="@ViewBag.CurrentSortThoiGianDat" 
                                                 asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
@@ -92,6 +95,9 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.TenKhachHang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenUser)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.ThoiGianDat)

@@ -13,9 +13,16 @@ namespace ApplicationCore.DTOs {
     using System;
     using System.ComponentModel.DataAnnotations;
     using ApplicationCore.Interfaces;
+    using ApplicationCore.Entities;
 
     public class HoaDonDTO {
-       
+
+
+        public HoaDonDTO()
+        {
+            this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Mã hóa đơn")]
@@ -42,6 +49,10 @@ namespace ApplicationCore.DTOs {
         [Display(Name = "Trạng thái")]
         [Required]
         public string TrangThai { get; set; }
+
+        public virtual BanAn BanAn { get; set; }
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
 
     }
 }

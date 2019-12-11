@@ -6,7 +6,9 @@ using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.DTOs;
 using ApplicationCore.Entities;
+using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
 using Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Http;
@@ -18,10 +20,11 @@ namespace QuanLyNhaHang.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly QLNHContext _context;
-        public LoginController(QLNHContext context)
+        private readonly INguoiDungServices _services;
+        public LoginController(INguoiDungServices services)
         {
-            this._context = context;
+            this._services = services;
+
         }
         public IActionResult Index()
         {
@@ -60,7 +63,7 @@ namespace QuanLyNhaHang.Controllers
         {
 
             string userName = user.Username;
-            NguoiDung nd = _context.NguoiDungs.Where(x => x.TenDangNhap == userName).FirstOrDefault();
+            NguoiDungDTO nd = _services.GetNguoiDungDTOByUserName(userName);
             if (nd == null)
             {
                 ViewBag.Message = "Không có người dùng này";
@@ -84,7 +87,8 @@ namespace QuanLyNhaHang.Controllers
 
                     ViewBag.IdCurrentUser = HttpContext.Session.GetString("IdCurrentUser").ToString();
                     ViewBag.TenCurrentUser = HttpContext.Session.GetString("TenCurrentUser").ToString();
-                    return View("../HomeQuanLy/Index");
+                    ViewBag.Time = DateTime.Now;
+                    return View("../HomeQuanLy/Index",nd);
                 }
                 else
                 {
