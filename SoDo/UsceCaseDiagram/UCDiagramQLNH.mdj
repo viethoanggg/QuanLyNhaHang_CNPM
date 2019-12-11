@@ -1197,7 +1197,7 @@
 											"top": 94,
 											"width": 86,
 											"height": 26,
-											"text": "Quản lý nhân viên",
+											"text": "Quản lý người dùng",
 											"wordWrap": true
 										},
 										{
@@ -3678,12 +3678,12 @@
 										"$ref": "AAAAAAFuwUzLrLO3oWs="
 									},
 									"font": "Arial;13;0",
-									"left": 481,
-									"top": 40,
+									"left": 480,
+									"top": 56,
 									"width": 53.49169921875,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 30,
+									"alpha": 1.0403543009091623,
+									"distance": 22.20360331117452,
 									"hostEdge": {
 										"$ref": "AAAAAAFuwUzLrLO54LQ="
 									},
@@ -8089,11 +8089,11 @@
 									},
 									"font": "Arial;13;0",
 									"left": 601,
-									"top": 117,
+									"top": 103,
 									"width": 53.49169921875,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 30,
+									"alpha": 1.653938136432124,
+									"distance": 16.278820596099706,
 									"hostEdge": {
 										"$ref": "AAAAAAFu4xAdJTL1Swk="
 									},
@@ -8369,7 +8369,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 64,
+											"left": 48,
 											"top": -160,
 											"height": 13
 										},
@@ -8380,7 +8380,7 @@
 												"$ref": "AAAAAAFu4xBeFDSUxvY="
 											},
 											"font": "Arial;13;1",
-											"left": 876,
+											"left": 868,
 											"top": 138,
 											"width": 62,
 											"height": 13,
@@ -8394,7 +8394,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 64,
+											"left": 48,
 											"top": -160,
 											"width": 80.9072265625,
 											"height": 13,
@@ -8408,14 +8408,14 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 64,
+											"left": 48,
 											"top": -160,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 871,
+									"left": 863,
 									"top": 131,
 									"width": 72,
 									"height": 25,
@@ -8443,7 +8443,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": 24,
 									"top": -80,
 									"width": 10,
 									"height": 10
@@ -8459,7 +8459,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": 24,
 									"top": -80,
 									"width": 10,
 									"height": 10
@@ -8475,7 +8475,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": 24,
 									"top": -80,
 									"width": 10,
 									"height": 10
@@ -8491,7 +8491,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": 24,
 									"top": -80,
 									"width": 10,
 									"height": 10
@@ -8507,7 +8507,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 32,
+									"left": 24,
 									"top": -80,
 									"width": 10,
 									"height": 10
@@ -8515,7 +8515,7 @@
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 856,
+							"left": 848,
 							"top": 120,
 							"width": 102,
 							"height": 48,
@@ -8656,7 +8656,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 781,
+									"left": 777,
 									"top": 160,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8676,7 +8676,7 @@
 										"$ref": "AAAAAAFu4xCDAjYvGFI="
 									},
 									"font": "Arial;13;0",
-									"left": 760,
+									"left": 756,
 									"top": 159,
 									"width": 53.49169921875,
 									"height": 13,
@@ -8699,7 +8699,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 778,
+									"left": 774,
 									"top": 131,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -8718,7 +8718,7 @@
 								"$ref": "AAAAAAFu4xBeFDSTAK8="
 							},
 							"lineStyle": 1,
-							"points": "855:147;705:158",
+							"points": "847:147;705:158",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFu4xCDAzYyLJw="
@@ -11643,7 +11643,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFuWk1567MM8qo="
 					},
-					"name": "Quản lý nhân viên",
+					"name": "Quản lý người dùng",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
