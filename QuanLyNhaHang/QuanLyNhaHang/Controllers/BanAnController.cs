@@ -6,20 +6,23 @@ using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers
 {
     public class BanAnController : Controller
     {
         private readonly IBanAnServices _services;
+        private readonly IBanAnIndexVMServices _servicesIndexVM;
         private readonly IMapper _mapper;
-        public BanAnController(IBanAnServices services, IMapper mapper)
+        public BanAnController(IBanAnServices services, IBanAnIndexVMServices _servicesIndexVM, IMapper mapper)
         {
             this._services = services;
+            this._servicesIndexVM = _servicesIndexVM;
             this._mapper = mapper;
         }
         public bool KiemTraDangNhap()
@@ -39,12 +42,12 @@ namespace QuanLyNhaHang.Controllers
         {
             if (KiemTraDangNhap() == false)
                 return View("../Login/Index");
-            BanAnVM banAnVM = _services.GetBanAnVM(trangThai, pageIndex);
+            BanAnVM banAnVM = _servicesIndexVM.GetBanAnVM(trangThai, pageIndex);
             return View(banAnVM);
         }
         public IActionResult IndexAjax(string trangThai, int pageIndex = 1)
         {
-            BanAnVM banAnVM = _services.GetBanAnVM(trangThai, pageIndex);
+            BanAnVM banAnVM = _servicesIndexVM.GetBanAnVM(trangThai, pageIndex);
             return View(banAnVM);
         }
         public IActionResult Create()

@@ -7,13 +7,13 @@ using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using AutoMapper;
 using Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers
 {

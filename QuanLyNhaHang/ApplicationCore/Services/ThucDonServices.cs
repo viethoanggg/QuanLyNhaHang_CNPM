@@ -5,7 +5,6 @@ using ApplicationCore.Interfaces;
 
 using System.Collections.Generic;
 using ApplicationCore.Interfaces.IServices;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.ModelsContainData.Models;
 using AutoMapper;
 using ApplicationCore.DTOs;

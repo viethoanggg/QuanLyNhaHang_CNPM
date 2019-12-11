@@ -6,11 +6,11 @@ using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.IServices;
-using ApplicationCore.ModelsContainData.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers
 {

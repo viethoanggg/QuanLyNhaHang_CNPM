@@ -4,14 +4,13 @@ using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Services;
 
 namespace ApplicationCore.Interfaces.IServices
 {
     public interface IBanAnServices
     {
-        BanAnVM GetBanAnVM(string trangThai, int pageIndex);
+        IEnumerable<BanAnDTO> GetListBanAn(string trangThai, int pageIndex, int pageSize, out int count);
         BanAnDTO GetBanAn(int id);
         void Edit(SaveBanAnDTO banAn);
         int Delete(int id);

@@ -9,7 +9,6 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Specification;
 using AutoMapper;
 namespace ApplicationCore.Services
@@ -65,9 +64,8 @@ namespace ApplicationCore.Services
             return hoaDonDTO;
         }
 
-        public HoaDonVM Details(int id)
+        public IEnumerable<CTHDMD> DetailsHD(int id)
         {
-            HoaDon hoaDon = _unitOfWork.HoaDons.GetById(id);
             var cts = _unitOfWork.HoaDons.GetListCTHD(id);
             IEnumerable<CTHDMD> list = from s in cts
                                        join t in _unitOfWork.ThucDons.GetAll()
@@ -80,11 +78,7 @@ namespace ApplicationCore.Services
                                            SoLuong = s.SoLuong,
                                            DonGia = s.DonGia
                                        };
-            return new HoaDonVM
-            {
-                HoaDon = _mapper.Map<HoaDon, HoaDonDTO>(hoaDon),
-                ChiTietHoaDonMD = list
-            };
+            return list;
 
         }
 

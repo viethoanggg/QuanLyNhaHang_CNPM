@@ -11,7 +11,6 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Specification;
 using AutoMapper;
 
@@ -21,25 +20,21 @@ namespace ApplicationCore.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly int pageSize = 10;
         public BanAnServices(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
         }
-        public BanAnVM GetBanAnVM(string trangThai, int pageIndex = 1)
+        public IEnumerable<BanAnDTO> GetListBanAn(string trangThai, int pageIndex, int pageSize, out int count)
         {
             BanAnSpecification banAnSpecFilter = new BanAnSpecification(trangThai, pageIndex, pageSize);
             BanAnSpecification banAnSpec = new BanAnSpecification(trangThai);
-            int count = _unitOfWork.BanAns.Count(banAnSpec);
+            count = _unitOfWork.BanAns.Count(banAnSpec);
             var banAns = _unitOfWork.BanAns.FindSpec(banAnSpecFilter);
             _unitOfWork.BanAns.BanAn_Load();
 
             var banAnsDTO = _mapper.Map<IEnumerable<BanAn>, IEnumerable<BanAnDTO>>(banAns);
-            return new BanAnVM
-            {
-                BanAns = new PaginatedList<BanAnDTO>(banAnsDTO, pageIndex, pageSize, count)
-            };
+            return banAnsDTO;
         }
 
         public BanAnDTO GetBanAn(int id)

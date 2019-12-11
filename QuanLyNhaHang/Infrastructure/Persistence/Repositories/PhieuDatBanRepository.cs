@@ -7,7 +7,6 @@ using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IRepositories;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore.Internal;
 

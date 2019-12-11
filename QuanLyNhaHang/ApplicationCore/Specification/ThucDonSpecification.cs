@@ -22,6 +22,10 @@ namespace ApplicationCore.Specification
 
             if (String.IsNullOrEmpty(tenMonAn))
                 tenMonAn = "";
+            else
+            {
+                predicate = s => s.Ten.ToLower().Contains(tenMonAn.ToLower());
+            }
             if (giaTu > 0)
             {
                 predicate = s => s.Ten.ToLower().Contains(tenMonAn.ToLower()) && s.Gia >= giaTu;

@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanlyNhaHang\\QuanLyNhaHang.csproj": {}
+    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj": {}
   },
   "projects": {
     "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\ApplicationCore\\ApplicationCore.csproj": {
@@ -128,14 +128,14 @@
         }
       }
     },
-    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanlyNhaHang\\QuanLyNhaHang.csproj": {
+    "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanlyNhaHang\\QuanLyNhaHang.csproj",
+        "projectUniqueName": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
         "projectName": "QuanLyNhaHang",
-        "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanlyNhaHang\\QuanLyNhaHang.csproj",
+        "projectPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\QuanLyNhaHang.csproj",
         "packagesPath": "C:\\Users\\del\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanlyNhaHang\\obj\\",
+        "outputPath": "C:\\Users\\del\\Documents\\GitHub\\QuanLyNhaHang_CNPM\\QuanLyNhaHang\\QuanLyNhaHang\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\del\\AppData\\Roaming\\NuGet\\NuGet.Config",

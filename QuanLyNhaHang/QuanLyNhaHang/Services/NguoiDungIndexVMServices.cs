@@ -3,9 +3,9 @@ using System.Linq;
 using ApplicationCore.DTOs;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.IServices;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Services;
 using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Services
 {

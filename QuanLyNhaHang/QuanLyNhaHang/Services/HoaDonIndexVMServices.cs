@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using ApplicationCore.DTOs;
 using ApplicationCore.Interfaces.IServices;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
+
 using ApplicationCore.Services;
 using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Services
 {
@@ -69,6 +71,18 @@ namespace QuanLyNhaHang.Services
             return new HoaDonVM
             {
                 ListHoaDonMD = new PaginatedList<HoaDonMD>(listHoaDonMD, pageIndex, pageSize, count)
+            };
+        }
+
+        public HoaDonVM Details(int id)
+        {
+
+            HoaDonDTO hoaDonDTO = _services.FindHD(id);
+            IEnumerable<CTHDMD> list = _services.DetailsHD(id);
+            return new HoaDonVM
+            {
+                HoaDon = hoaDonDTO,
+                ChiTietHoaDonMD = list
             };
         }
     }

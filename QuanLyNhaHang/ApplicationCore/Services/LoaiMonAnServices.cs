@@ -4,7 +4,6 @@ using System;
 using System.Linq.Expressions;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Interfaces.IServices;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Services;
 using AutoMapper;
 using ApplicationCore.DTOs;

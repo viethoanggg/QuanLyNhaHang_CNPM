@@ -1,5 +1,5 @@
 using System;
-using ApplicationCore.ModelsContainData.ViewModels;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Services.Interfaces
 {

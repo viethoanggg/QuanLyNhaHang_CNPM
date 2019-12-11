@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using ApplicationCore.DTOs;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.ModelsContainData.Models;
-using ApplicationCore.ModelsContainData.ViewModels;
 using ApplicationCore.Services;
 
 namespace ApplicationCore.Interfaces.IServices
@@ -15,7 +14,7 @@ namespace ApplicationCore.Interfaces.IServices
         BanAnDTO FindBanAn(int IdHoaDon);
         void Edit(SaveHoaDonDTO saveHoaDonDTO);
         IEnumerable<BanAnDTO> GetListBanAn();
-        HoaDonVM Details(int id);
+        IEnumerable<CTHDMD> DetailsHD(int id);
         string GetNameUser(int IdUser);
     }
 }

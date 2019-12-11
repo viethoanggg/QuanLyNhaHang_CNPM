@@ -31,7 +31,7 @@ namespace ApplicationCore.DTOs.SaveDTOs
         [Display(Name = "Số lượng")]
         public int SoLuong { get; set; }
 
-        [Range(1, 10)]
+        [Range(1, 5000000)]
         [Display(Name = "Đơn giá")]
         public int DonGia { get; set; }
 

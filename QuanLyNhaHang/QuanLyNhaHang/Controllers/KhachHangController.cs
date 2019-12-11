@@ -1,10 +1,10 @@
 using System;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.Interfaces.IServices;
-using ApplicationCore.ModelsContainData.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers
 {

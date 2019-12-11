@@ -61,6 +61,7 @@ namespace QuanLyNhaHang
             services.AddScoped<IThongKeServices, ThongKeServices>();
 
             services.AddScoped<IThucDonIndexVMServices, ThucDonIndexVMServices>();
+            services.AddScoped<IBanAnIndexVMServices, BanAnIndexVMServices>();
             services.AddScoped<ILoaiMonAnIndexVMServices, LoaiMonAnIndexVMServices>();
             services.AddScoped<IHoaDonIndexVMServices, HoaDonIndexVMServices>();
             services.AddScoped<IPhieuDatBanIndexVMServices, PhieuDatBanIndexVMServices>();

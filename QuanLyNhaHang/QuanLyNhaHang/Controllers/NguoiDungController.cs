@@ -2,10 +2,10 @@ using System;
 using ApplicationCore.Interfaces.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ApplicationCore.ModelsContainData.ViewModels;
 using QuanLyNhaHang.Services.Interfaces;
 using ApplicationCore.DTOs.SaveDTOs;
 using ApplicationCore.DTOs;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Controllers
 {
@@ -160,7 +160,7 @@ namespace QuanLyNhaHang.Controllers
         public string DoiMatKhau(string IdUser, string MatKhauMoi, string MatKhauCu)
         {
             int id = 0;
-            if (String.IsNullOrEmpty(IdUser)==false)
+            if (String.IsNullOrEmpty(IdUser) == false)
                 id = Convert.ToInt32(IdUser);
             string i = _services.DoiMatKhau(id, MatKhauMoi, MatKhauCu);
             if (i.Equals("0"))

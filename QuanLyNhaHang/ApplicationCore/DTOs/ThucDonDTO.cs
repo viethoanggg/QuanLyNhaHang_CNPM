@@ -26,7 +26,6 @@ namespace ApplicationCore.DTOs
         public int IdLoaiMonAn { get; set; }
      
         [Display (Name = "Tên món ăn")]
-        [RegularExpression(@"^[a-zA-Z]+[a-zA-Z0-9 -_]*$")]
         [Required]
         public string Ten { get; set; }
 

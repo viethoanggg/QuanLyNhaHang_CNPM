@@ -119,7 +119,7 @@ namespace QuanLyNhaHang.Controllers
             if (hoaDonDTO == null)
                 return RedirectToAction("Index");
             ViewBag.UserName = _services.GetNameUser(hoaDonDTO.IdUser);
-            return View(_services.Details(id.Value));
+            return View(_servicesIndexVM.Details(id.Value));
         }
         public IActionResult Edit(int? id)
         {

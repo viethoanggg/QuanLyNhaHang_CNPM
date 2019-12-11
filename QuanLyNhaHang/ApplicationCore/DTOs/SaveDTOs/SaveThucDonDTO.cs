@@ -27,12 +27,13 @@ namespace ApplicationCore.DTOs.SaveDTOs
         public int IdLoaiMonAn { get; set; }
 
         [Display(Name = "Tên món ăn")]
-        [RegularExpression(@"^[a-zA-Z]+[a-zA-Z0-9 -_]*$")]
         [Required]
         public string Ten { get; set; }
 
         [Display(Name = "Giá")]
         [Required]
+        [RegularExpression(@"^[0-9]+$")]
+        
         public int Gia { get; set; }
 
     }

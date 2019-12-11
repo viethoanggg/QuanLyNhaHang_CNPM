@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using ApplicationCore.DTOs;
 using ApplicationCore.Interfaces.IServices;
-using ApplicationCore.ModelsContainData.ViewModels;
+
 using ApplicationCore.Services;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyNhaHang.Services.Interfaces;
+using QuanLyNhaHang.ViewModels;
 
 namespace QuanLyNhaHang.Services
 {
