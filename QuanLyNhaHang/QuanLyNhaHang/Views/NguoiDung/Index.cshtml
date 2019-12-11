@@ -41,185 +41,200 @@
                  </div>
             
             </form>
-
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                               <a  asp-action="Index" asp-controller="NguoiDung" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTen" 
-                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                    asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                    asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Tên</a>
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="NguoiDung" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTenDangNhap" 
-                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                    asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                    asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Tên đăng nhập</a>
-                            </th>
-                            <th>
-                                Mật khẩu
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="NguoiDung" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortVaiTro" 
-                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                    asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                    asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Vai trò</a>
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="NguoiDung" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTrangThai" 
-                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                    asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                    asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Trạng thái</a>
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.NguoiDungs) {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ten)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenDangNhap)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MatKhau)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Role)
-                                </td>
-                                <td>
-                                    @if(@item.TrangThai.Equals(-1))
-                                    {
-                                        <p>Bị khóa</p>
-                                    }
-                                    else{
-                                        <p>Chưa khóa</p>
-                                    }
-                                </td>
-                                <td>
-                                    @if(@item.TrangThai.Equals(-1))
-                                    {
-                                        <a asp-action="LockUser" asp-route-id="@item.Id">UnLock</a>
-                                    }
-                                    else{
-                                       <a asp-action="LockUser" asp-route-id="@item.Id">Lock</a>
-                                    }
-                                    
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-md-12">
-                @{
-                    var disNext= !Model.NguoiDungs.HasNext ? " visibility: hidden" : "";   
-                    var disPre= !Model.NguoiDungs.HasPrevious ? " visibility: hidden" : "";   
-                }
-
-                <span style="float:right"> 
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a asp-action="Index"  class="page-link" style="@disPre"
-                            asp-route-pageIndex="@( Model.NguoiDungs.PageIndex - 1 )"
-                            asp-route-currentSort="@ViewBag.CurrentSort" 
-                            asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                            asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                            asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                            asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Previous </a>
-                        </li>
-                        
-                    @{
-                    
-                        for(int i=1; i <= Model.NguoiDungs.TotalPages; i++)
-                        {
-                            //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
-                            if(Model.NguoiDungs.TotalPages>=8 && @i>=Model.NguoiDungs.PageIndex-2 && @i<=Model.NguoiDungs.PageIndex+2)
-                            {
-                                if(@i==Model.NguoiDungs.PageIndex-2 && @i>1)
-                                {
-                                    <li class="page-item"><a class="page-link">...</a></li>
-                                }
-                                if(@i==Model.NguoiDungs.PageIndex)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" style="background-color:lightblue"> @i </a>
-                                    </li>   
-                                }
-                                else 
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link"
-                                        asp-action="Index"
-                                        asp-route-pageIndex="@i"
-                                        asp-route-currentSort="@ViewBag.CurrentSort" 
-                                        asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                        asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                        asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
-                                    </li>
-                                }
-                                if(@i==Model.NguoiDungs.PageIndex+2 && @i<Model.NguoiDungs.TotalPages)
-                                {
-                                    <li class="page-item"><a class="page-link">...</a></li>
-                                }
-                            }
-                            else if( Model.NguoiDungs.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
-                            {
-                                if(@i==Model.NguoiDungs.PageIndex)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" style="background-color:lightblue"> @i </a>
-                                    </li>   
-                                }
-                                else
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link"
-                                        asp-action="Index"
-                                        asp-route-pageIndex="@i"
-                                        asp-route-currentSort="@ViewBag.CurrentSort" 
-                                        asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                        asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                        asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
-                                    </li>
-                                }
-                            }
-                        
-                        
-                        }
-                    
-                    }
-
-                        <li class="page-item">
-                            <a asp-action="Index"  class="page-link" style="@disNext"
-                                asp-route-pageIndex="@( Model.NguoiDungs.PageIndex + 1 )"
-                                asp-route-currentSort="@ViewBag.CurrentSort" 
-                                asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
-                                asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
-                                asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
-                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Next </a>
-                        </li>
-                    </ul>
-                </span>
-            </div>
 </div>
+
+
+		<div class="row">
+            <div class="col-lg-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Danh sách món ăn</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                        <a  asp-action="Index" asp-controller="NguoiDung"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTen" 
+                                                asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                                asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                                asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Tên</a>
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="NguoiDung"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTenDangNhap" 
+                                                asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                                asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                                asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Tên đăng nhập</a>
+                                        </th>
+                                        <th>
+                                            Mật khẩu
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="NguoiDung"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortVaiTro" 
+                                                asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                                asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                                asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Vai trò</a>
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="NguoiDung"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTrangThai" 
+                                                asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                                asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                                asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.NguoiDungs.PageIndex">Trạng thái</a>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.NguoiDungs) {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Ten)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenDangNhap)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MatKhau)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Role)
+                                            </td>
+                                            <td>
+                                                @if(@item.TrangThai.Equals(-1))
+                                                {
+                                                    <p>Bị khóa</p>
+                                                }
+                                                else{
+                                                    <p>Chưa khóa</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if(@item.TrangThai.Equals(-1))
+                                                {
+                                                    <a asp-action="LockUser" asp-route-id="@item.Id">UnLock</a>
+                                                }
+                                                else{
+                                                <a asp-action="LockUser" asp-route-id="@item.Id">Lock</a>
+                                                }
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-12">
+                            @{
+                                var disNext= !Model.NguoiDungs.HasNext ? " visibility: hidden" : "";   
+                                var disPre= !Model.NguoiDungs.HasPrevious ? " visibility: hidden" : "";   
+                            }
+
+                            <span style="float:right"> 
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disPre"
+                                        asp-route-pageIndex="@( Model.NguoiDungs.PageIndex - 1 )"
+                                        asp-route-currentSort="@ViewBag.CurrentSort" 
+                                        asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                        asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                        asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Previous </a>
+                                    </li>
+                                    
+                                @{
+                                
+                                    for(int i=1; i <= Model.NguoiDungs.TotalPages; i++)
+                                    {
+                                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                                        if(Model.NguoiDungs.TotalPages>=8 && @i>=Model.NguoiDungs.PageIndex-2 && @i<=Model.NguoiDungs.PageIndex+2)
+                                        {
+                                            if(@i==Model.NguoiDungs.PageIndex-2 && @i>1)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                            if(@i==Model.NguoiDungs.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else 
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort" 
+                                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                                    asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                                    asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
+                                                </li>
+                                            }
+                                            if(@i==Model.NguoiDungs.PageIndex+2 && @i<Model.NguoiDungs.TotalPages)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                        }
+                                        else if( Model.NguoiDungs.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                                        {
+                                            if(@i==Model.NguoiDungs.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort" 
+                                                    asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                                    asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                                    asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
+                                                </li>
+                                            }
+                                        }
+                                    
+                                    
+                                    }
+                                
+                                }
+
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disNext"
+                                            asp-route-pageIndex="@( Model.NguoiDungs.PageIndex + 1 )"
+                                            asp-route-currentSort="@ViewBag.CurrentSort" 
+                                            asp-route-currentFilterTen="@ViewBag.CurrentFilterTen"
+                                            asp-route-currentFilterTenDangNhap="@ViewBag.CurrentFilterTenDangNhap"
+                                            asp-route-currentFilterVaitro="@ViewBag.CurrentFilterVaiTro"
+                                            asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Next </a>
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
 

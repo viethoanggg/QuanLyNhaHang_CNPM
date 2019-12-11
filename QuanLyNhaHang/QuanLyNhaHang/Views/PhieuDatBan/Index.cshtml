@@ -33,169 +33,188 @@
                  <div class="input-group col-sm-3" ></div>
             
             </form>
-             <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <a  asp-action="Index" asp-controller="PhieuDatBan" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortIdBanAn" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Bàn ăn</a>
-                            </th>
-                            <th>
-                                 <a  asp-action="Index" asp-controller="PhieuDatBan" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTenKhachHang" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Tên khách hàng</a>
-                               
-                            </th>
-                            <th>
-                                 <a  asp-action="Index" asp-controller="PhieuDatBan" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortThoiGianDat" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Thời gian đặt</a>
-                                
-                            </th>
-                            <th>
-                                 <a  asp-action="Index" asp-controller="PhieuDatBan" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTrangThai" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Trạng thái</a>
-                            
-                            </th>
-                            <th>
-                            Ghi chú
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                @foreach ( var item in Model.PhieuDatBans ) {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdBanAn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TenKhachHang)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ThoiGianDat)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TrangThai)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.GhiChu)
-                            </td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                                @if(@item.TrangThai == "Chưa xử lý")
-                                {
-                                    <span> |
-                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                        <a asp-action="Serve" asp-controller="BanAn" asp-route-IdBanAn="@item.IdBanAn" asp-route-IdPhieuDatBan="@item.Id">Serve</a>
-                                    </span>
-                                }
-                            </td>
-                        
-                        </tr>
-                }
-                    </tbody>
-                </table>
-             </div>
-
-             <div class="col-md-12">
-                @{
-                    var disNext= !Model.PhieuDatBans.HasNext ? " visibility: hidden" : "";   
-                    var disPre= !Model.PhieuDatBans.HasPrevious ? " visibility: hidden" : "";   
-                }
-
-                <span style="float:right"> 
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a asp-action="Index"  class="page-link" style="@disPre"
-                            asp-route-pageIndex="@( Model.PhieuDatBans.PageIndex - 1 )"
-                            asp-route-currentSort="@ViewBag.CurrentSort" 
-                            asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                            asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Previous </a>
-                        </li>
-                        
-                    @{
-                    
-                        for(int i=1; i <= Model.PhieuDatBans.TotalPages; i++)
-                        {
-                            //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
-                            if(Model.PhieuDatBans.TotalPages>=8 && @i>=Model.PhieuDatBans.PageIndex-2 && @i<=Model.PhieuDatBans.PageIndex+2)
-                            {
-                                if(@i==Model.PhieuDatBans.PageIndex-2 && @i>1)
-                                {
-                                    <li class="page-item"><a class="page-link">...</a></li>
-                                }
-                                if(@i==Model.PhieuDatBans.PageIndex)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" style="background-color:lightblue"> @i </a>
-                                    </li>   
-                                }
-                                else 
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link"
-                                        asp-action="Index"
-                                        asp-route-pageIndex="@i"
-                                        asp-route-currentSort="@ViewBag.CurrentSort" 
-                                        asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
-                                    </li>
-                                }
-                                if(@i==Model.PhieuDatBans.PageIndex+2 && @i<Model.PhieuDatBans.TotalPages)
-                                {
-                                    <li class="page-item"><a class="page-link">...</a></li>
-                                }
-                            }
-                            else if( Model.PhieuDatBans.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
-                            {
-                                if(@i==Model.PhieuDatBans.PageIndex)
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" style="background-color:lightblue"> @i </a>
-                                    </li>   
-                                }
-                                else
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link"
-                                        asp-action="Index"
-                                        asp-route-pageIndex="@i"
-                                        asp-route-currentSort="@ViewBag.CurrentSort" 
-                                        asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
-                                    </li>
-                                }
-                            }
-                        
-                        
-                        }
-                    
-                    }
-
-                        <li class="page-item">
-                            <a asp-action="Index"  class="page-link" style="@disNext"
-                            asp-route-pageIndex="@( Model.PhieuDatBans.PageIndex + 1 )"
-                            asp-route-currentSort="@ViewBag.CurrentSort" 
-                            asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                            asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Next </a>
-                        </li>
-                    </ul>
-                </span>
-
-             </div>
 </div>
+
+		<div class="row">
+            <div class="col-lg-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Danh sách phiếu đặt bàn</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="PhieuDatBan"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortIdBanAn" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Bàn ăn</a>
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="PhieuDatBan"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTenKhachHang" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Tên khách hàng</a>
+                                        
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="PhieuDatBan"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortThoiGianDat" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Thời gian đặt</a>
+                                            
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="PhieuDatBan"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTrangThai" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.PhieuDatBans.PageIndex">Trạng thái</a>
+                                        
+                                        </th>
+                                        <th>
+                                        Ghi chú
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ( var item in Model.PhieuDatBans ) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdBanAn)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenKhachHang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ThoiGianDat)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TrangThai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.GhiChu)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                            @if(@item.TrangThai == "Chưa xử lý")
+                                            {
+                                                <span> |
+                                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                    <a asp-action="Serve" asp-controller="BanAn" asp-route-IdBanAn="@item.IdBanAn" asp-route-IdPhieuDatBan="@item.Id">Serve</a>
+                                                </span>
+                                            }
+                                        </td>
+                                    
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-12">
+                            @{
+                                var disNext= !Model.PhieuDatBans.HasNext ? " visibility: hidden" : "";   
+                                var disPre= !Model.PhieuDatBans.HasPrevious ? " visibility: hidden" : "";   
+                            }
+
+                            <span style="float:right"> 
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disPre"
+                                        asp-route-pageIndex="@( Model.PhieuDatBans.PageIndex - 1 )"
+                                        asp-route-currentSort="@ViewBag.CurrentSort" 
+                                        asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Previous </a>
+                                    </li>
+                                    
+                                @{
+                                
+                                    for(int i=1; i <= Model.PhieuDatBans.TotalPages; i++)
+                                    {
+                                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                                        if(Model.PhieuDatBans.TotalPages>=8 && @i>=Model.PhieuDatBans.PageIndex-2 && @i<=Model.PhieuDatBans.PageIndex+2)
+                                        {
+                                            if(@i==Model.PhieuDatBans.PageIndex-2 && @i>1)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                            if(@i==Model.PhieuDatBans.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else 
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort" 
+                                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
+                                                </li>
+                                            }
+                                            if(@i==Model.PhieuDatBans.PageIndex+2 && @i<Model.PhieuDatBans.TotalPages)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                        }
+                                        else if( Model.PhieuDatBans.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                                        {
+                                            if(@i==Model.PhieuDatBans.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort" 
+                                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
+                                                </li>
+                                            }
+                                        }
+                                    
+                                    
+                                    }
+                                
+                                }
+
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disNext"
+                                        asp-route-pageIndex="@( Model.PhieuDatBans.PageIndex + 1 )"
+                                        asp-route-currentSort="@ViewBag.CurrentSort" 
+                                        asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Next </a>
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+            
+             
 
 

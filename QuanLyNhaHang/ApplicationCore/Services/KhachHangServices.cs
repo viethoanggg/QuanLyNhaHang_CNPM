@@ -62,8 +62,9 @@ namespace ApplicationCore.Services
         }
         public int Delete(int id)
         {
-            KhachHangDTO khachHangDTO = GetKhachHang(id);
-            KhachHang khachHang = _mapper.Map<KhachHangDTO, KhachHang>(khachHangDTO);
+            KhachHang khachHang = _unitOfWork.KhachHangs.GetById(id);
+            if (khachHang == null)
+                return -2;
             int i = _unitOfWork.KhachHangs.KiemTraPhieuDatBanCuaKhachHang(id);
             if (i.Equals(-1))
                 return -1;

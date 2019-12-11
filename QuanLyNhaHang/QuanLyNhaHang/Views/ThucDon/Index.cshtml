@@ -37,134 +37,173 @@
                 
             </form>
         </div>
-        <div class="col-lg-12">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.ActionLink("Tên loại thức ăn","Index",new {currentSort=@ViewBag.CurrentSortTenLoaiMonAn, currentFilter=@ViewBag.CurrentFilter,searchStringGiaTu=@ViewBag.CurrentFilterGiaTu,searchStringGiaDen=@ViewBag.CurrentFilterGiaDen})
-                    </th>
-                    <th>
-                        @Html.ActionLink("Tên thức ăn", "Index", new { currentSort=@ViewBag.CurrentSortTenMonAn,currentFilter=@ViewBag.CurrentFilter,searchStringGiaTu=@ViewBag.CurrentFilterGiaTu,searchStringGiaDen=@ViewBag.CurrentFilterGiaDen })
-                    </th>
-                    <th>
-                       @Html.ActionLink("Giá", "Index", new { currentSort=@ViewBag.CurrentSortGia, currentFilter=@ViewBag.CurrentFilter,searchStringGiaTu=@ViewBag.CurrentFilterGiaTu,searchStringGiaDen=@ViewBag.CurrentFilterGiaDen })
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model.ThucDonsMD)
-                {
-                    <tr id="row_@item.Id">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TenLoaiMonAn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ten)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Gia)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                           
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-
-        <div class="col-lg-12">
-            @{
-                var disNext= !Model.ThucDonsMD.HasNext ? " visibility: hidden" : "";   
-                var disPre= !Model.ThucDonsMD.HasPrevious ? " visibility: hidden" : "";   
-            }
-
-            <span style="float:right"> 
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a asp-action="Index"  class="page-link" style="@disPre"
-                        asp-route-pageIndex="@( Model.ThucDonsMD.PageIndex - 1 )"
-                        asp-route-currentSort="@ViewBag.CurrentSort"
-                        asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
-                        asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
-                        asp-route-currentFilter="@ViewBag.CurrentFilter"> Previous </a>
-                    </li>
-                    
-                @{
-                
-                    for(int i=1; i <= Model.ThucDonsMD.TotalPages; i++)
-                    {
-                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
-                        if(Model.ThucDonsMD.TotalPages>=8 && @i>=Model.ThucDonsMD.PageIndex-2 && @i<=Model.ThucDonsMD.PageIndex+2)
-                        {
-                            if(@i==Model.ThucDonsMD.PageIndex-2 && @i>1)
-                            {
-                                <li class="page-item"><a class="page-link">...</a></li>
-                            }
-                            if(@i==Model.ThucDonsMD.PageIndex)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" style="background-color:lightblue"> @i </a>
-                                </li>   
-                            }
-                            else 
-                            {
-                                <li class="page-item">
-                                    <a class="page-link"
-                                    asp-action="Index"
-                                    asp-route-pageIndex="@i"
-                                    asp-route-currentSort="@ViewBag.CurrentSort"
-                                    asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
-                                    asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
-                                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
-                                </li>
-                            }
-                            if(@i==Model.ThucDonsMD.PageIndex+2 && @i<Model.ThucDonsMD.TotalPages)
-                            {
-                                <li class="page-item"><a class="page-link">...</a></li>
-                            }
-                        }
-                        else if( Model.ThucDonsMD.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
-                        {
-                            if(@i==Model.ThucDonsMD.PageIndex)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" style="background-color:lightblue"> @i </a>
-                                </li>   
-                            }
-                            else
-                            {
-                                <li class="page-item">
-                                    <a class="page-link"
-                                    asp-action="Index"
-                                    asp-route-pageIndex="@i"
-                                    asp-route-currentSort="@ViewBag.CurrentSort"
-                                    asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
-                                    asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
-                                    asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
-                                </li>
-                            }
-                        }
-                    
-                    
-                    }
-                
-                }
-
-                    <li class="page-item">
-                        <a asp-action="Index"  class="page-link" style="@disNext"
-                            asp-route-pageIndex="@( Model.ThucDonsMD.PageIndex + 1 )"
-                            asp-route-currentSort="@ViewBag.CurrentSort"
-                            asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
-                            asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
-                            asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
-                    </li>
-                </ul>
-            </span>
-
-        </div>
     </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Danh sách món ăn</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table no-margin">
+                                <thead>
+                                     <tr>
+                                        <th>
+                                            <a asp-action="Index" asp-controller="ThucDon" style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTenLoaiMonAn"
+                                                asp-route-currentFilter="@ViewBag.CurrentFilter"
+                                                asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                                asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen">
+                                                Tên loại thức ăn
+                                            </a>
+                                            
+                                        </th>
+                                        <th>
+                                             <a asp-action="Index" asp-controller="ThucDon" style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTenMonAn"
+                                                asp-route-currentFilter="@ViewBag.CurrentFilter"
+                                                asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                                asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen">
+                                                Tên thức ăn
+                                            </a>
+                                        
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-controller="ThucDon" style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortGia"
+                                                asp-route-currentFilter="@ViewBag.CurrentFilter"
+                                                asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                                asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen">
+                                                Giá
+                                            </a>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ThucDonsMD)
+                                    {
+                                        <tr id="row_@item.Id">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenLoaiMonAn)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Ten)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Gia)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                            
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-lg-12">
+                                @{
+                                    var disNext= !Model.ThucDonsMD.HasNext ? " visibility: hidden" : "";   
+                                    var disPre= !Model.ThucDonsMD.HasPrevious ? " visibility: hidden" : "";   
+                                }
+
+                                <span style="float:right"> 
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a asp-action="Index"  class="page-link" style="@disPre"
+                                            asp-route-pageIndex="@( Model.ThucDonsMD.PageIndex - 1 )"
+                                            asp-route-currentSort="@ViewBag.CurrentSort"
+                                            asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                            asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
+                                            asp-route-currentFilter="@ViewBag.CurrentFilter"> Previous </a>
+                                        </li>
+                                        
+                                    @{
+                                    
+                                        for(int i=1; i <= Model.ThucDonsMD.TotalPages; i++)
+                                        {
+                                            //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                                            if(Model.ThucDonsMD.TotalPages>=8 && @i>=Model.ThucDonsMD.PageIndex-2 && @i<=Model.ThucDonsMD.PageIndex+2)
+                                            {
+                                                if(@i==Model.ThucDonsMD.PageIndex-2 && @i>1)
+                                                {
+                                                    <li class="page-item"><a class="page-link">...</a></li>
+                                                }
+                                                if(@i==Model.ThucDonsMD.PageIndex)
+                                                {
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                    </li>   
+                                                }
+                                                else 
+                                                {
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                        asp-action="Index"
+                                                        asp-route-pageIndex="@i"
+                                                        asp-route-currentSort="@ViewBag.CurrentSort"
+                                                        asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                                        asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
+                                                        asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                                                    </li>
+                                                }
+                                                if(@i==Model.ThucDonsMD.PageIndex+2 && @i<Model.ThucDonsMD.TotalPages)
+                                                {
+                                                    <li class="page-item"><a class="page-link">...</a></li>
+                                                }
+                                            }
+                                            else if( Model.ThucDonsMD.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                                            {
+                                                if(@i==Model.ThucDonsMD.PageIndex)
+                                                {
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                    </li>   
+                                                }
+                                                else
+                                                {
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                        asp-action="Index"
+                                                        asp-route-pageIndex="@i"
+                                                        asp-route-currentSort="@ViewBag.CurrentSort"
+                                                        asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                                        asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
+                                                        asp-route-currentFilter="@ViewBag.CurrentFilter"> @i </a>
+                                                    </li>
+                                                }
+                                            }
+                                        
+                                        
+                                        }
+                                    
+                                    }
+
+                                        <li class="page-item">
+                                            <a asp-action="Index"  class="page-link" style="@disNext"
+                                                asp-route-pageIndex="@( Model.ThucDonsMD.PageIndex + 1 )"
+                                                asp-route-currentSort="@ViewBag.CurrentSort"
+                                                asp-route-searchStringGiaTu="@ViewBag.CurrentFilterGiaTu"
+                                                asp-route-searchStringGiaDen="@ViewBag.CurrentFilterGiaDen"
+                                                asp-route-currentFilter="@ViewBag.CurrentFilter"> Next </a>
+                                        </li>
+                                    </ul>
+                                </span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+
+        
 

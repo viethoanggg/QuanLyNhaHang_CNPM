@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Quản lý hóa đơn";
 }
-<div class="row">
+        <div class="row">
             <form asp-action="Index" asp-controller="HoaDon" method="get">
                 <div class="input-group col-sm-3">
                     <p style="margin:7px 15px 5px 0px">Bàn ăn</p>
@@ -27,197 +27,210 @@
                  <div class="input-group col-sm-2" ></div>
             
             </form>
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                            <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortIdHoaDon" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Mã hóa đơn</a>
-                            
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortIdBanAn" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Bàn ăn</a>
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTenNhanVien" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Tên Nhân viên</a>
-                                
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortThoiGianLap" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Thời gian lập</a>
-                            
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortThoiGianThanhToan" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Thời gian thanh toán</a>
-                            
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortThanhTien" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Thành tiền</a>
-                                
-                            </th>
-                            <th>
-                                <a  asp-action="Index" asp-controller="HoaDon" 
-                                    asp-route-currentSort="@ViewBag.CurrentSortTrangThai" 
-                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
-                                    asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Trạng thái</a>
-                            
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                @foreach (var item in Model.ListHoaDonMD) {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IdBanAn)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TenNhanVien)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ThoiGianLap)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ThoiGianThanhToan)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ThanhTien)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TrangThai)
-                            </td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
-                                @if(item.TrangThai == "Chưa thanh toán")
-                                {
-                                    <span> | <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | </span>
-                                    <span><a asp-action="Serve" asp-controller="BanAn" asp-route-IdBanAn="@item.IdBanAn">Serve</a></span>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Danh sách hóa đơn</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                        <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortIdHoaDon" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Mã hóa đơn</a>
+                                        
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortIdBanAn" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Bàn ăn</a>
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTenNhanVien" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Tên Nhân viên</a>
+                                            
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortThoiGianLap" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Thời gian lập</a>
+                                        
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortThoiGianThanhToan" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Thời gian thanh toán</a>
+                                        
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortThanhTien" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Thành tiền</a>
+                                            
+                                        </th>
+                                        <th>
+                                            <a  asp-action="Index" asp-controller="HoaDon"  style="color:white"
+                                                asp-route-currentSort="@ViewBag.CurrentSortTrangThai" 
+                                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"
+                                                asp-route-pageIndex="@Model.ListHoaDonMD.PageIndex">Trạng thái</a>
+                                        
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ListHoaDonMD) {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdBanAn)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenNhanVien)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ThoiGianLap)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ThoiGianThanhToan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ThanhTien)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TrangThai)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                                            @if(item.TrangThai == "Chưa thanh toán")
+                                            {
+                                                <span> | <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | </span>
+                                                <span><a asp-action="Serve" asp-controller="BanAn" asp-route-IdBanAn="@item.IdBanAn">Serve</a></span>
+                                                
+                                            }
+                                        
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-12">
+                            @{
+                                var disNext= !Model.ListHoaDonMD.HasNext ? " visibility: hidden" : "";   
+                                var disPre= !Model.ListHoaDonMD.HasPrevious ? " visibility: hidden" : "";   
+                            }
+
+                            <span style="float:right"> 
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disPre"
+                                        asp-route-pageIndex="@( Model.ListHoaDonMD.PageIndex - 1 )"
+                                        asp-route-currentSort="@ViewBag.CurrentSort"
+                                        asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Previous </a>
+                                    </li>
                                     
+                                @{
+                                
+                                    for(int i=1; i <= Model.ListHoaDonMD.TotalPages; i++)
+                                    {
+                                        //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
+                                        if(Model.ListHoaDonMD.TotalPages>=8 && @i>=Model.ListHoaDonMD.PageIndex-2 && @i<=Model.ListHoaDonMD.PageIndex+2)
+                                        {
+                                            if(@i==Model.ListHoaDonMD.PageIndex-2 && @i>1)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                            if(@i==Model.ListHoaDonMD.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else 
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort"
+                                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
+                                                </li>
+                                            }
+                                            if(@i==Model.ListHoaDonMD.PageIndex+2 && @i<Model.ListHoaDonMD.TotalPages)
+                                            {
+                                                <li class="page-item"><a class="page-link">...</a></li>
+                                            }
+                                        }
+                                        else if( Model.ListHoaDonMD.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
+                                        {
+                                            if(@i==Model.ListHoaDonMD.PageIndex)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" style="background-color:lightblue"> @i </a>
+                                                </li>   
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    asp-action="Index"
+                                                    asp-route-pageIndex="@i"
+                                                    asp-route-currentSort="@ViewBag.CurrentSort"
+                                                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
+                                                </li>
+                                            }
+                                        }
+                                    
+                                    
+                                    }
+                                
                                 }
-                            
-                            </td>
-                        </tr>
-                }
-                    </tbody>
-                </table>
+
+                                    <li class="page-item">
+                                        <a asp-action="Index"  class="page-link" style="@disNext"
+                                            asp-route-pageIndex="@( Model.ListHoaDonMD.PageIndex + 1 )"
+                                            asp-route-currentSort="@ViewBag.CurrentSort"
+                                            asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
+                                            asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Next </a>
+                                    </li>
+                                </ul>
+                            </span>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        @{
-            var disNext= !Model.ListHoaDonMD.HasNext ? " visibility: hidden" : "";   
-            var disPre= !Model.ListHoaDonMD.HasPrevious ? " visibility: hidden" : "";   
-        }
-
-        <span style="float:right"> 
-            <ul class="pagination">
-                <li class="page-item">
-                    <a asp-action="Index"  class="page-link" style="@disPre"
-                    asp-route-pageIndex="@( Model.ListHoaDonMD.PageIndex - 1 )"
-                    asp-route-currentSort="@ViewBag.CurrentSort"
-                    asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                    asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Previous </a>
-                </li>
-                
-            @{
-            
-                for(int i=1; i <= Model.ListHoaDonMD.TotalPages; i++)
-                {
-                    //Nếu số tổng số trang >=8 thì sẽ hiện ... và sẽ hiện trang : i-2 , i-1 , i , i+1 ,i+2
-                    if(Model.ListHoaDonMD.TotalPages>=8 && @i>=Model.ListHoaDonMD.PageIndex-2 && @i<=Model.ListHoaDonMD.PageIndex+2)
-                    {
-                        if(@i==Model.ListHoaDonMD.PageIndex-2 && @i>1)
-                        {
-                            <li class="page-item"><a class="page-link">...</a></li>
-                        }
-                        if(@i==Model.ListHoaDonMD.PageIndex)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" style="background-color:lightblue"> @i </a>
-                            </li>   
-                        }
-                        else 
-                        {
-                            <li class="page-item">
-                                <a class="page-link"
-                                asp-action="Index"
-                                asp-route-pageIndex="@i"
-                                asp-route-currentSort="@ViewBag.CurrentSort"
-                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
-                            </li>
-                        }
-                        if(@i==Model.ListHoaDonMD.PageIndex+2 && @i<Model.ListHoaDonMD.TotalPages)
-                        {
-                            <li class="page-item"><a class="page-link">...</a></li>
-                        }
-                    }
-                    else if( Model.ListHoaDonMD.TotalPages < 8 ) //Nếu số tổng số trang <8 thì sẽ hiện hết các trang
-                    {
-                        if(@i==Model.ListHoaDonMD.PageIndex)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" style="background-color:lightblue"> @i </a>
-                            </li>   
-                        }
-                        else
-                        {
-                            <li class="page-item">
-                                <a class="page-link"
-                                asp-action="Index"
-                                asp-route-pageIndex="@i"
-                                asp-route-currentSort="@ViewBag.CurrentSort"
-                                asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                                asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> @i </a>
-                            </li>
-                        }
-                    }
-                
-                
-                }
-            
-            }
-
-                <li class="page-item">
-                    <a asp-action="Index"  class="page-link" style="@disNext"
-                        asp-route-pageIndex="@( Model.ListHoaDonMD.PageIndex + 1 )"
-                        asp-route-currentSort="@ViewBag.CurrentSort"
-                        asp-route-currentFilterIdBanAn="@ViewBag.CurrentFilterIdBanAn"
-                        asp-route-currentFilterTrangThai="@ViewBag.CurrentFilterTrangThai"> Next </a>
-                </li>
-            </ul>
-        </span>
-
-    </div>
-
-</div>
+        </div>
+           
 
         
