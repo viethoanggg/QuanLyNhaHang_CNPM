@@ -1855,17 +1855,19 @@
 												"$ref": "AAAAAAFu7wjZw65uakA="
 											},
 											"font": "Arial;13;0",
-											"left": 690,
-											"top": 322,
-											"width": 214.271484375,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"left": 712,
+											"top": 303,
+											"width": 193.67333984375,
+											"height": 26,
+											"autoResize": true,
+											"alpha": 1.107148354157793,
+											"distance": 24.596747752497688,
 											"hostEdge": {
 												"$ref": "AAAAAAFu7wjZwK3b96w="
 											},
 											"edgePosition": 1,
-											"text": "9 : phieuDatBan = GetPhieuDatBan()"
+											"text": "9 : phieuDatBan = GetPhieuDatBan(IdPhieuDatBan)",
+											"wordWrap": true
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -6454,7 +6456,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu7wjZva193yE="
 							},
-							"name": "phieuDatBan = GetPhieuDatBan()",
+							"name": "phieuDatBan = GetPhieuDatBan(IdPhieuDatBan)",
 							"source": {
 								"$ref": "AAAAAAFu7wjZxK6K0bg="
 							},
