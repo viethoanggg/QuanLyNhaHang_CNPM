@@ -20,3 +20,14 @@ D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\ApplicationCore.dll
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\bin\Debug\netstandard2.1\ApplicationCore.pdb
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.csproj.CopyComplete
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\bin\Debug\netstandard2.1\Infrastructure.deps.json
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\bin\Debug\netstandard2.1\Infrastructure.dll
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\bin\Debug\netstandard2.1\Infrastructure.pdb
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\bin\Debug\netstandard2.1\ApplicationCore.dll
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\bin\Debug\netstandard2.1\ApplicationCore.pdb
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.csprojAssemblyReference.cache
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.AssemblyInfoInputs.cache
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.AssemblyInfo.cs
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.csproj.CopyComplete
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.dll
+D:\CNPM\QuanLyNhaHang_CNPM\Source\Infrastructure\obj\Debug\netstandard2.1\Infrastructure.pdb

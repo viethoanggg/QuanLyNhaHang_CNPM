@@ -14,3 +14,11 @@ D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfo.cs
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.dll
 D:\CNPM\QuanLyNhaHang_CNPM\QuanLyNhaHang\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.pdb
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.deps.json
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.dll
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\bin\Debug\netstandard2.1\ApplicationCore.pdb
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.csprojAssemblyReference.cache
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfoInputs.cache
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.AssemblyInfo.cs
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.dll
+D:\CNPM\QuanLyNhaHang_CNPM\Source\ApplicationCore\obj\Debug\netstandard2.1\ApplicationCore.pdb
