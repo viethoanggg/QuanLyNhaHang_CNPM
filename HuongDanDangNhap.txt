@@ -1,0 +1,7 @@
+--- Hướng dẫn sử dụng webapp Quản lý nhà hàng ---
+Vai trò: Quản lý
+	Tài khoản: admin 
+	Mật khẩu: admin
+Vai trò: Nhân viên
+	Tài khoản: nhanvien 
+	Mật khẩu: 123
